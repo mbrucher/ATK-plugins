@@ -21,9 +21,9 @@
 
 // http://service.steinberg.de/databases/plugin.nsf/plugIn?openForm
 // 4 chars, single quotes. At least one capital letter
-#define PLUG_UNIQUE_ID 'Ipef'
+#define PLUG_UNIQUE_ID 'Jh5n'
 // make sure this is not the same as BUNDLE_MFR
-#define PLUG_MFR_ID 'Acme'
+#define PLUG_MFR_ID 'ATKSD1'
 
 // ProTools stuff
 
@@ -61,7 +61,7 @@ instrument determined by PLUG _IS _INST
 
 // GUI default dimensions
 #define GUI_WIDTH 300
-#define GUI_HEIGHT 300
+#define GUI_HEIGHT 200
 
 // on MSVC, you must define SA_API in the resource editor preprocessor macros as well as the c++ ones
 #if defined(SA_API) && !defined(OS_IOS)
@@ -69,9 +69,9 @@ instrument determined by PLUG _IS _INST
 #endif
 
 // vst3 stuff
-#define MFR_URL "www.olilarkin.co.uk"
+#define MFR_URL "matt.eifelle.com"
 #define MFR_EMAIL "spam@me.com"
-#define EFFECT_TYPE_VST3 "Fx"
+#define EFFECT_TYPE_VST3 "Fx|Distortion"
 
 /* "Fx|Analyzer"", "Fx|Delay", "Fx|Distortion", "Fx|Dynamics", "Fx|EQ", "Fx|Filter",
 "Fx", "Fx|Instrument", "Fx|InstrumentExternal", "Fx|Spatial", "Fx|Generator",

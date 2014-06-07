@@ -7,7 +7,9 @@ const int kNumPrograms = 1;
 
 enum EParams
 {
-  kGain = 0,
+  kDrive = 0,
+  kTone,
+  kLevel,
   kNumParams
 };
 
@@ -16,26 +18,36 @@ enum ELayout
   kWidth = GUI_WIDTH,
   kHeight = GUI_HEIGHT,
 
-  kGainX = 100,
-  kGainY = 100,
+  kDriveX = 68,
+  kDriveY = 50,
+  kToneX = 126,
+  kToneY = 100,
+  kLevelX = 184,
+  kLevelY = 50,
   kKnobFrames = 60
 };
 
 ATKSD1::ATKSD1(IPlugInstanceInfo instanceInfo)
-  :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), mGain(1.)
+  :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), mDrive(0.), mTone(50), mLevel(100)
 {
   TRACE;
 
   //arguments are: name, defaultVal, minVal, maxVal, step, label
-  GetParam(kGain)->InitDouble("Gain", 50., 0., 100.0, 0.01, "%");
-  GetParam(kGain)->SetShape(2.);
+  GetParam(kDrive)->InitDouble("Drive", 0., 0., 100.0, 0.001, "%");
+  GetParam(kDrive)->SetShape(2.);
+  GetParam(kTone)->InitDouble("Tone", 50, 0., 100.0, 0.001, "%");
+  GetParam(kTone)->SetShape(2.);
+  GetParam(kLevel)->InitDouble("Level", 100., 0., 100.0, 0.001, "%");
+  GetParam(kLevel)->SetShape(1.);
 
   IGraphics* pGraphics = MakeGraphics(this, kWidth, kHeight);
   pGraphics->AttachPanelBackground(&COLOR_RED);
 
   IBitmap knob = pGraphics->LoadIBitmap(KNOB_ID, KNOB_FN, kKnobFrames);
 
-  pGraphics->AttachControl(new IKnobMultiControl(this, kGainX, kGainY, kGain, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kDriveX, kDriveY, kDrive, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kToneX, kToneY, kTone, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kLevelX, kLevelY, kLevel, &knob));
 
   AttachGraphics(pGraphics);
 
@@ -56,8 +68,8 @@ void ATKSD1::ProcessDoubleReplacing(double** inputs, double** outputs, int nFram
 
   for (int s = 0; s < nFrames; ++s, ++in1, ++in2, ++out1, ++out2)
   {
-    *out1 = *in1 * mGain;
-    *out2 = *in2 * mGain;
+    *out1 = *in1 * mLevel;
+    *out2 = *in2 * mLevel;
   }
 }
 
@@ -65,6 +77,8 @@ void ATKSD1::Reset()
 {
   TRACE;
   IMutexLock lock(this);
+  
+  //reset setup
 }
 
 void ATKSD1::OnParamChange(int paramIdx)
@@ -73,8 +87,14 @@ void ATKSD1::OnParamChange(int paramIdx)
 
   switch (paramIdx)
   {
-    case kGain:
-      mGain = GetParam(kGain)->Value() / 100.;
+    case kDrive:
+      //mGain = GetParam(kGain)->Value() / 100.;
+      break;
+    case kTone:
+      //mGain = GetParam(kGain)->Value() / 100.;
+      break;
+    case kLevel:
+      //mGain = GetParam(kGain)->Value() / 100.;
       break;
 
     default:
