@@ -53,6 +53,8 @@ ATKSD1::ATKSD1(IPlugInstanceInfo instanceInfo)
 
   //MakePreset("preset 1", ... );
   MakeDefaultPreset((char *) "-", kNumPrograms);
+  
+  //SetLatency(3);
 }
 
 ATKSD1::~ATKSD1() {}
@@ -62,14 +64,11 @@ void ATKSD1::ProcessDoubleReplacing(double** inputs, double** outputs, int nFram
   // Mutex is already locked for us.
 
   double* in1 = inputs[0];
-  double* in2 = inputs[1];
   double* out1 = outputs[0];
-  double* out2 = outputs[1];
 
-  for (int s = 0; s < nFrames; ++s, ++in1, ++in2, ++out1, ++out2)
+  for (int s = 0; s < nFrames; ++s, ++in1, ++out1)
   {
     *out1 = *in1 * mLevel;
-    *out2 = *in2 * mLevel;
   }
 }
 
@@ -78,7 +77,7 @@ void ATKSD1::Reset()
   TRACE;
   IMutexLock lock(this);
   
-  //reset setup
+  //reset setup GetSampleRate()
 }
 
 void ATKSD1::OnParamChange(int paramIdx)
