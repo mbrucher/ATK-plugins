@@ -56,6 +56,23 @@ ATKSD1::ATKSD1(IPlugInstanceInfo instanceInfo)
   MakeDefaultPreset((char *) "-", kNumPrograms);
   
   //SetLatency(3);
+  
+  oversamplingFilter.set_input_port(0, &inFilter, 0);
+  overdriveFilter.set_input_port(0, &oversamplingFilter, 0);
+  lowpassFilter.set_input_port(0, &overdriveFilter, 0);
+  decimationFilter.set_input_port(0, &lowpassFilter, 0);
+  toneFilter.set_input_port(0, &decimationFilter, 0);
+  highpassFilter.set_input_port(0, &toneFilter, 0);
+  volumeFilter.set_input_port(0, &highpassFilter, 0);
+  outFilter.set_input_port(0, &volumeFilter, 0);
+  
+  lowpassFilter.set_order(8);
+  lowpassFilter.set_cut_frequency(20000);
+  highpassFilter.select(2);
+  highpassFilter.set_cut_frequency(20);
+  highpassFilter.set_attenuation(1);
+
+  Reset();
 }
 
 ATKSD1::~ATKSD1() {}
@@ -64,13 +81,9 @@ void ATKSD1::ProcessDoubleReplacing(double** inputs, double** outputs, int nFram
 {
   // Mutex is already locked for us.
 
-  double* in1 = inputs[0];
-  double* out1 = outputs[0];
-
-  for (int s = 0; s < nFrames; ++s, ++in1, ++out1)
-  {
-    *out1 = *in1 * mLevel;
-  }
+  inFilter.set_pointer(inputs[0], nFrames);
+  outFilter.set_pointer(outputs[0], nFrames);
+  outFilter.process(nFrames);
 }
 
 void ATKSD1::Reset()
@@ -78,7 +91,27 @@ void ATKSD1::Reset()
   TRACE;
   IMutexLock lock(this);
   
-  //reset setup GetSampleRate()
+  int sampling_rate = GetSampleRate();
+  
+  inFilter.set_input_sampling_rate(sampling_rate);
+  inFilter.set_output_sampling_rate(sampling_rate);
+  oversamplingFilter.set_input_sampling_rate(sampling_rate);
+  oversamplingFilter.set_output_sampling_rate(sampling_rate * 32);
+  overdriveFilter.set_input_sampling_rate(sampling_rate*32);
+  overdriveFilter.set_output_sampling_rate(sampling_rate * 32);
+  lowpassFilter.set_input_sampling_rate(sampling_rate*32);
+  lowpassFilter.set_output_sampling_rate(sampling_rate * 32);
+  decimationFilter.set_input_sampling_rate(sampling_rate*32);
+  decimationFilter.set_output_sampling_rate(sampling_rate);
+  toneFilter.set_input_sampling_rate(sampling_rate);
+  toneFilter.set_output_sampling_rate(sampling_rate);
+  highpassFilter.set_input_sampling_rate(sampling_rate);
+  highpassFilter.set_output_sampling_rate(sampling_rate);
+  volumeFilter.set_input_sampling_rate(sampling_rate);
+  volumeFilter.set_output_sampling_rate(sampling_rate);
+  outFilter.set_input_sampling_rate(sampling_rate);
+  outFilter.set_output_sampling_rate(sampling_rate);
+  //reset setup
 }
 
 void ATKSD1::OnParamChange(int paramIdx)
@@ -88,13 +121,13 @@ void ATKSD1::OnParamChange(int paramIdx)
   switch (paramIdx)
   {
     case kDrive:
-      //mGain = GetParam(kGain)->Value() / 100.;
+      overdriveFilter.set_drive(GetParam(kDrive)->Value() / 100.);
       break;
     case kTone:
-      //mGain = GetParam(kGain)->Value() / 100.;
+      toneFilter.set_tone((GetParam(kTone)->Value() + 100) / 200.);
       break;
     case kLevel:
-      //mGain = GetParam(kGain)->Value() / 100.;
+      volumeFilter.set_volume(GetParam(kLevel)->Value() / 150.);
       break;
 
     default:
