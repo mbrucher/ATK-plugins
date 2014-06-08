@@ -18,12 +18,12 @@ enum ELayout
   kWidth = GUI_WIDTH,
   kHeight = GUI_HEIGHT,
 
-  kDriveX = 68,
-  kDriveY = 50,
-  kToneX = 126,
-  kToneY = 100,
-  kLevelX = 184,
-  kLevelY = 50,
+  kDriveX = 55,
+  kDriveY = 38,
+  kToneX = 125,
+  kToneY = 95,
+  kLevelX = 193,
+  kLevelY = 38,
   kKnobFrames = 60
 };
 
@@ -33,15 +33,15 @@ ATKSD1::ATKSD1(IPlugInstanceInfo instanceInfo)
   TRACE;
 
   //arguments are: name, defaultVal, minVal, maxVal, step, label
-  GetParam(kDrive)->InitDouble("Drive", 0., 0., 100.0, 0.001, "%");
+  GetParam(kDrive)->InitDouble("Drive", 0., 0., 100.0, 0.01, "%");
   GetParam(kDrive)->SetShape(2.);
-  GetParam(kTone)->InitDouble("Tone", 50, 0., 100.0, 0.001, "%");
-  GetParam(kTone)->SetShape(2.);
-  GetParam(kLevel)->InitDouble("Level", 100., 0., 100.0, 0.001, "%");
-  GetParam(kLevel)->SetShape(1.);
+  GetParam(kTone)->InitDouble("Tone", 0, -100., 100.0, 0.01, "%");
+  GetParam(kTone)->SetShape(1.);
+  GetParam(kLevel)->InitDouble("Level", 100., 0., 100.0, 0.01, "%");
+  GetParam(kLevel)->SetShape(2.);
 
   IGraphics* pGraphics = MakeGraphics(this, kWidth, kHeight);
-  pGraphics->AttachPanelBackground(&COLOR_RED);
+  pGraphics->AttachBackground(SD1_ID, SD1_FN);
 
   IBitmap knob = pGraphics->LoadIBitmap(KNOB_ID, KNOB_FN, kKnobFrames);
 
