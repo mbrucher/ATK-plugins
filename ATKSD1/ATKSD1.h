@@ -3,6 +3,9 @@
 
 #include "IPlug_include_in_plug_hdr.h"
 
+#include <ATK/Core/InPointerFilter.h>
+#include <ATK/Core/OutPointerFilter.h>
+
 class ATKSD1 : public IPlug
 {
 public:
@@ -17,6 +20,9 @@ private:
   double mDrive;
   double mTone;
   double mLevel;
+  
+  ATK::InPointerFilter<double> inFilter;
+  ATK::OutPointerFilter<double> outFilter;
 };
 
 #endif
