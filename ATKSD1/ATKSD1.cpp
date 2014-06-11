@@ -18,12 +18,12 @@ enum ELayout
   kWidth = GUI_WIDTH,
   kHeight = GUI_HEIGHT,
 
-  kDriveX = 55,
-  kDriveY = 38,
+  kLevelX = 55,
+  kLevelY = 38,
   kToneX = 125,
   kToneY = 95,
-  kLevelX = 193,
-  kLevelY = 38,
+  kDriveX = 193,
+  kDriveY = 38,
   kKnobFrames = 60
 };
 
