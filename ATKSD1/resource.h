@@ -33,8 +33,8 @@
   const int PLUG_TYPE_IDS_AS[2] = {'EFA1', 'EFA2'}; // AudioSuite
 #endif
 
-#define PLUG_MFR_PT "MatthieuBrucher\nMatthieuBrucher\nAcme"
-#define PLUG_NAME_PT "ATKSD1\nIPEF"
+#define PLUG_MFR_PT "MatthieuBrucher\nMatthieuBrucher\nMatthieuBrucher"
+#define PLUG_NAME_PT "ATKSD1\nJh5n"
 #define PLUG_TYPE_PT "Effect"
 #define PLUG_DOES_AUDIOSUITE 1
 
@@ -45,7 +45,8 @@ instrument determined by PLUG _IS _INST
 
 #define PLUG_CHANNEL_IO "1-1"
 
-#define PLUG_LATENCY 0
+// Should be retrieved from ATK when the time comes
+#define PLUG_LATENCY 3
 #define PLUG_IS_INST 0
 
 // if this is 0 RTAS can't get tempo info
