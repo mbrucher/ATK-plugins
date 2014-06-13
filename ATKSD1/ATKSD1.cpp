@@ -66,8 +66,8 @@ ATKSD1::ATKSD1(IPlugInstanceInfo instanceInfo)
   volumeFilter.set_input_port(0, &highpassFilter, 0);
   outFilter.set_input_port(0, &volumeFilter, 0);
   
-  lowpassFilter.set_order(8);
   lowpassFilter.set_cut_frequency(20000);
+  lowpassFilter.set_order(8);
   highpassFilter.select(2);
   highpassFilter.set_cut_frequency(20);
   highpassFilter.set_attenuation(1);
@@ -111,7 +111,6 @@ void ATKSD1::Reset()
   volumeFilter.set_output_sampling_rate(sampling_rate);
   outFilter.set_input_sampling_rate(sampling_rate);
   outFilter.set_output_sampling_rate(sampling_rate);
-  //reset setup
 }
 
 void ATKSD1::OnParamChange(int paramIdx)
