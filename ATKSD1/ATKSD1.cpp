@@ -56,18 +56,24 @@ ATKSD1::ATKSD1(IPlugInstanceInfo instanceInfo)
   MakeDefaultPreset((char *) "-", kNumPrograms);
   
   //SetLatency(3);
-  
+
   oversamplingFilter.set_input_port(0, &inFilter, 0);
   overdriveFilter.set_input_port(0, &oversamplingFilter, 0);
-  lowpassFilter.set_input_port(0, &overdriveFilter, 0);
-  decimationFilter.set_input_port(0, &lowpassFilter, 0);
+  lowpassFilter1.set_input_port(0, &overdriveFilter, 0);
+  lowpassFilter2.set_input_port(0, &lowpassFilter1, 0);
+  lowpassFilter3.set_input_port(0, &lowpassFilter2, 0);
+  decimationFilter.set_input_port(0, &lowpassFilter3, 0);
   toneFilter.set_input_port(0, &decimationFilter, 0);
   highpassFilter.set_input_port(0, &toneFilter, 0);
   volumeFilter.set_input_port(0, &highpassFilter, 0);
   outFilter.set_input_port(0, &volumeFilter, 0);
   
-  lowpassFilter.set_cut_frequency(20000);
-  lowpassFilter.set_order(8);
+  lowpassFilter1.set_cut_frequency(22000);
+  lowpassFilter1.set_order(6);
+  lowpassFilter2.set_cut_frequency(22000);
+  lowpassFilter2.set_order(6);
+  lowpassFilter3.set_cut_frequency(22000);
+  lowpassFilter3.set_order(6);
   highpassFilter.select(2);
   highpassFilter.set_cut_frequency(20);
   highpassFilter.set_attenuation(1);
@@ -97,11 +103,15 @@ void ATKSD1::Reset()
   inFilter.set_output_sampling_rate(sampling_rate);
   oversamplingFilter.set_input_sampling_rate(sampling_rate);
   oversamplingFilter.set_output_sampling_rate(sampling_rate * 32);
-  overdriveFilter.set_input_sampling_rate(sampling_rate*32);
+  overdriveFilter.set_input_sampling_rate(sampling_rate * 32);
   overdriveFilter.set_output_sampling_rate(sampling_rate * 32);
-  lowpassFilter.set_input_sampling_rate(sampling_rate*32);
-  lowpassFilter.set_output_sampling_rate(sampling_rate * 32);
-  decimationFilter.set_input_sampling_rate(sampling_rate*32);
+  lowpassFilter1.set_input_sampling_rate(sampling_rate * 32);
+  lowpassFilter1.set_output_sampling_rate(sampling_rate * 32);
+  lowpassFilter2.set_input_sampling_rate(sampling_rate * 32);
+  lowpassFilter2.set_output_sampling_rate(sampling_rate * 32);
+  lowpassFilter3.set_input_sampling_rate(sampling_rate * 32);
+  lowpassFilter3.set_output_sampling_rate(sampling_rate * 32);
+  decimationFilter.set_input_sampling_rate(sampling_rate * 32);
   decimationFilter.set_output_sampling_rate(sampling_rate);
   toneFilter.set_input_sampling_rate(sampling_rate);
   toneFilter.set_output_sampling_rate(sampling_rate);
