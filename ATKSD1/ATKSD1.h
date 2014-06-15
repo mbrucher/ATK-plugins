@@ -30,11 +30,9 @@ private:
   double mLevel;
 
   ATK::InPointerFilter<double> inFilter;
-  ATK::OversamplingFilter<double, ATK::Oversampling6points5order_32<double> > oversamplingFilter;
+  ATK::OversamplingFilter<double, ATK::Oversampling6points5order_8<double> > oversamplingFilter;
   ATK::SD1OverdriveFilter<double> overdriveFilter;
-  ATK::IIRFilter<ATK::ButterworthLowPassCoefficients<double> > lowpassFilter1;
-  ATK::IIRFilter<ATK::ButterworthLowPassCoefficients<double> > lowpassFilter2;
-  ATK::IIRFilter<ATK::ButterworthLowPassCoefficients<double> > lowpassFilter3;
+  ATK::IIRFilter<ATK::ButterworthLowPassCoefficients<double> > lowpassFilter;
   ATK::DecimationFilter<double> decimationFilter;
   ATK::IIRFilter<ATK::SD1ToneCoefficients<double> > toneFilter;
   ATK::FirstOrderFilter<double> highpassFilter;
