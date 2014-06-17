@@ -1,4 +1,6 @@
 ATKSD1 changelog
-www.olilarkin.co.uk
+htp://matt.eifelle.com
 
-00/00/00 - v1.00 initial release
+17/06/14 - v1.00 initial release
+  - built againt ATK 0.2.2
+  
