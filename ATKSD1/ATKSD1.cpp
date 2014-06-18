@@ -18,13 +18,13 @@ enum ELayout
   kWidth = GUI_WIDTH,
   kHeight = GUI_HEIGHT,
 
-  kLevelX = 55,
-  kLevelY = 38,
-  kToneX = 125,
-  kToneY = 95,
-  kDriveX = 193,
-  kDriveY = 38,
-  kKnobFrames = 60
+  kLevelX = 30,
+  kLevelY = 20,
+  kToneX = 150,
+  kToneY = 70,
+  kDriveX = 250,
+  kDriveY = 20,
+  kKnobFrames = 131
 };
 
 ATKSD1::ATKSD1(IPlugInstanceInfo instanceInfo)
@@ -42,13 +42,15 @@ ATKSD1::ATKSD1(IPlugInstanceInfo instanceInfo)
   GetParam(kLevel)->SetShape(2.);
 
   IGraphics* pGraphics = MakeGraphics(this, kWidth, kHeight);
-  pGraphics->AttachBackground(SD1_ID, SD1_FN);
+  //pGraphics->AttachBackground(SD1_ID, SD1_FN);
+  pGraphics->AttachPanelBackground(&COLOR_WHITE);
 
-  IBitmap knob = pGraphics->LoadIBitmap(KNOB_ID, KNOB_FN, kKnobFrames);
+  IBitmap bigknob = pGraphics->LoadIBitmap(BIGKNOB_ID, BIGKNOB_FN, kKnobFrames);
+  IBitmap smallknob = pGraphics->LoadIBitmap(SMALLKNOB_ID, SMALLKNOB_FN, kKnobFrames);
 
-  pGraphics->AttachControl(new IKnobMultiControl(this, kDriveX, kDriveY, kDrive, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kToneX, kToneY, kTone, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kLevelX, kLevelY, kLevel, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kDriveX, kDriveY, kDrive, &bigknob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kToneX, kToneY, kTone, &smallknob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kLevelX, kLevelY, kLevel, &bigknob));
 
   AttachGraphics(pGraphics);
 
