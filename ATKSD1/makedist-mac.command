@@ -38,16 +38,6 @@ AU=${AU//\AU_FOLDER = }/$PLUGIN_NAME.component
 APP=`echo | grep APP_FOLDER ../../common.xcconfig`
 APP=${APP//\APP_FOLDER = }/$PLUGIN_NAME.app
 
-# Dev build folder
-RTAS=`echo | grep RTAS_FOLDER ../../common.xcconfig`
-RTAS=${RTAS//\RTAS_FOLDER = }/$PLUGIN_NAME.dpm
-RTAS_FINAL="/Library/Application Support/Digidesign/Plug-Ins/$PLUGIN_NAME.dpm"
-
-# Dev build folder
-AAX=`echo | grep AAX_FOLDER ../../common.xcconfig`
-AAX=${AAX//\AAX_FOLDER = }/$PLUGIN_NAME.aaxplugin
-AAX_FINAL="/Library/Application Support/Avid/Audio/Plug-Ins/$PLUGIN_NAME.aaxplugin"
-
 PKG="installer/build-mac/$PLUGIN_NAME Installer.pkg"
 PKG_US="installer/build-mac/$PLUGIN_NAME Installer.unsigned.pkg"
 
@@ -96,26 +86,6 @@ then
   sudo rm -f -R $VST3
 fi
 
-if [ -d "${RTAS}" ] 
-then
-  sudo rm -f -R "${RTAS}"
-fi
-
-if [ -d "${RTAS_FINAL}" ] 
-then
-  sudo rm -f -R "${RTAS_FINAL}"
-fi
-
-if [ -d "${AAX}" ] 
-then
-  sudo rm -f -R "${AAX}"
-fi
-
-if [ -d "${AAX_FINAL}" ] 
-then
-  sudo rm -f -R "${AAX_FINAL}"
-fi
-
 #---------------------------------------------------------------------------------------------------------
 
 # build xcode project. Change target to build individual formats 
@@ -136,11 +106,9 @@ fi
 #icon stuff - http://maxao.free.fr/telechargements/setfileicon.gz
 echo "setting icons"
 echo ""
-setfileicon resources/$PLUGIN_NAME.icns $AU
-setfileicon resources/$PLUGIN_NAME.icns $VST2
-setfileicon resources/$PLUGIN_NAME.icns $VST3
-setfileicon resources/$PLUGIN_NAME.icns "${RTAS}"
-setfileicon resources/$PLUGIN_NAME.icns "${AAX}"
+./setfileicon resources/$PLUGIN_NAME.icns $AU
+./setfileicon resources/$PLUGIN_NAME.icns $VST2
+./setfileicon resources/$PLUGIN_NAME.icns $VST3
 
 #---------------------------------------------------------------------------------------------------------
 
@@ -151,21 +119,6 @@ strip -x $AU/Contents/MacOS/$PLUGIN_NAME
 strip -x $VST2/Contents/MacOS/$PLUGIN_NAME
 strip -x $VST3/Contents/MacOS/$PLUGIN_NAME
 strip -x $APP/Contents/MacOS/$PLUGIN_NAME
-strip -x "${AAX}/Contents/MacOS/$PLUGIN_NAME"
-strip -x "${RTAS}/Contents/MacOS/$PLUGIN_NAME"
-
-#---------------------------------------------------------------------------------------------------------
-
-#ProTools stuff
-
-echo "copying RTAS PLUGIN_NAME from 3PDev to main RTAS folder"
-sudo cp -p -R "${RTAS}" "${RTAS_FINAL}"
-
-echo "copying AAX PLUGIN_NAME from 3PDev to main AAX folder"
-sudo cp -p -R "${AAX}" "${AAX_FINAL}"
-
-echo "code sign AAX binary"
-#... consult PACE documentation
 
 #---------------------------------------------------------------------------------------------------------
 
@@ -190,25 +143,25 @@ echo "code sign AAX binary"
 
 echo "code app binary for Gatekeeper on 10.8"
 echo ""
-codesign -f -s "Developer ID Application: ""${CERT_ID}" $APP
+#codesign -f -s "Developer ID Application: ""${CERT_ID}" $APP
 
 #TODO: code-sign plug-in binaries too?
 
 #---------------------------------------------------------------------------------------------------------
 
 # installer, uses Packages http://s.sudre.free.fr/Software/Packages/about.html
-sudo sudo rm -R -f installer/$PLUGIN_NAME-mac.dmg
+sudo rm -R -f installer/$PLUGIN_NAME-mac.dmg
 
 echo "building installer"
 echo ""
-packagesbuild installer/$PLUGIN_NAME.pkgproj
+packagesbuild ./installer/$PLUGIN_NAME.pkgproj
 
 echo "code-sign installer for Gatekeeper on 10.8"
 echo ""
-mv "${PKG}" "${PKG_US}"
-productsign --sign "Developer ID Installer: ""${CERT_ID}" "${PKG_US}" "${PKG}"
+#mv "${PKG}" "${PKG_US}"
+#productsign --sign "Developer ID Installer: ""${CERT_ID}" "${PKG_US}" "${PKG}"
                    
-rm -R -f "${PKG_US}"
+#rm -R -f "${PKG_US}"
 
 #set installer icon
 setfileicon resources/$PLUGIN_NAME.icns "${PKG}"
