@@ -70,21 +70,21 @@ def main():
   plistlib.writePlist(app, plistpath)
   replacestrs(plistpath, "//Apple//", "//Apple Computer//");
   
-  plistpath = scriptpath + "/resources/ATKSD1-RTAS-Info.plist"
-  rtas = plistlib.readPlist(plistpath)
-  rtas['CFBundleGetInfoString'] = CFBundleGetInfoString
-  rtas['CFBundleVersion'] = CFBundleVersion
-  rtas['CFBundleShortVersionString'] = CFBundleVersion
-  plistlib.writePlist(rtas, plistpath)
-  replacestrs(plistpath, "//Apple//", "//Apple Computer//");
+#  plistpath = scriptpath + "/resources/ATKSD1-RTAS-Info.plist"
+#  rtas = plistlib.readPlist(plistpath)
+#  rtas['CFBundleGetInfoString'] = CFBundleGetInfoString
+#  rtas['CFBundleVersion'] = CFBundleVersion
+#  rtas['CFBundleShortVersionString'] = CFBundleVersion
+#  plistlib.writePlist(rtas, plistpath)
+#  replacestrs(plistpath, "//Apple//", "//Apple Computer//");
   
-  plistpath = scriptpath + "/resources/ATKSD1-AAX-Info.plist"
-  aax = plistlib.readPlist(plistpath)
-  aax['CFBundleGetInfoString'] = CFBundleGetInfoString
-  aax['CFBundleVersion'] = CFBundleVersion
-  aax['CFBundleShortVersionString'] = CFBundleVersion
-  plistlib.writePlist(aax, plistpath)
-  replacestrs(plistpath, "//Apple//", "//Apple Computer//");
+#  plistpath = scriptpath + "/resources/ATKSD1-AAX-Info.plist"
+#  aax = plistlib.readPlist(plistpath)
+#  aax['CFBundleGetInfoString'] = CFBundleGetInfoString
+#  aax['CFBundleVersion'] = CFBundleVersion
+#  aax['CFBundleShortVersionString'] = CFBundleVersion
+#  plistlib.writePlist(aax, plistpath)
+#  replacestrs(plistpath, "//Apple//", "//Apple Computer//");
   
 #   plistpath = scriptpath + "/resources/ATKSD1-IOSAPP-Info.plist"
 #   iosapp = plistlib.readPlist(plistpath)
@@ -99,7 +99,7 @@ def main():
   plistpath = scriptpath + "/installer/ATKSD1.pkgproj"
   installer = plistlib.readPlist(plistpath)
   
-  for x in range(0,6):
+  for x in range(0,4):
     installer['PACKAGES'][x]['PACKAGE_SETTINGS']['VERSION'] = FullVersionStr
   
   plistlib.writePlist(installer, plistpath)

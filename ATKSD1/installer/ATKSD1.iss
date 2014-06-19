@@ -1,6 +1,6 @@
 [Setup]
 AppName=ATKSD1
-AppVersion=0.9.0
+AppVersion=1.0.0
 DefaultDirName={pf}\ATKSD1
 DefaultGroupName=ATKSD1
 Compression=lzma2
