@@ -60,7 +60,7 @@ instrument determined by PLUG _IS _INST
 #define SMALLKNOB_ID 103
 
 // Image resource locations for this plug.
-#define SD1_FN "resources/img/boss_sd1d_3.png"
+#define SD1_FN "resources/img/Background.png"
 #define SMALLKNOB_FN "resources/img/SmallKnob.png"
 #define BIGKNOB_FN "resources/img/BigKnob.png"
 

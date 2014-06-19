@@ -42,8 +42,7 @@ ATKSD1::ATKSD1(IPlugInstanceInfo instanceInfo)
   GetParam(kLevel)->SetShape(2.);
 
   IGraphics* pGraphics = MakeGraphics(this, kWidth, kHeight);
-  //pGraphics->AttachBackground(SD1_ID, SD1_FN);
-  pGraphics->AttachPanelBackground(&COLOR_WHITE);
+  pGraphics->AttachBackground(SD1_ID, SD1_FN);
 
   IBitmap bigknob = pGraphics->LoadIBitmap(BIGKNOB_ID, BIGKNOB_FN, kKnobFrames);
   IBitmap smallknob = pGraphics->LoadIBitmap(SMALLKNOB_ID, SMALLKNOB_FN, kKnobFrames);
