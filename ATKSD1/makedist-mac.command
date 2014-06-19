@@ -106,9 +106,9 @@ fi
 #icon stuff - http://maxao.free.fr/telechargements/setfileicon.gz
 echo "setting icons"
 echo ""
-setfileicon resources/$PLUGIN_NAME.icns $AU
-setfileicon resources/$PLUGIN_NAME.icns $VST2
-setfileicon resources/$PLUGIN_NAME.icns $VST3
+./setfileicon resources/$PLUGIN_NAME.icns $AU
+./setfileicon resources/$PLUGIN_NAME.icns $VST2
+./setfileicon resources/$PLUGIN_NAME.icns $VST3
 
 #---------------------------------------------------------------------------------------------------------
 
@@ -150,11 +150,11 @@ echo ""
 #---------------------------------------------------------------------------------------------------------
 
 # installer, uses Packages http://s.sudre.free.fr/Software/Packages/about.html
-sudo sudo rm -R -f installer/$PLUGIN_NAME-mac.dmg
+sudo rm -R -f installer/$PLUGIN_NAME-mac.dmg
 
 echo "building installer"
 echo ""
-packagesbuild installer/$PLUGIN_NAME.pkgproj
+packagesbuild ./installer/$PLUGIN_NAME.pkgproj
 
 echo "code-sign installer for Gatekeeper on 10.8"
 echo ""
