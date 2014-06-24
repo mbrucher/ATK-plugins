@@ -112,6 +112,7 @@ void ATKSD1::Reset()
   volumeFilter.set_output_sampling_rate(sampling_rate);
   outFilter.set_input_sampling_rate(sampling_rate);
   outFilter.set_output_sampling_rate(sampling_rate);
+  overdriveFilter.set_drive(GetParam(kDrive)->Value() / 100.);
 }
 
 void ATKSD1::OnParamChange(int paramIdx)
