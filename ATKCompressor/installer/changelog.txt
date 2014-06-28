@@ -1,0 +1,6 @@
+ATKCompressor changelog
+htp://matt.eifelle.com
+
+24/06/14 - v1.00 initial release
+  - built againt ATK 0.3.0
+  
