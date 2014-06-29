@@ -1,6 +1,8 @@
 ATKSD1 changelog
 htp://matt.eifelle.com
 
-24/06/14 - v1.00 initial release
-  - built againt ATK 0.3.0
-  
+29/06/14 - v1.0.1 bug fixinf release
+  - built against ATK 0.3.2
+    - fixing 32bits filter issues
+24/06/14 - v1.0.0 initial release
+  - built against ATK 0.3.0
