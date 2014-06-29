@@ -64,7 +64,7 @@ ATKCompressor::ATKCompressor(IPlugInstanceInfo instanceInfo)
   applyGainFilter.set_input_port(0, &gainCompressorFilter, 0);
   applyGainFilter.set_input_port(1, &inFilter, 0);
   outFilter.set_input_port(0, &applyGainFilter, 0);
-
+  
   Reset();
 }
 
@@ -93,6 +93,10 @@ void ATKCompressor::Reset()
   gainCompressorFilter.set_input_sampling_rate(sampling_rate);
   applyGainFilter.set_input_sampling_rate(sampling_rate);
   outFilter.set_input_sampling_rate(sampling_rate);
+
+  powerFilter.set_memory(1e-3 * GetSampleRate());
+  attackReleaseFilter.set_attack(GetParam(kAttack)->Value() * 1e-3 * GetSampleRate()); // in ms
+  attackReleaseFilter.set_release(GetParam(kRelease)->Value() * 1e-3 * GetSampleRate()); // in ms
 }
 
 void ATKCompressor::OnParamChange(int paramIdx)
@@ -111,10 +115,10 @@ void ATKCompressor::OnParamChange(int paramIdx)
       gainCompressorFilter.set_softness(GetParam(kSoftness)->Value());
       break;
     case kAttack:
-      attackReleaseFilter.set_attack(GetParam(kAttack)->Value() * GetSampleRate());
+      attackReleaseFilter.set_attack(GetParam(kAttack)->Value() * 1e-3 * GetSampleRate()); // in ms
       break;
     case kRelease:
-      attackReleaseFilter.set_release(GetParam(kRelease)->Value() * GetSampleRate());
+      attackReleaseFilter.set_release(GetParam(kRelease)->Value() * 1e-3 * GetSampleRate()); // in ms
       break;
 
     default:
