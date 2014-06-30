@@ -203,10 +203,6 @@ def main():
     # print "\n not renaming the file " + xcuserfile + " debugging setup will be lost"
     # #print "\n not renaming the file " + vsuserfile
     
-    print "\ncopying gitignore template into project folder"
-
-    copy('gitignore_template', output + "/.gitignore")
-
     print "\ndone - don't forget to change PLUG_UNIQUE_ID and PLUG_MFR_ID in resource.h"
     
 if __name__ == '__main__':

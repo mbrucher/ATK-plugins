@@ -180,7 +180,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>$(ATKROOT)\32\lib\ATKCore_static.lib;$(ATKROOT)\32\lib\ATKDistortion_static.lib;$(ATKROOT)\32\lib\ATKEQ_static.lib;$(ATKROOT)\32\lib\ATKTools_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(ATKROOT)\32\lib\ATKCore_static.lib;$(ATKROOT)\32\lib\ATKDistortion_static.lib;$(ATKROOT)\32\lib\ATKEQ_static.lib;$(ATKROOT)\32\lib\ATKTools_static.lib;$(ATKROOT)\32\lib\ATKDelay_static.lib;$(ATKROOT)\32\lib\ATKDynamic_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -200,7 +200,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(x64_LIB_PATHS);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(ATKROOT)\64\lib\ATKCore_static.lib;$(ATKROOT)\64\lib\ATKDistortion_static.lib;$(ATKROOT)\64\lib\ATKEQ_static.lib;$(ATKROOT)\64\lib\ATKTools_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(ATKROOT)\64\lib\ATKCore_static.lib;$(ATKROOT)\64\lib\ATKDistortion_static.lib;$(ATKROOT)\64\lib\ATKEQ_static.lib;$(ATKROOT)\64\lib\ATKTools_static.lib;$(ATKROOT)\64\lib\ATKDelay_static.lib;$(ATKROOT)\64\lib\ATKDynamic_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName) x64$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
