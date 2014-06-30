@@ -21,7 +21,7 @@
 
 // http://service.steinberg.de/databases/plugin.nsf/plugIn?openForm
 // 4 chars, single quotes. At least one capital letter
-#define PLUG_UNIQUE_ID 'Jh5n'
+#define PLUG_UNIQUE_ID '3ybj'
 // make sure this is not the same as BUNDLE_MFR
 #define PLUG_MFR_ID 'MatB'
 
@@ -34,7 +34,7 @@
 #endif
 
 #define PLUG_MFR_PT "MatthieuBrucher\nMatthieuBrucher\nMatthieuBrucher"
-#define PLUG_NAME_PT "ATKUniversalDelay\nJh5n"
+#define PLUG_NAME_PT "ATKUniversalDelay\n3ybj"
 #define PLUG_TYPE_PT "Delay"
 #define PLUG_DOES_AUDIOSUITE 1
 
@@ -46,7 +46,7 @@ instrument determined by PLUG _IS _INST
 #define PLUG_CHANNEL_IO "1-1"
 
 // Should be retrieved from ATK when the time comes
-#define PLUG_LATENCY 3
+#define PLUG_LATENCY 0
 #define PLUG_IS_INST 0
 
 // if this is 0 RTAS can't get tempo info

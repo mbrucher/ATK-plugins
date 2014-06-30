@@ -18,10 +18,6 @@ public:
   void ProcessDoubleReplacing(double** inputs, double** outputs, int nFrames);
 
 private:
-  double mDrive;
-  double mTone;
-  double mLevel;
-
   ATK::InPointerFilter<double> inFilter;
   ATK::UniversalFixedDelayLineFilter<double> delayFilter;
   ATK::OutPointerFilter<double> outFilter;
