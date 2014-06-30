@@ -7,11 +7,11 @@ const int kNumPrograms = 1;
 
 enum EParams
 {
-  kThreshold = 0,
+  kAttack = 0,
+  kRelease,
+  kThreshold,
   kSlope,
   kSoftness,
-  kAttack,
-  kRelease,
   kNumParams
 };
 
@@ -20,38 +20,47 @@ enum ELayout
   kWidth = GUI_WIDTH,
   kHeight = GUI_HEIGHT,
 
-  kLevelX = 30,
-  kLevelY = 20,
-  kToneX = 150,
-  kToneY = 70,
-  kDriveX = 250,
-  kDriveY = 20,
-  kKnobFrames = 131
+  kAttackX = 25,
+  kAttackY = 37,
+  kReleaseX = 94,
+  kReleaseY = 37,
+  kThresholdX = 163,
+  kThresholdY = 37,
+  kSlopeX = 232,
+  kSlopeY = 37,
+  kSoftnessX = 301,
+  kSoftnessY = 37,
+  kKnobFrames = 43
 };
 
 ATKCompressor::ATKCompressor(IPlugInstanceInfo instanceInfo)
-  :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), mDrive(0.), mTone(50), mLevel(100),
+  :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo),
     inFilter(NULL, 1, 0, false), outFilter(NULL, 1, 0, false)
 {
   TRACE;
 
   //arguments are: name, defaultVal, minVal, maxVal, step, label
-/*  GetParam(kDrive)->InitDouble("Drive", 0., 0., 100.0, 0.01, "%");
-  GetParam(kDrive)->SetShape(2.);
-  GetParam(kTone)->InitDouble("Tone", 0, -100., 100.0, 0.01, "%");
-  GetParam(kTone)->SetShape(1.);
-  GetParam(kLevel)->InitDouble("Level", 100., 0., 100.0, 0.01, "%");
-  GetParam(kLevel)->SetShape(2.);
-*/
+  GetParam(kAttack)->InitDouble("Attack", 10., 1., 100.0, 0.1, "ms");
+  GetParam(kAttack)->SetShape(2.);
+  GetParam(kRelease)->InitDouble("Release", 10, 1., 100.0, 0.1, "ms");
+  GetParam(kRelease)->SetShape(2.);
+  GetParam(kThreshold)->InitDouble("Threshold", 0., -20., 0.0, 0.1, "dB");
+  GetParam(kThreshold)->SetShape(2.);
+  GetParam(kSlope)->InitDouble("Slope", 2., 1, 100, 1, "");
+  GetParam(kSlope)->SetShape(2.);
+  GetParam(kSoftness)->InitDouble("Softness", -2, -4, 0, 0.1, "");
+  GetParam(kSoftness)->SetShape(2.);
+
   IGraphics* pGraphics = MakeGraphics(this, kWidth, kHeight);
-  pGraphics->AttachBackground(SD1_ID, SD1_FN);
+  pGraphics->AttachBackground(COMPRESSOR_ID, COMPRESSOR_FN);
 
-  IBitmap bigknob = pGraphics->LoadIBitmap(BIGKNOB_ID, BIGKNOB_FN, kKnobFrames);
-  IBitmap smallknob = pGraphics->LoadIBitmap(SMALLKNOB_ID, SMALLKNOB_FN, kKnobFrames);
+  IBitmap knob = pGraphics->LoadIBitmap(KNOB_ID, KNOB_FN, kKnobFrames);
 
-//  pGraphics->AttachControl(new IKnobMultiControl(this, kDriveX, kDriveY, kDrive, &bigknob));
-//  pGraphics->AttachControl(new IKnobMultiControl(this, kToneX, kToneY, kTone, &smallknob));
-//  pGraphics->AttachControl(new IKnobMultiControl(this, kLevelX, kLevelY, kLevel, &bigknob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kAttackX, kAttackY, kAttack, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kReleaseX, kReleaseY, kRelease, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kThresholdX, kThresholdY, kThreshold, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kSlopeX, kSlopeY, kSlope, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kSoftnessX, kSoftnessY, kSoftness, &knob));
 
   AttachGraphics(pGraphics);
 
@@ -89,12 +98,17 @@ void ATKCompressor::Reset()
   inFilter.set_input_sampling_rate(sampling_rate);
   inFilter.set_output_sampling_rate(sampling_rate);
   powerFilter.set_input_sampling_rate(sampling_rate);
+  powerFilter.set_output_sampling_rate(sampling_rate);
   attackReleaseFilter.set_input_sampling_rate(sampling_rate);
+  attackReleaseFilter.set_output_sampling_rate(sampling_rate);
   gainCompressorFilter.set_input_sampling_rate(sampling_rate);
+  gainCompressorFilter.set_output_sampling_rate(sampling_rate);
   applyGainFilter.set_input_sampling_rate(sampling_rate);
+  applyGainFilter.set_output_sampling_rate(sampling_rate);
   outFilter.set_input_sampling_rate(sampling_rate);
+  outFilter.set_output_sampling_rate(sampling_rate);
 
-  powerFilter.set_memory(1e-3 * GetSampleRate());
+  powerFilter.set_memory(1e-4 * GetSampleRate());
   attackReleaseFilter.set_attack(GetParam(kAttack)->Value() * 1e-3 * GetSampleRate()); // in ms
   attackReleaseFilter.set_release(GetParam(kRelease)->Value() * 1e-3 * GetSampleRate()); // in ms
 }
@@ -106,13 +120,13 @@ void ATKCompressor::OnParamChange(int paramIdx)
   switch (paramIdx)
   {
     case kThreshold:
-      gainCompressorFilter.set_threshold(GetParam(kThreshold)->Value());
+      gainCompressorFilter.set_threshold(std::pow(10, GetParam(kThreshold)->Value() / 10));
       break;
     case kSlope:
-      gainCompressorFilter.set_slope(GetParam(kSlope)->Value()); // Should be an int?
+      gainCompressorFilter.set_slope(GetParam(kSlope)->Value());
       break;
     case kSoftness:
-      gainCompressorFilter.set_softness(GetParam(kSoftness)->Value());
+      gainCompressorFilter.set_softness(std::pow(10, GetParam(kSoftness)->Value()));
       break;
     case kAttack:
       attackReleaseFilter.set_attack(GetParam(kAttack)->Value() * 1e-3 * GetSampleRate()); // in ms

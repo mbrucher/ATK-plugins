@@ -55,18 +55,16 @@ instrument determined by PLUG _IS _INST
 #define PLUG_DOES_STATE_CHUNKS 0
 
 // Unique IDs for each image resource.
-#define SD1_ID 101
-#define BIGKNOB_ID 102
-#define SMALLKNOB_ID 103
+#define COMPRESSOR_ID 101
+#define KNOB_ID 102
 
 // Image resource locations for this plug.
-#define SD1_FN "resources/img/Background.png"
-#define SMALLKNOB_FN "resources/img/SmallKnob.png"
-#define BIGKNOB_FN "resources/img/BigKnob.png"
+#define COMPRESSOR_FN "resources/img/Background.png"
+#define KNOB_FN "resources/img/KNB02uni43.png"
 
 // GUI default dimensions
-#define GUI_WIDTH 400
-#define GUI_HEIGHT 200
+#define GUI_WIDTH 369
+#define GUI_HEIGHT 100
 
 // on MSVC, you must define SA_API in the resource editor preprocessor macros as well as the c++ ones
 #if defined(SA_API) && !defined(OS_IOS)
