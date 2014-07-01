@@ -31,18 +31,18 @@ enum ELayout
 };
 
 ATKUniversalDelay::ATKUniversalDelay(IPlugInstanceInfo instanceInfo)
-  :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), inFilter(NULL, 1, 0, false), outFilter(NULL, 1, 0, false), delayFilter(1024)
+  :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), inFilter(NULL, 1, 0, false), outFilter(NULL, 1, 0, false), delayFilter(10240)
 {
   TRACE;
 
   //arguments are: name, defaultVal, minVal, maxVal, step, label
-  GetParam(kDelay)->InitDouble("Delay", 1, 0.1, 10.0, 0.1, "ms");
+  GetParam(kDelay)->InitDouble("Delay", 1, 0.1, 100.0, 0.1, "ms");
   GetParam(kDelay)->SetShape(2.);
   GetParam(kBlend)->InitDouble("Blend", 100, 0., 100.0, 0.01, "%");
   GetParam(kBlend)->SetShape(1.);
   GetParam(kFeedforward)->InitDouble("Feedforward", 50., -100, 100, 0.01, "%");
   GetParam(kFeedforward)->SetShape(1.);
-  GetParam(kFeedback)->InitDouble("Feedback", 0., -99.9, 99.9, 0.01, "%");
+  GetParam(kFeedback)->InitDouble("Feedback", 0., -90., 90., 0.01, "%");
   GetParam(kFeedback)->SetShape(1.);
 
   IGraphics* pGraphics = MakeGraphics(this, kWidth, kHeight);
