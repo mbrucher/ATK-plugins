@@ -12,6 +12,7 @@ enum EParams
   kThreshold,
   kSlope,
   kSoftness,
+  kMakeup,
   kNumParams
 };
 
@@ -21,15 +22,17 @@ enum ELayout
   kHeight = GUI_HEIGHT,
 
   kAttackX = 25,
-  kAttackY = 37,
+  kAttackY = 31,
   kReleaseX = 94,
-  kReleaseY = 37,
+  kReleaseY = 31,
   kThresholdX = 163,
-  kThresholdY = 37,
+  kThresholdY = 31,
   kSlopeX = 232,
-  kSlopeY = 37,
+  kSlopeY = 31,
   kSoftnessX = 301,
-  kSoftnessY = 37,
+  kSoftnessY = 31,
+  kMakeupX = 370,
+  kMakeupY = 31,
   kKnobFrames = 43
 };
 
@@ -44,12 +47,14 @@ ATKCompressor::ATKCompressor(IPlugInstanceInfo instanceInfo)
   GetParam(kAttack)->SetShape(2.);
   GetParam(kRelease)->InitDouble("Release", 10, 1., 100.0, 0.1, "ms");
   GetParam(kRelease)->SetShape(2.);
-  GetParam(kThreshold)->InitDouble("Threshold", 0., -20., 0.0, 0.1, "dB");
+  GetParam(kThreshold)->InitDouble("Threshold", 0., -40., 0.0, 0.1, "dB"); // threshold is actually power
   GetParam(kThreshold)->SetShape(2.);
   GetParam(kSlope)->InitDouble("Slope", 2., 1, 100, 1, "-");
   GetParam(kSlope)->SetShape(2.);
   GetParam(kSoftness)->InitDouble("Softness", -2, -4, 0, 0.1, "-");
   GetParam(kSoftness)->SetShape(2.);
+  GetParam(kMakeup)->InitDouble("Makeup Gain", 0, 0, 40, 0.1, "-"); // Makeup is expressed in amplitude
+  GetParam(kMakeup)->SetShape(2.);
 
   IGraphics* pGraphics = MakeGraphics(this, kWidth, kHeight);
   pGraphics->AttachBackground(COMPRESSOR_ID, COMPRESSOR_FN);
@@ -61,6 +66,7 @@ ATKCompressor::ATKCompressor(IPlugInstanceInfo instanceInfo)
   pGraphics->AttachControl(new IKnobMultiControl(this, kThresholdX, kThresholdY, kThreshold, &knob));
   pGraphics->AttachControl(new IKnobMultiControl(this, kSlopeX, kSlopeY, kSlope, &knob));
   pGraphics->AttachControl(new IKnobMultiControl(this, kSoftnessX, kSoftnessY, kSoftness, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kMakeupX, kMakeupY, kMakeup, &knob));
 
   AttachGraphics(pGraphics);
 
@@ -72,7 +78,8 @@ ATKCompressor::ATKCompressor(IPlugInstanceInfo instanceInfo)
   gainCompressorFilter.set_input_port(0, &attackReleaseFilter, 0);
   applyGainFilter.set_input_port(0, &gainCompressorFilter, 0);
   applyGainFilter.set_input_port(1, &inFilter, 0);
-  outFilter.set_input_port(0, &applyGainFilter, 0);
+  volumeFilter.set_input_port(0, &applyGainFilter, 0);
+  outFilter.set_input_port(0, &volumeFilter, 0);
   
   Reset();
 }
@@ -105,6 +112,8 @@ void ATKCompressor::Reset()
   gainCompressorFilter.set_output_sampling_rate(sampling_rate);
   applyGainFilter.set_input_sampling_rate(sampling_rate);
   applyGainFilter.set_output_sampling_rate(sampling_rate);
+  volumeFilter.set_input_sampling_rate(sampling_rate);
+  volumeFilter.set_output_sampling_rate(sampling_rate);
   outFilter.set_input_sampling_rate(sampling_rate);
   outFilter.set_output_sampling_rate(sampling_rate);
 
@@ -120,7 +129,7 @@ void ATKCompressor::OnParamChange(int paramIdx)
   switch (paramIdx)
   {
     case kThreshold:
-      gainCompressorFilter.set_threshold(std::pow(10, GetParam(kThreshold)->Value() / 10));
+      gainCompressorFilter.set_threshold(std::pow(10, GetParam(kThreshold)->Value() / 20));
       break;
     case kSlope:
       gainCompressorFilter.set_slope(GetParam(kSlope)->Value());
@@ -133,6 +142,9 @@ void ATKCompressor::OnParamChange(int paramIdx)
       break;
     case kRelease:
       attackReleaseFilter.set_release(std::exp(-1 / (GetParam(kRelease)->Value() * 1e-3 * GetSampleRate()))); // in ms
+      break;
+    case kMakeup:
+      volumeFilter.set_volume_db(GetParam(kMakeup)->Value());
       break;
 
     default:

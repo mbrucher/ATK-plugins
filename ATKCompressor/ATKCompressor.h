@@ -9,6 +9,7 @@
 #include <ATK/Dynamic/GainCompressorFilter.h>
 #include <ATK/Dynamic/PowerFilter.h>
 #include <ATK/Tools/ApplyGainFilter.h>
+#include <ATK/Tools/VolumeFilter.h>
 
 class ATKCompressor : public IPlug
 {
@@ -26,6 +27,7 @@ private:
   ATK::AttackReleaseFilter<double> attackReleaseFilter;
   ATK::GainCompressorFilter<double> gainCompressorFilter;
   ATK::ApplyGainFilter<double> applyGainFilter;
+  ATK::VolumeFilter<double> volumeFilter;
   ATK::OutPointerFilter<double> outFilter;
 };
 
