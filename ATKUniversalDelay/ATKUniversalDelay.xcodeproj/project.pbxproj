@@ -24,18 +24,26 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0832E8DB1963653A003E2E9A /* KNB02bi43.png in Resources */ = {isa = PBXBuildFile; fileRef = 0832E8D91963653A003E2E9A /* KNB02bi43.png */; };
+		0832E8DC1963653A003E2E9A /* KNB02bi43.png in Resources */ = {isa = PBXBuildFile; fileRef = 0832E8D91963653A003E2E9A /* KNB02bi43.png */; };
+		0832E8DD1963653A003E2E9A /* KNB02bi43.png in Resources */ = {isa = PBXBuildFile; fileRef = 0832E8D91963653A003E2E9A /* KNB02bi43.png */; };
+		0832E8DE1963653A003E2E9A /* KNB02bi43.png in Resources */ = {isa = PBXBuildFile; fileRef = 0832E8D91963653A003E2E9A /* KNB02bi43.png */; };
+		0832E8DF1963653A003E2E9A /* KNB02uni43.png in Resources */ = {isa = PBXBuildFile; fileRef = 0832E8DA1963653A003E2E9A /* KNB02uni43.png */; };
+		0832E8E01963653A003E2E9A /* KNB02uni43.png in Resources */ = {isa = PBXBuildFile; fileRef = 0832E8DA1963653A003E2E9A /* KNB02uni43.png */; };
+		0832E8E11963653A003E2E9A /* KNB02uni43.png in Resources */ = {isa = PBXBuildFile; fileRef = 0832E8DA1963653A003E2E9A /* KNB02uni43.png */; };
+		0832E8E21963653A003E2E9A /* KNB02uni43.png in Resources */ = {isa = PBXBuildFile; fileRef = 0832E8DA1963653A003E2E9A /* KNB02uni43.png */; };
+		0832E8E419636583003E2E9A /* lib32ATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0832E8E319636583003E2E9A /* lib32ATKDelay_static.a */; };
+		0832E8E619636594003E2E9A /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0832E8E519636594003E2E9A /* libATKDelay_static.a */; };
+		0832E8E7196365A2003E2E9A /* lib32ATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0832E8E319636583003E2E9A /* lib32ATKDelay_static.a */; };
+		0832E8E8196365BC003E2E9A /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0832E8E519636594003E2E9A /* libATKDelay_static.a */; };
+		0832E8E9196365CC003E2E9A /* lib32ATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0832E8E319636583003E2E9A /* lib32ATKDelay_static.a */; };
+		0832E8EA196365DA003E2E9A /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0832E8E519636594003E2E9A /* libATKDelay_static.a */; };
+		0832E8EB196365E8003E2E9A /* lib32ATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0832E8E319636583003E2E9A /* lib32ATKDelay_static.a */; };
+		0832E8EC196365F7003E2E9A /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0832E8E519636594003E2E9A /* libATKDelay_static.a */; };
 		083717CA1953848B00339823 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989752195376D8001783AC /* Background.png */; };
-		083717CB1953848B00339823 /* BigKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989753195376D8001783AC /* BigKnob.png */; };
-		083717CC1953848B00339823 /* SmallKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989754195376D8001783AC /* SmallKnob.png */; };
 		083717D21953849800339823 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989752195376D8001783AC /* Background.png */; };
-		083717D31953849800339823 /* BigKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989753195376D8001783AC /* BigKnob.png */; };
-		083717D41953849800339823 /* SmallKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989754195376D8001783AC /* SmallKnob.png */; };
 		083717D51953849E00339823 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989752195376D8001783AC /* Background.png */; };
-		083717D61953849E00339823 /* BigKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989753195376D8001783AC /* BigKnob.png */; };
-		083717D71953849E00339823 /* SmallKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989754195376D8001783AC /* SmallKnob.png */; };
 		083717D8195384A600339823 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989752195376D8001783AC /* Background.png */; };
-		083717D9195384A600339823 /* BigKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989753195376D8001783AC /* BigKnob.png */; };
-		083717DA195384A600339823 /* SmallKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989754195376D8001783AC /* SmallKnob.png */; };
 		089897BE19537B08001783AC /* lib32ATKCore_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897B819537B08001783AC /* lib32ATKCore_static.a */; };
 		089897BF19537B08001783AC /* lib32ATKDistortion_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897B919537B08001783AC /* lib32ATKDistortion_static.a */; };
 		089897C019537B08001783AC /* lib32ATKEQ_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897BA19537B08001783AC /* lib32ATKEQ_static.a */; };
@@ -408,9 +416,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0832E8D91963653A003E2E9A /* KNB02bi43.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KNB02bi43.png; path = resources/img/KNB02bi43.png; sourceTree = "<group>"; };
+		0832E8DA1963653A003E2E9A /* KNB02uni43.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KNB02uni43.png; path = resources/img/KNB02uni43.png; sourceTree = "<group>"; };
+		0832E8E319636583003E2E9A /* lib32ATKDelay_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib32ATKDelay_static.a; path = ../../../ATK32/lib/lib32ATKDelay_static.a; sourceTree = "<group>"; };
+		0832E8E519636594003E2E9A /* libATKDelay_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDelay_static.a; path = ../../../ATK64/lib/libATKDelay_static.a; sourceTree = "<group>"; };
 		08989752195376D8001783AC /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background.png; path = resources/img/Background.png; sourceTree = "<group>"; };
-		08989753195376D8001783AC /* BigKnob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BigKnob.png; path = resources/img/BigKnob.png; sourceTree = "<group>"; };
-		08989754195376D8001783AC /* SmallKnob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SmallKnob.png; path = resources/img/SmallKnob.png; sourceTree = "<group>"; };
 		08989755195377BE001783AC /* libATKCore_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKCore_static.a; path = ../../../ATK64/lib/libATKCore_static.a; sourceTree = "<group>"; };
 		08989756195377BE001783AC /* libATKDistortion_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDistortion_static.a; path = ../../../ATK64/lib/libATKDistortion_static.a; sourceTree = "<group>"; };
 		08989757195377BE001783AC /* libATKEQ_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKEQ_static.a; path = ../../../ATK64/lib/libATKEQ_static.a; sourceTree = "<group>"; };
@@ -503,7 +513,6 @@
 		4F4AD03D140996A10068A6D4 /* vstpshpack4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vstpshpack4.h; sourceTree = "<group>"; };
 		4F4AD03E140996A10068A6D4 /* vsttypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vsttypes.h; sourceTree = "<group>"; };
 		4F4AD1F11409A56A0068A6D4 /* base.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = base.xcodeproj; path = ../../VST3_SDK/base/mac/base.xcodeproj; sourceTree = SOURCE_ROOT; };
-		4F4CC3811549B8A700A9EA21 /* ATKUniversalDelay-AAX-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "ATKUniversalDelay-AAX-Info.plist"; path = "resources/ATKUniversalDelay-AAX-Info.plist"; sourceTree = "<group>"; };
 		4F4CC38A1549B91100A9EA21 /* AAX_Exports.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AAX_Exports.cpp; path = ../../AAX_SDK/Interfaces/AAX_Exports.cpp; sourceTree = SOURCE_ROOT; };
 		4F4CC38C1549B92900A9EA21 /* CommonDebugSettings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CommonDebugSettings.xcconfig; path = ../../AAX_SDK/ExamplePlugIns/Common/Mac/CommonDebugSettings.xcconfig; sourceTree = SOURCE_ROOT; };
 		4F4CC38D1549B92900A9EA21 /* CommonReleaseSettings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CommonReleaseSettings.xcconfig; path = ../../AAX_SDK/ExamplePlugIns/Common/Mac/CommonReleaseSettings.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -564,7 +573,6 @@
 		4F78DB5F13B6462B0032E0F3 /* ATKUniversalDelay.component */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ATKUniversalDelay.component; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F79A34C146304CD00744AED /* IPlugProcessAS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IPlugProcessAS.cpp; path = ../../WDL/IPlug/RTAS/IPlugProcessAS.cpp; sourceTree = "<group>"; };
 		4F79A34D146304CD00744AED /* IPlugProcessAS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPlugProcessAS.h; path = ../../WDL/IPlug/RTAS/IPlugProcessAS.h; sourceTree = "<group>"; };
-		4F7F5C0C13E95DDC002918FD /* ATKUniversalDelay-RTAS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "ATKUniversalDelay-RTAS-Info.plist"; path = "resources/ATKUniversalDelay-RTAS-Info.plist"; sourceTree = "<group>"; };
 		4F7F5C6F13E95FB2002918FD /* IPlugRTAS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IPlugRTAS.cpp; path = ../../WDL/IPlug/IPlugRTAS.cpp; sourceTree = SOURCE_ROOT; };
 		4F7F5C7013E95FB2002918FD /* IPlugRTAS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPlugRTAS.h; path = ../../WDL/IPlug/IPlugRTAS.h; sourceTree = SOURCE_ROOT; };
 		4F7F5C9B13E9607A002918FD /* digicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = digicode.h; path = ../../WDL/IPlug/RTAS/digicode.h; sourceTree = "<group>"; };
@@ -642,6 +650,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0832E8E8196365BC003E2E9A /* libATKDelay_static.a in Frameworks */,
+				0832E8E7196365A2003E2E9A /* lib32ATKDelay_static.a in Frameworks */,
 				089897DC1953816A001783AC /* libATKCore_static.a in Frameworks */,
 				089897DD1953816A001783AC /* libATKDistortion_static.a in Frameworks */,
 				089897DE1953816A001783AC /* libATKEQ_static.a in Frameworks */,
@@ -664,6 +674,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0832E8EC196365F7003E2E9A /* libATKDelay_static.a in Frameworks */,
+				0832E8EB196365E8003E2E9A /* lib32ATKDelay_static.a in Frameworks */,
 				089897E819538184001783AC /* libATKCore_static.a in Frameworks */,
 				089897E919538184001783AC /* libATKDistortion_static.a in Frameworks */,
 				089897EA19538184001783AC /* libATKEQ_static.a in Frameworks */,
@@ -690,6 +702,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0832E8EA196365DA003E2E9A /* libATKDelay_static.a in Frameworks */,
+				0832E8E9196365CC003E2E9A /* lib32ATKDelay_static.a in Frameworks */,
 				089897E219538177001783AC /* libATKCore_static.a in Frameworks */,
 				089897E319538177001783AC /* libATKDistortion_static.a in Frameworks */,
 				089897E419538177001783AC /* libATKEQ_static.a in Frameworks */,
@@ -713,6 +727,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0832E8E619636594003E2E9A /* libATKDelay_static.a in Frameworks */,
+				0832E8E419636583003E2E9A /* lib32ATKDelay_static.a in Frameworks */,
 				089897D61953815D001783AC /* libATKCore_static.a in Frameworks */,
 				089897D71953815D001783AC /* libATKDistortion_static.a in Frameworks */,
 				089897D81953815D001783AC /* libATKEQ_static.a in Frameworks */,
@@ -741,6 +757,8 @@
 		089C166AFE841209C02AAC07 /* IPlugExample */ = {
 			isa = PBXGroup;
 			children = (
+				0832E8E519636594003E2E9A /* libATKDelay_static.a */,
+				0832E8E319636583003E2E9A /* lib32ATKDelay_static.a */,
 				089897B819537B08001783AC /* lib32ATKCore_static.a */,
 				089897B919537B08001783AC /* lib32ATKDistortion_static.a */,
 				089897BA19537B08001783AC /* lib32ATKEQ_static.a */,
@@ -781,8 +799,6 @@
 				4F23BA1513B647E50097A67E /* ATKUniversalDelay-VST2-Info.plist */,
 				4F3E693A1409747300C4D749 /* ATKUniversalDelay-VST3-Info.plist */,
 				4F23BA1313B647E50097A67E /* ATKUniversalDelay-AU-Info.plist */,
-				4F7F5C0C13E95DDC002918FD /* ATKUniversalDelay-RTAS-Info.plist */,
-				4F4CC3811549B8A700A9EA21 /* ATKUniversalDelay-AAX-Info.plist */,
 				4FD290A8137C34D700CEBE7E /* ATKUniversalDelay.icns */,
 			);
 			name = Resources;
@@ -1274,9 +1290,9 @@
 		4FD16A0213B6303B001D0217 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				0832E8D91963653A003E2E9A /* KNB02bi43.png */,
+				0832E8DA1963653A003E2E9A /* KNB02uni43.png */,
 				08989752195376D8001783AC /* Background.png */,
-				08989753195376D8001783AC /* BigKnob.png */,
-				08989754195376D8001783AC /* SmallKnob.png */,
 			);
 			name = img;
 			sourceTree = "<group>";
@@ -1643,9 +1659,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0832E8E01963653A003E2E9A /* KNB02uni43.png in Resources */,
 				083717D8195384A600339823 /* Background.png in Resources */,
-				083717D9195384A600339823 /* BigKnob.png in Resources */,
-				083717DA195384A600339823 /* SmallKnob.png in Resources */,
+				0832E8DC1963653A003E2E9A /* KNB02bi43.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1653,9 +1669,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0832E8E21963653A003E2E9A /* KNB02uni43.png in Resources */,
 				083717D21953849800339823 /* Background.png in Resources */,
-				083717D31953849800339823 /* BigKnob.png in Resources */,
-				083717D41953849800339823 /* SmallKnob.png in Resources */,
+				0832E8DE1963653A003E2E9A /* KNB02bi43.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1663,9 +1679,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0832E8E11963653A003E2E9A /* KNB02uni43.png in Resources */,
 				083717D51953849E00339823 /* Background.png in Resources */,
-				083717D61953849E00339823 /* BigKnob.png in Resources */,
-				083717D71953849E00339823 /* SmallKnob.png in Resources */,
+				0832E8DD1963653A003E2E9A /* KNB02bi43.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1674,9 +1690,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				083717CA1953848B00339823 /* Background.png in Resources */,
-				083717CB1953848B00339823 /* BigKnob.png in Resources */,
-				083717CC1953848B00339823 /* SmallKnob.png in Resources */,
+				0832E8DB1963653A003E2E9A /* KNB02bi43.png in Resources */,
 				4F78D88613B6382B0032E0F3 /* ATKUniversalDelay.icns in Resources */,
+				0832E8DF1963653A003E2E9A /* KNB02uni43.png in Resources */,
 				4F78D89913B639100032E0F3 /* InfoPlist.strings in Resources */,
 				4F78D89A13B639100032E0F3 /* MainMenu.xib in Resources */,
 			);
