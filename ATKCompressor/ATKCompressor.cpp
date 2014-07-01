@@ -46,9 +46,9 @@ ATKCompressor::ATKCompressor(IPlugInstanceInfo instanceInfo)
   GetParam(kRelease)->SetShape(2.);
   GetParam(kThreshold)->InitDouble("Threshold", 0., -20., 0.0, 0.1, "dB");
   GetParam(kThreshold)->SetShape(2.);
-  GetParam(kSlope)->InitDouble("Slope", 2., 1, 100, 1, "");
+  GetParam(kSlope)->InitDouble("Slope", 2., 1, 100, 1, "-");
   GetParam(kSlope)->SetShape(2.);
-  GetParam(kSoftness)->InitDouble("Softness", -2, -4, 0, 0.1, "");
+  GetParam(kSoftness)->InitDouble("Softness", -2, -4, 0, 0.1, "-");
   GetParam(kSoftness)->SetShape(2.);
 
   IGraphics* pGraphics = MakeGraphics(this, kWidth, kHeight);
@@ -108,9 +108,9 @@ void ATKCompressor::Reset()
   outFilter.set_input_sampling_rate(sampling_rate);
   outFilter.set_output_sampling_rate(sampling_rate);
 
-  powerFilter.set_memory(1e-4 * GetSampleRate());
-  attackReleaseFilter.set_attack(GetParam(kAttack)->Value() * 1e-3 * GetSampleRate()); // in ms
-  attackReleaseFilter.set_release(GetParam(kRelease)->Value() * 1e-3 * GetSampleRate()); // in ms
+  powerFilter.set_memory(std::exp(-1/1e-4 * GetSampleRate()));
+  attackReleaseFilter.set_attack(std::exp(-1 / (GetParam(kAttack)->Value() * 1e-3 * GetSampleRate()))); // in ms
+  attackReleaseFilter.set_release(std::exp(-1 / (GetParam(kRelease)->Value() * 1e-3 * GetSampleRate()))); // in ms
 }
 
 void ATKCompressor::OnParamChange(int paramIdx)
@@ -129,10 +129,10 @@ void ATKCompressor::OnParamChange(int paramIdx)
       gainCompressorFilter.set_softness(std::pow(10, GetParam(kSoftness)->Value()));
       break;
     case kAttack:
-      attackReleaseFilter.set_attack(GetParam(kAttack)->Value() * 1e-3 * GetSampleRate()); // in ms
+      attackReleaseFilter.set_attack(std::exp(-1 / (GetParam(kAttack)->Value() * 1e-3 * GetSampleRate()))); // in ms
       break;
     case kRelease:
-      attackReleaseFilter.set_release(GetParam(kRelease)->Value() * 1e-3 * GetSampleRate()); // in ms
+      attackReleaseFilter.set_release(std::exp(-1 / (GetParam(kRelease)->Value() * 1e-3 * GetSampleRate()))); // in ms
       break;
 
     default:

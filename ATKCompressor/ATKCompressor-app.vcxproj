@@ -181,7 +181,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>$(APP_DEFS);$(RELEASE_DEFS);%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ATKROOT)\include;$(BOOSTROOT);$(APP_INCLUDES);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ATKROOT)\32\include;$(BOOSTROOT);$(APP_INCLUDES);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
@@ -189,7 +189,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>$(ATKROOT)\lib\ATKCore_static.lib;$(ATKROOT)\lib\ATKDistortion_static.lib;$(ATKROOT)\lib\ATKEQ_static.lib;$(ATKROOT)\lib\ATKTools_static.lib;$(APP_LIBS);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(ATKROOT)\32\lib\ATKCore_static.lib;$(ATKROOT)\32\lib\ATKDynamic_static.lib;$(ATKROOT)\32\lib\ATKEQ_static.lib;$(ATKROOT)\32\lib\ATKTools_static.lib;$(APP_LIBS);%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
     <ResourceCompile>
@@ -203,7 +203,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>$(APP_DEFS);$(RELEASE_DEFS);%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ATKROOT)\include;$(BOOSTROOT);$(APP_INCLUDES);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ATKROOT)\64\include;$(BOOSTROOT);$(APP_INCLUDES);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
@@ -211,7 +211,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>$(ATKROOT)\lib\ATKCore_static.lib;$(ATKROOT)\lib\ATKDistortion_static.lib;$(ATKROOT)\lib\ATKEQ_static.lib;$(ATKROOT)\lib\ATKTools_static.lib;$(APP_LIBS);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(ATKROOT)\64\lib\ATKCore_static.lib;$(ATKROOT)\64\lib\ATKDynamic_static.lib;$(ATKROOT)\64\lib\ATKEQ_static.lib;$(ATKROOT)\64\lib\ATKTools_static.lib;$(APP_LIBS);%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(x64_LIB_PATHS);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
