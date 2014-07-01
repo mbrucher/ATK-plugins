@@ -28,8 +28,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{079FC65A-F0E5-4E97-B318-A16D1D0B89DF}</ProjectGuid>
-    <RootNamespace>ATKSD1</RootNamespace>
-    <ProjectName>ATKSD1-vst3</ProjectName>
+    <RootNamespace>ATKCompressor</RootNamespace>
+    <ProjectName>ATKCompressor-vst3</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -77,27 +77,27 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ATKSD1.props" />
+    <Import Project="ATKCompressor.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ATKSD1.props" />
+    <Import Project="ATKCompressor.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ATKSD1.props" />
+    <Import Project="ATKCompressor.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ATKSD1.props" />
+    <Import Project="ATKCompressor.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Tracer|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ATKSD1.props" />
+    <Import Project="ATKCompressor.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Tracer|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ATKSD1.props" />
+    <Import Project="ATKCompressor.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -164,7 +164,7 @@
     </Link>
     <PostBuildEvent>
       <Command>echo Post-Build: copy 32bit binary to 32bit VST3 Plugins folder ... ...
-copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKSD1.vst3"</Command>
+copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKCompressor.vst3"</Command>
       <Message>Copy VST3 Binary to VST3 Plugins folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -185,7 +185,7 @@ copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKSD1.vst3"</Command>
     </Link>
     <PostBuildEvent>
       <Command>echo Post-Build: copy 64bit binary to 64bit VST3 Plugins folder ...
-if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKSD1.vst3") else (echo Not copying 64bit binary - 32bit OS detected)</Command>
+if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKCompressor.vst3") else (echo Not copying 64bit binary - 32bit OS detected)</Command>
       <Message>Copy VST3 Binary to VST3 Plugins folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -211,7 +211,7 @@ if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKSD1.
     </Link>
     <PostBuildEvent>
       <Command>echo Post-Build: copy 32bit binary to 32bit VST3 Plugins folder ... ...
-copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKSD1.vst3"</Command>
+copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKCompressor.vst3"</Command>
       <Message>Copy VST3 Binary to VST3 Plugins folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -238,7 +238,7 @@ copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKSD1.vst3"</Command>
     </Link>
     <PostBuildEvent>
       <Command>echo Post-Build: copy 64bit binary to 64bit VST3 Plugins folder ...
-if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKSD1.vst3") else (echo Not copying 64bit binary - 32bit OS detected)</Command>
+if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKCompressor.vst3") else (echo Not copying 64bit binary - 32bit OS detected)</Command>
       <Message>Copy VST3 Binary to VST3 Plugins folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -263,7 +263,7 @@ if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKSD1.
     </Link>
     <PostBuildEvent>
       <Command>echo Post-Build: copy 32bit binary to 32bit VST3 Plugins folder ... ...
-copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKSD1.vst3"</Command>
+copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKCompressor.vst3"</Command>
       <Message>Copy VST3 Binary to VST3 Plugins folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -288,7 +288,7 @@ copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKSD1.vst3"</Command>
     </Link>
     <PostBuildEvent>
       <Command>echo Post-Build: copy 64bit binary to 64bit VST3 Plugins folder ...
-if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKSD1.vst3") else (echo Not copying 64bit binary - 32bit OS detected)</Command>
+if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKCompressor.vst3") else (echo Not copying 64bit binary - 32bit OS detected)</Command>
       <Message>Copy VST3 Binary to VST3 Plugins folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -325,7 +325,7 @@ if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKSD1.
     <ClInclude Include="..\..\VST3_SDK\public.sdk\source\vst\vstparameters.h" />
     <ClInclude Include="..\..\VST3_SDK\public.sdk\source\vst\vstsinglecomponenteffect.h" />
     <ClInclude Include="..\..\WDL\IPlug\IPlugVST3.h" />
-    <ClInclude Include="ATKSD1.h" />
+    <ClInclude Include="ATKCompressor.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -342,10 +342,10 @@ if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKSD1.
     <ClCompile Include="..\..\VST3_SDK\public.sdk\source\vst\vstparameters.cpp" />
     <ClCompile Include="..\..\VST3_SDK\public.sdk\source\vst\vstsinglecomponenteffect.cpp" />
     <ClCompile Include="..\..\WDL\IPlug\IPlugVST3.cpp" />
-    <ClCompile Include="ATKSD1.cpp" />
+    <ClCompile Include="ATKCompressor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ATKSD1.rc" />
+    <ResourceCompile Include="ATKCompressor.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
