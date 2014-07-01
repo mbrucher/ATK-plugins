@@ -1,3 +1,5 @@
+#include <cmath>
+
 #include "ATKCompressor.h"
 #include "IPlug_include_in_plug_src.h"
 #include "IControl.h"
