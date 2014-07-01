@@ -1,13 +1,13 @@
 [Setup]
-AppName=ATKSD1
+AppName=ATKUniversalDelay
 AppVersion=1.0.0
-DefaultDirName={pf}\ATKSD1
-DefaultGroupName=ATKSD1
+DefaultDirName={pf}\ATKUniversalDelay
+DefaultGroupName=ATKUniversalDelay
 Compression=lzma2
 SolidCompression=yes
 OutputDir=.\
 ArchitecturesInstallIn64BitMode=x64
-OutputBaseFilename=ATKSD1 Installer
+OutputBaseFilename=ATKUniversalDelay Installer
 LicenseFile=license.rtf
 SetupLogging=yes
 
@@ -27,33 +27,33 @@ Name: "vst3_64"; Description: "64-bit VST3 Plugin (.vst3)"; Types: full custom; 
 Name: "manual"; Description: "User guide"; Types: full custom; Flags: fixed
 
 [Files]
-;Source: "..\build-win\app\Win32\bin\ATKSD1.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Components:app; Flags: ignoreversion;
-;Source: "..\build-win\app\x64\bin\ATKSD1.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Components:app; Flags: ignoreversion;
+;Source: "..\build-win\app\Win32\bin\ATKUniversalDelay.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Components:app; Flags: ignoreversion;
+;Source: "..\build-win\app\x64\bin\ATKUniversalDelay.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Components:app; Flags: ignoreversion;
 
-Source: "..\build-win\vst2\Win32\bin\ATKSD1.dll"; DestDir: {code:GetVST2Dir_32}; Check: not Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
-Source: "..\build-win\vst2\Win32\bin\ATKSD1.dll"; DestDir: {code:GetVST2Dir_32}; Check: Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
-Source: "..\build-win\vst2\x64\bin\ATKSD1 x64.dll"; DestDir: {code:GetVST2Dir_64}; Check: Is64BitInstallMode; Components:vst2_64; Flags: ignoreversion;
+Source: "..\build-win\vst2\Win32\bin\ATKUniversalDelay.dll"; DestDir: {code:GetVST2Dir_32}; Check: not Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
+Source: "..\build-win\vst2\Win32\bin\ATKUniversalDelay.dll"; DestDir: {code:GetVST2Dir_32}; Check: Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
+Source: "..\build-win\vst2\x64\bin\ATKUniversalDelay x64.dll"; DestDir: {code:GetVST2Dir_64}; Check: Is64BitInstallMode; Components:vst2_64; Flags: ignoreversion;
 
-Source: "..\build-win\vst3\Win32\bin\ATKSD1.vst3"; DestDir: "{cf}\VST3\"; Check: not Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
-Source: "..\build-win\vst3\Win32\bin\ATKSD1.vst3"; DestDir: "{cf32}\VST3\"; Check: Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
-Source: "..\build-win\vst3\x64\bin\ATKSD1 x64.vst3"; DestDir: "{cf64}\VST3\"; Check: Is64BitInstallMode; Components:vst3_64; Flags: ignoreversion;
+Source: "..\build-win\vst3\Win32\bin\ATKUniversalDelay.vst3"; DestDir: "{cf}\VST3\"; Check: not Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
+Source: "..\build-win\vst3\Win32\bin\ATKUniversalDelay.vst3"; DestDir: "{cf32}\VST3\"; Check: Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
+Source: "..\build-win\vst3\x64\bin\ATKUniversalDelay x64.vst3"; DestDir: "{cf64}\VST3\"; Check: Is64BitInstallMode; Components:vst3_64; Flags: ignoreversion;
 
-;Source: "..\build-win\rtas\bin\ATKSD1.dpm"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
-;Source: "..\build-win\rtas\bin\ATKSD1.dpm.rsr"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
+;Source: "..\build-win\rtas\bin\ATKUniversalDelay.dpm"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
+;Source: "..\build-win\rtas\bin\ATKUniversalDelay.dpm.rsr"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
 
-;Source: "..\build-win\aax\bin\ATKSD1.aaxplugin\*.*"; DestDir: "{cf32}\Avid\Audio\Plug-Ins\ATKSD1.aaxplugin\"; Components:aax_32; Flags: ignoreversion recursesubdirs;
-;Source: "..\build-win\aax\bin\ATKSD1.aaxplugin\*.*"; DestDir: "{cf}\Avid\Audio\Plug-Ins\ATKSD1.aaxplugin\"; Components:aax_64; Flags: ignoreversion recursesubdirs;
+;Source: "..\build-win\aax\bin\ATKUniversalDelay.aaxplugin\*.*"; DestDir: "{cf32}\Avid\Audio\Plug-Ins\ATKUniversalDelay.aaxplugin\"; Components:aax_32; Flags: ignoreversion recursesubdirs;
+;Source: "..\build-win\aax\bin\ATKUniversalDelay.aaxplugin\*.*"; DestDir: "{cf}\Avid\Audio\Plug-Ins\ATKUniversalDelay.aaxplugin\"; Components:aax_64; Flags: ignoreversion recursesubdirs;
 
-Source: "..\manual\ATKSD1_manual.pdf"; DestDir: "{app}"
+Source: "..\manual\ATKUniversalDelay_manual.pdf"; DestDir: "{app}"
 Source: "changelog.txt"; DestDir: "{app}"
 Source: "readmewin.rtf"; DestDir: "{app}"; DestName: "readme.rtf"; Flags: isreadme
 
 [Icons]
-Name: "{group}\ATKSD1"; Filename: "{app}\ATKSD1.exe"
-Name: "{group}\User guide"; Filename: "{app}\ATKSD1_manual.pdf"
+Name: "{group}\ATKUniversalDelay"; Filename: "{app}\ATKUniversalDelay.exe"
+Name: "{group}\User guide"; Filename: "{app}\ATKUniversalDelay_manual.pdf"
 Name: "{group}\Changelog"; Filename: "{app}\changelog.txt"
 ;Name: "{group}\readme"; Filename: "{app}\readme.rtf"
-Name: "{group}\Uninstall ATKSD1"; Filename: "{app}\unins000.exe"
+Name: "{group}\Uninstall ATKUniversalDelay"; Filename: "{app}\unins000.exe"
 
 ;[Dirs] 
 ;Name: {cf}\Digidesign\DAE\Plugins\

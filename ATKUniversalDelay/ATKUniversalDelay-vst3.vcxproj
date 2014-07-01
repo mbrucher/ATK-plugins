@@ -28,8 +28,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{079FC65A-F0E5-4E97-B318-A16D1D0B89DF}</ProjectGuid>
-    <RootNamespace>ATKSD1</RootNamespace>
-    <ProjectName>ATKSD1-vst3</ProjectName>
+    <RootNamespace>ATKUniversalDelay</RootNamespace>
+    <ProjectName>ATKUniversalDelay-vst3</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -77,27 +77,27 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ATKSD1.props" />
+    <Import Project="ATKUniversalDelay.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ATKSD1.props" />
+    <Import Project="ATKUniversalDelay.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ATKSD1.props" />
+    <Import Project="ATKUniversalDelay.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ATKSD1.props" />
+    <Import Project="ATKUniversalDelay.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Tracer|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ATKSD1.props" />
+    <Import Project="ATKUniversalDelay.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Tracer|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="ATKSD1.props" />
+    <Import Project="ATKUniversalDelay.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -153,18 +153,18 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>$(VST3_DEFS);$(DEBUG_DEFS);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(VST3_INCLUDES);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ATKROOT)\32\include;$(BOOSTROOT);$(VST3_INCLUDES);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>base.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(ATKROOT)\32\lib\ATKCore_static.lib;base.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\VST3_SDK\base\win\$(Platform)\$(Configuration)\;$(WDL_PATH)\IPlug\build-win\$(Platform)\$(Configuration)\;$(WDL_PATH)\lice\build-win\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>$(WDL_PATH)\IPlug\IPlugVST3.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
       <Command>echo Post-Build: copy 32bit binary to 32bit VST3 Plugins folder ... ...
-copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKSD1.vst3"</Command>
+copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKUniversalDelay.vst3"</Command>
       <Message>Copy VST3 Binary to VST3 Plugins folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -174,18 +174,18 @@ copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKSD1.vst3"</Command>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>$(VST3_DEFS);$(DEBUG_DEFS);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(VST3_INCLUDES);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ATKROOT)\64\include;$(BOOSTROOT);$(VST3_INCLUDES);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>..\..\VST3_SDK\base\win\$(Platform)\$(Configuration)\;$(x64_LIB_PATHS);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>base.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(ATKROOT)\64\lib\ATKCore_static.lib;$(ATKROOT)\64\lib\ATKDistortion_static.lib;$(ATKROOT)\64\lib\ATKEQ_static.lib;$(ATKROOT)\64\lib\ATKTools_static.lib;$(ATKROOT)\64\lib\ATKDelay_static.lib;base.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>$(WDL_PATH)\IPlug\IPlugVST3.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
       <Command>echo Post-Build: copy 64bit binary to 64bit VST3 Plugins folder ...
-if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKSD1.vst3") else (echo Not copying 64bit binary - 32bit OS detected)</Command>
+if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKUniversalDelay.vst3") else (echo Not copying 64bit binary - 32bit OS detected)</Command>
       <Message>Copy VST3 Binary to VST3 Plugins folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -211,7 +211,7 @@ if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKSD1.
     </Link>
     <PostBuildEvent>
       <Command>echo Post-Build: copy 32bit binary to 32bit VST3 Plugins folder ... ...
-copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKSD1.vst3"</Command>
+copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKUniversalDelay.vst3"</Command>
       <Message>Copy VST3 Binary to VST3 Plugins folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -238,7 +238,7 @@ copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKSD1.vst3"</Command>
     </Link>
     <PostBuildEvent>
       <Command>echo Post-Build: copy 64bit binary to 64bit VST3 Plugins folder ...
-if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKSD1.vst3") else (echo Not copying 64bit binary - 32bit OS detected)</Command>
+if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKUniversalDelay.vst3") else (echo Not copying 64bit binary - 32bit OS detected)</Command>
       <Message>Copy VST3 Binary to VST3 Plugins folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -263,7 +263,7 @@ if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKSD1.
     </Link>
     <PostBuildEvent>
       <Command>echo Post-Build: copy 32bit binary to 32bit VST3 Plugins folder ... ...
-copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKSD1.vst3"</Command>
+copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKUniversalDelay.vst3"</Command>
       <Message>Copy VST3 Binary to VST3 Plugins folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -288,7 +288,7 @@ copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKSD1.vst3"</Command>
     </Link>
     <PostBuildEvent>
       <Command>echo Post-Build: copy 64bit binary to 64bit VST3 Plugins folder ...
-if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKSD1.vst3") else (echo Not copying 64bit binary - 32bit OS detected)</Command>
+if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKUniversalDelay.vst3") else (echo Not copying 64bit binary - 32bit OS detected)</Command>
       <Message>Copy VST3 Binary to VST3 Plugins folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -325,7 +325,7 @@ if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKSD1.
     <ClInclude Include="..\..\VST3_SDK\public.sdk\source\vst\vstparameters.h" />
     <ClInclude Include="..\..\VST3_SDK\public.sdk\source\vst\vstsinglecomponenteffect.h" />
     <ClInclude Include="..\..\WDL\IPlug\IPlugVST3.h" />
-    <ClInclude Include="ATKSD1.h" />
+    <ClInclude Include="ATKUniversalDelay.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -342,10 +342,10 @@ if exist "%programfiles(x86)%" (copy /y "$(TargetPath)" "$(VST3_64_PATH)\ATKSD1.
     <ClCompile Include="..\..\VST3_SDK\public.sdk\source\vst\vstparameters.cpp" />
     <ClCompile Include="..\..\VST3_SDK\public.sdk\source\vst\vstsinglecomponenteffect.cpp" />
     <ClCompile Include="..\..\WDL\IPlug\IPlugVST3.cpp" />
-    <ClCompile Include="ATKSD1.cpp" />
+    <ClCompile Include="ATKUniversalDelay.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ATKSD1.rc" />
+    <ResourceCompile Include="ATKUniversalDelay.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
