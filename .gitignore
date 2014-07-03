@@ -20,7 +20,9 @@ build-*
 ipch/*
 gui/*
 PCH
-
+*.psd
+*.APS
 
 Icon?
 .DS_Stor*
+oli.pbxuser
