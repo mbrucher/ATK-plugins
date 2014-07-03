@@ -33,12 +33,12 @@ enum ELayout
 };
 
 ATKUniversalVariableDelay::ATKUniversalVariableDelay(IPlugInstanceInfo instanceInfo)
-: IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), inFilter(NULL, 1, 0, false), outFilter(NULL, 1, 0, false), sinusGenerator(10, 10), delayFilter(2000)
+: IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), inFilter(NULL, 1, 0, false), outFilter(NULL, 1, 0, false), sinusGenerator(10, 10), delayFilter(1000)
 {
   TRACE;
 
   //arguments are: name, defaultVal, minVal, maxVal, step, label
-  GetParam(kDelay)->InitDouble("Delay", 0.1, 0.1, 5.0, 0.1, "ms");
+  GetParam(kDelay)->InitDouble("Delay", 0.2, 0.1, 5.0, 0.1, "ms");
   GetParam(kDelay)->SetShape(2.);
   GetParam(kDepth)->InitDouble("Depth", 0.1, 0.1, 5.0, 0.1, "ms");
   GetParam(kDepth)->SetShape(2.);
@@ -104,17 +104,22 @@ void ATKUniversalVariableDelay::OnParamChange(int paramIdx)
 {
   IMutexLock lock(this);
 
-  if (GetParam(kDepth)->Value() > GetParam(kDelay)->Value() - 0.1)
-  {
-    GetParam(kDepth)->Set(GetParam(kDelay)->Value() - 0.1);
-  }
 
   switch (paramIdx)
   {
   case kDelay:
+    if (GetParam(kDepth)->Value() > GetParam(kDelay)->Value() - 0.1)
+    {
+      GetParam(kDelay)->Set(GetParam(kDepth)->Value() + 0.1);
+    }
     sinusGenerator.set_offset(GetParam(kDelay)->Value() / 1000. * GetSampleRate());
+    delayFilter.set_central_delay(GetParam(kDelay)->Value() / 1000. * GetSampleRate());
     break;
   case kDepth:
+    if (GetParam(kDepth)->Value() > GetParam(kDelay)->Value() - 0.1)
+    {
+      GetParam(kDepth)->Set(GetParam(kDelay)->Value() - 0.1);
+    }
     sinusGenerator.set_volume(GetParam(kDepth)->Value() / 1000. * GetSampleRate());
     break;
   case kMod:
