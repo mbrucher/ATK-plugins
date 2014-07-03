@@ -38,11 +38,11 @@ ATKUniversalVariableDelay::ATKUniversalVariableDelay(IPlugInstanceInfo instanceI
   TRACE;
 
   //arguments are: name, defaultVal, minVal, maxVal, step, label
-  GetParam(kDelay)->InitDouble("Delay", 0.2, 0.1, 5.0, 0.1, "ms");
+  GetParam(kDelay)->InitDouble("Delay", 0.2, 0.1, 3.0, 0.1, "ms");
   GetParam(kDelay)->SetShape(2.);
-  GetParam(kDepth)->InitDouble("Depth", 0.1, 0.1, 5.0, 0.1, "ms");
+  GetParam(kDepth)->InitDouble("Depth", 0.1, 0.1, 3.0, 0.1, "ms");
   GetParam(kDepth)->SetShape(2.);
-  GetParam(kMod)->InitDouble("Modulation", 1, 0., 5.0, 0.1, "Hz");
+  GetParam(kMod)->InitDouble("Modulation", 1, 0.1, 5.0, 0.1, "Hz");
   GetParam(kMod)->SetShape(1.);
   GetParam(kBlend)->InitDouble("Blend", 100, -100, 100, 0.01, "%");
   GetParam(kBlend)->SetShape(1.);
@@ -123,19 +123,19 @@ void ATKUniversalVariableDelay::OnParamChange(int paramIdx)
     sinusGenerator.set_volume(GetParam(kDepth)->Value() / 1000. * GetSampleRate());
     break;
   case kMod:
-    sinusGenerator.set_frequency(GetParam(kMod)->Value(), 10);
+    sinusGenerator.set_frequency(GetParam(kMod)->Value() * 10, 10);
     break;
   case kBlend:
-      delayFilter.set_blend((GetParam(kBlend)->Value()) / 100.);
-      break;
-    case kFeedforward:
-      delayFilter.set_feedforward((GetParam(kFeedforward)->Value()) / 100.);
-      break;
-    case kFeedback:
-      delayFilter.set_feedback((GetParam(kFeedback)->Value()) / 100.);
-      break;
+    delayFilter.set_blend((GetParam(kBlend)->Value()) / 100.);
+    break;
+  case kFeedforward:
+    delayFilter.set_feedforward((GetParam(kFeedforward)->Value()) / 100.);
+    break;
+  case kFeedback:
+    delayFilter.set_feedback((GetParam(kFeedback)->Value()) / 100.);
+    break;
 
-    default:
-      break;
+  default:
+    break;
   }
 }
