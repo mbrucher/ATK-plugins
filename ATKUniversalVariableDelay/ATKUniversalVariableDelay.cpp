@@ -22,13 +22,17 @@ enum ELayout
   kHeight = GUI_HEIGHT,
 
   kDelayX = 25,
-  kDelayY = 37,
-  kBlendX = 94,
-  kBlendY = 37,
-  kFeedforwardX = 163,
-  kFeedforwardY = 37,
-  kFeedbackX = 232,
-  kFeedbackY = 37,
+  kDelayY = 32,
+  kDepthX = 94,
+  kDepthY = 32,
+  kModX = 163,
+  kModY = 32,
+  kBlendX = 232,
+  kBlendY = 32,
+  kFeedforwardX = 301,
+  kFeedforwardY = 32,
+  kFeedbackX = 370,
+  kFeedbackY = 32,
   kKnobFrames = 43
 };
 
@@ -38,7 +42,7 @@ ATKUniversalVariableDelay::ATKUniversalVariableDelay(IPlugInstanceInfo instanceI
   TRACE;
 
   //arguments are: name, defaultVal, minVal, maxVal, step, label
-  GetParam(kDelay)->InitDouble("Delay", 0.2, 0.1, 3.0, 0.1, "ms");
+  GetParam(kDelay)->InitDouble("Delay", 0.2, 0.2, 3.0, 0.1, "ms");
   GetParam(kDelay)->SetShape(2.);
   GetParam(kDepth)->InitDouble("Depth", 0.1, 0.1, 3.0, 0.1, "ms");
   GetParam(kDepth)->SetShape(2.);
@@ -58,7 +62,9 @@ ATKUniversalVariableDelay::ATKUniversalVariableDelay(IPlugInstanceInfo instanceI
   IBitmap knob1 = pGraphics->LoadIBitmap(KNOB1_ID, KNOB1_FN, kKnobFrames);
 
   pGraphics->AttachControl(new IKnobMultiControl(this, kDelayX, kDelayY, kDelay, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kBlendX, kBlendY, kBlend, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kDepthX, kDepthY, kDepth, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kModX, kModY, kMod, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kBlendX, kBlendY, kBlend, &knob1));
   pGraphics->AttachControl(new IKnobMultiControl(this, kFeedforwardX, kFeedforwardY, kFeedforward, &knob1));
   pGraphics->AttachControl(new IKnobMultiControl(this, kFeedbackX, kFeedbackY, kFeedback, &knob1));
 
