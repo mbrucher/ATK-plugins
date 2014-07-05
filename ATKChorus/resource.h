@@ -1,19 +1,19 @@
 #define PLUG_MFR "MatthieuBrucher"
-#define PLUG_NAME "ATKUniversalVariableDelay"
+#define PLUG_NAME "ATKChorus"
 
-#define PLUG_CLASS_NAME ATKUniversalVariableDelay
+#define PLUG_CLASS_NAME ATKChorus
 
 #define BUNDLE_MFR "MatthieuBrucher"
-#define BUNDLE_NAME "ATKUniversalVariableDelay"
+#define BUNDLE_NAME "ATKChorus"
 
-#define PLUG_ENTRY ATKUniversalVariableDelay_Entry
-#define PLUG_VIEW_ENTRY ATKUniversalVariableDelay_ViewEntry
+#define PLUG_ENTRY ATKChorus_Entry
+#define PLUG_VIEW_ENTRY ATKChorus_ViewEntry
 
-#define PLUG_ENTRY_STR "ATKUniversalVariableDelay_Entry"
-#define PLUG_VIEW_ENTRY_STR "ATKUniversalVariableDelay_ViewEntry"
+#define PLUG_ENTRY_STR "ATKChorus_Entry"
+#define PLUG_VIEW_ENTRY_STR "ATKChorus_ViewEntry"
 
-#define VIEW_CLASS ATKUniversalVariableDelay_View
-#define VIEW_CLASS_STR "ATKUniversalVariableDelay_View"
+#define VIEW_CLASS ATKChorus_View
+#define VIEW_CLASS_STR "ATKChorus_View"
 
 // Format        0xMAJR.MN.BG - in HEX! so version 10.1.5 would be 0x000A0105
 #define PLUG_VER 0x00010001
@@ -21,7 +21,7 @@
 
 // http://service.steinberg.de/databases/plugin.nsf/plugIn?openForm
 // 4 chars, single quotes. At least one capital letter
-#define PLUG_UNIQUE_ID 'utfb'
+#define PLUG_UNIQUE_ID '9w1i'
 // make sure this is not the same as BUNDLE_MFR
 #define PLUG_MFR_ID 'MatB'
 
@@ -34,7 +34,7 @@
 #endif
 
 #define PLUG_MFR_PT "MatthieuBrucher\nMatthieuBrucher\nMatthieuBrucher"
-#define PLUG_NAME_PT "ATKUniversalVariableDelay\nutfb"
+#define PLUG_NAME_PT "ATKChorus\n9w1i"
 #define PLUG_TYPE_PT "Delay"
 #define PLUG_DOES_AUDIOSUITE 1
 
