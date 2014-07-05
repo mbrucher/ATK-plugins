@@ -37,20 +37,20 @@ enum ELayout
 };
 
 ATKChorus::ATKChorus(IPlugInstanceInfo instanceInfo)
-: IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), inFilter(NULL, 1, 0, false), outFilter(NULL, 1, 0, false), noiseGenerator(), delayFilter(1000)
+: IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), inFilter(NULL, 1, 0, false), outFilter(NULL, 1, 0, false), noiseGenerator(), delayFilter(10000)
 {
   TRACE;
 
   //arguments are: name, defaultVal, minVal, maxVal, step, label
-  GetParam(kDelay)->InitDouble("Delay", 0.2, 0.2, 3.0, 0.1, "ms");
+  GetParam(kDelay)->InitDouble("Delay", 10, 0.2, 100.0, 0.1, "ms");
   GetParam(kDelay)->SetShape(2.);
-  GetParam(kDepth)->InitDouble("Depth", 0.1, 0.1, 3.0, 0.1, "ms");
+  GetParam(kDepth)->InitDouble("Depth", 5, 0.1, 99.9, 0.1, "ms");
   GetParam(kDepth)->SetShape(2.);
-  GetParam(kMod)->InitDouble("Modulation", 1, 0.1, 5.0, 0.1, "Hz");
+  GetParam(kMod)->InitDouble("Modulation", 2, 0.1, 5.0, 0.1, "Hz");
   GetParam(kMod)->SetShape(1.);
-  GetParam(kBlend)->InitDouble("Blend", 100, -100, 100, 0.01, "%");
+  GetParam(kBlend)->InitDouble("Blend", 70, -100, 100, 0.01, "%");
   GetParam(kBlend)->SetShape(1.);
-  GetParam(kFeedforward)->InitDouble("Feedforward", 50., -100, 100, 0.01, "%");
+  GetParam(kFeedforward)->InitDouble("Feedforward", 100., -100, 100, 0.01, "%");
   GetParam(kFeedforward)->SetShape(1.);
   GetParam(kFeedback)->InitDouble("Feedback", 0., -90., 90., 0.01, "%");
   GetParam(kFeedback)->SetShape(1.);
@@ -70,15 +70,20 @@ ATKChorus::ATKChorus(IPlugInstanceInfo instanceInfo)
 
   AttachGraphics(pGraphics);
 
-  MakePreset("Vibrato", 2, 1, 2, 0, 1, 0);
-  MakePreset("Flanger", 2, 1, 2, 0.7, 0.7, 0.7);
+  MakePreset("Chorus", 10, 5, 2, 0.7, 1, 0);
+  MakePreset("Chorus 2", 10, 5, 2, 0.7, 1, -0.7);
+  MakePreset("Doubling", 10, 5, 2, 0.7, 0.7, 0);
 
-  lowPass.set_input_port(1, &noiseGenerator, 0);
-  offsetFilter.set_input_port(1, &lowPass, 0);
+  lowPass.set_input_port(0, &noiseGenerator, 0);
+  offsetFilter.set_input_port(0, &lowPass, 0);
   delayFilter.set_input_port(0, &inFilter, 0);
   delayFilter.set_input_port(1, &offsetFilter, 0);
   outFilter.set_input_port(0, &delayFilter, 0);
   
+  noiseGenerator.set_offset(0);
+  noiseGenerator.set_volume(1);
+  lowPass.set_cut_frequency(1);
+
   Reset();
 }
 
@@ -120,6 +125,7 @@ void ATKChorus::OnParamChange(int paramIdx)
     if (GetParam(kDepth)->Value() > GetParam(kDelay)->Value() - 0.1)
     {
       GetParam(kDelay)->Set(GetParam(kDepth)->Value() + 0.1);
+      offsetFilter.set_volume(GetParam(kDepth)->Value() / 1000. * GetSampleRate());
     }
     offsetFilter.set_offset(GetParam(kDelay)->Value() / 1000. * GetSampleRate());
     delayFilter.set_central_delay(GetParam(kDelay)->Value() / 1000. * GetSampleRate());
@@ -128,6 +134,8 @@ void ATKChorus::OnParamChange(int paramIdx)
     if (GetParam(kDepth)->Value() > GetParam(kDelay)->Value() - 0.1)
     {
       GetParam(kDepth)->Set(GetParam(kDelay)->Value() - 0.1);
+      offsetFilter.set_offset(GetParam(kDelay)->Value() / 1000. * GetSampleRate());
+      delayFilter.set_central_delay(GetParam(kDelay)->Value() / 1000. * GetSampleRate());
     }
     offsetFilter.set_volume(GetParam(kDepth)->Value() / 1000. * GetSampleRate());
     break;
