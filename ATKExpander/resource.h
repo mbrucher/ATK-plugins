@@ -21,7 +21,7 @@
 
 // http://service.steinberg.de/databases/plugin.nsf/plugIn?openForm
 // 4 chars, single quotes. At least one capital letter
-#define PLUG_UNIQUE_ID '6m9f'
+#define PLUG_UNIQUE_ID 'n3l3'
 // make sure this is not the same as BUNDLE_MFR
 #define PLUG_MFR_ID 'MatB'
 
@@ -34,7 +34,7 @@
 #endif
 
 #define PLUG_MFR_PT "MatthieuBrucher\nMatthieuBrucher\nMatthieuBrucher"
-#define PLUG_NAME_PT "ATKExpander\n6m9f"
+#define PLUG_NAME_PT "ATKExpander\nn3l3"
 #define PLUG_TYPE_PT "Dynamics"
 #define PLUG_DOES_AUDIOSUITE 1
 
