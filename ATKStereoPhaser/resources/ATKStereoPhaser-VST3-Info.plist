@@ -9,24 +9,20 @@
 	<key>CFBundleGetInfoString</key>
 	<string>1.0.0, Copyright MatthieuBrucher, 2014</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.MatthieuBrucher.rtas.${BINARY_NAME}</string>
+	<string>com.MatthieuBrucher.vst3.${BINARY_NAME}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>${BINARY_NAME}</string>
 	<key>CFBundlePackageType</key>
-	<string>TDMw</string>
+	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
-	<string>PTul</string>
+	<string>Acme</string>
 	<key>CFBundleVersion</key>
 	<string>1.0.0</string>
-	<key>LSMultipleInstancesProhibited</key>
-	<string>true</string>
-	<key>LSPrefersCarbon</key>
-	<true/>
-	<key>NSAppleScriptEnabled</key>
-	<string>No</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.5.0</string>
 </dict>
 </plist>

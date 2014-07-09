@@ -70,9 +70,9 @@ ATKExpander::ATKExpander(IPlugInstanceInfo instanceInfo)
   MakeDefaultPreset((char *) "-", kNumPrograms);
   
   powerFilter.set_input_port(0, &inFilter, 0);
-  attackReleaseFilter.set_input_port(0, &powerFilter, 0);
-  gainExpanderFilter.set_input_port(0, &attackReleaseFilter, 0);
-  applyGainFilter.set_input_port(0, &gainExpanderFilter, 0);
+  gainExpanderFilter.set_input_port(0, &powerFilter, 0);
+  attackReleaseFilter.set_input_port(0, &gainExpanderFilter, 0);
+  applyGainFilter.set_input_port(0, &attackReleaseFilter, 0);
   applyGainFilter.set_input_port(1, &inFilter, 0);
   outFilter.set_input_port(0, &applyGainFilter, 0);
   
@@ -110,7 +110,7 @@ void ATKExpander::Reset()
   outFilter.set_input_sampling_rate(sampling_rate);
   outFilter.set_output_sampling_rate(sampling_rate);
 
-  powerFilter.set_memory(std::exp(-1/1e-4 * GetSampleRate()));
+  powerFilter.set_memory(std::exp(-1/1e-3 * GetSampleRate()));
   attackReleaseFilter.set_attack(std::exp(-1 / (GetParam(kAttack)->Value() * 1e-3 * GetSampleRate()))); // in ms
   attackReleaseFilter.set_release(std::exp(-1 / (GetParam(kRelease)->Value() * 1e-3 * GetSampleRate()))); // in ms
 }
@@ -122,7 +122,7 @@ void ATKExpander::OnParamChange(int paramIdx)
   switch (paramIdx)
   {
     case kThreshold:
-      gainExpanderFilter.set_threshold(std::pow(10, GetParam(kThreshold)->Value() / 20));
+      gainExpanderFilter.set_threshold(std::pow(10, GetParam(kThreshold)->Value() / 10));
       break;
     case kSlope:
       gainExpanderFilter.set_slope(GetParam(kSlope)->Value());

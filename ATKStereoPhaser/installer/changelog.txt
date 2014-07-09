@@ -1,0 +1,7 @@
+ATKStereoPhaser changelog
+htp://matt.eifelle.com
+
+08/07/14 - v1.0.1
+  - bumped delay length to 100ms
+08/07/14 - v1.0.0 initial release
+  - built against ATK 0.4.0
