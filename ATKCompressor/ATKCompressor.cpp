@@ -120,8 +120,8 @@ void ATKCompressor::Reset()
   outFilter.set_output_sampling_rate(sampling_rate);
 
   powerFilter.set_memory(std::exp(-1/1e-3 * GetSampleRate()));
-  attackReleaseFilter.set_attack(std::exp(-1 / (GetParam(kAttack)->Value() * 1e-3 * GetSampleRate()))); // in ms
-  attackReleaseFilter.set_release(std::exp(-1 / (GetParam(kRelease)->Value() * 1e-3 * GetSampleRate()))); // in ms
+  attackReleaseFilter.set_release(std::exp(-1 / (GetParam(kAttack)->Value() * 1e-3 * GetSampleRate()))); // in ms
+  attackReleaseFilter.set_attack(std::exp(-1 / (GetParam(kRelease)->Value() * 1e-3 * GetSampleRate()))); // in ms
 }
 
 void ATKCompressor::OnParamChange(int paramIdx)
