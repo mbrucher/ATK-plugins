@@ -299,13 +299,12 @@ void ATKStereoCompressor::OnParamChange(int paramIdx)
   case kLinkChannels:
     if (GetParam(kLinkChannels)->Bool())
     {
-      attackReleaseFilter1.set_input_port(0, &sumFilter, 0);
+      gainCompressorFilter1.set_input_port(0, &sumFilter, 0);
       applyGainFilter2.set_input_port(0, &attackReleaseFilter1, 0);
     }
     else
     {
-      attackReleaseFilter1.set_input_port(0, &gainCompressorFilter1, 0);
-      attackReleaseFilter2.set_input_port(0, &gainCompressorFilter2, 0);
+      gainCompressorFilter1.set_input_port(0, &powerFilter1, 0);
       applyGainFilter2.set_input_port(0, &attackReleaseFilter2, 0);
     }
     break;
