@@ -43,7 +43,7 @@
 instrument determined by PLUG _IS _INST
 */
 
-#define PLUG_CHANNEL_IO "1-1"
+#define PLUG_CHANNEL_IO "2-2"
 
 // Should be retrieved from ATK when the time comes
 #define PLUG_LATENCY 0

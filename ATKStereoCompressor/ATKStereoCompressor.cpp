@@ -164,6 +164,8 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   middlesidemergeFilter.set_input_port(1, &makeupFilter2, 0);
   volumemergeFilter.set_input_port(0, &middlesidemergeFilter, 0);
   volumemergeFilter.set_input_port(1, &middlesidemergeFilter, 1);
+  sumFilter.set_input_port(0, &powerFilter1, 0);
+  sumFilter.set_input_port(1, &powerFilter2, 0);
 
   Reset();
 }
@@ -267,36 +269,34 @@ void ATKStereoCompressor::OnParamChange(int paramIdx)
   case kLinkChannels:
     if (GetParam(kLinkChannels)->Bool())
     {
-      sumFilter.set_input_port(0, &powerFilter1, 0);
-      sumFilter.set_input_port(1, &powerFilter2, 0);
       attackReleaseFilter1.set_input_port(0, &sumFilter, 0);
       applyGainFilter2.set_input_port(0, &attackReleaseFilter1, 0);
     }
     else
     {
-      attackReleaseFilter1.set_input_port(0, &powerFilter1, 0);
-      attackReleaseFilter2.set_input_port(0, &powerFilter2, 0);
+      attackReleaseFilter1.set_input_port(0, &gainCompressorFilter1, 0);
+      attackReleaseFilter2.set_input_port(0, &gainCompressorFilter2, 0);
       applyGainFilter2.set_input_port(0, &attackReleaseFilter2, 0);
     }
     break;
   case kActivateChannel1:
     if (GetParam(kActivateChannel1)->Bool())
     {
-      outLFilter.set_input_port(0, &inLFilter, 0);
+      outLFilter.set_input_port(0, &makeupFilter1, 0);
     }
     else
     {
-      outLFilter.set_input_port(0, &makeupFilter1, 0);
+      outLFilter.set_input_port(0, &inLFilter, 0);
     }
     break;
   case kActivateChannel2:
     if (GetParam(kActivateChannel2)->Bool())
     {
-      outRFilter.set_input_port(0, &inRFilter, 0);
+      outRFilter.set_input_port(0, &makeupFilter2, 0);
     }
     else
     {
-      outRFilter.set_input_port(0, &makeupFilter2, 0);
+      outRFilter.set_input_port(0, &inRFilter, 0);
     }
     break;
 
