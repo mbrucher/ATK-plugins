@@ -33,18 +33,41 @@ enum ELayout
   kWidth = GUI_WIDTH,
   kHeight = GUI_HEIGHT,
 
-  kAttackX = 25,
-  kAttackY = 31,
-  kReleaseX = 94,
-  kReleaseY = 31,
-  kThresholdX = 163,
-  kThresholdY = 31,
-  kSlopeX = 232,
-  kSlopeY = 31,
-  kSoftnessX = 301,
-  kSoftnessY = 31,
-  kMakeupX = 370,
-  kMakeupY = 31,
+  kMiddlesideX = 25,
+  kMiddlesideY = 31,
+  kLinkChannelsX = 94,
+  kLinkChannelsY = 31,
+  kActivateChannel1X = 25,
+  kActivateChannel1Y = 131,
+  kActivateChannel2X = 94,
+  kActivateChannel2Y = 131,
+
+  kAttack1X = 163,
+  kAttack1Y = 31,
+  kRelease1X = 232,
+  kRelease1Y = 31,
+  kThreshold1X = 301,
+  kThreshold1Y = 31,
+  kSlope1X = 370,
+  kSlope1Y = 31,
+  kSoftness1X = 439,
+  kSoftness1Y = 31,
+  kMakeup1X = 508,
+  kMakeup1Y = 31,
+
+  kAttack2X = 163,
+  kAttack2Y = 31,
+  kRelease2X = 232,
+  kRelease2Y = 31,
+  kThreshold2X = 301,
+  kThreshold2Y = 31,
+  kSlope2X = 370,
+  kSlope2Y = 31,
+  kSoftness2X = 439,
+  kSoftness2Y = 31,
+  kMakeup2X = 508,
+  kMakeup2Y = 31,
+
   kKnobFrames = 43
 };
 
@@ -58,7 +81,7 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   GetParam(kMiddleside)->InitBool("Middle/Side processing", 0, "");
   GetParam(kLinkChannels)->InitBool("Link channels", 0, "");
   GetParam(kActivateChannel1)->InitBool("Enable Channel 1", 1, "");
-  GetParam(kActivateChannel1)->InitBool("Enable Channel 2", 1, "");
+  GetParam(kActivateChannel2)->InitBool("Enable Channel 2", 1, "");
 
   GetParam(kAttack1)->InitDouble("Attack ch1", 10., 1., 100.0, 0.1, "ms");
   GetParam(kAttack1)->SetShape(2.);
@@ -86,16 +109,22 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   GetParam(kMakeup2)->SetShape(2.);
 
   IGraphics* pGraphics = MakeGraphics(this, kWidth, kHeight);
-  pGraphics->AttachBackground(COMPRESSOR_ID, COMPRESSOR_FN);
+  pGraphics->AttachBackground(STEREO_COMPRESSOR_ID, STEREO_COMPRESSOR_FN);
 
   IBitmap knob = pGraphics->LoadIBitmap(KNOB_ID, KNOB_FN, kKnobFrames);
+  IBitmap myswitch = pGraphics->LoadIBitmap(SWITCH_ID, SWITCH_FN, 2);
 
-  pGraphics->AttachControl(new IKnobMultiControl(this, kAttackX, kAttackY, kAttack1, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kReleaseX, kReleaseY, kRelease1, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kThresholdX, kThresholdY, kThreshold1, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kSlopeX, kSlopeY, kSlope1, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kSoftnessX, kSoftnessY, kSoftness1, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kMakeupX, kMakeupY, kMakeup1, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kAttack1X, kAttack1Y, kAttack1, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kRelease1X, kRelease1Y, kRelease1, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kThreshold1X, kThreshold1Y, kThreshold1, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kSlope1X, kSlope1Y, kSlope1, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kSoftness1X, kSoftness1Y, kSoftness1, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kMakeup1X, kMakeup1Y, kMakeup1, &knob));
+
+  pGraphics->AttachControl(new ISwitchControl(this, kMiddlesideX, kMiddlesideY, kMiddleside, &myswitch));
+  pGraphics->AttachControl(new ISwitchControl(this, kLinkChannelsX, kLinkChannelsY, kLinkChannels, &myswitch));
+  pGraphics->AttachControl(new ISwitchControl(this, kActivateChannel1X, kActivateChannel1Y, kActivateChannel1, &myswitch));
+  pGraphics->AttachControl(new ISwitchControl(this, kActivateChannel2X, kActivateChannel2Y, kActivateChannel2, &myswitch));
 
   AttachGraphics(pGraphics);
 
@@ -220,9 +249,9 @@ void ATKStereoCompressor::OnParamChange(int paramIdx)
     else
     {
       powerFilter1.set_input_port(0, &inLFilter, 0);
-      powerFilter2.set_input_port(0, &inRFilter, 1);
+      powerFilter2.set_input_port(0, &inRFilter, 0);
       outLFilter.set_input_port(0, &makeupFilter1, 0);
-      outRFilter.set_input_port(0, &makeupFilter2, 1);
+      outRFilter.set_input_port(0, &makeupFilter2, 0);
     }
     break;
   case kLinkChannels:
