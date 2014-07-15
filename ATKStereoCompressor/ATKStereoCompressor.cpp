@@ -34,39 +34,39 @@ enum ELayout
   kHeight = GUI_HEIGHT,
 
   kMiddlesideX = 25,
-  kMiddlesideY = 31,
+  kMiddlesideY = 36,
   kLinkChannelsX = 94,
-  kLinkChannelsY = 31,
+  kLinkChannelsY = 36,
   kActivateChannel1X = 25,
-  kActivateChannel1Y = 131,
+  kActivateChannel1Y = 121,
   kActivateChannel2X = 94,
-  kActivateChannel2Y = 131,
+  kActivateChannel2Y = 121,
 
   kAttack1X = 163,
-  kAttack1Y = 31,
+  kAttack1Y = 26,
   kRelease1X = 232,
-  kRelease1Y = 31,
+  kRelease1Y = 26,
   kThreshold1X = 301,
-  kThreshold1Y = 31,
+  kThreshold1Y = 26,
   kSlope1X = 370,
-  kSlope1Y = 31,
+  kSlope1Y = 26,
   kSoftness1X = 439,
-  kSoftness1Y = 31,
+  kSoftness1Y = 26,
   kMakeup1X = 508,
-  kMakeup1Y = 31,
+  kMakeup1Y = 26,
 
   kAttack2X = 163,
-  kAttack2Y = 31,
+  kAttack2Y = 111,
   kRelease2X = 232,
-  kRelease2Y = 31,
+  kRelease2Y = 111,
   kThreshold2X = 301,
-  kThreshold2Y = 31,
+  kThreshold2Y = 111,
   kSlope2X = 370,
-  kSlope2Y = 31,
+  kSlope2Y = 111,
   kSoftness2X = 439,
-  kSoftness2Y = 31,
+  kSoftness2Y = 111,
   kMakeup2X = 508,
-  kMakeup2Y = 31,
+  kMakeup2Y = 111,
 
   kKnobFrames = 43
 };
@@ -120,6 +120,13 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   pGraphics->AttachControl(new IKnobMultiControl(this, kSlope1X, kSlope1Y, kSlope1, &knob));
   pGraphics->AttachControl(new IKnobMultiControl(this, kSoftness1X, kSoftness1Y, kSoftness1, &knob));
   pGraphics->AttachControl(new IKnobMultiControl(this, kMakeup1X, kMakeup1Y, kMakeup1, &knob));
+
+  pGraphics->AttachControl(new IKnobMultiControl(this, kAttack2X, kAttack2Y, kAttack2, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kRelease2X, kRelease2Y, kRelease2, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kThreshold2X, kThreshold2Y, kThreshold2, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kSlope2X, kSlope2Y, kSlope2, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kSoftness2X, kSoftness2Y, kSoftness2, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kMakeup2X, kMakeup2Y, kMakeup2, &knob));
 
   pGraphics->AttachControl(new ISwitchControl(this, kMiddlesideX, kMiddlesideY, kMiddleside, &myswitch));
   pGraphics->AttachControl(new ISwitchControl(this, kLinkChannelsX, kLinkChannelsY, kLinkChannels, &myswitch));
@@ -222,14 +229,17 @@ void ATKStereoCompressor::Reset()
     applyGainFilter2.set_output_sampling_rate(sampling_rate);
     makeupFilter2.set_input_sampling_rate(sampling_rate);
     makeupFilter2.set_output_sampling_rate(sampling_rate);
-  }
 
-  powerFilter1.set_memory(std::exp(-1 / 1e-3 * GetSampleRate()));
-  attackReleaseFilter1.set_release(std::exp(-1 / (GetParam(kAttack1)->Value() * 1e-3 * GetSampleRate()))); // in ms
-  attackReleaseFilter1.set_attack(std::exp(-1 / (GetParam(kRelease1)->Value() * 1e-3 * GetSampleRate()))); // in ms
-  powerFilter2.set_memory(std::exp(-1 / 1e-3 * GetSampleRate()));
-  attackReleaseFilter2.set_release(std::exp(-1 / (GetParam(kAttack2)->Value() * 1e-3 * GetSampleRate()))); // in ms
-  attackReleaseFilter2.set_attack(std::exp(-1 / (GetParam(kRelease2)->Value() * 1e-3 * GetSampleRate()))); // in ms
+    endpoint.set_input_sampling_rate(sampling_rate);
+    endpoint.set_output_sampling_rate(sampling_rate);
+
+    powerFilter1.set_memory(std::exp(-1 / 1e-3 * GetSampleRate()));
+    attackReleaseFilter1.set_release(std::exp(-1 / (GetParam(kAttack1)->Value() * 1e-3 * GetSampleRate()))); // in ms
+    attackReleaseFilter1.set_attack(std::exp(-1 / (GetParam(kRelease1)->Value() * 1e-3 * GetSampleRate()))); // in ms
+    powerFilter2.set_memory(std::exp(-1 / 1e-3 * GetSampleRate()));
+    attackReleaseFilter2.set_release(std::exp(-1 / (GetParam(kAttack2)->Value() * 1e-3 * GetSampleRate()))); // in ms
+    attackReleaseFilter2.set_attack(std::exp(-1 / (GetParam(kRelease2)->Value() * 1e-3 * GetSampleRate()))); // in ms
+  }
 }
 
 void ATKStereoCompressor::OnParamChange(int paramIdx)
