@@ -31,12 +31,12 @@ enum ELayout
 };
 
 ATKUniversalDelay::ATKUniversalDelay(IPlugInstanceInfo instanceInfo)
-  :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), inFilter(NULL, 1, 0, false), outFilter(NULL, 1, 0, false), delayFilter(10240)
+  :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), inFilter(NULL, 1, 0, false), outFilter(NULL, 1, 0, false), delayFilter(100000)
 {
   TRACE;
 
   //arguments are: name, defaultVal, minVal, maxVal, step, label
-  GetParam(kDelay)->InitDouble("Delay", 1, 0.1, 100.0, 0.1, "ms");
+  GetParam(kDelay)->InitDouble("Delay", 1, 0.1, 1000.0, 0.1, "ms");
   GetParam(kDelay)->SetShape(2.);
   GetParam(kBlend)->InitDouble("Blend", 100, 0., 100.0, 0.01, "%");
   GetParam(kBlend)->SetShape(1.);
