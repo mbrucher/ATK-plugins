@@ -16,13 +16,13 @@ enum EParams
   kAttack1,
   kRelease1,
   kThreshold1,
-  kSlope1,
+  kRatio1,
   kSoftness1,
   kMakeup1,
   kAttack2,
   kRelease2,
   kThreshold2,
-  kSlope2,
+  kRatio2,
   kSoftness2,
   kMakeup2,
   kNumParams
@@ -48,8 +48,8 @@ enum ELayout
   kRelease1Y = 26,
   kThreshold1X = 301,
   kThreshold1Y = 26,
-  kSlope1X = 370,
-  kSlope1Y = 26,
+  kRatio1X = 370,
+  kRatio1Y = 26,
   kSoftness1X = 439,
   kSoftness1Y = 26,
   kMakeup1X = 508,
@@ -61,8 +61,8 @@ enum ELayout
   kRelease2Y = 111,
   kThreshold2X = 301,
   kThreshold2Y = 111,
-  kSlope2X = 370,
-  kSlope2Y = 111,
+  kRatio2X = 370,
+  kRatio2Y = 111,
   kSoftness2X = 439,
   kSoftness2Y = 111,
   kMakeup2X = 508,
@@ -89,8 +89,8 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   GetParam(kRelease1)->SetShape(2.);
   GetParam(kThreshold1)->InitDouble("Threshold ch1", 0., -40., 0.0, 0.1, "dB"); // threshold is actually power
   GetParam(kThreshold1)->SetShape(2.);
-  GetParam(kSlope1)->InitDouble("Slope ch1", 2., 1, 100, 1, "-");
-  GetParam(kSlope1)->SetShape(2.);
+  GetParam(kRatio1)->InitDouble("Ratio ch1", 2., 1, 100, 1, "-");
+  GetParam(kRatio1)->SetShape(2.);
   GetParam(kSoftness1)->InitDouble("Softness ch1", -2, -4, 0, 0.1, "-");
   GetParam(kSoftness1)->SetShape(2.);
   GetParam(kMakeup1)->InitDouble("Makeup Gain ch1", 0, 0, 40, 0.1, "-"); // Makeup is expressed in amplitude
@@ -101,8 +101,8 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   GetParam(kRelease2)->SetShape(2.);
   GetParam(kThreshold2)->InitDouble("Threshold ch2", 0., -40., 0.0, 0.1, "dB"); // threshold is actually power
   GetParam(kThreshold2)->SetShape(2.);
-  GetParam(kSlope2)->InitDouble("Slope ch2", 2., 1, 100, 1, "-");
-  GetParam(kSlope2)->SetShape(2.);
+  GetParam(kRatio2)->InitDouble("Ratio ch2", 2., 1, 100, 1, "-");
+  GetParam(kRatio2)->SetShape(2.);
   GetParam(kSoftness2)->InitDouble("Softness ch2", -2, -4, 0, 0.1, "-");
   GetParam(kSoftness2)->SetShape(2.);
   GetParam(kMakeup2)->InitDouble("Makeup Gain ch2", 0, 0, 40, 0.1, "-"); // Makeup is expressed in amplitude
@@ -117,14 +117,14 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   pGraphics->AttachControl(new IKnobMultiControl(this, kAttack1X, kAttack1Y, kAttack1, &knob));
   pGraphics->AttachControl(new IKnobMultiControl(this, kRelease1X, kRelease1Y, kRelease1, &knob));
   pGraphics->AttachControl(new IKnobMultiControl(this, kThreshold1X, kThreshold1Y, kThreshold1, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kSlope1X, kSlope1Y, kSlope1, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kRatio1X, kRatio1Y, kRatio1, &knob));
   pGraphics->AttachControl(new IKnobMultiControl(this, kSoftness1X, kSoftness1Y, kSoftness1, &knob));
   pGraphics->AttachControl(new IKnobMultiControl(this, kMakeup1X, kMakeup1Y, kMakeup1, &knob));
 
   pGraphics->AttachControl(new IKnobMultiControl(this, kAttack2X, kAttack2Y, kAttack2, &knob));
   pGraphics->AttachControl(new IKnobMultiControl(this, kRelease2X, kRelease2Y, kRelease2, &knob));
   pGraphics->AttachControl(new IKnobMultiControl(this, kThreshold2X, kThreshold2Y, kThreshold2, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kSlope2X, kSlope2Y, kSlope2, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kRatio2X, kRatio2Y, kRatio2, &knob));
   pGraphics->AttachControl(new IKnobMultiControl(this, kSoftness2X, kSoftness2Y, kSoftness2, &knob));
   pGraphics->AttachControl(new IKnobMultiControl(this, kMakeup2X, kMakeup2Y, kMakeup2, &knob));
 
@@ -257,13 +257,43 @@ void ATKStereoCompressor::OnParamChange(int paramIdx)
       powerFilter2.set_input_port(0, &middlesidesplitFilter, 1);
       outLFilter.set_input_port(0, &volumemergeFilter, 0);
       outRFilter.set_input_port(0, &volumemergeFilter, 1);
+      if (GetParam(kActivateChannel1)->Bool())
+      {
+        middlesidemergeFilter.set_input_port(0, &makeupFilter1, 0);
+      }
+      else
+      {
+        middlesidemergeFilter.set_input_port(0, &middlesidesplitFilter, 0);
+      }
+      if (GetParam(kActivateChannel2)->Bool())
+      {
+        middlesidemergeFilter.set_input_port(1, &makeupFilter2, 0);
+      }
+      else
+      {
+        middlesidemergeFilter.set_input_port(1, &middlesidesplitFilter, 1);
+      }
     }
     else
     {
       powerFilter1.set_input_port(0, &inLFilter, 0);
       powerFilter2.set_input_port(0, &inRFilter, 0);
-      outLFilter.set_input_port(0, &makeupFilter1, 0);
-      outRFilter.set_input_port(0, &makeupFilter2, 0);
+      if (GetParam(kActivateChannel1)->Bool())
+      {
+        outLFilter.set_input_port(0, &makeupFilter1, 0);
+      }
+      else
+      {
+        outLFilter.set_input_port(0, &inLFilter, 0);
+      }
+      if (GetParam(kActivateChannel2)->Bool())
+      {
+        outRFilter.set_input_port(0, &makeupFilter2, 0);
+      }
+      else
+      {
+        outRFilter.set_input_port(0, &inRFilter, 0);
+      }
     }
     break;
   case kLinkChannels:
@@ -282,29 +312,61 @@ void ATKStereoCompressor::OnParamChange(int paramIdx)
   case kActivateChannel1:
     if (GetParam(kActivateChannel1)->Bool())
     {
-      outLFilter.set_input_port(0, &makeupFilter1, 0);
+      middlesidemergeFilter.set_input_port(0, &makeupFilter1, 0);
+      if (GetParam(kMiddleside)->Bool())
+      {
+        outLFilter.set_input_port(0, &volumemergeFilter, 0);
+      }
+      else
+      {
+        outLFilter.set_input_port(0, &makeupFilter1, 0);
+      }
     }
     else
     {
-      outLFilter.set_input_port(0, &inLFilter, 0);
+      middlesidemergeFilter.set_input_port(0, &middlesidesplitFilter, 0);
+      if (GetParam(kMiddleside)->Bool())
+      {
+        outLFilter.set_input_port(0, &volumemergeFilter, 0);
+      }
+      else
+      {
+        outLFilter.set_input_port(0, &inLFilter, 0);
+      }
     }
     break;
   case kActivateChannel2:
     if (GetParam(kActivateChannel2)->Bool())
     {
-      outRFilter.set_input_port(0, &makeupFilter2, 0);
+      middlesidemergeFilter.set_input_port(1, &makeupFilter2, 0);
+      if (GetParam(kMiddleside)->Bool())
+      {
+        outRFilter.set_input_port(0, &volumemergeFilter, 1);
+      }
+      else
+      {
+        outRFilter.set_input_port(0, &makeupFilter2, 0);
+      }
     }
     else
     {
-      outRFilter.set_input_port(0, &inRFilter, 0);
+      middlesidemergeFilter.set_input_port(1, &middlesidesplitFilter, 1);
+      if (GetParam(kMiddleside)->Bool())
+      {
+        outRFilter.set_input_port(0, &volumemergeFilter, 1);
+      }
+      else
+      {
+        outRFilter.set_input_port(0, &inRFilter, 0);
+      }
     }
     break;
 
   case kThreshold1:
     gainCompressorFilter1.set_threshold(std::pow(10, GetParam(kThreshold1)->Value() / 10));
     break;
-  case kSlope1:
-    gainCompressorFilter1.set_slope(GetParam(kSlope1)->Value());
+  case kRatio1:
+    gainCompressorFilter1.set_ratio(GetParam(kRatio1)->Value());
     break;
   case kSoftness1:
     gainCompressorFilter1.set_softness(std::pow(10, GetParam(kSoftness1)->Value()));
@@ -321,8 +383,8 @@ void ATKStereoCompressor::OnParamChange(int paramIdx)
   case kThreshold2:
     gainCompressorFilter2.set_threshold(std::pow(10, GetParam(kThreshold2)->Value() / 10));
     break;
-  case kSlope2:
-    gainCompressorFilter2.set_slope(GetParam(kSlope2)->Value());
+  case kRatio2:
+    gainCompressorFilter2.set_ratio(GetParam(kRatio2)->Value());
     break;
   case kSoftness2:
     gainCompressorFilter2.set_softness(std::pow(10, GetParam(kSoftness2)->Value()));
