@@ -40,8 +40,7 @@ private:
   ATK::AttackReleaseFilter<double> attackReleaseFilter2;
   ATK::GainCompressorFilter<double> gainCompressorFilter1;
   ATK::GainCompressorFilter<double> gainCompressorFilter2;
-  ATK::ApplyGainFilter<double> applyGainFilter1;
-  ATK::ApplyGainFilter<double> applyGainFilter2;
+  ATK::ApplyGainFilter<double> applyGainFilter;
   ATK::VolumeFilter<double> makeupFilter1;
   ATK::VolumeFilter<double> makeupFilter2;
 
@@ -52,6 +51,13 @@ private:
   ATK::OutPointerFilter<double> outRFilter;
 
   ATK::PipelineGlobalSinkFilter endpoint;
+
+  IKnobMultiControl* attack2;
+  IKnobMultiControl* release2;
+  IKnobMultiControl* threshold2;
+  IKnobMultiControl* ratio2;
+  IKnobMultiControl* softness2;
+  IKnobMultiControl* makeup2;
 };
 
 #endif

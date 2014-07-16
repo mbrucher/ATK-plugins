@@ -35,10 +35,11 @@ enum ELayout
 
   kMiddlesideX = 25,
   kMiddlesideY = 36,
-  kLinkChannelsX = 94,
-  kLinkChannelsY = 36,
-  kActivateChannel1X = 25,
-  kActivateChannel1Y = 121,
+  kLinkChannelsX = 25,
+  kLinkChannelsY = 121,
+
+  kActivateChannel1X = 94,
+  kActivateChannel1Y = 36,
   kActivateChannel2X = 94,
   kActivateChannel2Y = 121,
 
@@ -73,7 +74,7 @@ enum ELayout
 
 ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo),
-  inLFilter(NULL, 1, 0, false), inRFilter(NULL, 1, 0, false), volumemergeFilter(2), outLFilter(NULL, 1, 0, false), outRFilter(NULL, 1, 0, false)
+  inLFilter(NULL, 1, 0, false), inRFilter(NULL, 1, 0, false), applyGainFilter(2), volumemergeFilter(2), outLFilter(NULL, 1, 0, false), outRFilter(NULL, 1, 0, false)
 {
   TRACE;
 
@@ -121,12 +122,18 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   pGraphics->AttachControl(new IKnobMultiControl(this, kSoftness1X, kSoftness1Y, kSoftness1, &knob));
   pGraphics->AttachControl(new IKnobMultiControl(this, kMakeup1X, kMakeup1Y, kMakeup1, &knob));
 
-  pGraphics->AttachControl(new IKnobMultiControl(this, kAttack2X, kAttack2Y, kAttack2, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kRelease2X, kRelease2Y, kRelease2, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kThreshold2X, kThreshold2Y, kThreshold2, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kRatio2X, kRatio2Y, kRatio2, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kSoftness2X, kSoftness2Y, kSoftness2, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kMakeup2X, kMakeup2Y, kMakeup2, &knob));
+  attack2 = new IKnobMultiControl(this, kAttack2X, kAttack2Y, kAttack2, &knob);
+  pGraphics->AttachControl(attack2);
+  release2 = new IKnobMultiControl(this, kRelease2X, kRelease2Y, kRelease2, &knob);
+  pGraphics->AttachControl(release2);
+  threshold2 = new IKnobMultiControl(this, kThreshold2X, kThreshold2Y, kThreshold2, &knob);
+  pGraphics->AttachControl(threshold2);
+  ratio2 = new IKnobMultiControl(this, kRatio2X, kRatio2Y, kRatio2, &knob);
+  pGraphics->AttachControl(ratio2);
+  softness2 = new IKnobMultiControl(this, kSoftness2X, kSoftness2Y, kSoftness2, &knob);
+  pGraphics->AttachControl(softness2);
+  makeup2 = new IKnobMultiControl(this, kMakeup2X, kMakeup2Y, kMakeup2, &knob);
+  pGraphics->AttachControl(makeup2);
 
   pGraphics->AttachControl(new ISwitchControl(this, kMiddlesideX, kMiddlesideY, kMiddleside, &myswitch));
   pGraphics->AttachControl(new ISwitchControl(this, kLinkChannelsX, kLinkChannelsY, kLinkChannels, &myswitch));
@@ -145,17 +152,17 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   powerFilter1.set_input_port(0, &inLFilter, 0);
   gainCompressorFilter1.set_input_port(0, &powerFilter1, 0);
   attackReleaseFilter1.set_input_port(0, &gainCompressorFilter1, 0);
-  applyGainFilter1.set_input_port(0, &attackReleaseFilter1, 0);
-  applyGainFilter1.set_input_port(1, &inLFilter, 0);
-  makeupFilter1.set_input_port(0, &applyGainFilter1, 0);
+  applyGainFilter.set_input_port(0, &attackReleaseFilter1, 0);
+  applyGainFilter.set_input_port(1, &inLFilter, 0);
+  makeupFilter1.set_input_port(0, &applyGainFilter, 0);
   outLFilter.set_input_port(0, &makeupFilter1, 0);
   
   powerFilter2.set_input_port(0, &inRFilter, 0);
   gainCompressorFilter2.set_input_port(0, &powerFilter2, 0);
   attackReleaseFilter2.set_input_port(0, &gainCompressorFilter2, 0);
-  applyGainFilter2.set_input_port(0, &attackReleaseFilter2, 0);
-  applyGainFilter2.set_input_port(1, &inRFilter, 0);
-  makeupFilter2.set_input_port(0, &applyGainFilter2, 0);
+  applyGainFilter.set_input_port(2, &attackReleaseFilter2, 0);
+  applyGainFilter.set_input_port(3, &inRFilter, 0);
+  makeupFilter2.set_input_port(0, &applyGainFilter, 1);
   outRFilter.set_input_port(0, &makeupFilter2, 0);
 
   middlesidesplitFilter.set_input_port(0, &inLFilter, 0);
@@ -216,8 +223,6 @@ void ATKStereoCompressor::Reset()
     attackReleaseFilter1.set_output_sampling_rate(sampling_rate);
     gainCompressorFilter1.set_input_sampling_rate(sampling_rate);
     gainCompressorFilter1.set_output_sampling_rate(sampling_rate);
-    applyGainFilter1.set_input_sampling_rate(sampling_rate);
-    applyGainFilter1.set_output_sampling_rate(sampling_rate);
     makeupFilter1.set_input_sampling_rate(sampling_rate);
     makeupFilter1.set_output_sampling_rate(sampling_rate);
 
@@ -227,11 +232,11 @@ void ATKStereoCompressor::Reset()
     attackReleaseFilter2.set_output_sampling_rate(sampling_rate);
     gainCompressorFilter2.set_input_sampling_rate(sampling_rate);
     gainCompressorFilter2.set_output_sampling_rate(sampling_rate);
-    applyGainFilter2.set_input_sampling_rate(sampling_rate);
-    applyGainFilter2.set_output_sampling_rate(sampling_rate);
     makeupFilter2.set_input_sampling_rate(sampling_rate);
     makeupFilter2.set_output_sampling_rate(sampling_rate);
 
+    applyGainFilter.set_input_sampling_rate(sampling_rate);
+    applyGainFilter.set_output_sampling_rate(sampling_rate);
     endpoint.set_input_sampling_rate(sampling_rate);
     endpoint.set_output_sampling_rate(sampling_rate);
 
@@ -300,12 +305,28 @@ void ATKStereoCompressor::OnParamChange(int paramIdx)
     if (GetParam(kLinkChannels)->Bool())
     {
       gainCompressorFilter1.set_input_port(0, &sumFilter, 0);
-      applyGainFilter2.set_input_port(0, &attackReleaseFilter1, 0);
+      applyGainFilter.set_input_port(2, &attackReleaseFilter1, 0);
+      makeupFilter2.set_volume_db(GetParam(kMakeup1)->Value());
+
+      attack2->GrayOut(true);
+      release2->GrayOut(true);
+      threshold2->GrayOut(true);
+      ratio2->GrayOut(true);
+      softness2->GrayOut(true);
+      makeup2->GrayOut(true);
     }
     else
     {
       gainCompressorFilter1.set_input_port(0, &powerFilter1, 0);
-      applyGainFilter2.set_input_port(0, &attackReleaseFilter2, 0);
+      applyGainFilter.set_input_port(2, &attackReleaseFilter2, 0);
+      makeupFilter2.set_volume_db(GetParam(kMakeup2)->Value());
+
+      attack2->GrayOut(false);
+      release2->GrayOut(false);
+      threshold2->GrayOut(false);
+      ratio2->GrayOut(false);
+      softness2->GrayOut(false);
+      makeup2->GrayOut(false);
     }
     break;
   case kActivateChannel1:
