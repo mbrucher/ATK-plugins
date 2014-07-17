@@ -22,3 +22,12 @@ The input stage and output stage are not emulated, as they depend on previous an
 
 It uses a 32x oversampling to limit aliasing (which is why the plugin uses so much CPU).
 
+ATKCompressor
+-------------
+
+This plugin is a mono compressor, with a power gain filter (RMS computation done by an AR(1) filter with a 1ms memory), attack/release filter and then a gain compressor (threshold from -40dB to 0dB, power scale, ratio/slope from 1 to 100, softness) that drives a filter that applies the computed gain. A make-up filter is available after the compressor.
+
+ATKExpander
+-------------
+
+This plugin is a mono expander/noise gate, with a power gain filter (RMS computation done by an AR(1) filter with a 1ms memory), attack/release filter and then a gain expander (threshold from -60dB to 0dB, power scale, ratio/slope from 1 to 100, softness) that drives a filter that applies the computed gain.
