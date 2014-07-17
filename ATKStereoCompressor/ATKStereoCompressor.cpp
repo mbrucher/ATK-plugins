@@ -74,7 +74,7 @@ enum ELayout
 
 ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo),
-  inLFilter(NULL, 1, 0, false), inRFilter(NULL, 1, 0, false), applyGainFilter(2), volumemergeFilter(2), outLFilter(NULL, 1, 0, false), outRFilter(NULL, 1, 0, false)
+  inLFilter(NULL, 1, 0, false), inRFilter(NULL, 1, 0, false), volumesplitFilter(2), applyGainFilter(2), volumemergeFilter(2), outLFilter(NULL, 1, 0, false), outRFilter(NULL, 1, 0, false)
 {
   TRACE;
 
@@ -145,7 +145,8 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   //MakePreset("preset 1", ... );
   MakeDefaultPreset((char *) "-", kNumPrograms);
   
-  volumemergeFilter.set_volume(.5);
+  volumesplitFilter.set_volume(std::sqrt(.5));
+  volumemergeFilter.set_volume(std::sqrt(.5));
   endpoint.add_filter(&outLFilter);
   endpoint.add_filter(&outRFilter);
 
@@ -167,6 +168,8 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
 
   middlesidesplitFilter.set_input_port(0, &inLFilter, 0);
   middlesidesplitFilter.set_input_port(1, &inRFilter, 0);
+  volumesplitFilter.set_input_port(0, &middlesidesplitFilter, 0);
+  volumesplitFilter.set_input_port(1, &middlesidesplitFilter, 1);
   middlesidemergeFilter.set_input_port(0, &makeupFilter1, 0);
   middlesidemergeFilter.set_input_port(1, &makeupFilter2, 0);
   volumemergeFilter.set_input_port(0, &middlesidemergeFilter, 0);
@@ -210,6 +213,8 @@ void ATKStereoCompressor::Reset()
 
     middlesidesplitFilter.set_input_sampling_rate(sampling_rate);
     middlesidesplitFilter.set_output_sampling_rate(sampling_rate);
+    volumesplitFilter.set_input_sampling_rate(sampling_rate);
+    volumesplitFilter.set_output_sampling_rate(sampling_rate);
     middlesidemergeFilter.set_input_sampling_rate(sampling_rate);
     middlesidemergeFilter.set_output_sampling_rate(sampling_rate);
     volumemergeFilter.set_input_sampling_rate(sampling_rate);
@@ -258,8 +263,8 @@ void ATKStereoCompressor::OnParamChange(int paramIdx)
   case kMiddleside:
     if (GetParam(kMiddleside)->Bool())
     {
-      powerFilter1.set_input_port(0, &middlesidesplitFilter, 0);
-      powerFilter2.set_input_port(0, &middlesidesplitFilter, 1);
+      powerFilter1.set_input_port(0, &volumesplitFilter, 0);
+      powerFilter2.set_input_port(0, &volumesplitFilter, 1);
       outLFilter.set_input_port(0, &volumemergeFilter, 0);
       outRFilter.set_input_port(0, &volumemergeFilter, 1);
       if (GetParam(kActivateChannel1)->Bool())
@@ -268,7 +273,7 @@ void ATKStereoCompressor::OnParamChange(int paramIdx)
       }
       else
       {
-        middlesidemergeFilter.set_input_port(0, &middlesidesplitFilter, 0);
+        middlesidemergeFilter.set_input_port(0, &volumesplitFilter, 0);
       }
       if (GetParam(kActivateChannel2)->Bool())
       {
@@ -276,7 +281,7 @@ void ATKStereoCompressor::OnParamChange(int paramIdx)
       }
       else
       {
-        middlesidemergeFilter.set_input_port(1, &middlesidesplitFilter, 1);
+        middlesidemergeFilter.set_input_port(1, &volumesplitFilter, 1);
       }
     }
     else
@@ -344,7 +349,7 @@ void ATKStereoCompressor::OnParamChange(int paramIdx)
     }
     else
     {
-      middlesidemergeFilter.set_input_port(0, &middlesidesplitFilter, 0);
+      middlesidemergeFilter.set_input_port(0, &volumesplitFilter, 0);
       if (GetParam(kMiddleside)->Bool())
       {
         outLFilter.set_input_port(0, &volumemergeFilter, 0);
@@ -370,7 +375,7 @@ void ATKStereoCompressor::OnParamChange(int paramIdx)
     }
     else
     {
-      middlesidemergeFilter.set_input_port(1, &middlesidesplitFilter, 1);
+      middlesidemergeFilter.set_input_port(1, &volumesplitFilter, 1);
       if (GetParam(kMiddleside)->Bool())
       {
         outRFilter.set_input_port(0, &volumemergeFilter, 1);

@@ -31,6 +31,7 @@ private:
   ATK::InPointerFilter<double> inRFilter;
 
   ATK::MiddleSideFilter<double> middlesidesplitFilter;
+  ATK::VolumeFilter<double> volumesplitFilter;
 
   ATK::PowerFilter<double> powerFilter1;
   ATK::PowerFilter<double> powerFilter2;
