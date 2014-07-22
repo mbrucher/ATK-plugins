@@ -32,6 +32,10 @@
 		083717D21953849800339823 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989752195376D8001783AC /* Background.png */; };
 		083717D51953849E00339823 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989752195376D8001783AC /* Background.png */; };
 		083717D8195384A600339823 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989752195376D8001783AC /* Background.png */; };
+		087E0D17197EC9130094AAF7 /* Switch.png in Resources */ = {isa = PBXBuildFile; fileRef = 087E0D16197EC9130094AAF7 /* Switch.png */; };
+		087E0D18197EC9130094AAF7 /* Switch.png in Resources */ = {isa = PBXBuildFile; fileRef = 087E0D16197EC9130094AAF7 /* Switch.png */; };
+		087E0D19197EC9130094AAF7 /* Switch.png in Resources */ = {isa = PBXBuildFile; fileRef = 087E0D16197EC9130094AAF7 /* Switch.png */; };
+		087E0D1A197EC9130094AAF7 /* Switch.png in Resources */ = {isa = PBXBuildFile; fileRef = 087E0D16197EC9130094AAF7 /* Switch.png */; };
 		08861E78195F618100EDF23D /* lib32ATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08861E76195F618100EDF23D /* lib32ATKDelay_static.a */; };
 		08861E79195F618100EDF23D /* lib32ATKDynamic_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08861E77195F618100EDF23D /* lib32ATKDynamic_static.a */; };
 		08861E81195F618E00EDF23D /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08861E7F195F618E00EDF23D /* libATKDelay_static.a */; };
@@ -421,6 +425,7 @@
 
 /* Begin PBXFileReference section */
 		0832E8C3196361E8003E2E9A /* KNB02uni43.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KNB02uni43.png; path = resources/img/KNB02uni43.png; sourceTree = "<group>"; };
+		087E0D16197EC9130094AAF7 /* Switch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Switch.png; path = resources/img/Switch.png; sourceTree = "<group>"; };
 		08861E76195F618100EDF23D /* lib32ATKDelay_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib32ATKDelay_static.a; path = ../../../ATK32/lib/lib32ATKDelay_static.a; sourceTree = "<group>"; };
 		08861E77195F618100EDF23D /* lib32ATKDynamic_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib32ATKDynamic_static.a; path = ../../../ATK32/lib/lib32ATKDynamic_static.a; sourceTree = "<group>"; };
 		08861E7F195F618E00EDF23D /* libATKDelay_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDelay_static.a; path = ../../../ATK64/lib/libATKDelay_static.a; sourceTree = "<group>"; };
@@ -1309,6 +1314,7 @@
 		4FD16A0213B6303B001D0217 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				087E0D16197EC9130094AAF7 /* Switch.png */,
 				0832E8C3196361E8003E2E9A /* KNB02uni43.png */,
 				08989752195376D8001783AC /* Background.png */,
 			);
@@ -1677,6 +1683,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				087E0D18197EC9130094AAF7 /* Switch.png in Resources */,
 				083717D8195384A600339823 /* Background.png in Resources */,
 				0832E8C5196361E8003E2E9A /* KNB02uni43.png in Resources */,
 			);
@@ -1686,6 +1693,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				087E0D1A197EC9130094AAF7 /* Switch.png in Resources */,
 				083717D21953849800339823 /* Background.png in Resources */,
 				0832E8C7196361E8003E2E9A /* KNB02uni43.png in Resources */,
 			);
@@ -1695,6 +1703,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				087E0D19197EC9130094AAF7 /* Switch.png in Resources */,
 				083717D51953849E00339823 /* Background.png in Resources */,
 				0832E8C6196361E8003E2E9A /* KNB02uni43.png in Resources */,
 			);
@@ -1707,6 +1716,7 @@
 				083717CA1953848B00339823 /* Background.png in Resources */,
 				4F78D88613B6382B0032E0F3 /* ATKStereoCompressor.icns in Resources */,
 				4F78D89913B639100032E0F3 /* InfoPlist.strings in Resources */,
+				087E0D17197EC9130094AAF7 /* Switch.png in Resources */,
 				0832E8C4196361E8003E2E9A /* KNB02uni43.png in Resources */,
 				4F78D89A13B639100032E0F3 /* MainMenu.xib in Resources */,
 			);
