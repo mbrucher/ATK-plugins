@@ -267,6 +267,8 @@ void ATKStereoCompressor::OnParamChange(int paramIdx)
       powerFilter2.set_input_port(0, &volumesplitFilter, 1);
       outLFilter.set_input_port(0, &volumemergeFilter, 0);
       outRFilter.set_input_port(0, &volumemergeFilter, 1);
+      applyGainFilter.set_input_port(1, &volumesplitFilter, 0);
+      applyGainFilter.set_input_port(3, &volumesplitFilter, 1);
       if (GetParam(kActivateChannel1)->Bool())
       {
         middlesidemergeFilter.set_input_port(0, &makeupFilter1, 0);
@@ -288,6 +290,8 @@ void ATKStereoCompressor::OnParamChange(int paramIdx)
     {
       powerFilter1.set_input_port(0, &inLFilter, 0);
       powerFilter2.set_input_port(0, &inRFilter, 0);
+      applyGainFilter.set_input_port(1, &inLFilter, 0);
+      applyGainFilter.set_input_port(3, &inRFilter, 0);
       if (GetParam(kActivateChannel1)->Bool())
       {
         outLFilter.set_input_port(0, &makeupFilter1, 0);

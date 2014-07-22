@@ -523,7 +523,6 @@
 		4F4AD03D140996A10068A6D4 /* vstpshpack4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vstpshpack4.h; sourceTree = "<group>"; };
 		4F4AD03E140996A10068A6D4 /* vsttypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vsttypes.h; sourceTree = "<group>"; };
 		4F4AD1F11409A56A0068A6D4 /* base.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = base.xcodeproj; path = ../../VST3_SDK/base/mac/base.xcodeproj; sourceTree = SOURCE_ROOT; };
-		4F4CC3811549B8A700A9EA21 /* ATKStereoCompressor-AAX-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "ATKStereoCompressor-AAX-Info.plist"; path = "resources/ATKStereoCompressor-AAX-Info.plist"; sourceTree = "<group>"; };
 		4F4CC38A1549B91100A9EA21 /* AAX_Exports.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AAX_Exports.cpp; path = ../../AAX_SDK/Interfaces/AAX_Exports.cpp; sourceTree = SOURCE_ROOT; };
 		4F4CC38C1549B92900A9EA21 /* CommonDebugSettings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CommonDebugSettings.xcconfig; path = ../../AAX_SDK/ExamplePlugIns/Common/Mac/CommonDebugSettings.xcconfig; sourceTree = SOURCE_ROOT; };
 		4F4CC38D1549B92900A9EA21 /* CommonReleaseSettings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CommonReleaseSettings.xcconfig; path = ../../AAX_SDK/ExamplePlugIns/Common/Mac/CommonReleaseSettings.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -584,7 +583,6 @@
 		4F78DB5F13B6462B0032E0F3 /* ATKStereoCompressor.component */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ATKStereoCompressor.component; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F79A34C146304CD00744AED /* IPlugProcessAS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IPlugProcessAS.cpp; path = ../../WDL/IPlug/RTAS/IPlugProcessAS.cpp; sourceTree = "<group>"; };
 		4F79A34D146304CD00744AED /* IPlugProcessAS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPlugProcessAS.h; path = ../../WDL/IPlug/RTAS/IPlugProcessAS.h; sourceTree = "<group>"; };
-		4F7F5C0C13E95DDC002918FD /* ATKStereoCompressor-RTAS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "ATKStereoCompressor-RTAS-Info.plist"; path = "resources/ATKStereoCompressor-RTAS-Info.plist"; sourceTree = "<group>"; };
 		4F7F5C6F13E95FB2002918FD /* IPlugRTAS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IPlugRTAS.cpp; path = ../../WDL/IPlug/IPlugRTAS.cpp; sourceTree = SOURCE_ROOT; };
 		4F7F5C7013E95FB2002918FD /* IPlugRTAS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPlugRTAS.h; path = ../../WDL/IPlug/IPlugRTAS.h; sourceTree = SOURCE_ROOT; };
 		4F7F5C9B13E9607A002918FD /* digicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = digicode.h; path = ../../WDL/IPlug/RTAS/digicode.h; sourceTree = "<group>"; };
@@ -821,8 +819,6 @@
 				4F23BA1513B647E50097A67E /* ATKStereoCompressor-VST2-Info.plist */,
 				4F3E693A1409747300C4D749 /* ATKStereoCompressor-VST3-Info.plist */,
 				4F23BA1313B647E50097A67E /* ATKStereoCompressor-AU-Info.plist */,
-				4F7F5C0C13E95DDC002918FD /* ATKStereoCompressor-RTAS-Info.plist */,
-				4F4CC3811549B8A700A9EA21 /* ATKStereoCompressor-AAX-Info.plist */,
 				4FD290A8137C34D700CEBE7E /* ATKStereoCompressor.icns */,
 			);
 			name = Resources;
