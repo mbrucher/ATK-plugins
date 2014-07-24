@@ -21,7 +21,7 @@
 
 // http://service.steinberg.de/databases/plugin.nsf/plugIn?openForm
 // 4 chars, single quotes. At least one capital letter
-#define PLUG_UNIQUE_ID '6m9f'
+#define PLUG_UNIQUE_ID 'koo2'
 // make sure this is not the same as BUNDLE_MFR
 #define PLUG_MFR_ID 'MatB'
 
