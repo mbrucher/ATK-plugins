@@ -1,3 +1,6 @@
+
+#include <string>
+
 class ITestPopupMenu : public IControl
 {
 private:
@@ -296,10 +299,11 @@ class IKnobMultiControlText : public IKnobControl
 private:
   IRECT mTextRECT, mImgRECT;
   IBitmap mBitmap;
+  std::string mEnd;
 
 public:
-  IKnobMultiControlText(IPlugBase* pPlug, IRECT pR, int paramIdx, IBitmap* pBitmap, IText* pText)
-    : IKnobControl(pPlug, pR, paramIdx), mBitmap(*pBitmap)
+  IKnobMultiControlText(IPlugBase* pPlug, IRECT pR, int paramIdx, IBitmap* pBitmap, IText* pText, const std::string& end)
+    : IKnobControl(pPlug, pR, paramIdx), mBitmap(*pBitmap), mEnd(end)
   {
     mText = *pText;
     mTextRECT = IRECT(mRECT.L, mRECT.B-20, mRECT.R, mRECT.B);
@@ -318,10 +322,15 @@ public:
 
     char disp[20];
     mPlug->GetParam(mParamIdx)->GetDisplayForHost(disp);
+    std::string final = disp;
+    if(!mEnd.empty())
+    {
+      final += " " + mEnd;
+    }
 
     if (CSTR_NOT_EMPTY(disp))
     {
-      return pGraphics->DrawIText(&mText, disp, &mTextRECT);
+      return pGraphics->DrawIText(&mText, const_cast<char*>(final.c_str()), &mTextRECT);
     }
     return true;
   }
