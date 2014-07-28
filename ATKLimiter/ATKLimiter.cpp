@@ -4,6 +4,7 @@
 #include "IPlug_include_in_plug_src.h"
 #include "IControl.h"
 #include "resource.h"
+#include "controls.h"
 
 const int kNumPrograms = 1;
 
@@ -23,15 +24,15 @@ enum ELayout
   kHeight = GUI_HEIGHT,
 
   kAttackX = 25,
-  kAttackY = 31,
+  kAttackY = 26,
   kReleaseX = 94,
-  kReleaseY = 31,
+  kReleaseY = 26,
   kThresholdX = 163,
-  kThresholdY = 31,
+  kThresholdY = 26,
   kSoftnessX = 232,
-  kSoftnessY = 31,
+  kSoftnessY = 26,
   kMakeupX = 301,
-  kMakeupY = 31,
+  kMakeupY = 26,
   kKnobFrames = 43
 };
 
@@ -57,12 +58,13 @@ ATKLimiter::ATKLimiter(IPlugInstanceInfo instanceInfo)
   pGraphics->AttachBackground(COMPRESSOR_ID, COMPRESSOR_FN);
 
   IBitmap knob = pGraphics->LoadIBitmap(KNOB_ID, KNOB_FN, kKnobFrames);
-
-  pGraphics->AttachControl(new IKnobMultiControl(this, kAttackX, kAttackY, kAttack, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kReleaseX, kReleaseY, kRelease, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kThresholdX, kThresholdY, kThreshold, &knob));
+  IText text = IText(10, 0, 0, IText::kStyleBold);
+  
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kAttackX, kAttackY, kAttackX + 43, kAttackY + 43 + 21), kAttack, &knob, &text, "ms"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kReleaseX, kReleaseY, kReleaseX + 43, kReleaseY + 43 + 21), kRelease, &knob, &text, "ms"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kThresholdX, kThresholdY, kThresholdX + 43, kThresholdY + 43 + 21), kThreshold, &knob, &text, "dB"));
   pGraphics->AttachControl(new IKnobMultiControl(this, kSoftnessX, kSoftnessY, kSoftness, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kMakeupX, kMakeupY, kMakeup, &knob));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kMakeupX, kMakeupY, kMakeupX + 43, kMakeupY + 43 + 21), kMakeup, &knob, &text, "dB"));
 
   AttachGraphics(pGraphics);
 
