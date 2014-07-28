@@ -2,6 +2,7 @@
 #define __ATKStereoCompressor__
 
 #include "IPlug_include_in_plug_hdr.h"
+#include "controls.h"
 
 #include <ATK/Core/InPointerFilter.h>
 #include <ATK/Core/OutPointerFilter.h>
@@ -53,12 +54,12 @@ private:
 
   ATK::PipelineGlobalSinkFilter endpoint;
 
-  IKnobMultiControl* attack2;
-  IKnobMultiControl* release2;
-  IKnobMultiControl* threshold2;
+  IKnobMultiControlText* attack2;
+  IKnobMultiControlText* release2;
+  IKnobMultiControlText* threshold2;
   IKnobMultiControl* ratio2;
   IKnobMultiControl* softness2;
-  IKnobMultiControl* makeup2;
+  IKnobMultiControlText* makeup2;
 };
 
 #endif

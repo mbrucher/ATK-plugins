@@ -3,6 +3,7 @@
 #include "ATKStereoCompressor.h"
 #include "IPlug_include_in_plug_src.h"
 #include "IControl.h"
+#include "controls.h"
 #include "resource.h"
 
 const int kNumPrograms = 1;
@@ -114,25 +115,25 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
 
   IBitmap knob = pGraphics->LoadIBitmap(KNOB_ID, KNOB_FN, kKnobFrames);
   IBitmap myswitch = pGraphics->LoadIBitmap(SWITCH_ID, SWITCH_FN, 2);
-
-  pGraphics->AttachControl(new IKnobMultiControl(this, kAttack1X, kAttack1Y, kAttack1, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kRelease1X, kRelease1Y, kRelease1, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kThreshold1X, kThreshold1Y, kThreshold1, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kRatio1X, kRatio1Y, kRatio1, &knob));
+  IText text = IText(10, 0, 0, IText::kStyleBold);
+  
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kAttack1X, kAttack1Y, kAttack1X + 43, kAttack1Y + 43 + 21), kAttack1, &knob, &text, "ms"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kRelease1X, kRelease1Y, kRelease1X + 43, kRelease1Y + 43 + 21), kRelease1, &knob, &text, "ms"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kThreshold1X, kThreshold1Y, kThreshold1X + 43, kThreshold1Y + 43 + 21), kThreshold1, &knob, &text, "dB"));
   pGraphics->AttachControl(new IKnobMultiControl(this, kSoftness1X, kSoftness1Y, kSoftness1, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kMakeup1X, kMakeup1Y, kMakeup1, &knob));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kMakeup1X, kMakeup1Y, kMakeup1X + 43, kMakeup1Y + 43 + 21), kMakeup1, &knob, &text, "dB"));
 
-  attack2 = new IKnobMultiControl(this, kAttack2X, kAttack2Y, kAttack2, &knob);
+  attack2 = new IKnobMultiControlText(this, IRECT(kAttack2X, kAttack2Y, kAttack2X + 43, kAttack2Y + 43 + 21), kAttack2, &knob, &text, "ms");
   pGraphics->AttachControl(attack2);
-  release2 = new IKnobMultiControl(this, kRelease2X, kRelease2Y, kRelease2, &knob);
+  release2 = new IKnobMultiControlText(this, IRECT(kRelease2X, kRelease2Y, kRelease2X + 43, kRelease2Y + 43 + 21), kRelease2, &knob, &text, "ms");
   pGraphics->AttachControl(release2);
-  threshold2 = new IKnobMultiControl(this, kThreshold2X, kThreshold2Y, kThreshold2, &knob);
+  threshold2 = new IKnobMultiControlText(this, IRECT(kThreshold2X, kThreshold2Y, kThreshold2X + 43, kThreshold2Y + 43 + 21), kThreshold2, &knob, &text, "dB");
   pGraphics->AttachControl(threshold2);
   ratio2 = new IKnobMultiControl(this, kRatio2X, kRatio2Y, kRatio2, &knob);
   pGraphics->AttachControl(ratio2);
   softness2 = new IKnobMultiControl(this, kSoftness2X, kSoftness2Y, kSoftness2, &knob);
   pGraphics->AttachControl(softness2);
-  makeup2 = new IKnobMultiControl(this, kMakeup2X, kMakeup2Y, kMakeup2, &knob);
+  makeup2 = new IKnobMultiControlText(this, IRECT(kMakeup2X, kMakeup2Y, kMakeup2X + 43, kMakeup2Y + 43 + 21), kMakeup2, &knob, &text, "dB");
   pGraphics->AttachControl(makeup2);
 
   pGraphics->AttachControl(new ISwitchControl(this, kMiddlesideX, kMiddlesideY, kMiddleside, &myswitch));
