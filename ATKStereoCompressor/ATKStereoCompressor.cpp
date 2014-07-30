@@ -26,6 +26,7 @@ enum EParams
   kRatio2,
   kSoftness2,
   kMakeup2,
+  kDryWet,
   kNumParams
 };
 
@@ -70,12 +71,15 @@ enum ELayout
   kMakeup2X = 508,
   kMakeup2Y = 111,
 
+  kDryWetX = 577,
+  kDryWetY = 68,
+
   kKnobFrames = 43
 };
 
 ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo),
-  inLFilter(NULL, 1, 0, false), inRFilter(NULL, 1, 0, false), volumesplitFilter(2), applyGainFilter(2), volumemergeFilter(2), outLFilter(NULL, 1, 0, false), outRFilter(NULL, 1, 0, false)
+  inLFilter(NULL, 1, 0, false), inRFilter(NULL, 1, 0, false), volumesplitFilter(2), applyGainFilter(2), volumemergeFilter(2), drywetFilter(2), outLFilter(NULL, 1, 0, false), outRFilter(NULL, 1, 0, false)
 {
   TRACE;
 
@@ -109,11 +113,14 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   GetParam(kSoftness2)->SetShape(2.);
   GetParam(kMakeup2)->InitDouble("Makeup Gain ch2", 0, 0, 40, 0.1, "-"); // Makeup is expressed in amplitude
   GetParam(kMakeup2)->SetShape(2.);
+  GetParam(kDryWet)->InitDouble("Dry/Wet", 1, 0, 1, 0.01, "-");
+  GetParam(kDryWet)->SetShape(1.);
 
   IGraphics* pGraphics = MakeGraphics(this, kWidth, kHeight);
   pGraphics->AttachBackground(STEREO_COMPRESSOR_ID, STEREO_COMPRESSOR_FN);
 
   IBitmap knob = pGraphics->LoadIBitmap(KNOB_ID, KNOB_FN, kKnobFrames);
+  IBitmap knob1 = pGraphics->LoadIBitmap(KNOB1_ID, KNOB1_FN, kKnobFrames);
   IBitmap myswitch = pGraphics->LoadIBitmap(SWITCH_ID, SWITCH_FN, 2);
   IText text = IText(10, 0, 0, IText::kStyleBold);
   
@@ -136,6 +143,8 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   makeup2 = new IKnobMultiControlText(this, IRECT(kMakeup2X, kMakeup2Y, kMakeup2X + 43, kMakeup2Y + 43 + 21), kMakeup2, &knob, &text, "dB");
   pGraphics->AttachControl(makeup2);
 
+  pGraphics->AttachControl(new IKnobMultiControl(this, kDryWetX, kDryWetY, kDryWet, &knob1));
+
   pGraphics->AttachControl(new ISwitchControl(this, kMiddlesideX, kMiddlesideY, kMiddleside, &myswitch));
   pGraphics->AttachControl(new ISwitchControl(this, kLinkChannelsX, kLinkChannelsY, kLinkChannels, &myswitch));
   pGraphics->AttachControl(new ISwitchControl(this, kActivateChannel1X, kActivateChannel1Y, kActivateChannel1, &myswitch));
@@ -157,7 +166,9 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   applyGainFilter.set_input_port(0, &attackReleaseFilter1, 0);
   applyGainFilter.set_input_port(1, &inLFilter, 0);
   makeupFilter1.set_input_port(0, &applyGainFilter, 0);
-  outLFilter.set_input_port(0, &makeupFilter1, 0);
+  drywetFilter.set_input_port(0, &makeupFilter1, 0);
+  drywetFilter.set_input_port(1, &inLFilter, 0);
+  outLFilter.set_input_port(0, &drywetFilter, 0);
   
   powerFilter2.set_input_port(0, &inRFilter, 0);
   gainCompressorFilter2.set_input_port(0, &powerFilter2, 0);
@@ -165,7 +176,9 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   applyGainFilter.set_input_port(2, &attackReleaseFilter2, 0);
   applyGainFilter.set_input_port(3, &inRFilter, 0);
   makeupFilter2.set_input_port(0, &applyGainFilter, 1);
-  outRFilter.set_input_port(0, &makeupFilter2, 0);
+  drywetFilter.set_input_port(2, &makeupFilter2, 0);
+  drywetFilter.set_input_port(3, &inRFilter, 0);
+  outRFilter.set_input_port(0, &drywetFilter, 1);
 
   middlesidesplitFilter.set_input_port(0, &inLFilter, 0);
   middlesidesplitFilter.set_input_port(1, &inRFilter, 0);
@@ -243,6 +256,8 @@ void ATKStereoCompressor::Reset()
 
     applyGainFilter.set_input_sampling_rate(sampling_rate);
     applyGainFilter.set_output_sampling_rate(sampling_rate);
+    drywetFilter.set_input_sampling_rate(sampling_rate);
+    drywetFilter.set_output_sampling_rate(sampling_rate);
     endpoint.set_input_sampling_rate(sampling_rate);
     endpoint.set_output_sampling_rate(sampling_rate);
 
@@ -261,173 +276,176 @@ void ATKStereoCompressor::OnParamChange(int paramIdx)
 
   switch (paramIdx)
   {
-  case kMiddleside:
-    if (GetParam(kMiddleside)->Bool())
-    {
-      powerFilter1.set_input_port(0, &volumesplitFilter, 0);
-      powerFilter2.set_input_port(0, &volumesplitFilter, 1);
-      outLFilter.set_input_port(0, &volumemergeFilter, 0);
-      outRFilter.set_input_port(0, &volumemergeFilter, 1);
-      applyGainFilter.set_input_port(1, &volumesplitFilter, 0);
-      applyGainFilter.set_input_port(3, &volumesplitFilter, 1);
+    case kMiddleside:
+      if (GetParam(kMiddleside)->Bool())
+      {
+        powerFilter1.set_input_port(0, &volumesplitFilter, 0);
+        powerFilter2.set_input_port(0, &volumesplitFilter, 1);
+        drywetFilter.set_input_port(0, &volumemergeFilter, 0);
+        drywetFilter.set_input_port(2, &volumemergeFilter, 1);
+        applyGainFilter.set_input_port(1, &volumesplitFilter, 0);
+        applyGainFilter.set_input_port(3, &volumesplitFilter, 1);
+        if (GetParam(kActivateChannel1)->Bool())
+        {
+          middlesidemergeFilter.set_input_port(0, &makeupFilter1, 0);
+        }
+        else
+        {
+          middlesidemergeFilter.set_input_port(0, &volumesplitFilter, 0);
+        }
+        if (GetParam(kActivateChannel2)->Bool())
+        {
+          middlesidemergeFilter.set_input_port(1, &makeupFilter2, 0);
+        }
+        else
+        {
+          middlesidemergeFilter.set_input_port(1, &volumesplitFilter, 1);
+        }
+      }
+      else
+      {
+        powerFilter1.set_input_port(0, &inLFilter, 0);
+        powerFilter2.set_input_port(0, &inRFilter, 0);
+        applyGainFilter.set_input_port(1, &inLFilter, 0);
+        applyGainFilter.set_input_port(3, &inRFilter, 0);
+        if (GetParam(kActivateChannel1)->Bool())
+        {
+          drywetFilter.set_input_port(0, &makeupFilter1, 0);
+        }
+        else
+        {
+          drywetFilter.set_input_port(0, &inLFilter, 0);
+        }
+        if (GetParam(kActivateChannel2)->Bool())
+        {
+          drywetFilter.set_input_port(2, &makeupFilter2, 0);
+        }
+        else
+        {
+          drywetFilter.set_input_port(2, &inRFilter, 0);
+        }
+      }
+      break;
+    case kLinkChannels:
+      if (GetParam(kLinkChannels)->Bool())
+      {
+        gainCompressorFilter1.set_input_port(0, &sumFilter, 0);
+        applyGainFilter.set_input_port(2, &attackReleaseFilter1, 0);
+        makeupFilter2.set_volume_db(GetParam(kMakeup1)->Value());
+        
+        attack2->GrayOut(true);
+        release2->GrayOut(true);
+        threshold2->GrayOut(true);
+        ratio2->GrayOut(true);
+        softness2->GrayOut(true);
+        makeup2->GrayOut(true);
+      }
+      else
+      {
+        gainCompressorFilter1.set_input_port(0, &powerFilter1, 0);
+        applyGainFilter.set_input_port(2, &attackReleaseFilter2, 0);
+        makeupFilter2.set_volume_db(GetParam(kMakeup2)->Value());
+        
+        attack2->GrayOut(false);
+        release2->GrayOut(false);
+        threshold2->GrayOut(false);
+        ratio2->GrayOut(false);
+        softness2->GrayOut(false);
+        makeup2->GrayOut(false);
+      }
+      break;
+    case kActivateChannel1:
       if (GetParam(kActivateChannel1)->Bool())
       {
         middlesidemergeFilter.set_input_port(0, &makeupFilter1, 0);
+        if (GetParam(kMiddleside)->Bool())
+        {
+          drywetFilter.set_input_port(0, &volumemergeFilter, 0);
+        }
+        else
+        {
+          drywetFilter.set_input_port(0, &makeupFilter1, 0);
+        }
       }
       else
       {
         middlesidemergeFilter.set_input_port(0, &volumesplitFilter, 0);
+        if (GetParam(kMiddleside)->Bool())
+        {
+          drywetFilter.set_input_port(0, &volumemergeFilter, 0);
+        }
+        else
+        {
+          drywetFilter.set_input_port(0, &inLFilter, 0);
+        }
       }
+      break;
+    case kActivateChannel2:
       if (GetParam(kActivateChannel2)->Bool())
       {
         middlesidemergeFilter.set_input_port(1, &makeupFilter2, 0);
+        if (GetParam(kMiddleside)->Bool())
+        {
+          drywetFilter.set_input_port(2, &volumemergeFilter, 1);
+        }
+        else
+        {
+          drywetFilter.set_input_port(2, &makeupFilter2, 0);
+        }
       }
       else
       {
         middlesidemergeFilter.set_input_port(1, &volumesplitFilter, 1);
+        if (GetParam(kMiddleside)->Bool())
+        {
+          drywetFilter.set_input_port(2, &volumemergeFilter, 1);
+        }
+        else
+        {
+          drywetFilter.set_input_port(2, &inRFilter, 0);
+        }
       }
-    }
-    else
-    {
-      powerFilter1.set_input_port(0, &inLFilter, 0);
-      powerFilter2.set_input_port(0, &inRFilter, 0);
-      applyGainFilter.set_input_port(1, &inLFilter, 0);
-      applyGainFilter.set_input_port(3, &inRFilter, 0);
-      if (GetParam(kActivateChannel1)->Bool())
-      {
-        outLFilter.set_input_port(0, &makeupFilter1, 0);
-      }
-      else
-      {
-        outLFilter.set_input_port(0, &inLFilter, 0);
-      }
-      if (GetParam(kActivateChannel2)->Bool())
-      {
-        outRFilter.set_input_port(0, &makeupFilter2, 0);
-      }
-      else
-      {
-        outRFilter.set_input_port(0, &inRFilter, 0);
-      }
-    }
-    break;
-  case kLinkChannels:
-    if (GetParam(kLinkChannels)->Bool())
-    {
-      gainCompressorFilter1.set_input_port(0, &sumFilter, 0);
-      applyGainFilter.set_input_port(2, &attackReleaseFilter1, 0);
-      makeupFilter2.set_volume_db(GetParam(kMakeup1)->Value());
-
-      attack2->GrayOut(true);
-      release2->GrayOut(true);
-      threshold2->GrayOut(true);
-      ratio2->GrayOut(true);
-      softness2->GrayOut(true);
-      makeup2->GrayOut(true);
-    }
-    else
-    {
-      gainCompressorFilter1.set_input_port(0, &powerFilter1, 0);
-      applyGainFilter.set_input_port(2, &attackReleaseFilter2, 0);
+      break;
+      
+    case kThreshold1:
+      gainCompressorFilter1.set_threshold(std::pow(10, GetParam(kThreshold1)->Value() / 10));
+      break;
+    case kRatio1:
+      gainCompressorFilter1.set_ratio(GetParam(kRatio1)->Value());
+      break;
+    case kSoftness1:
+      gainCompressorFilter1.set_softness(std::pow(10, GetParam(kSoftness1)->Value()));
+      break;
+    case kAttack1:
+      attackReleaseFilter1.set_release(std::exp(-1 / (GetParam(kAttack1)->Value() * 1e-3 * GetSampleRate()))); // in ms
+      break;
+    case kRelease1:
+      attackReleaseFilter1.set_attack(std::exp(-1 / (GetParam(kRelease1)->Value() * 1e-3 * GetSampleRate()))); // in ms
+      break;
+    case kMakeup1:
+      makeupFilter1.set_volume_db(GetParam(kMakeup1)->Value());
+      break;
+    case kThreshold2:
+      gainCompressorFilter2.set_threshold(std::pow(10, GetParam(kThreshold2)->Value() / 10));
+      break;
+    case kRatio2:
+      gainCompressorFilter2.set_ratio(GetParam(kRatio2)->Value());
+      break;
+    case kSoftness2:
+      gainCompressorFilter2.set_softness(std::pow(10, GetParam(kSoftness2)->Value()));
+      break;
+    case kAttack2:
+      attackReleaseFilter2.set_release(std::exp(-1 / (GetParam(kAttack2)->Value() * 1e-3 * GetSampleRate()))); // in ms
+      break;
+    case kRelease2:
+      attackReleaseFilter2.set_attack(std::exp(-1 / (GetParam(kRelease2)->Value() * 1e-3 * GetSampleRate()))); // in ms
+      break;
+    case kMakeup2:
       makeupFilter2.set_volume_db(GetParam(kMakeup2)->Value());
-
-      attack2->GrayOut(false);
-      release2->GrayOut(false);
-      threshold2->GrayOut(false);
-      ratio2->GrayOut(false);
-      softness2->GrayOut(false);
-      makeup2->GrayOut(false);
-    }
-    break;
-  case kActivateChannel1:
-    if (GetParam(kActivateChannel1)->Bool())
-    {
-      middlesidemergeFilter.set_input_port(0, &makeupFilter1, 0);
-      if (GetParam(kMiddleside)->Bool())
-      {
-        outLFilter.set_input_port(0, &volumemergeFilter, 0);
-      }
-      else
-      {
-        outLFilter.set_input_port(0, &makeupFilter1, 0);
-      }
-    }
-    else
-    {
-      middlesidemergeFilter.set_input_port(0, &volumesplitFilter, 0);
-      if (GetParam(kMiddleside)->Bool())
-      {
-        outLFilter.set_input_port(0, &volumemergeFilter, 0);
-      }
-      else
-      {
-        outLFilter.set_input_port(0, &inLFilter, 0);
-      }
-    }
-    break;
-  case kActivateChannel2:
-    if (GetParam(kActivateChannel2)->Bool())
-    {
-      middlesidemergeFilter.set_input_port(1, &makeupFilter2, 0);
-      if (GetParam(kMiddleside)->Bool())
-      {
-        outRFilter.set_input_port(0, &volumemergeFilter, 1);
-      }
-      else
-      {
-        outRFilter.set_input_port(0, &makeupFilter2, 0);
-      }
-    }
-    else
-    {
-      middlesidemergeFilter.set_input_port(1, &volumesplitFilter, 1);
-      if (GetParam(kMiddleside)->Bool())
-      {
-        outRFilter.set_input_port(0, &volumemergeFilter, 1);
-      }
-      else
-      {
-        outRFilter.set_input_port(0, &inRFilter, 0);
-      }
-    }
-    break;
-
-  case kThreshold1:
-    gainCompressorFilter1.set_threshold(std::pow(10, GetParam(kThreshold1)->Value() / 10));
-    break;
-  case kRatio1:
-    gainCompressorFilter1.set_ratio(GetParam(kRatio1)->Value());
-    break;
-  case kSoftness1:
-    gainCompressorFilter1.set_softness(std::pow(10, GetParam(kSoftness1)->Value()));
-    break;
-  case kAttack1:
-    attackReleaseFilter1.set_release(std::exp(-1 / (GetParam(kAttack1)->Value() * 1e-3 * GetSampleRate()))); // in ms
-    break;
-  case kRelease1:
-    attackReleaseFilter1.set_attack(std::exp(-1 / (GetParam(kRelease1)->Value() * 1e-3 * GetSampleRate()))); // in ms
-    break;
-  case kMakeup1:
-    makeupFilter1.set_volume_db(GetParam(kMakeup1)->Value());
-    break;
-  case kThreshold2:
-    gainCompressorFilter2.set_threshold(std::pow(10, GetParam(kThreshold2)->Value() / 10));
-    break;
-  case kRatio2:
-    gainCompressorFilter2.set_ratio(GetParam(kRatio2)->Value());
-    break;
-  case kSoftness2:
-    gainCompressorFilter2.set_softness(std::pow(10, GetParam(kSoftness2)->Value()));
-    break;
-  case kAttack2:
-    attackReleaseFilter2.set_release(std::exp(-1 / (GetParam(kAttack2)->Value() * 1e-3 * GetSampleRate()))); // in ms
-    break;
-  case kRelease2:
-    attackReleaseFilter2.set_attack(std::exp(-1 / (GetParam(kRelease2)->Value() * 1e-3 * GetSampleRate()))); // in ms
-    break;
-  case kMakeup2:
-    makeupFilter2.set_volume_db(GetParam(kMakeup2)->Value());
-    break;
+      break;
+    case kDryWet:
+      drywetFilter.set_dry(1 - GetParam(kDryWet)->Value());
+      break;
 
     default:
       break;

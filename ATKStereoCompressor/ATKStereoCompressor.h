@@ -13,6 +13,7 @@
 #include <ATK/Dynamic/PowerFilter.h>
 
 #include <ATK/Tools/ApplyGainFilter.h>
+#include <ATK/Tools/DryWetFilter.h>
 #include <ATK/Tools/MSFilter.h>
 #include <ATK/Tools/SumFilter.h>
 #include <ATK/Tools/VolumeFilter.h>
@@ -48,6 +49,8 @@ private:
 
   ATK::MiddleSideFilter<double> middlesidemergeFilter;
   ATK::VolumeFilter<double> volumemergeFilter;
+
+  ATK::DryWetFilter<double> drywetFilter;
 
   ATK::OutPointerFilter<double> outLFilter;
   ATK::OutPointerFilter<double> outRFilter;
