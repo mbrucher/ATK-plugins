@@ -6,7 +6,7 @@
 #include "controls.h"
 #include "resource.h"
 
-const int kNumPrograms = 1;
+const int kNumPrograms = 2;
 
 enum EParams
 {
@@ -16,6 +16,7 @@ enum EParams
   kSlope,
   kSoftness,
   kMakeup,
+  kDryWet,
   kNumParams
 };
 
@@ -36,6 +37,8 @@ enum ELayout
   kSoftnessY = 26,
   kMakeupX = 370,
   kMakeupY = 26,
+  kDryWetX = 439,
+  kDryWetY = 26,
   kKnobFrames = 43
 };
 
@@ -58,11 +61,14 @@ ATKCompressor::ATKCompressor(IPlugInstanceInfo instanceInfo)
   GetParam(kSoftness)->SetShape(2.);
   GetParam(kMakeup)->InitDouble("Makeup Gain", 0, 0, 40, 0.1, "-"); // Makeup is expressed in amplitude
   GetParam(kMakeup)->SetShape(2.);
+  GetParam(kDryWet)->InitDouble("Dry/Wet", 1, 0, 1, 0.01, "-");
+  GetParam(kDryWet)->SetShape(1.);
 
   IGraphics* pGraphics = MakeGraphics(this, kWidth, kHeight);
   pGraphics->AttachBackground(COMPRESSOR_ID, COMPRESSOR_FN);
 
   IBitmap knob = pGraphics->LoadIBitmap(KNOB_ID, KNOB_FN, kKnobFrames);
+  IBitmap knob1 = pGraphics->LoadIBitmap(KNOB1_ID, KNOB1_FN, kKnobFrames);
   IText text = IText(10, 0, 0, IText::kStyleBold);
   
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kAttackX, kAttackY, kAttackX + 43, kAttackY + 43 + 21), kAttack, &knob, &text, "ms"));
@@ -71,11 +77,13 @@ ATKCompressor::ATKCompressor(IPlugInstanceInfo instanceInfo)
   pGraphics->AttachControl(new IKnobMultiControl(this, kSlopeX, kSlopeY, kSlope, &knob));
   pGraphics->AttachControl(new IKnobMultiControl(this, kSoftnessX, kSoftnessY, kSoftness, &knob));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kMakeupX, kMakeupY, kMakeupX + 43, kMakeupY + 43 + 21), kMakeup, &knob, &text, "dB"));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kDryWetX, kDryWetY, kDryWet, &knob1));
 
   AttachGraphics(pGraphics);
 
   //MakePreset("preset 1", ... );
-  MakeDefaultPreset((char *) "-", kNumPrograms);
+  MakePreset("Serial Compression", 10, 10, 0, 2, -2, 0, 0);
+  MakePreset("Parallel Compression", 10, 10, 0, 2, -2, 0, 0.5);
   
   powerFilter.set_input_port(0, &inFilter, 0);
   gainCompressorFilter.set_input_port(0, &powerFilter, 0);
@@ -83,6 +91,8 @@ ATKCompressor::ATKCompressor(IPlugInstanceInfo instanceInfo)
   applyGainFilter.set_input_port(0, &attackReleaseFilter, 0);
   applyGainFilter.set_input_port(1, &inFilter, 0);
   volumeFilter.set_input_port(0, &applyGainFilter, 0);
+  drywetFilter.set_input_port(0, &volumeFilter, 0);
+  drywetFilter.set_input_port(1, &inFilter, 0);
   outFilter.set_input_port(0, &volumeFilter, 0);
   
   Reset();
@@ -118,6 +128,8 @@ void ATKCompressor::Reset()
   applyGainFilter.set_output_sampling_rate(sampling_rate);
   volumeFilter.set_input_sampling_rate(sampling_rate);
   volumeFilter.set_output_sampling_rate(sampling_rate);
+  drywetFilter.set_input_sampling_rate(sampling_rate);
+  drywetFilter.set_output_sampling_rate(sampling_rate);
   outFilter.set_input_sampling_rate(sampling_rate);
   outFilter.set_output_sampling_rate(sampling_rate);
 
@@ -149,6 +161,9 @@ void ATKCompressor::OnParamChange(int paramIdx)
       break;
     case kMakeup:
       volumeFilter.set_volume_db(GetParam(kMakeup)->Value());
+      break;
+    case kDryWet:
+      drywetFilter.set_dry(1 - GetParam(kDryWet)->Value());
       break;
 
     default:
