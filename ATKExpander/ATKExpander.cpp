@@ -63,7 +63,7 @@ ATKExpander::ATKExpander(IPlugInstanceInfo instanceInfo)
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kAttackX, kAttackY, kAttackX + 43, kAttackY + 43 + 21), kAttack, &knob, &text, "ms"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kReleaseX, kReleaseY, kReleaseX + 43, kReleaseY + 43 + 21), kRelease, &knob, &text, "ms"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kThresholdX, kThresholdY, kThresholdX + 43, kThresholdY + 43 + 21), kThreshold, &knob, &text, "dB"));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kSlopeX, kSlopeY, kSlope, &knob));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kSlopeX, kSlopeY, kSlopeX + 43, kSlopeY + 43 + 21), kSlope, &knob, &text, ""));
   pGraphics->AttachControl(new IKnobMultiControl(this, kSoftnessX, kSoftnessY, kSoftness, &knob));
 
   AttachGraphics(pGraphics);
