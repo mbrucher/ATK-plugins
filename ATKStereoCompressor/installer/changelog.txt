@@ -1,9 +1,6 @@
 ATKStereoCompressor changelog
 htp://matt.eifelle.com
 
-15/07/14 - v1.01 initial release
-  - Changed the order of the filters in the pipeline
-  - built againt ATK 0.4.2
-08/07/14 - v1.00 initial release
-  - built againt ATK 0.4.0
+26/08/14 - v1.0.0 initial release
+  - built againt ATK 0.5.0
   

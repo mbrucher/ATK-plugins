@@ -1,6 +1,10 @@
 ATKExpander changelog
 htp://matt.eifelle.com
 
+19/08/14 - v1.1.0 minor release
+  - Updated UI
+
+  - Built againt ATK 0.5.0
 15/07/14 - v1.01 initial release
   - Changed the order of the filters in the pipeline
   - built againt ATK 0.4.2

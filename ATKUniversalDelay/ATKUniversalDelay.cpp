@@ -1,9 +1,10 @@
 #include "ATKUniversalDelay.h"
 #include "IPlug_include_in_plug_src.h"
 #include "IControl.h"
+#include "controls.h"
 #include "resource.h"
 
-const int kNumPrograms = 1;
+const int kNumPrograms = 4;
 
 enum EParams
 {
@@ -20,13 +21,13 @@ enum ELayout
   kHeight = GUI_HEIGHT,
 
   kDelayX = 25,
-  kDelayY = 37,
+  kDelayY = 26,
   kBlendX = 94,
-  kBlendY = 37,
+  kBlendY = 26,
   kFeedforwardX = 163,
-  kFeedforwardY = 37,
+  kFeedforwardY = 26,
   kFeedbackX = 232,
-  kFeedbackY = 37,
+  kFeedbackY = 26,
   kKnobFrames = 43
 };
 
@@ -50,8 +51,9 @@ ATKUniversalDelay::ATKUniversalDelay(IPlugInstanceInfo instanceInfo)
 
   IBitmap knob = pGraphics->LoadIBitmap(KNOB_ID, KNOB_FN, kKnobFrames);
   IBitmap knob1 = pGraphics->LoadIBitmap(KNOB1_ID, KNOB1_FN, kKnobFrames);
+  IText text = IText(10, 0, 0, IText::kStyleBold);
 
-  pGraphics->AttachControl(new IKnobMultiControl(this, kDelayX, kDelayY, kDelay, &knob));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kDelayX, kDelayY, kDelayX + 43, kDelayY + 43 + 21), kDelay, &knob, &text, "ms"));
   pGraphics->AttachControl(new IKnobMultiControl(this, kBlendX, kBlendY, kBlend, &knob));
   pGraphics->AttachControl(new IKnobMultiControl(this, kFeedforwardX, kFeedforwardY, kFeedforward, &knob1));
   pGraphics->AttachControl(new IKnobMultiControl(this, kFeedbackX, kFeedbackY, kFeedback, &knob1));
@@ -59,7 +61,10 @@ ATKUniversalDelay::ATKUniversalDelay(IPlugInstanceInfo instanceInfo)
   AttachGraphics(pGraphics);
 
   //MakePreset("preset 1", ... );
-  MakeDefaultPreset((char *) "-", kNumPrograms);
+  MakePreset("FIR comb filter", 1., 100., 50., 0.);
+  MakePreset("IIR comb filter", 1., 100., 50., 10.);
+  MakePreset("All pass", 1., 10., 100., -10.);
+  MakePreset("Delay", 1., 100., 0., 0.);
 
   delayFilter.set_input_port(0, &inFilter, 0);
   outFilter.set_input_port(0, &delayFilter, 0);

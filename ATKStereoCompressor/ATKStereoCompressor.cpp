@@ -127,6 +127,7 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kAttack1X, kAttack1Y, kAttack1X + 43, kAttack1Y + 43 + 21), kAttack1, &knob, &text, "ms"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kRelease1X, kRelease1Y, kRelease1X + 43, kRelease1Y + 43 + 21), kRelease1, &knob, &text, "ms"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kThreshold1X, kThreshold1Y, kThreshold1X + 43, kThreshold1Y + 43 + 21), kThreshold1, &knob, &text, "dB"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kRatio1X, kRatio1Y, kRatio1X + 43, kRatio1Y + 43 + 21), kRatio1, &knob, &text, ""));
   pGraphics->AttachControl(new IKnobMultiControl(this, kSoftness1X, kSoftness1Y, kSoftness1, &knob));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kMakeup1X, kMakeup1Y, kMakeup1X + 43, kMakeup1Y + 43 + 21), kMakeup1, &knob, &text, "dB"));
 
@@ -136,7 +137,7 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   pGraphics->AttachControl(release2);
   threshold2 = new IKnobMultiControlText(this, IRECT(kThreshold2X, kThreshold2Y, kThreshold2X + 43, kThreshold2Y + 43 + 21), kThreshold2, &knob, &text, "dB");
   pGraphics->AttachControl(threshold2);
-  ratio2 = new IKnobMultiControl(this, kRatio2X, kRatio2Y, kRatio2, &knob);
+  ratio2 = new IKnobMultiControlText(this, IRECT(kRatio2X, kRatio2Y, kRatio2X + 43, kRatio2Y + 43 + 21), kRatio2, &knob, &text, "");
   pGraphics->AttachControl(ratio2);
   softness2 = new IKnobMultiControl(this, kSoftness2X, kSoftness2Y, kSoftness2, &knob);
   pGraphics->AttachControl(softness2);
@@ -424,6 +425,10 @@ void ATKStereoCompressor::OnParamChange(int paramIdx)
       break;
     case kMakeup1:
       makeupFilter1.set_volume_db(GetParam(kMakeup1)->Value());
+      if (GetParam(kLinkChannels)->Bool())
+      {
+        makeupFilter2.set_volume_db(GetParam(kMakeup1)->Value());
+      }
       break;
     case kThreshold2:
       gainCompressorFilter2.set_threshold(std::pow(10, GetParam(kThreshold2)->Value() / 10));
@@ -444,7 +449,7 @@ void ATKStereoCompressor::OnParamChange(int paramIdx)
       makeupFilter2.set_volume_db(GetParam(kMakeup2)->Value());
       break;
     case kDryWet:
-      drywetFilter.set_dry(1 - GetParam(kDryWet)->Value());
+      drywetFilter.set_dry(GetParam(kDryWet)->Value());
       break;
 
     default:
