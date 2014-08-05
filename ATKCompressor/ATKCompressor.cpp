@@ -74,7 +74,7 @@ ATKCompressor::ATKCompressor(IPlugInstanceInfo instanceInfo)
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kAttackX, kAttackY, kAttackX + 43, kAttackY + 43 + 21), kAttack, &knob, &text, "ms"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kReleaseX, kReleaseY, kReleaseX + 43, kReleaseY + 43 + 21), kRelease, &knob, &text, "ms"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kThresholdX, kThresholdY, kThresholdX + 43, kThresholdY + 43 + 21), kThreshold, &knob, &text, "dB"));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kSlopeX, kSlopeY, kSlope, &knob));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kSlopeX, kSlopeY, kSlopeX + 43, kSlopeY + 43 + 21), kSlope, &knob, &text, ""));
   pGraphics->AttachControl(new IKnobMultiControl(this, kSoftnessX, kSoftnessY, kSoftness, &knob));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kMakeupX, kMakeupY, kMakeupX + 43, kMakeupY + 43 + 21), kMakeup, &knob, &text, "dB"));
   pGraphics->AttachControl(new IKnobMultiControl(this, kDryWetX, kDryWetY, kDryWet, &knob1));
@@ -93,7 +93,7 @@ ATKCompressor::ATKCompressor(IPlugInstanceInfo instanceInfo)
   volumeFilter.set_input_port(0, &applyGainFilter, 0);
   drywetFilter.set_input_port(0, &volumeFilter, 0);
   drywetFilter.set_input_port(1, &inFilter, 0);
-  outFilter.set_input_port(0, &volumeFilter, 0);
+  outFilter.set_input_port(0, &drywetFilter, 0);
   
   Reset();
 }
@@ -163,7 +163,7 @@ void ATKCompressor::OnParamChange(int paramIdx)
       volumeFilter.set_volume_db(GetParam(kMakeup)->Value());
       break;
     case kDryWet:
-      drywetFilter.set_dry(1 - GetParam(kDryWet)->Value());
+      drywetFilter.set_dry(GetParam(kDryWet)->Value());
       break;
 
     default:

@@ -1,6 +1,7 @@
 #include "resource.h"
 
 KNOB_ID   PNG KNOB_FN
+KNOB1_ID   PNG KNOB1_FN
 COMPRESSOR_ID       PNG COMPRESSOR_FN
 
 #ifdef SA_API

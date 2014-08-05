@@ -1,9 +1,12 @@
 ATKCompressor changelog
 htp://matt.eifelle.com
 
-15/08/14 - v1.1.0 minor release
+
+19/08/14 - v1.1.0 minor release
   - Added a dry/wet parameter
+
   - Updated UI
+
   - Built againt ATK 0.5.0
 15/07/14 - v1.0.1 bugfix release
   - Changed the order of the filters in the pipeline
