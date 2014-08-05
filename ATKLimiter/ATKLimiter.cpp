@@ -6,7 +6,7 @@
 #include "resource.h"
 #include "controls.h"
 
-const int kNumPrograms = 1;
+const int kNumPrograms = 2;
 
 enum EParams
 {
@@ -43,9 +43,9 @@ ATKLimiter::ATKLimiter(IPlugInstanceInfo instanceInfo)
   TRACE;
 
   //arguments are: name, defaultVal, minVal, maxVal, step, label
-  GetParam(kAttack)->InitDouble("Attack", 10., 1., 100.0, 0.1, "ms");
+  GetParam(kAttack)->InitDouble("Attack", 10., 0., 100.0, 0.1, "ms");
   GetParam(kAttack)->SetShape(2.);
-  GetParam(kRelease)->InitDouble("Release", 10, 1., 100.0, 0.1, "ms");
+  GetParam(kRelease)->InitDouble("Release", 10, 0., 100.0, 0.1, "ms");
   GetParam(kRelease)->SetShape(2.);
   GetParam(kThreshold)->InitDouble("Threshold", 0., -40., 0.0, 0.1, "dB"); // threshold is actually power
   GetParam(kThreshold)->SetShape(2.);
@@ -69,8 +69,9 @@ ATKLimiter::ATKLimiter(IPlugInstanceInfo instanceInfo)
   AttachGraphics(pGraphics);
 
   //MakePreset("preset 1", ... );
-  MakeDefaultPreset((char *) "-", kNumPrograms);
-  
+  MakePreset("Custom", 10., 10., 0., -2., 0.);
+  MakePreset("Brick wall limiter", 0., 10., -0.1, -2., 0.);
+
   powerFilter.set_input_port(0, &inFilter, 0);
   gainLimiterFilter.set_input_port(0, &powerFilter, 0);
   attackReleaseFilter.set_input_port(0, &gainLimiterFilter, 0);
@@ -133,10 +134,24 @@ void ATKLimiter::OnParamChange(int paramIdx)
       gainLimiterFilter.set_softness(std::pow(10, GetParam(kSoftness)->Value()));
       break;
     case kAttack:
-      attackReleaseFilter.set_release(std::exp(-1 / (GetParam(kAttack)->Value() * 1e-3 * GetSampleRate()))); // in ms
+      if (GetParam(kAttack)->Value() == 0)
+      {
+        attackReleaseFilter.set_release(0); // in ms
+      }
+      else
+      {
+        attackReleaseFilter.set_release(std::exp(-1 / (GetParam(kAttack)->Value() * 1e-3 * GetSampleRate()))); // in ms
+      }
       break;
     case kRelease:
-      attackReleaseFilter.set_attack(std::exp(-1 / (GetParam(kRelease)->Value() * 1e-3 * GetSampleRate()))); // in ms
+      if (GetParam(kRelease)->Value() == 0)
+      {
+        attackReleaseFilter.set_attack(0); // in ms
+      }
+      else
+      {
+        attackReleaseFilter.set_attack(std::exp(-1 / (GetParam(kRelease)->Value() * 1e-3 * GetSampleRate()))); // in ms
+      }
       break;
     case kMakeup:
       volumeFilter.set_volume_db(GetParam(kMakeup)->Value());

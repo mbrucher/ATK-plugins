@@ -82,8 +82,8 @@ ATKCompressor::ATKCompressor(IPlugInstanceInfo instanceInfo)
   AttachGraphics(pGraphics);
 
   //MakePreset("preset 1", ... );
-  MakePreset("Serial Compression", 10, 10, 0, 2, -2, 0, 0);
-  MakePreset("Parallel Compression", 10, 10, 0, 2, -2, 0, 0.5);
+  MakePreset("Serial Compression", 10., 10., 0., 2., -2., 0., 0.);
+  MakePreset("Parallel Compression", 10., 10., 0., 2., -2., 0., 0.5);
   
   powerFilter.set_input_port(0, &inFilter, 0);
   gainCompressorFilter.set_input_port(0, &powerFilter, 0);
