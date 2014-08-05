@@ -16,8 +16,8 @@
 #define VIEW_CLASS_STR "ATKCompressor_View"
 
 // Format        0xMAJR.MN.BG - in HEX! so version 10.1.5 would be 0x000A0105
-#define PLUG_VER 0x00010001
-#define VST3_VER_STR "1.0.1"
+#define PLUG_VER 0x00010100
+#define VST3_VER_STR "1.1.0"
 
 // http://service.steinberg.de/databases/plugin.nsf/plugIn?openForm
 // 4 chars, single quotes. At least one capital letter
@@ -57,13 +57,15 @@ instrument determined by PLUG _IS _INST
 // Unique IDs for each image resource.
 #define COMPRESSOR_ID 101
 #define KNOB_ID 102
+#define KNOB1_ID 103
 
 // Image resource locations for this plug.
 #define COMPRESSOR_FN "resources/img/Background.png"
 #define KNOB_FN "resources/img/KNB02uni43.png"
+#define KNOB1_FN "resources/img/KNB02bi43.png"
 
 // GUI default dimensions
-#define GUI_WIDTH 438
+#define GUI_WIDTH 507
 #define GUI_HEIGHT 100
 
 // on MSVC, you must define SA_API in the resource editor preprocessor macros as well as the c++ ones
