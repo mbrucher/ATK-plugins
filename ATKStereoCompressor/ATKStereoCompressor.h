@@ -60,7 +60,7 @@ private:
   IKnobMultiControlText* attack2;
   IKnobMultiControlText* release2;
   IKnobMultiControlText* threshold2;
-  IKnobMultiControl* ratio2;
+  IKnobMultiControlText* ratio2;
   IKnobMultiControl* softness2;
   IKnobMultiControlText* makeup2;
 };
