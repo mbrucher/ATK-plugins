@@ -11,7 +11,7 @@
 #include <ATK/EQ/ButterworthFilter.h>
 #include <ATK/EQ/IIRFilter.h>
 #include <ATK/EQ/SD1ToneFilter.h>
-#include <ATK/EQ/FirstOrderFilter.h>
+#include <ATK/EQ/ChamberlinFilter.h>
 #include <ATK/Distortion/SD1OverdriveFilter.h>
 
 class ATKSD1 : public IPlug
@@ -35,7 +35,7 @@ private:
   ATK::IIRFilter<ATK::ButterworthLowPassCoefficients<double> > lowpassFilter;
   ATK::DecimationFilter<double> decimationFilter;
   ATK::IIRFilter<ATK::SD1ToneCoefficients<double> > toneFilter;
-  ATK::FirstOrderFilter<double> highpassFilter;
+  ATK::ChamberlinFilter<double> highpassFilter;
   ATK::VolumeFilter<double> volumeFilter;
   ATK::OutPointerFilter<double> outFilter;
 };
