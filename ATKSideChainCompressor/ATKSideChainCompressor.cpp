@@ -134,9 +134,9 @@ void ATKSideChainCompressor::ProcessDoubleReplacing(double** inputs, double** ou
   // Mutex is already locked for us.
 
   inFilter.set_pointer(inputs[0], nFrames);
-  if (IsInChannelConnected(1))
+  if (IsInChannelConnected(2))
   {
-    inSideChainFilter.set_pointer(inputs[1], nFrames);
+    inSideChainFilter.set_pointer(inputs[2], nFrames);
   }
   else
   {
