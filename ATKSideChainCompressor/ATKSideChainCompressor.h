@@ -24,6 +24,7 @@ public:
 
 private:
   ATK::InPointerFilter<double> inFilter;
+  ATK::InPointerFilter<double> inSideChainFilter;
   ATK::PowerFilter<double> powerFilter;
   ATK::AttackReleaseFilter<double> attackReleaseFilter;
   ATK::GainCompressorFilter<double> gainCompressorFilter;

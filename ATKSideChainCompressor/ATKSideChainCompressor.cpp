@@ -44,7 +44,7 @@ enum ELayout
 
 ATKSideChainCompressor::ATKSideChainCompressor(IPlugInstanceInfo instanceInfo)
   :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo),
-    inFilter(NULL, 1, 0, false), outFilter(NULL, 1, 0, false)
+    inFilter(NULL, 1, 0, false), inSideChainFilter(NULL, 1, 0, false), outFilter(NULL, 1, 0, false)
 {
   TRACE;
 
@@ -81,11 +81,23 @@ ATKSideChainCompressor::ATKSideChainCompressor(IPlugInstanceInfo instanceInfo)
 
   AttachGraphics(pGraphics);
 
-  //MakePreset("preset 1", ... );
+  if (GetAPI() == kAPIVST2) // for VST2 we name individual outputs
+  {
+    SetInputLabel(0, "main input");
+    SetInputLabel(1, "sc input");
+    SetOutputLabel(0, "output");
+  }
+  else // for AU and VST3 we name buses
+  {
+    SetInputBusLabel(0, "main input");
+    SetInputBusLabel(1, "sc input");
+    SetOutputBusLabel(0, "output");
+  }
+
   MakePreset("Serial Compression", 10., 10., 0., 2., -2., 0., 0.);
   MakePreset("Parallel Compression", 10., 10., 0., 2., -2., 0., 0.5);
   
-  powerFilter.set_input_port(0, &inFilter, 0);
+  powerFilter.set_input_port(0, &inSideChainFilter, 0);
   gainCompressorFilter.set_input_port(0, &powerFilter, 0);
   attackReleaseFilter.set_input_port(0, &gainCompressorFilter, 0);
   applyGainFilter.set_input_port(0, &attackReleaseFilter, 0);
@@ -105,6 +117,7 @@ void ATKSideChainCompressor::ProcessDoubleReplacing(double** inputs, double** ou
   // Mutex is already locked for us.
 
   inFilter.set_pointer(inputs[0], nFrames);
+  inSideChainFilter.set_pointer(inputs[1], nFrames);
   outFilter.set_pointer(outputs[0], nFrames);
   outFilter.process(nFrames);
 }
@@ -118,6 +131,8 @@ void ATKSideChainCompressor::Reset()
   
   inFilter.set_input_sampling_rate(sampling_rate);
   inFilter.set_output_sampling_rate(sampling_rate);
+  inSideChainFilter.set_input_sampling_rate(sampling_rate);
+  inSideChainFilter.set_output_sampling_rate(sampling_rate);
   powerFilter.set_input_sampling_rate(sampling_rate);
   powerFilter.set_output_sampling_rate(sampling_rate);
   attackReleaseFilter.set_input_sampling_rate(sampling_rate);

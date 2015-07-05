@@ -16,12 +16,12 @@
 #define VIEW_CLASS_STR "ATKSideChainCompressor_View"
 
 // Format        0xMAJR.MN.BG - in HEX! so version 10.1.5 would be 0x000A0105
-#define PLUG_VER 0x00010101
-#define VST3_VER_STR "1.1.1"
+#define PLUG_VER 0x00010000
+#define VST3_VER_STR "1.0.0"
 
 // http://service.steinberg.de/databases/plugin.nsf/plugIn?openForm
 // 4 chars, single quotes. At least one capital letter
-#define PLUG_UNIQUE_ID '6m9f'
+#define PLUG_UNIQUE_ID 'e1or'
 // make sure this is not the same as BUNDLE_MFR
 #define PLUG_MFR_ID 'MatB'
 
@@ -43,7 +43,7 @@
 instrument determined by PLUG _IS _INST
 */
 
-#define PLUG_CHANNEL_IO "1-1"
+#define PLUG_CHANNEL_IO "1-1 2-1"
 
 // Should be retrieved from ATK when the time comes
 #define PLUG_LATENCY 0
