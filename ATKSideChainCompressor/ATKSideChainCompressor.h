@@ -8,6 +8,8 @@
 #include <ATK/Dynamic/AttackReleaseFilter.h>
 #include <ATK/Dynamic/GainCompressorFilter.h>
 #include <ATK/Dynamic/PowerFilter.h>
+#include <ATK/EQ/IIRFilter.h>
+#include <ATK/EQ/ButterworthFilter.h>
 #include <ATK/Tools/ApplyGainFilter.h>
 #include <ATK/Tools/DryWetFilter.h>
 #include <ATK/Tools/VolumeFilter.h>
@@ -25,6 +27,7 @@ public:
 private:
   ATK::InPointerFilter<double> inFilter;
   ATK::InPointerFilter<double> inSideChainFilter;
+  ATK::IIRFilter<ATK::ButterworthBandPassCoefficients<double> > iirFilter;
   ATK::PowerFilter<double> powerFilter;
   ATK::AttackReleaseFilter<double> attackReleaseFilter;
   ATK::GainCompressorFilter<double> gainCompressorFilter;
