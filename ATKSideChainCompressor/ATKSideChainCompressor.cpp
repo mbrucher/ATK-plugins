@@ -26,20 +26,22 @@ enum ELayout
   kHeight = GUI_HEIGHT,
 
   kAttackX = 25,
-  kAttackY = 26,
-  kReleaseX = 94,
-  kReleaseY = 26,
-  kThresholdX = 163,
-  kThresholdY = 26,
-  kSlopeX = 232,
-  kSlopeY = 26,
-  kSoftnessX = 301,
-  kSoftnessY = 26,
-  kMakeupX = 370,
-  kMakeupY = 26,
-  kDryWetX = 439,
-  kDryWetY = 26,
-  kKnobFrames = 43
+  kAttackY = 30,
+  kReleaseX = 128,
+  kReleaseY = 30,
+  kThresholdX = 231,
+  kThresholdY = 30,
+  kSlopeX = 334,
+  kSlopeY = 30,
+  kSoftnessX = 437,
+  kSoftnessY = 30,
+  kMakeupX = 540,
+  kMakeupY = 30,
+  kDryWetX = 643,
+  kDryWetY = 30,
+
+  kKnobFrames = 20,
+  kKnobFrames1 = 19
 };
 
 ATKSideChainCompressor::ATKSideChainCompressor(IPlugInstanceInfo instanceInfo)
@@ -55,7 +57,7 @@ ATKSideChainCompressor::ATKSideChainCompressor(IPlugInstanceInfo instanceInfo)
   GetParam(kRelease)->SetShape(2.);
   GetParam(kThreshold)->InitDouble("Threshold", 0., -40., 0.0, 0.1, "dB"); // threshold is actually power
   GetParam(kThreshold)->SetShape(2.);
-  GetParam(kSlope)->InitDouble("Slope", 2., 1, 100, 1, "-");
+  GetParam(kSlope)->InitDouble("Slope", 2., .1, 100, .1, "-");
   GetParam(kSlope)->SetShape(2.);
   GetParam(kSoftness)->InitDouble("Softness", -2, -4, 0, 0.1, "-");
   GetParam(kSoftness)->SetShape(2.);
@@ -68,15 +70,15 @@ ATKSideChainCompressor::ATKSideChainCompressor(IPlugInstanceInfo instanceInfo)
   pGraphics->AttachBackground(COMPRESSOR_ID, COMPRESSOR_FN);
 
   IBitmap knob = pGraphics->LoadIBitmap(KNOB_ID, KNOB_FN, kKnobFrames);
-  IBitmap knob1 = pGraphics->LoadIBitmap(KNOB1_ID, KNOB1_FN, kKnobFrames);
+  IBitmap knob1 = pGraphics->LoadIBitmap(KNOB1_ID, KNOB1_FN, kKnobFrames1);
   IText text = IText(10, 0, 0, IText::kStyleBold);
   
-  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kAttackX, kAttackY, kAttackX + 43, kAttackY + 43 + 21), kAttack, &knob, &text, "ms"));
-  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kReleaseX, kReleaseY, kReleaseX + 43, kReleaseY + 43 + 21), kRelease, &knob, &text, "ms"));
-  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kThresholdX, kThresholdY, kThresholdX + 43, kThresholdY + 43 + 21), kThreshold, &knob, &text, "dB"));
-  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kSlopeX, kSlopeY, kSlopeX + 43, kSlopeY + 43 + 21), kSlope, &knob, &text, ""));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kAttackX, kAttackY, kAttackX + 78, kAttackY + 78 + 21), kAttack, &knob, &text, "ms"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kReleaseX, kReleaseY, kReleaseX + 78, kReleaseY + 78 + 21), kRelease, &knob, &text, "ms"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kThresholdX, kThresholdY, kThresholdX + 78, kThresholdY + 78 + 21), kThreshold, &knob, &text, "dB"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kSlopeX, kSlopeY, kSlopeX + 78, kSlopeY + 78 + 21), kSlope, &knob, &text, ""));
   pGraphics->AttachControl(new IKnobMultiControl(this, kSoftnessX, kSoftnessY, kSoftness, &knob));
-  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kMakeupX, kMakeupY, kMakeupX + 43, kMakeupY + 43 + 21), kMakeup, &knob, &text, "dB"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kMakeupX, kMakeupY, kMakeupX + 78, kMakeupY + 78 + 21), kMakeup, &knob, &text, "dB"));
   pGraphics->AttachControl(new IKnobMultiControl(this, kDryWetX, kDryWetY, kDryWet, &knob1));
 
   AttachGraphics(pGraphics);
