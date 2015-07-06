@@ -64,11 +64,11 @@ instrument determined by PLUG _IS _INST
 #define STEREO_COMPRESSOR_FN "resources/img/metal.png"
 #define KNOB_FN "resources/img/uni-small.png"
 #define KNOB1_FN "resources/img/bi-small.png"
-#define SWITCH_FN "resources/img/Switch.png"
+#define SWITCH_FN "resources/img/switch2-small.png"
 
 // GUI default dimensions
 #define GUI_WIDTH 952
-#define GUI_HEIGHT 150
+#define GUI_HEIGHT 280
 
 // on MSVC, you must define SA_API in the resource editor preprocessor macros as well as the c++ ones
 #if defined(SA_API) && !defined(OS_IOS)

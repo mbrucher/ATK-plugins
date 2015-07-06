@@ -35,52 +35,53 @@ enum ELayout
   kWidth = GUI_WIDTH,
   kHeight = GUI_HEIGHT,
 
-  kMiddlesideX = 25,
-  kMiddlesideY = 36,
-  kLinkChannelsX = 25,
-  kLinkChannelsY = 121,
+  kMiddlesideX = 40,
+  kMiddlesideY = 82,
+  kLinkChannelsX = 40,
+  kLinkChannelsY = 202,
 
-  kActivateChannel1X = 94,
-  kActivateChannel1Y = 36,
-  kActivateChannel2X = 94,
-  kActivateChannel2Y = 121,
+  kActivateChannel1X = 143,
+  kActivateChannel1Y = 82,
+  kActivateChannel2X = 143,
+  kActivateChannel2Y = 202,
 
-  kAttack1X = 163,
-  kAttack1Y = 26,
-  kRelease1X = 232,
-  kRelease1Y = 26,
-  kThreshold1X = 301,
-  kThreshold1Y = 26,
-  kRatio1X = 370,
-  kRatio1Y = 26,
-  kSoftness1X = 439,
-  kSoftness1Y = 26,
-  kMakeup1X = 508,
-  kMakeup1Y = 26,
+  kAttack1X = 233,
+  kAttack1Y = 40,
+  kRelease1X = 336,
+  kRelease1Y = 40,
+  kThreshold1X = 439,
+  kThreshold1Y = 40,
+  kRatio1X = 542,
+  kRatio1Y = 40,
+  kSoftness1X = 645,
+  kSoftness1Y = 40,
+  kMakeup1X = 748,
+  kMakeup1Y = 40,
 
-  kAttack2X = 163,
-  kAttack2Y = 111,
-  kRelease2X = 232,
-  kRelease2Y = 111,
-  kThreshold2X = 301,
-  kThreshold2Y = 111,
-  kRatio2X = 370,
-  kRatio2Y = 111,
-  kSoftness2X = 439,
-  kSoftness2Y = 111,
-  kMakeup2X = 508,
-  kMakeup2Y = 111,
+  kAttack2X = 233,
+  kAttack2Y = 160,
+  kRelease2X = 336,
+  kRelease2Y = 160,
+  kThreshold2X = 439,
+  kThreshold2Y = 160,
+  kRatio2X = 542,
+  kRatio2Y = 160,
+  kSoftness2X = 645,
+  kSoftness2Y = 160,
+  kMakeup2X = 748,
+  kMakeup2Y = 160,
 
-  kDryWetX = 577,
-  kDryWetY = 68,
+  kDryWetX = 849,
+  kDryWetY = 100,
 
-  kKnobFrames = 43
+  kKnobFrames = 20,
+  kKnobFrames1 = 19
 };
 
 ATKSideChainCompressor::ATKSideChainCompressor(IPlugInstanceInfo instanceInfo)
   :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo),
   inLFilter(NULL, 1, 0, false), inRFilter(NULL, 1, 0, false), inSideChainLFilter(NULL, 1, 0, false), inSideChainRFilter(NULL, 1, 0, false),
-  volumesplitFilter(2), applyGainFilter(2), volumemergeFilter(2), drywetFilter(2), outLFilter(NULL, 1, 0, false), outRFilter(NULL, 1, 0, false)
+  volumesplitFilter(4), applyGainFilter(2), volumemergeFilter(2), drywetFilter(2), outLFilter(NULL, 1, 0, false), outRFilter(NULL, 1, 0, false)
 {
   TRACE;
 
@@ -96,7 +97,7 @@ ATKSideChainCompressor::ATKSideChainCompressor(IPlugInstanceInfo instanceInfo)
   GetParam(kRelease1)->SetShape(2.);
   GetParam(kThreshold1)->InitDouble("Threshold ch1", 0., -40., 0.0, 0.1, "dB"); // threshold is actually power
   GetParam(kThreshold1)->SetShape(2.);
-  GetParam(kRatio1)->InitDouble("Ratio ch1", 2., 1, 100, 1, "-");
+  GetParam(kRatio1)->InitDouble("Ratio ch1", 2., .1, 100, .1, "-");
   GetParam(kRatio1)->SetShape(2.);
   GetParam(kSoftness1)->InitDouble("Softness ch1", -2, -4, 0, 0.1, "-");
   GetParam(kSoftness1)->SetShape(2.);
@@ -108,7 +109,7 @@ ATKSideChainCompressor::ATKSideChainCompressor(IPlugInstanceInfo instanceInfo)
   GetParam(kRelease2)->SetShape(2.);
   GetParam(kThreshold2)->InitDouble("Threshold ch2", 0., -40., 0.0, 0.1, "dB"); // threshold is actually power
   GetParam(kThreshold2)->SetShape(2.);
-  GetParam(kRatio2)->InitDouble("Ratio ch2", 2., 1, 100, 1, "-");
+  GetParam(kRatio2)->InitDouble("Ratio ch2", 2., .1, 100, .1, "-");
   GetParam(kRatio2)->SetShape(2.);
   GetParam(kSoftness2)->InitDouble("Softness ch2", -2, -4, 0, 0.1, "-");
   GetParam(kSoftness2)->SetShape(2.);
@@ -121,28 +122,29 @@ ATKSideChainCompressor::ATKSideChainCompressor(IPlugInstanceInfo instanceInfo)
   pGraphics->AttachBackground(STEREO_COMPRESSOR_ID, STEREO_COMPRESSOR_FN);
 
   IBitmap knob = pGraphics->LoadIBitmap(KNOB_ID, KNOB_FN, kKnobFrames);
-  IBitmap knob1 = pGraphics->LoadIBitmap(KNOB1_ID, KNOB1_FN, kKnobFrames);
+  IBitmap knob1 = pGraphics->LoadIBitmap(KNOB1_ID, KNOB1_FN, kKnobFrames1);
   IBitmap myswitch = pGraphics->LoadIBitmap(SWITCH_ID, SWITCH_FN, 2);
-  IText text = IText(10, 0, 0, IText::kStyleBold);
+  IColor color = IColor(255, 255, 255, 255);
+  IText text = IText(10, &color, nullptr, IText::kStyleBold);
 
-  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kAttack1X, kAttack1Y, kAttack1X + 43, kAttack1Y + 43 + 21), kAttack1, &knob, &text, "ms"));
-  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kRelease1X, kRelease1Y, kRelease1X + 43, kRelease1Y + 43 + 21), kRelease1, &knob, &text, "ms"));
-  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kThreshold1X, kThreshold1Y, kThreshold1X + 43, kThreshold1Y + 43 + 21), kThreshold1, &knob, &text, "dB"));
-  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kRatio1X, kRatio1Y, kRatio1X + 43, kRatio1Y + 43 + 21), kRatio1, &knob, &text, ""));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kAttack1X, kAttack1Y, kAttack1X + 78, kAttack1Y + 78 + 21), kAttack1, &knob, &text, "ms"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kRelease1X, kRelease1Y, kRelease1X + 78, kRelease1Y + 78 + 21), kRelease1, &knob, &text, "ms"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kThreshold1X, kThreshold1Y, kThreshold1X + 78, kThreshold1Y + 78 + 21), kThreshold1, &knob, &text, "dB"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kRatio1X, kRatio1Y, kRatio1X + 78, kRatio1Y + 78 + 21), kRatio1, &knob, &text, ""));
   pGraphics->AttachControl(new IKnobMultiControl(this, kSoftness1X, kSoftness1Y, kSoftness1, &knob));
-  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kMakeup1X, kMakeup1Y, kMakeup1X + 43, kMakeup1Y + 43 + 21), kMakeup1, &knob, &text, "dB"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kMakeup1X, kMakeup1Y, kMakeup1X + 78, kMakeup1Y + 78 + 21), kMakeup1, &knob, &text, "dB"));
 
-  attack2 = new IKnobMultiControlText(this, IRECT(kAttack2X, kAttack2Y, kAttack2X + 43, kAttack2Y + 43 + 21), kAttack2, &knob, &text, "ms");
+  attack2 = new IKnobMultiControlText(this, IRECT(kAttack2X, kAttack2Y, kAttack2X + 78, kAttack2Y + 78 + 21), kAttack2, &knob, &text, "ms");
   pGraphics->AttachControl(attack2);
-  release2 = new IKnobMultiControlText(this, IRECT(kRelease2X, kRelease2Y, kRelease2X + 43, kRelease2Y + 43 + 21), kRelease2, &knob, &text, "ms");
+  release2 = new IKnobMultiControlText(this, IRECT(kRelease2X, kRelease2Y, kRelease2X + 78, kRelease2Y + 78 + 21), kRelease2, &knob, &text, "ms");
   pGraphics->AttachControl(release2);
-  threshold2 = new IKnobMultiControlText(this, IRECT(kThreshold2X, kThreshold2Y, kThreshold2X + 43, kThreshold2Y + 43 + 21), kThreshold2, &knob, &text, "dB");
+  threshold2 = new IKnobMultiControlText(this, IRECT(kThreshold2X, kThreshold2Y, kThreshold2X + 78, kThreshold2Y + 78 + 21), kThreshold2, &knob, &text, "dB");
   pGraphics->AttachControl(threshold2);
-  ratio2 = new IKnobMultiControlText(this, IRECT(kRatio2X, kRatio2Y, kRatio2X + 43, kRatio2Y + 43 + 21), kRatio2, &knob, &text, "");
+  ratio2 = new IKnobMultiControlText(this, IRECT(kRatio2X, kRatio2Y, kRatio2X + 78, kRatio2Y + 78 + 21), kRatio2, &knob, &text, "");
   pGraphics->AttachControl(ratio2);
   softness2 = new IKnobMultiControl(this, kSoftness2X, kSoftness2Y, kSoftness2, &knob);
   pGraphics->AttachControl(softness2);
-  makeup2 = new IKnobMultiControlText(this, IRECT(kMakeup2X, kMakeup2Y, kMakeup2X + 43, kMakeup2Y + 43 + 21), kMakeup2, &knob, &text, "dB");
+  makeup2 = new IKnobMultiControlText(this, IRECT(kMakeup2X, kMakeup2Y, kMakeup2X + 78, kMakeup2Y + 78 + 21), kMakeup2, &knob, &text, "dB");
   pGraphics->AttachControl(makeup2);
 
   pGraphics->AttachControl(new IKnobMultiControl(this, kDryWetX, kDryWetY, kDryWet, &knob1));
@@ -184,8 +186,12 @@ ATKSideChainCompressor::ATKSideChainCompressor(IPlugInstanceInfo instanceInfo)
 
   middlesidesplitFilter.set_input_port(0, &inLFilter, 0);
   middlesidesplitFilter.set_input_port(1, &inRFilter, 0);
+  sidechainmiddlesidesplitFilter.set_input_port(0, &inLFilter, 0);
+  sidechainmiddlesidesplitFilter.set_input_port(1, &inRFilter, 0);
   volumesplitFilter.set_input_port(0, &middlesidesplitFilter, 0);
   volumesplitFilter.set_input_port(1, &middlesidesplitFilter, 1);
+  volumesplitFilter.set_input_port(2, &sidechainmiddlesidesplitFilter, 0);
+  volumesplitFilter.set_input_port(3, &sidechainmiddlesidesplitFilter, 1);
   middlesidemergeFilter.set_input_port(0, &makeupFilter1, 0);
   middlesidemergeFilter.set_input_port(1, &makeupFilter2, 0);
   volumemergeFilter.set_input_port(0, &middlesidemergeFilter, 0);
@@ -301,8 +307,8 @@ void ATKSideChainCompressor::OnParamChange(int paramIdx)
   case kMiddleside:
     if (GetParam(kMiddleside)->Bool())
     {
-      powerFilter1.set_input_port(0, &volumesplitFilter, 0);
-      powerFilter2.set_input_port(0, &volumesplitFilter, 1);
+      powerFilter1.set_input_port(0, &volumesplitFilter, 2);
+      powerFilter2.set_input_port(0, &volumesplitFilter, 3);
       drywetFilter.set_input_port(0, &volumemergeFilter, 0);
       drywetFilter.set_input_port(2, &volumemergeFilter, 1);
       applyGainFilter.set_input_port(1, &volumesplitFilter, 0);
