@@ -80,8 +80,8 @@ enum ELayout
 
 ATKSideChainCompressor::ATKSideChainCompressor(IPlugInstanceInfo instanceInfo)
   :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo),
-  inLFilter(NULL, 1, 0, false), inRFilter(NULL, 1, 0, false), inSideChainLFilter(NULL, 1, 0, false), inSideChainRFilter(NULL, 1, 0, false),
-  volumesplitFilter(4), applyGainFilter(2), volumemergeFilter(2), drywetFilter(2), outLFilter(NULL, 1, 0, false), outRFilter(NULL, 1, 0, false)
+  inLFilter(nullptr, 1, 0, false), inRFilter(nullptr, 1, 0, false), inSideChainLFilter(nullptr, 1, 0, false), inSideChainRFilter(nullptr, 1, 0, false),
+  volumesplitFilter(4), applyGainFilter(2), volumemergeFilter(2), drywetFilter(2), outLFilter(nullptr, 1, 0, false), outRFilter(nullptr, 1, 0, false)
 {
   TRACE;
 
@@ -164,7 +164,7 @@ ATKSideChainCompressor::ATKSideChainCompressor(IPlugInstanceInfo instanceInfo)
   endpoint.add_filter(&outLFilter);
   endpoint.add_filter(&outRFilter);
 
-  powerFilter1.set_input_port(0, &inLFilter, 0);
+  powerFilter1.set_input_port(0, &inSideChainLFilter, 0);
   gainCompressorFilter1.set_input_port(0, &powerFilter1, 0);
   attackReleaseFilter1.set_input_port(0, &gainCompressorFilter1, 0);
   applyGainFilter.set_input_port(0, &attackReleaseFilter1, 0);
@@ -174,7 +174,7 @@ ATKSideChainCompressor::ATKSideChainCompressor(IPlugInstanceInfo instanceInfo)
   drywetFilter.set_input_port(1, &inLFilter, 0);
   outLFilter.set_input_port(0, &drywetFilter, 0);
 
-  powerFilter2.set_input_port(0, &inRFilter, 0);
+  powerFilter2.set_input_port(0, &inSideChainRFilter, 0);
   gainCompressorFilter2.set_input_port(0, &powerFilter2, 0);
   attackReleaseFilter2.set_input_port(0, &gainCompressorFilter2, 0);
   applyGainFilter.set_input_port(2, &attackReleaseFilter2, 0);
@@ -186,8 +186,8 @@ ATKSideChainCompressor::ATKSideChainCompressor(IPlugInstanceInfo instanceInfo)
 
   middlesidesplitFilter.set_input_port(0, &inLFilter, 0);
   middlesidesplitFilter.set_input_port(1, &inRFilter, 0);
-  sidechainmiddlesidesplitFilter.set_input_port(0, &inLFilter, 0);
-  sidechainmiddlesidesplitFilter.set_input_port(1, &inRFilter, 0);
+  sidechainmiddlesidesplitFilter.set_input_port(0, &inSideChainLFilter, 0);
+  sidechainmiddlesidesplitFilter.set_input_port(1, &inSideChainRFilter, 0);
   volumesplitFilter.set_input_port(0, &middlesidesplitFilter, 0);
   volumesplitFilter.set_input_port(1, &middlesidesplitFilter, 1);
   volumesplitFilter.set_input_port(2, &sidechainmiddlesidesplitFilter, 0);
@@ -208,7 +208,7 @@ void ATKSideChainCompressor::ProcessDoubleReplacing(double** inputs, double** ou
 {
   // Mutex is already locked for us.
 
-  if (IsInChannelConnected(2))
+  if (IsInChannelConnected(2) || inputs[2] == nullptr)
   {
     inSideChainLFilter.set_pointer(inputs[2], nFrames);
   }
@@ -216,7 +216,7 @@ void ATKSideChainCompressor::ProcessDoubleReplacing(double** inputs, double** ou
   {
     inSideChainLFilter.set_pointer(inputs[0], nFrames);
   }
-  if (IsInChannelConnected(3))
+  if (IsInChannelConnected(3) || inputs[3] == nullptr)
   {
     inSideChainRFilter.set_pointer(inputs[3], nFrames);
   }
@@ -244,6 +244,10 @@ void ATKSideChainCompressor::Reset()
     inLFilter.set_output_sampling_rate(sampling_rate);
     inRFilter.set_input_sampling_rate(sampling_rate);
     inRFilter.set_output_sampling_rate(sampling_rate);
+    inSideChainLFilter.set_input_sampling_rate(sampling_rate);
+    inSideChainLFilter.set_output_sampling_rate(sampling_rate);
+    inSideChainRFilter.set_input_sampling_rate(sampling_rate);
+    inSideChainRFilter.set_output_sampling_rate(sampling_rate);
     outLFilter.set_input_sampling_rate(sampling_rate);
     outLFilter.set_output_sampling_rate(sampling_rate);
     outRFilter.set_input_sampling_rate(sampling_rate);
@@ -332,8 +336,8 @@ void ATKSideChainCompressor::OnParamChange(int paramIdx)
     }
     else
     {
-      powerFilter1.set_input_port(0, &inLFilter, 0);
-      powerFilter2.set_input_port(0, &inRFilter, 0);
+      powerFilter1.set_input_port(0, &inSideChainLFilter, 0);
+      powerFilter2.set_input_port(0, &inSideChainRFilter, 0);
       applyGainFilter.set_input_port(1, &inLFilter, 0);
       applyGainFilter.set_input_port(3, &inRFilter, 0);
       if (GetParam(kActivateChannel1)->Bool())
