@@ -55,14 +55,16 @@ instrument determined by PLUG _IS _INST
 #define PLUG_DOES_STATE_CHUNKS 0
 
 // Unique IDs for each image resource.
-#define COMPRESSOR_ID 101
+#define STEREO_COMPRESSOR_ID 101
 #define KNOB_ID 102
 #define KNOB1_ID 103
+#define SWITCH_ID 104
 
 // Image resource locations for this plug.
-#define COMPRESSOR_FN "resources/img/metal.png"
+#define STEREO_COMPRESSOR_FN "resources/img/metal.png"
 #define KNOB_FN "resources/img/uni-small.png"
 #define KNOB1_FN "resources/img/bi-small.png"
+#define SWITCH_FN "resources/img/Switch.png"
 
 // GUI default dimensions
 #define GUI_WIDTH 952

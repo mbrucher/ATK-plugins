@@ -1,4 +1,7 @@
 
+#ifndef MYCONTROLS
+#define MYCONTROLS
+
 #include <string>
 
 class ITestPopupMenu : public IControl
@@ -411,3 +414,5 @@ public:
     return true;
   }
 };
+
+#endif
