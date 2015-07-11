@@ -6,7 +6,7 @@
 #include "controls.h"
 #include "resource.h"
 
-const int kNumPrograms = 2;
+const int kNumPrograms = 3;
 
 enum EParams
 {
@@ -157,7 +157,9 @@ ATKSideChainCompressor::ATKSideChainCompressor(IPlugInstanceInfo instanceInfo)
   AttachGraphics(pGraphics);
 
   //MakePreset("preset 1", ... );
-  MakeDefaultPreset((char *) "-", kNumPrograms);
+  MakePreset("Serial compression", false, false, true, true, 10., 10., 0., 2., -2., 0., 10., 10., 0., 2., -2., 0., 0.);
+  MakePreset("Middle/side compression", true, false, true, true, 10., 10., 0., 2., -2., 0., 10., 10., 0., 2., -2., 0., 0.);
+  MakePreset("Parallel compression", false, false, false, false, 10., 10., 0., 2., -2., 0., 10., 10., 0., 2., -2., 0., 0.5);
 
   volumesplitFilter.set_volume(std::sqrt(.5));
   volumemergeFilter.set_volume(std::sqrt(.5));
@@ -208,7 +210,7 @@ void ATKSideChainCompressor::ProcessDoubleReplacing(double** inputs, double** ou
 {
   // Mutex is already locked for us.
 
-  if (IsInChannelConnected(2) || inputs[2] == nullptr)
+  if (IsInChannelConnected(2))
   {
     inSideChainLFilter.set_pointer(inputs[2], nFrames);
   }
@@ -216,7 +218,7 @@ void ATKSideChainCompressor::ProcessDoubleReplacing(double** inputs, double** ou
   {
     inSideChainLFilter.set_pointer(inputs[0], nFrames);
   }
-  if (IsInChannelConnected(3) || inputs[3] == nullptr)
+  if (IsInChannelConnected(3))
   {
     inSideChainRFilter.set_pointer(inputs[3], nFrames);
   }
