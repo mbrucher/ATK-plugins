@@ -157,9 +157,9 @@ ATKSideChainExpander::ATKSideChainExpander(IPlugInstanceInfo instanceInfo)
   AttachGraphics(pGraphics);
 
   //MakePreset("preset 1", ... );
-  MakePreset("Serial compression", false, false, true, true, 10., 10., 0., 2., -2., 0., 10., 10., 0., 2., -2., 0., 0.);
-  MakePreset("Middle/side compression", true, false, true, true, 10., 10., 0., 2., -2., 0., 10., 10., 0., 2., -2., 0., 0.);
-  MakePreset("Parallel compression", false, false, false, false, 10., 10., 0., 2., -2., 0., 10., 10., 0., 2., -2., 0., 0.5);
+  MakePreset("Serial expansion", false, false, true, true, 10., 10., 0., 2., -2., 0., 10., 10., 0., 2., -2., 0., 0.);
+  MakePreset("Middle/side expansion", true, false, true, true, 10., 10., 0., 2., -2., 0., 10., 10., 0., 2., -2., 0., 0.);
+  MakePreset("Parallel expansion", false, false, false, false, 10., 10., 0., 2., -2., 0., 10., 10., 0., 2., -2., 0., 0.5);
 
   volumesplitFilter.set_volume(std::sqrt(.5));
   volumemergeFilter.set_volume(std::sqrt(.5));
