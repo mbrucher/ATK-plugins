@@ -96,14 +96,17 @@ void ATKUniversalVariableDelay::Reset()
   IMutexLock lock(this);
   
   int sampling_rate = GetSampleRate();
-  
-  inFilter.set_input_sampling_rate(sampling_rate);
-//  inFilter.set_output_sampling_rate(sampling_rate);
-  sinusGenerator.set_output_sampling_rate(sampling_rate);
-  delayFilter.set_input_sampling_rate(sampling_rate);
-//  delayFilter.set_output_sampling_rate(sampling_rate);
-  outFilter.set_input_sampling_rate(sampling_rate);
-  outFilter.set_output_sampling_rate(sampling_rate);
+
+  if (sampling_rate != outFilter.get_input_sampling_rate())
+  {
+    inFilter.set_input_sampling_rate(sampling_rate);
+    inFilter.set_output_sampling_rate(sampling_rate);
+    sinusGenerator.set_output_sampling_rate(sampling_rate);
+    delayFilter.set_input_sampling_rate(sampling_rate);
+    delayFilter.set_output_sampling_rate(sampling_rate);
+    outFilter.set_input_sampling_rate(sampling_rate);
+    outFilter.set_output_sampling_rate(sampling_rate);
+  }
 }
 
 void ATKUniversalVariableDelay::OnParamChange(int paramIdx)
