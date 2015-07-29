@@ -16,15 +16,9 @@ enum ELayout
   kWidth = GUI_WIDTH,
   kHeight = GUI_HEIGHT,
 
-  kDelayX = 25,
-  kDelayY = 37,
-  kBlendX = 94,
-  kBlendY = 37,
-  kFeedforwardX = 163,
-  kFeedforwardY = 37,
-  kFeedbackX = 232,
-  kFeedbackY = 37,
-  kKnobFrames = 43
+  kSpeedX = 36,
+  kSpeedY = 37,
+  kKnobFrames = 20
 };
 
 ATKStereoPhaser::ATKStereoPhaser(IPlugInstanceInfo instanceInfo)
@@ -33,7 +27,7 @@ ATKStereoPhaser::ATKStereoPhaser(IPlugInstanceInfo instanceInfo)
   TRACE;
 
   //arguments are: name, defaultVal, minVal, maxVal, step, label
-  GetParam(kModulation)->InitDouble("Modulation", 1, 0.1, 100.0, 0.1, "Hz");
+  GetParam(kModulation)->InitDouble("Modulation", 1, 0., 100.0, 0.1, "Hz");
   GetParam(kModulation)->SetShape(2.);
 
   IGraphics* pGraphics = MakeGraphics(this, kWidth, kHeight);
@@ -41,7 +35,7 @@ ATKStereoPhaser::ATKStereoPhaser(IPlugInstanceInfo instanceInfo)
 
   IBitmap knob = pGraphics->LoadIBitmap(KNOB_ID, KNOB_FN, kKnobFrames);
 
-  pGraphics->AttachControl(new IKnobMultiControl(this, kDelayX, kDelayY, kModulation, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kSpeedX, kSpeedY, kModulation, &knob));
 
   AttachGraphics(pGraphics);
 
