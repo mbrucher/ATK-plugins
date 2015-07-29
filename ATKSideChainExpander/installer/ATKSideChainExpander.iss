@@ -43,7 +43,7 @@ Source: "..\build-win\vst3\x64\bin\ATKSideChainExpander x64.vst3"; DestDir: "{cf
 ;Source: "..\build-win\aax\bin\ATKSideChainExpander.aaxplugin\*.*"; DestDir: "{cf32}\Avid\Audio\Plug-Ins\ATKSideChainExpander.aaxplugin\"; Components:aax_32; Flags: ignoreversion recursesubdirs;
 ;Source: "..\build-win\aax\bin\ATKSideChainExpander.aaxplugin\*.*"; DestDir: "{cf}\Avid\Audio\Plug-Ins\ATKSideChainExpander.aaxplugin\"; Components:aax_64; Flags: ignoreversion recursesubdirs;
 
-Source: "..\manual\ATKSideChainExpander_manual.pdf"; DestDir: "{app}"
+;Source: "..\manual\ATKSideChainExpander_manual.pdf"; DestDir: "{app}"
 Source: "changelog.txt"; DestDir: "{app}"
 Source: "readmewin.rtf"; DestDir: "{app}"; DestName: "readme.rtf"; Flags: isreadme
 Source: "license.rtf"; DestDir: "{app}"; DestName: "license.rtf"
