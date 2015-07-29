@@ -28,7 +28,7 @@ enum ELayout
 };
 
 ATKStereoPhaser::ATKStereoPhaser(IPlugInstanceInfo instanceInfo)
-: IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), inFilter(NULL, 1, 0, false), sinusFilter(10, 10), cosinusFilter(10, 10), applyGainFilter(2), out1Filter(NULL, 1, 0, false), out2Filter(NULL, 1, 0, false)
+: IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), inFilter(nullptr, 1, 0, false), applyGainFilter(2), out1Filter(nullptr, 1, 0, false), out2Filter(nullptr, 1, 0, false)
 {
   TRACE;
 
@@ -51,9 +51,9 @@ ATKStereoPhaser::ATKStereoPhaser(IPlugInstanceInfo instanceInfo)
   allpass1Filter.set_input_port(0, &inFilter, 0);
   allpass2Filter.set_input_port(0, &inFilter, 0);
   applyGainFilter.set_input_port(0, &allpass1Filter, 0);
-  applyGainFilter.set_input_port(1, &sinusFilter, 0);
+  applyGainFilter.set_input_port(1, &sinusFilter, 1);
   applyGainFilter.set_input_port(2, &allpass2Filter, 0);
-  applyGainFilter.set_input_port(3, &cosinusFilter, 0);
+  applyGainFilter.set_input_port(3, &sinusFilter, 0);
   volumeFilter.set_input_port(0, &applyGainFilter, 1);
   sum1Filter.set_input_port(0, &applyGainFilter, 0);
   sum1Filter.set_input_port(1, &volumeFilter, 0);
@@ -117,28 +117,31 @@ void ATKStereoPhaser::Reset()
   
   int sampling_rate = GetSampleRate();
   
-  inFilter.set_input_sampling_rate(sampling_rate);
-  inFilter.set_output_sampling_rate(sampling_rate);
-  allpass1Filter.set_input_sampling_rate(sampling_rate);
-  allpass1Filter.set_output_sampling_rate(sampling_rate);
-  allpass2Filter.set_input_sampling_rate(sampling_rate);
-  allpass2Filter.set_output_sampling_rate(sampling_rate);
-  sinusFilter.set_output_sampling_rate(sampling_rate);
-  cosinusFilter.set_output_sampling_rate(sampling_rate);
-  applyGainFilter.set_input_sampling_rate(sampling_rate);
-  applyGainFilter.set_output_sampling_rate(sampling_rate);
-  volumeFilter.set_input_sampling_rate(sampling_rate);
-  volumeFilter.set_output_sampling_rate(sampling_rate);
-  sum1Filter.set_input_sampling_rate(sampling_rate);
-  sum1Filter.set_output_sampling_rate(sampling_rate);
-  sum2Filter.set_input_sampling_rate(sampling_rate);
-  sum2Filter.set_output_sampling_rate(sampling_rate);
-  out1Filter.set_input_sampling_rate(sampling_rate);
-  out1Filter.set_output_sampling_rate(sampling_rate);
-  out2Filter.set_input_sampling_rate(sampling_rate);
-  out2Filter.set_output_sampling_rate(sampling_rate);
-  sinkFilter.set_input_sampling_rate(sampling_rate);
-  sinkFilter.set_output_sampling_rate(sampling_rate);
+  if (sampling_rate != sinkFilter.get_input_sampling_rate())
+  {
+    inFilter.set_input_sampling_rate(sampling_rate);
+    inFilter.set_output_sampling_rate(sampling_rate);
+    allpass1Filter.set_input_sampling_rate(sampling_rate);
+    allpass1Filter.set_output_sampling_rate(sampling_rate);
+    allpass2Filter.set_input_sampling_rate(sampling_rate);
+    allpass2Filter.set_output_sampling_rate(sampling_rate);
+    sinusFilter.set_output_sampling_rate(sampling_rate);
+    applyGainFilter.set_input_sampling_rate(sampling_rate);
+    applyGainFilter.set_output_sampling_rate(sampling_rate);
+    volumeFilter.set_input_sampling_rate(sampling_rate);
+    volumeFilter.set_output_sampling_rate(sampling_rate);
+    sum1Filter.set_input_sampling_rate(sampling_rate);
+    sum1Filter.set_output_sampling_rate(sampling_rate);
+    sum2Filter.set_input_sampling_rate(sampling_rate);
+    sum2Filter.set_output_sampling_rate(sampling_rate);
+    out1Filter.set_input_sampling_rate(sampling_rate);
+    out1Filter.set_output_sampling_rate(sampling_rate);
+    out2Filter.set_input_sampling_rate(sampling_rate);
+    out2Filter.set_output_sampling_rate(sampling_rate);
+    sinkFilter.set_input_sampling_rate(sampling_rate);
+    sinkFilter.set_output_sampling_rate(sampling_rate);
+  }
+  sinusFilter.full_setup();
 }
 
 void ATKStereoPhaser::OnParamChange(int paramIdx)
@@ -148,8 +151,7 @@ void ATKStereoPhaser::OnParamChange(int paramIdx)
   switch (paramIdx)
   {
   case kModulation:
-    sinusFilter.set_frequency(GetParam(kModulation)->Value() * 10, 10);
-    cosinusFilter.set_frequency(GetParam(kModulation)->Value() * 10, 10);
+    sinusFilter.set_frequency(GetParam(kModulation)->Value());
     break;
 
   default:

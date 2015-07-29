@@ -9,8 +9,7 @@
 #include <ATK/EQ/IIRFilter.h>
 #include <ATK/EQ/CustomIIRFilter.h>
 #include <ATK/Tools/ApplyGainFilter.h>
-#include <ATK/Tools/CachedCosinusGeneratorFilter.h>
-#include <ATK/Tools/CachedSinusGeneratorFilter.h>
+#include <ATK/Tools/SinusGeneratorFilter.h>
 #include <ATK/Tools/SumFilter.h>
 #include <ATK/Tools/VolumeFilter.h>
 
@@ -28,8 +27,7 @@ private:
   ATK::InPointerFilter<double> inFilter;
   ATK::IIRFilter<ATK::CustomIIRCoefficients<double> > allpass1Filter;
   ATK::IIRFilter<ATK::CustomIIRCoefficients<double> > allpass2Filter;
-  ATK::CachedSinusGeneratorFilter<double> sinusFilter;
-  ATK::CachedCosinusGeneratorFilter<double> cosinusFilter;
+  ATK::SinusGeneratorFilter<double> sinusFilter;
   ATK::ApplyGainFilter<double> applyGainFilter;
   ATK::VolumeFilter<double> volumeFilter;
   ATK::SumFilter<double> sum1Filter;
