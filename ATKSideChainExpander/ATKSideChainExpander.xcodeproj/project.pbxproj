@@ -384,7 +384,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0832E8C3196361E8003E2E9A /* KNB02uni43.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KNB02uni43.png; path = resources/img/KNB02uni43.png; sourceTree = "<group>"; };
 		087377AE1B52ABB0002A4CB6 /* metal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = metal.png; path = resources/img/metal.png; sourceTree = "<group>"; };
 		087377B01B52ABC5002A4CB6 /* bi-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bi-small.png"; path = "resources/img/bi-small.png"; sourceTree = "<group>"; };
 		087377B11B52ABC5002A4CB6 /* metal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = metal.png; path = resources/img/metal.png; sourceTree = "<group>"; };
@@ -404,7 +403,6 @@
 		087377CA1B52AC05002A4CB6 /* uni-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "uni-small.png"; path = "resources/img/uni-small.png"; sourceTree = "<group>"; };
 		08861E7F195F618E00EDF23D /* libATKDelay_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDelay_static.a; path = ../../../ATK64/lib/libATKDelay_static.a; sourceTree = "<group>"; };
 		08861E80195F618E00EDF23D /* libATKDynamic_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDynamic_static.a; path = ../../../ATK64/lib/libATKDynamic_static.a; sourceTree = "<group>"; };
-		08989752195376D8001783AC /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background.png; path = resources/img/Background.png; sourceTree = "<group>"; };
 		08989755195377BE001783AC /* libATKCore_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKCore_static.a; path = ../../../ATK64/lib/libATKCore_static.a; sourceTree = "<group>"; };
 		08989756195377BE001783AC /* libATKDistortion_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDistortion_static.a; path = ../../../ATK64/lib/libATKDistortion_static.a; sourceTree = "<group>"; };
 		08989757195377BE001783AC /* libATKEQ_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKEQ_static.a; path = ../../../ATK64/lib/libATKEQ_static.a; sourceTree = "<group>"; };
@@ -414,7 +412,6 @@
 		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		08C102F71986A0F700D1C298 /* controls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = controls.h; sourceTree = "<group>"; };
-		08C1032B1989803B00D1C298 /* KNB02bi43.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KNB02bi43.png; path = resources/img/KNB02bi43.png; sourceTree = "<group>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		4F017360154D4BFC0034BE1A /* AAX_CIPlugParameters.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AAX_CIPlugParameters.cpp; path = ../../WDL/IPlug/AAX/AAX_CIPlugParameters.cpp; sourceTree = SOURCE_ROOT; };
 		4F017361154D4BFC0034BE1A /* AAX_CIPlugParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAX_CIPlugParameters.h; path = ../../WDL/IPlug/AAX/AAX_CIPlugParameters.h; sourceTree = SOURCE_ROOT; };
@@ -710,26 +707,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		089C166AFE841209C02AAC07 /* IPlugExample */ = {
+		08219A871B69753F00AA3998 /* ATK */ = {
 			isa = PBXGroup;
 			children = (
-				087377C71B52AC05002A4CB6 /* bi-small.png */,
-				087377C81B52AC05002A4CB6 /* metal.png */,
-				087377C91B52AC05002A4CB6 /* switch2-small.png */,
-				087377CA1B52AC05002A4CB6 /* uni-small.png */,
-				087377BF1B52ABF4002A4CB6 /* bi-small.png */,
-				087377C01B52ABF4002A4CB6 /* metal.png */,
-				087377C11B52ABF4002A4CB6 /* switch2-small.png */,
-				087377C21B52ABF4002A4CB6 /* uni-small.png */,
-				087377B71B52ABDC002A4CB6 /* bi-small.png */,
-				087377B81B52ABDC002A4CB6 /* metal.png */,
-				087377B91B52ABDC002A4CB6 /* switch2-small.png */,
-				087377BA1B52ABDC002A4CB6 /* uni-small.png */,
-				087377B01B52ABC5002A4CB6 /* bi-small.png */,
-				087377B11B52ABC5002A4CB6 /* metal.png */,
-				087377B21B52ABC5002A4CB6 /* switch2-small.png */,
-				087377B31B52ABC5002A4CB6 /* uni-small.png */,
-				087377AE1B52ABB0002A4CB6 /* metal.png */,
 				08861E7F195F618E00EDF23D /* libATKDelay_static.a */,
 				08861E80195F618E00EDF23D /* libATKDynamic_static.a */,
 				08989755195377BE001783AC /* libATKCore_static.a */,
@@ -738,6 +718,13 @@
 				08989758195377BE001783AC /* libATKIO_static.a */,
 				08989759195377BE001783AC /* libATKMock_static.a */,
 				0898975A195377BE001783AC /* libATKTools_static.a */,
+			);
+			name = ATK;
+			sourceTree = "<group>";
+		};
+		089C166AFE841209C02AAC07 /* IPlugExample */ = {
+			isa = PBXGroup;
+			children = (
 				52FBBED30D0CF143001C8B8A /* resource.h */,
 				08C102F71986A0F700D1C298 /* controls.h */,
 				52FBBED20D0CF13D001C8B8A /* ATKSideChainExpander.h */,
@@ -753,6 +740,7 @@
 		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				08219A871B69753F00AA3998 /* ATK */,
 				4FF01613134E0BCD001447BA /* WDL */,
 				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
 			);
@@ -1256,9 +1244,23 @@
 		4FD16A0213B6303B001D0217 /* img */ = {
 			isa = PBXGroup;
 			children = (
-				08C1032B1989803B00D1C298 /* KNB02bi43.png */,
-				0832E8C3196361E8003E2E9A /* KNB02uni43.png */,
-				08989752195376D8001783AC /* Background.png */,
+				087377C71B52AC05002A4CB6 /* bi-small.png */,
+				087377C81B52AC05002A4CB6 /* metal.png */,
+				087377C91B52AC05002A4CB6 /* switch2-small.png */,
+				087377CA1B52AC05002A4CB6 /* uni-small.png */,
+				087377BF1B52ABF4002A4CB6 /* bi-small.png */,
+				087377C01B52ABF4002A4CB6 /* metal.png */,
+				087377C11B52ABF4002A4CB6 /* switch2-small.png */,
+				087377C21B52ABF4002A4CB6 /* uni-small.png */,
+				087377B71B52ABDC002A4CB6 /* bi-small.png */,
+				087377B81B52ABDC002A4CB6 /* metal.png */,
+				087377B91B52ABDC002A4CB6 /* switch2-small.png */,
+				087377BA1B52ABDC002A4CB6 /* uni-small.png */,
+				087377B01B52ABC5002A4CB6 /* bi-small.png */,
+				087377B11B52ABC5002A4CB6 /* metal.png */,
+				087377B21B52ABC5002A4CB6 /* switch2-small.png */,
+				087377B31B52ABC5002A4CB6 /* uni-small.png */,
+				087377AE1B52ABB0002A4CB6 /* metal.png */,
 			);
 			name = img;
 			sourceTree = "<group>";
