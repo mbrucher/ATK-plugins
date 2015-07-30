@@ -66,7 +66,7 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false)
   GetParam(kSlope)->SetShape(2.);
   GetParam(kSoftness)->InitDouble("Color", 1, -.5, 2, 0.1, "-");
   GetParam(kSoftness)->SetShape(2.);
-  GetParam(kMakeup)->InitDouble("Makeup Gain", 0, 0, 40, 0.1, "-"); // Makeup is expressed in amplitude
+  GetParam(kMakeup)->InitDouble("Makeup Gain", 0, 0, 40, 0.1, "dB"); // Makeup is expressed in amplitude
   GetParam(kMakeup)->SetShape(2.);
   GetParam(kDryWet)->InitDouble("Dry/Wet", 1, 0, 1, 0.01, "-");
   GetParam(kDryWet)->SetShape(1.);
@@ -91,8 +91,8 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false)
   AttachGraphics(pGraphics);
   
   //MakePreset("preset 1", ... );
-  MakePreset("Serial Compression", 10., 10., 0., 2., -2., 0., 0.);
-  MakePreset("Parallel Compression", 10., 10., 0., 2., -2., 0., 0.5);
+  MakePreset("Serial Compression", 10., 10., 10., 0., 2., 1., 0., 1.);
+  MakePreset("Parallel Compression", 10., 10., 10., 0., 2., 1., 0., 0.5);
   
   powerFilter.set_input_port(0, &inFilter, 0);
   gainCompressorFilter.set_input_port(0, &powerFilter, 0);
