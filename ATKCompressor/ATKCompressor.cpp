@@ -135,9 +135,9 @@ void ATKCompressor::Reset()
     outFilter.set_input_sampling_rate(sampling_rate);
     outFilter.set_output_sampling_rate(sampling_rate);
     
-    powerFilter.set_memory(std::exp(-1/1e-3 * GetSampleRate()));
-    attackReleaseFilter.set_release(std::exp(-GetSampleRate() / (GetParam(kAttack)->Value() * 1e-3))); // in ms
-    attackReleaseFilter.set_attack(std::exp(-GetSampleRate() / (GetParam(kRelease)->Value() * 1e-3))); // in ms
+    powerFilter.set_memory(std::exp(-1e3 / sampling_rate));
+    attackReleaseFilter.set_release(std::exp(-1e3 / (GetParam(kAttack)->Value() * sampling_rate))); // in ms
+    attackReleaseFilter.set_attack(std::exp(-1e3 / (GetParam(kRelease)->Value() * sampling_rate))); // in ms
   }
   
   powerFilter.full_setup();
@@ -160,10 +160,10 @@ void ATKCompressor::OnParamChange(int paramIdx)
       gainCompressorFilter.set_softness(std::pow(10, GetParam(kSoftness)->Value()));
       break;
     case kAttack:
-      attackReleaseFilter.set_release(std::exp(-1 / (GetParam(kAttack)->Value() * 1e-3 * GetSampleRate()))); // in ms
+      attackReleaseFilter.set_release(std::exp(-1e3 / (GetParam(kAttack)->Value() * GetSampleRate()))); // in ms
       break;
     case kRelease:
-      attackReleaseFilter.set_attack(std::exp(-1 / (GetParam(kRelease)->Value() * 1e-3 * GetSampleRate()))); // in ms
+      attackReleaseFilter.set_attack(std::exp(-1e3 / (GetParam(kRelease)->Value() * GetSampleRate()))); // in ms
       break;
     case kMakeup:
       volumeFilter.set_volume_db(GetParam(kMakeup)->Value());
