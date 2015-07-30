@@ -300,6 +300,8 @@ void ATKSideChainExpander::Reset()
     attackReleaseFilter2.set_release(std::exp(-1 / (GetParam(kAttack2)->Value() * 1e-3 * sampling_rate))); // in ms
     attackReleaseFilter2.set_attack(std::exp(-1 / (GetParam(kRelease2)->Value() * 1e-3 * sampling_rate))); // in ms
   }
+  powerFilter1.full_setup();
+  powerFilter2.full_setup();
   attackReleaseFilter1.full_setup();
   attackReleaseFilter2.full_setup();
 }
