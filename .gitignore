@@ -26,3 +26,5 @@ PCH
 Icon?
 .DS_Stor*
 oli.pbxuser
+xcuserdata
+setfileicon

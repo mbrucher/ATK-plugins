@@ -24,7 +24,6 @@ Name: "vst3_64"; Description: "64-bit VST3 Plugin (.vst3)"; Types: full custom; 
 ;Name: "rtas_32"; Description: "32-bit RTAS Plugin (.dpm)"; Types: full custom;
 ;Name: "aax_32"; Description: "32-bit AAX Plugin (.aaxplugin)"; Types: full custom;
 ;Name: "aax_64"; Description: "64-bit AAX Plugin (.aaxplugin)"; Types: full custom; Check: Is64BitInstallMode;
-Name: "manual"; Description: "User guide"; Types: full custom; Flags: fixed
 
 [Files]
 ;Source: "..\build-win\app\Win32\bin\ATKSideChainCompressor.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Components:app; Flags: ignoreversion;
@@ -47,10 +46,10 @@ Source: "..\build-win\vst3\x64\bin\ATKSideChainCompressor x64.vst3"; DestDir: "{
 Source: "..\manual\ATKSideChainCompressor_manual.pdf"; DestDir: "{app}"
 Source: "changelog.txt"; DestDir: "{app}"
 Source: "readmewin.rtf"; DestDir: "{app}"; DestName: "readme.rtf"; Flags: isreadme
+Source: "license.rtf"; DestDir: "{app}"; DestName: "license.rtf"
 
 [Icons]
 Name: "{group}\ATKSideChainCompressor"; Filename: "{app}\ATKSideChainCompressor.exe"
-Name: "{group}\User guide"; Filename: "{app}\ATKSideChainCompressor_manual.pdf"
 Name: "{group}\Changelog"; Filename: "{app}\changelog.txt"
 ;Name: "{group}\readme"; Filename: "{app}\readme.rtf"
 Name: "{group}\Uninstall ATKSideChainCompressor"; Filename: "{app}\unins000.exe"

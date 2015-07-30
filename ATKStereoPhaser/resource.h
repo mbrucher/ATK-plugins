@@ -21,7 +21,7 @@
 
 // http://service.steinberg.de/databases/plugin.nsf/plugIn?openForm
 // 4 chars, single quotes. At least one capital letter
-#define PLUG_UNIQUE_ID '3ybj'
+#define PLUG_UNIQUE_ID 'jlw3'
 // make sure this is not the same as BUNDLE_MFR
 #define PLUG_MFR_ID 'MatB'
 
@@ -60,11 +60,11 @@ instrument determined by PLUG _IS _INST
 
 // Image resource locations for this plug.
 #define STEREOPHASER_FN "resources/img/Background.png"
-#define KNOB_FN "resources/img/KNB02uni43.png"
+#define KNOB_FN "resources/img/uni-small.png"
 
 // GUI default dimensions
-#define GUI_WIDTH 300
-#define GUI_HEIGHT 100
+#define GUI_WIDTH 150
+#define GUI_HEIGHT 145
 
 // on MSVC, you must define SA_API in the resource editor preprocessor macros as well as the c++ ones
 #if defined(SA_API) && !defined(OS_IOS)

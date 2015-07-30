@@ -24,7 +24,7 @@ Name: "vst3_64"; Description: "64-bit VST3 Plugin (.vst3)"; Types: full custom; 
 ;Name: "rtas_32"; Description: "32-bit RTAS Plugin (.dpm)"; Types: full custom;
 ;Name: "aax_32"; Description: "32-bit AAX Plugin (.aaxplugin)"; Types: full custom;
 ;Name: "aax_64"; Description: "64-bit AAX Plugin (.aaxplugin)"; Types: full custom; Check: Is64BitInstallMode;
-Name: "manual"; Description: "User guide"; Types: full custom; Flags: fixed
+;Name: "manual"; Description: "User guide"; Types: full custom; Flags: fixed
 
 [Files]
 ;Source: "..\build-win\app\Win32\bin\ATKStereoPhaser.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Components:app; Flags: ignoreversion;
@@ -44,7 +44,7 @@ Source: "..\build-win\vst3\x64\bin\ATKStereoPhaser x64.vst3"; DestDir: "{cf64}\V
 ;Source: "..\build-win\aax\bin\ATKStereoPhaser.aaxplugin\*.*"; DestDir: "{cf32}\Avid\Audio\Plug-Ins\ATKStereoPhaser.aaxplugin\"; Components:aax_32; Flags: ignoreversion recursesubdirs;
 ;Source: "..\build-win\aax\bin\ATKStereoPhaser.aaxplugin\*.*"; DestDir: "{cf}\Avid\Audio\Plug-Ins\ATKStereoPhaser.aaxplugin\"; Components:aax_64; Flags: ignoreversion recursesubdirs;
 
-Source: "..\manual\ATKStereoPhaser_manual.pdf"; DestDir: "{app}"
+;Source: "..\manual\ATKStereoPhaser_manual.pdf"; DestDir: "{app}"
 Source: "changelog.txt"; DestDir: "{app}"
 Source: "readmewin.rtf"; DestDir: "{app}"; DestName: "readme.rtf"; Flags: isreadme
 
