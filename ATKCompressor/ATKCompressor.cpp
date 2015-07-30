@@ -115,27 +115,33 @@ void ATKCompressor::Reset()
   IMutexLock lock(this);
   
   int sampling_rate = GetSampleRate();
-  
-  inFilter.set_input_sampling_rate(sampling_rate);
-  inFilter.set_output_sampling_rate(sampling_rate);
-  powerFilter.set_input_sampling_rate(sampling_rate);
-  powerFilter.set_output_sampling_rate(sampling_rate);
-  attackReleaseFilter.set_input_sampling_rate(sampling_rate);
-  attackReleaseFilter.set_output_sampling_rate(sampling_rate);
-  gainCompressorFilter.set_input_sampling_rate(sampling_rate);
-  gainCompressorFilter.set_output_sampling_rate(sampling_rate);
-  applyGainFilter.set_input_sampling_rate(sampling_rate);
-  applyGainFilter.set_output_sampling_rate(sampling_rate);
-  volumeFilter.set_input_sampling_rate(sampling_rate);
-  volumeFilter.set_output_sampling_rate(sampling_rate);
-  drywetFilter.set_input_sampling_rate(sampling_rate);
-  drywetFilter.set_output_sampling_rate(sampling_rate);
-  outFilter.set_input_sampling_rate(sampling_rate);
-  outFilter.set_output_sampling_rate(sampling_rate);
 
-  powerFilter.set_memory(std::exp(-1/1e-3 * GetSampleRate()));
-  attackReleaseFilter.set_release(std::exp(-1 / (GetParam(kAttack)->Value() * 1e-3 * GetSampleRate()))); // in ms
-  attackReleaseFilter.set_attack(std::exp(-1 / (GetParam(kRelease)->Value() * 1e-3 * GetSampleRate()))); // in ms
+  if(sampling_rate != outFilter.get_output_sampling_rate())
+  {
+    inFilter.set_input_sampling_rate(sampling_rate);
+    inFilter.set_output_sampling_rate(sampling_rate);
+    powerFilter.set_input_sampling_rate(sampling_rate);
+    powerFilter.set_output_sampling_rate(sampling_rate);
+    attackReleaseFilter.set_input_sampling_rate(sampling_rate);
+    attackReleaseFilter.set_output_sampling_rate(sampling_rate);
+    gainCompressorFilter.set_input_sampling_rate(sampling_rate);
+    gainCompressorFilter.set_output_sampling_rate(sampling_rate);
+    applyGainFilter.set_input_sampling_rate(sampling_rate);
+    applyGainFilter.set_output_sampling_rate(sampling_rate);
+    volumeFilter.set_input_sampling_rate(sampling_rate);
+    volumeFilter.set_output_sampling_rate(sampling_rate);
+    drywetFilter.set_input_sampling_rate(sampling_rate);
+    drywetFilter.set_output_sampling_rate(sampling_rate);
+    outFilter.set_input_sampling_rate(sampling_rate);
+    outFilter.set_output_sampling_rate(sampling_rate);
+    
+    powerFilter.set_memory(std::exp(-1/1e-3 * GetSampleRate()));
+    attackReleaseFilter.set_release(std::exp(-GetSampleRate() / (GetParam(kAttack)->Value() * 1e-3))); // in ms
+    attackReleaseFilter.set_attack(std::exp(-GetSampleRate() / (GetParam(kRelease)->Value() * 1e-3))); // in ms
+  }
+  
+  powerFilter.full_setup();
+  attackReleaseFilter.full_setup();
 }
 
 void ATKCompressor::OnParamChange(int paramIdx)
