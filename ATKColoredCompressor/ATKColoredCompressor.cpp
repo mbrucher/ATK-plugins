@@ -95,9 +95,9 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false)
   MakePreset("Parallel Compression", 10., 10., 10., 0., 2., 1., 0., 0.5);
   
   powerFilter.set_input_port(0, &inFilter, 0);
-  gainCompressorFilter.set_input_port(0, &powerFilter, 0);
-  attackReleaseFilter.set_input_port(0, &gainCompressorFilter, 0);
-  applyGainFilter.set_input_port(0, &attackReleaseFilter, 0);
+  attackReleaseFilter.set_input_port(0, &powerFilter, 0);
+  gainCompressorFilter.set_input_port(0, &attackReleaseFilter, 0);
+  applyGainFilter.set_input_port(0, &gainCompressorFilter, 0);
   applyGainFilter.set_input_port(1, &inFilter, 0);
   volumeFilter.set_input_port(0, &applyGainFilter, 0);
   drywetFilter.set_input_port(0, &volumeFilter, 0);
@@ -142,7 +142,15 @@ void ATKColoredCompressor::Reset()
     outFilter.set_input_sampling_rate(sampling_rate);
     outFilter.set_output_sampling_rate(sampling_rate);
     
-    powerFilter.set_memory(std::exp(-1e3/(GetParam(kPower)->Value() * sampling_rate)));
+    auto power = GetParam(kPower)->Value();
+    if (power == 0)
+    {
+      powerFilter.set_memory(0);
+    }
+    else
+    {
+      powerFilter.set_memory(std::exp(-1e3 / (power * sampling_rate)));
+    }
     attackReleaseFilter.set_release(std::exp(-1e3/(GetParam(kAttack)->Value() * sampling_rate))); // in ms
     attackReleaseFilter.set_attack(std::exp(-1e3/(GetParam(kRelease)->Value() * sampling_rate))); // in ms
   }
@@ -158,8 +166,18 @@ void ATKColoredCompressor::OnParamChange(int paramIdx)
   switch (paramIdx)
   {
     case kPower:
-      powerFilter.set_memory(std::exp(-1e3/(GetParam(kPower)->Value() * GetSampleRate())));
+    {
+      auto power = GetParam(kPower)->Value();
+      if (power == 0)
+      {
+        powerFilter.set_memory(0);
+      }
+      else
+      {
+        powerFilter.set_memory(std::exp(-1e3 / (power * GetSampleRate())));
+      }
       break;
+    }
     case kThreshold:
       gainCompressorFilter.set_threshold(std::pow(10, GetParam(kThreshold)->Value() / 10));
       break;
