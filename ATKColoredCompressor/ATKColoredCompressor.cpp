@@ -54,7 +54,7 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false)
   TRACE;
   
   //arguments are: name, defaultVal, minVal, maxVal, step, label
-  GetParam(kPower)->InitDouble("Power", 10., 0.1, 100.0, 0.1, "ms");
+  GetParam(kPower)->InitDouble("Power", 10., 0., 100.0, 0.1, "ms");
   GetParam(kPower)->SetShape(2.);
   GetParam(kAttack)->InitDouble("Attack", 10., 1., 100.0, 0.1, "ms");
   GetParam(kAttack)->SetShape(2.);
@@ -185,7 +185,7 @@ void ATKColoredCompressor::OnParamChange(int paramIdx)
       gainCompressorFilter.set_ratio(GetParam(kSlope)->Value());
       break;
     case kSoftness:
-      gainCompressorFilter.set_color(std::pow(10, GetParam(kSoftness)->Value()));
+      gainCompressorFilter.set_color(GetParam(kSoftness)->Value());
       break;
     case kAttack:
       attackReleaseFilter.set_attack(std::exp(-1e3/(GetParam(kRelease)->Value() * GetSampleRate()))); // in ms
