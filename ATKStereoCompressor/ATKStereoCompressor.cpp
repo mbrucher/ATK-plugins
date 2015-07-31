@@ -192,6 +192,9 @@ ATKStereoCompressor::ATKStereoCompressor(IPlugInstanceInfo instanceInfo)
   sumFilter.set_input_port(0, &powerFilter1, 0);
   sumFilter.set_input_port(1, &powerFilter2, 0);
 
+  powerFilter1.set_memory(0);
+  powerFilter2.set_memory(0);
+
   Reset();
 }
 
@@ -262,12 +265,10 @@ void ATKStereoCompressor::Reset()
     endpoint.set_input_sampling_rate(sampling_rate);
     endpoint.set_output_sampling_rate(sampling_rate);
 
-    powerFilter1.set_memory(std::exp(-1 / 1e-3 * GetSampleRate()));
-    attackReleaseFilter1.set_release(std::exp(-1 / (GetParam(kAttack1)->Value() * 1e-3 * GetSampleRate()))); // in ms
-    attackReleaseFilter1.set_attack(std::exp(-1 / (GetParam(kRelease1)->Value() * 1e-3 * GetSampleRate()))); // in ms
-    powerFilter2.set_memory(std::exp(-1 / 1e-3 * GetSampleRate()));
-    attackReleaseFilter2.set_release(std::exp(-1 / (GetParam(kAttack2)->Value() * 1e-3 * GetSampleRate()))); // in ms
-    attackReleaseFilter2.set_attack(std::exp(-1 / (GetParam(kRelease2)->Value() * 1e-3 * GetSampleRate()))); // in ms
+    attackReleaseFilter1.set_release(std::exp(-1e3 / (GetParam(kAttack1)->Value() * sampling_rate))); // in ms
+    attackReleaseFilter1.set_attack(std::exp(-1e3 / (GetParam(kRelease1)->Value() * sampling_rate))); // in ms
+    attackReleaseFilter2.set_release(std::exp(-1e3 / (GetParam(kAttack2)->Value() * sampling_rate))); // in ms
+    attackReleaseFilter2.set_attack(std::exp(-1e3 / (GetParam(kRelease2)->Value() * sampling_rate))); // in ms
   }
 }
 
