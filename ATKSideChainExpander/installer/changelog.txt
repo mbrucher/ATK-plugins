@@ -1,6 +1,8 @@
 ATKSideChainExpander changelog
 htp://matt.eifelle.com
 
+31/07/15 - v1.0.1 bug fix
+  - Fix attack/release parameters
 29/07/15 - v1.0.0 initial release
   - Built against ATK 0.7.1
   
