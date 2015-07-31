@@ -1,13 +1,13 @@
 [Setup]
-AppName=ATKSideChainExpander
-AppVersion=1.0.1
-DefaultDirName={pf}\ATKSideChainExpander
-DefaultGroupName=ATKSideChainExpander
+AppName=ATKColoredCompressor
+AppVersion=1.0.0
+DefaultDirName={pf}\ATKColoredCompressor
+DefaultGroupName=ATKColoredCompressor
 Compression=lzma2
 SolidCompression=yes
 OutputDir=.\
 ArchitecturesInstallIn64BitMode=x64
-OutputBaseFilename=ATKSideChainExpander Installer
+OutputBaseFilename=ATKColoredCompressor Installer
 LicenseFile=license.rtf
 SetupLogging=yes
 
@@ -26,33 +26,33 @@ Name: "vst3_64"; Description: "64-bit VST3 Plugin (.vst3)"; Types: full custom; 
 ;Name: "aax_64"; Description: "64-bit AAX Plugin (.aaxplugin)"; Types: full custom; Check: Is64BitInstallMode;
 
 [Files]
-;Source: "..\build-win\app\Win32\bin\ATKSideChainExpander.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Components:app; Flags: ignoreversion;
-;Source: "..\build-win\app\x64\bin\ATKSideChainExpander.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Components:app; Flags: ignoreversion;
+;Source: "..\build-win\app\Win32\bin\ATKColoredCompressor.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Components:app; Flags: ignoreversion;
+;Source: "..\build-win\app\x64\bin\ATKColoredCompressor.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Components:app; Flags: ignoreversion;
 
-Source: "..\build-win\vst2\Win32\bin\ATKSideChainExpander.dll"; DestDir: {code:GetVST2Dir_32}; Check: not Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
-Source: "..\build-win\vst2\Win32\bin\ATKSideChainExpander.dll"; DestDir: {code:GetVST2Dir_32}; Check: Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
-Source: "..\build-win\vst2\x64\bin\ATKSideChainExpander x64.dll"; DestDir: {code:GetVST2Dir_64}; Check: Is64BitInstallMode; Components:vst2_64; Flags: ignoreversion;
+Source: "..\build-win\vst2\Win32\bin\ATKColoredCompressor.dll"; DestDir: {code:GetVST2Dir_32}; Check: not Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
+Source: "..\build-win\vst2\Win32\bin\ATKColoredCompressor.dll"; DestDir: {code:GetVST2Dir_32}; Check: Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
+Source: "..\build-win\vst2\x64\bin\ATKColoredCompressor x64.dll"; DestDir: {code:GetVST2Dir_64}; Check: Is64BitInstallMode; Components:vst2_64; Flags: ignoreversion;
 
-Source: "..\build-win\vst3\Win32\bin\ATKSideChainExpander.vst3"; DestDir: "{cf}\VST3\"; Check: not Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
-Source: "..\build-win\vst3\Win32\bin\ATKSideChainExpander.vst3"; DestDir: "{cf32}\VST3\"; Check: Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
-Source: "..\build-win\vst3\x64\bin\ATKSideChainExpander x64.vst3"; DestDir: "{cf64}\VST3\"; Check: Is64BitInstallMode; Components:vst3_64; Flags: ignoreversion;
+Source: "..\build-win\vst3\Win32\bin\ATKColoredCompressor.vst3"; DestDir: "{cf}\VST3\"; Check: not Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
+Source: "..\build-win\vst3\Win32\bin\ATKColoredCompressor.vst3"; DestDir: "{cf32}\VST3\"; Check: Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
+Source: "..\build-win\vst3\x64\bin\ATKColoredCompressor x64.vst3"; DestDir: "{cf64}\VST3\"; Check: Is64BitInstallMode; Components:vst3_64; Flags: ignoreversion;
 
-;Source: "..\build-win\rtas\bin\ATKSideChainExpander.dpm"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
-;Source: "..\build-win\rtas\bin\ATKSideChainExpander.dpm.rsr"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
+;Source: "..\build-win\rtas\bin\ATKColoredCompressor.dpm"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
+;Source: "..\build-win\rtas\bin\ATKColoredCompressor.dpm.rsr"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
 
-;Source: "..\build-win\aax\bin\ATKSideChainExpander.aaxplugin\*.*"; DestDir: "{cf32}\Avid\Audio\Plug-Ins\ATKSideChainExpander.aaxplugin\"; Components:aax_32; Flags: ignoreversion recursesubdirs;
-;Source: "..\build-win\aax\bin\ATKSideChainExpander.aaxplugin\*.*"; DestDir: "{cf}\Avid\Audio\Plug-Ins\ATKSideChainExpander.aaxplugin\"; Components:aax_64; Flags: ignoreversion recursesubdirs;
+;Source: "..\build-win\aax\bin\ATKColoredCompressor.aaxplugin\*.*"; DestDir: "{cf32}\Avid\Audio\Plug-Ins\ATKColoredCompressor.aaxplugin\"; Components:aax_32; Flags: ignoreversion recursesubdirs;
+;Source: "..\build-win\aax\bin\ATKColoredCompressor.aaxplugin\*.*"; DestDir: "{cf}\Avid\Audio\Plug-Ins\ATKColoredCompressor.aaxplugin\"; Components:aax_64; Flags: ignoreversion recursesubdirs;
 
-;Source: "..\manual\ATKSideChainExpander_manual.pdf"; DestDir: "{app}"
+;Source: "..\manual\ATKColoredCompressor_manual.pdf"; DestDir: "{app}"
 Source: "changelog.txt"; DestDir: "{app}"
 Source: "readmewin.rtf"; DestDir: "{app}"; DestName: "readme.rtf"; Flags: isreadme
 Source: "license.rtf"; DestDir: "{app}"; DestName: "license.rtf"
 
 [Icons]
-Name: "{group}\ATKSideChainExpander"; Filename: "{app}\ATKSideChainExpander.exe"
+Name: "{group}\ATKColoredCompressor"; Filename: "{app}\ATKColoredCompressor.exe"
 Name: "{group}\Changelog"; Filename: "{app}\changelog.txt"
 ;Name: "{group}\readme"; Filename: "{app}\readme.rtf"
-Name: "{group}\Uninstall ATKSideChainExpander"; Filename: "{app}\unins000.exe"
+Name: "{group}\Uninstall ATKColoredCompressor"; Filename: "{app}\unins000.exe"
 
 ;[Dirs] 
 ;Name: {cf}\Digidesign\DAE\Plugins\

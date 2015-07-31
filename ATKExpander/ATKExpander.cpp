@@ -78,6 +78,8 @@ ATKExpander::ATKExpander(IPlugInstanceInfo instanceInfo)
   applyGainFilter.set_input_port(1, &inFilter, 0);
   outFilter.set_input_port(0, &applyGainFilter, 0);
   
+  powerFilter.set_memory(0);
+
   Reset();
 }
 
@@ -112,9 +114,8 @@ void ATKExpander::Reset()
   outFilter.set_input_sampling_rate(sampling_rate);
   outFilter.set_output_sampling_rate(sampling_rate);
 
-  powerFilter.set_memory(std::exp(-1/1e-3 * GetSampleRate()));
-  attackReleaseFilter.set_attack(std::exp(-1 / (GetParam(kAttack)->Value() * 1e-3 * GetSampleRate()))); // in ms
-  attackReleaseFilter.set_release(std::exp(-1 / (GetParam(kRelease)->Value() * 1e-3 * GetSampleRate()))); // in ms
+  attackReleaseFilter.set_attack(std::exp(-1e3 / (GetParam(kAttack)->Value() * sampling_rate))); // in ms
+  attackReleaseFilter.set_release(std::exp(-1e3 / (GetParam(kRelease)->Value() * sampling_rate))); // in ms
 }
 
 void ATKExpander::OnParamChange(int paramIdx)

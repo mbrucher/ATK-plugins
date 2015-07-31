@@ -7,9 +7,9 @@
 	<key>CFBundleExecutable</key>
 	<string>${BINARY_NAME}</string>
 	<key>CFBundleGetInfoString</key>
-	<string>1.0.1, Copyright MatthieuBrucher, 2015</string>
+	<string>1.0.0, Copyright MatthieuBrucher, 2015</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.MatthieuBrucher.audiounit.${BINARY_NAME}</string>
+	<string>com.MatthieuBrucher.vst.${BINARY_NAME}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -17,14 +17,12 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.1</string>
+	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>Acme</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.1</string>
+	<string>1.0.0</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.5.0</string>
-	<key>NSPrincipalClass</key>
-	<string>ATKSideChainExpander_View</string>
 </dict>
 </plist>

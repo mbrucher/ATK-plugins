@@ -1,23 +1,23 @@
 #define PLUG_MFR "MatthieuBrucher"
-#define PLUG_NAME "ATKSideChainExpander"
+#define PLUG_NAME "ATKColoredCompressor"
 
-#define PLUG_CLASS_NAME ATKSideChainExpander
+#define PLUG_CLASS_NAME ATKColoredCompressor
 
 #define BUNDLE_MFR "MatthieuBrucher"
-#define BUNDLE_NAME "ATKSideChainExpander"
+#define BUNDLE_NAME "ATKColoredCompressor"
 
-#define PLUG_ENTRY ATKSideChainExpander_Entry
-#define PLUG_VIEW_ENTRY ATKSideChainExpander_ViewEntry
+#define PLUG_ENTRY ATKColoredCompressor_Entry
+#define PLUG_VIEW_ENTRY ATKColoredCompressor_ViewEntry
 
-#define PLUG_ENTRY_STR "ATKSideChainExpander_Entry"
-#define PLUG_VIEW_ENTRY_STR "ATKSideChainExpander_ViewEntry"
+#define PLUG_ENTRY_STR "ATKColoredCompressor_Entry"
+#define PLUG_VIEW_ENTRY_STR "ATKColoredCompressor_ViewEntry"
 
-#define VIEW_CLASS ATKSideChainExpander_View
-#define VIEW_CLASS_STR "ATKSideChainExpander_View"
+#define VIEW_CLASS ATKColoredCompressor_View
+#define VIEW_CLASS_STR "ATKColoredCompressor_View"
 
 // Format        0xMAJR.MN.BG - in HEX! so version 10.1.5 would be 0x000A0105
-#define PLUG_VER 0x00010001
-#define VST3_VER_STR "1.0.1"
+#define PLUG_VER 0x00010000
+#define VST3_VER_STR "1.0.0"
 
 // http://service.steinberg.de/databases/plugin.nsf/plugIn?openForm
 // 4 chars, single quotes. At least one capital letter
@@ -34,7 +34,7 @@
 #endif
 
 #define PLUG_MFR_PT "MatthieuBrucher\nMatthieuBrucher\nMatthieuBrucher"
-#define PLUG_NAME_PT "ATKSideChainExpander\n6m9f"
+#define PLUG_NAME_PT "ATKColoredCompressor\n6m9f"
 #define PLUG_TYPE_PT "Dynamics"
 #define PLUG_DOES_AUDIOSUITE 1
 
@@ -43,7 +43,7 @@
 instrument determined by PLUG _IS _INST
 */
 
-#define PLUG_CHANNEL_IO "2-2 4-2"
+#define PLUG_CHANNEL_IO "1-1"
 
 // Should be retrieved from ATK when the time comes
 #define PLUG_LATENCY 0
@@ -55,16 +55,14 @@ instrument determined by PLUG _IS _INST
 #define PLUG_DOES_STATE_CHUNKS 0
 
 // Unique IDs for each image resource.
-#define STEREO_EXPANDER_ID 101
+#define COLORED_COMPRESSOR_ID 101
 #define KNOB_ID 102
 #define KNOB1_ID 103
-#define SWITCH_ID 104
 
 // Image resource locations for this plug.
-#define STEREO_EXPANDER_FN "resources/img/metal.png"
+#define COLORED_COMPRESSOR_FN "resources/img/metal.png"
 #define KNOB_FN "resources/img/uni-small.png"
 #define KNOB1_FN "resources/img/bi-small.png"
-#define SWITCH_FN "resources/img/switch2-small.png"
 
 // GUI default dimensions
 #define GUI_WIDTH 952
