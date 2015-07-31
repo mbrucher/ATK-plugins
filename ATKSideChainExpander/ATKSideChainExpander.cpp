@@ -296,10 +296,10 @@ void ATKSideChainExpander::Reset()
     endpoint.set_input_sampling_rate(sampling_rate);
     endpoint.set_output_sampling_rate(sampling_rate);
 
-    attackReleaseFilter1.set_release(std::exp(-1e3 / (GetParam(kAttack1)->Value() * sampling_rate))); // in ms
-    attackReleaseFilter1.set_attack(std::exp(-1e3 / (GetParam(kRelease1)->Value() * sampling_rate))); // in ms
-    attackReleaseFilter2.set_release(std::exp(-1e3 / (GetParam(kAttack2)->Value() * sampling_rate))); // in ms
-    attackReleaseFilter2.set_attack(std::exp(-1e3 / (GetParam(kRelease2)->Value() * sampling_rate))); // in ms
+    attackReleaseFilter1.set_release(std::exp(-1e3 / (GetParam(kRelease1)->Value() * sampling_rate))); // in ms
+    attackReleaseFilter1.set_attack(std::exp(-1e3 / (GetParam(kAttack1)->Value() * sampling_rate))); // in ms
+    attackReleaseFilter2.set_release(std::exp(-1e3 / (GetParam(kRelease2)->Value() * sampling_rate))); // in ms
+    attackReleaseFilter2.set_attack(std::exp(-1e3 / (GetParam(kAttack2)->Value() * sampling_rate))); // in ms
   }
   powerFilter1.full_setup();
   powerFilter2.full_setup();
@@ -454,10 +454,10 @@ void ATKSideChainExpander::OnParamChange(int paramIdx)
     gainExpanderFilter1.set_softness(std::pow(10, GetParam(kSoftness1)->Value()));
     break;
   case kAttack1:
-    attackReleaseFilter1.set_release(std::exp(-1e3 / (GetParam(kAttack1)->Value() * GetSampleRate()))); // in ms
+    attackReleaseFilter1.set_attack(std::exp(-1e3 / (GetParam(kAttack1)->Value() * GetSampleRate()))); // in ms
     break;
   case kRelease1:
-    attackReleaseFilter1.set_attack(std::exp(-1e3 / (GetParam(kRelease1)->Value() * GetSampleRate()))); // in ms
+    attackReleaseFilter1.set_release(std::exp(-1e3 / (GetParam(kRelease1)->Value() * GetSampleRate()))); // in ms
     break;
   case kMakeup1:
     makeupFilter1.set_volume_db(GetParam(kMakeup1)->Value());
@@ -476,10 +476,10 @@ void ATKSideChainExpander::OnParamChange(int paramIdx)
     gainExpanderFilter2.set_softness(std::pow(10, GetParam(kSoftness2)->Value()));
     break;
   case kAttack2:
-    attackReleaseFilter2.set_release(std::exp(-1e3 / (GetParam(kAttack2)->Value() * GetSampleRate()))); // in ms
+    attackReleaseFilter2.set_attack(std::exp(-1e3 / (GetParam(kAttack2)->Value() * GetSampleRate()))); // in ms
     break;
   case kRelease2:
-    attackReleaseFilter2.set_attack(std::exp(-1e3 / (GetParam(kRelease2)->Value() * GetSampleRate()))); // in ms
+    attackReleaseFilter2.set_release(std::exp(-1e3 / (GetParam(kRelease2)->Value() * GetSampleRate()))); // in ms
     break;
   case kMakeup2:
     makeupFilter2.set_volume_db(GetParam(kMakeup2)->Value());
