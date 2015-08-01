@@ -6,7 +6,7 @@
 #include <ATK/Core/InPointerFilter.h>
 #include <ATK/Core/OutPointerFilter.h>
 #include <ATK/Delay/UniversalVariableDelayLineFilter.h>
-#include <ATK/Tools/CachedSinusGeneratorFilter.h>
+#include <ATK/Tools/SinusGeneratorFilter.h>
 
 class ATKUniversalVariableDelay : public IPlug
 {
@@ -20,7 +20,7 @@ public:
 
 private:
   ATK::InPointerFilter<double> inFilter;
-  ATK::CachedSinusGeneratorFilter<double> sinusGenerator;
+  ATK::SinusGeneratorFilter<double> sinusGenerator;
   ATK::UniversalVariableDelayLineFilter<double> delayFilter;
   ATK::OutPointerFilter<double> outFilter;
 };
