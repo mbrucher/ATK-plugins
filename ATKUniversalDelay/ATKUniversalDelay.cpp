@@ -32,7 +32,7 @@ enum ELayout
 };
 
 ATKUniversalDelay::ATKUniversalDelay(IPlugInstanceInfo instanceInfo)
-  :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), inFilter(NULL, 1, 0, false), outFilter(NULL, 1, 0, false), delayFilter(100000)
+  :IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), delayFilter(192000)
 {
   TRACE;
 
@@ -89,12 +89,16 @@ void ATKUniversalDelay::Reset()
   
   int sampling_rate = GetSampleRate();
   
-  inFilter.set_input_sampling_rate(sampling_rate);
-//  inFilter.set_output_sampling_rate(sampling_rate);
-  delayFilter.set_input_sampling_rate(sampling_rate);
-//  delayFilter.set_output_sampling_rate(sampling_rate);
-  outFilter.set_input_sampling_rate(sampling_rate);
-  outFilter.set_output_sampling_rate(sampling_rate);
+  if(sampling_rate != inFilter.get_output_sampling_rate())
+  {
+    inFilter.set_input_sampling_rate(sampling_rate);
+    inFilter.set_output_sampling_rate(sampling_rate);
+    delayFilter.set_input_sampling_rate(sampling_rate);
+    delayFilter.set_output_sampling_rate(sampling_rate);
+    outFilter.set_input_sampling_rate(sampling_rate);
+    outFilter.set_output_sampling_rate(sampling_rate);
+  }
+  delayFilter.full_setup();
 }
 
 void ATKUniversalDelay::OnParamChange(int paramIdx)
