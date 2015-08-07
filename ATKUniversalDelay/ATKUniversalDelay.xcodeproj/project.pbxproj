@@ -32,42 +32,14 @@
 		0832E8E01963653A003E2E9A /* KNB02uni43.png in Resources */ = {isa = PBXBuildFile; fileRef = 0832E8DA1963653A003E2E9A /* KNB02uni43.png */; };
 		0832E8E11963653A003E2E9A /* KNB02uni43.png in Resources */ = {isa = PBXBuildFile; fileRef = 0832E8DA1963653A003E2E9A /* KNB02uni43.png */; };
 		0832E8E21963653A003E2E9A /* KNB02uni43.png in Resources */ = {isa = PBXBuildFile; fileRef = 0832E8DA1963653A003E2E9A /* KNB02uni43.png */; };
-		0832E8E419636583003E2E9A /* lib32ATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0832E8E319636583003E2E9A /* lib32ATKDelay_static.a */; };
 		0832E8E619636594003E2E9A /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0832E8E519636594003E2E9A /* libATKDelay_static.a */; };
-		0832E8E7196365A2003E2E9A /* lib32ATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0832E8E319636583003E2E9A /* lib32ATKDelay_static.a */; };
 		0832E8E8196365BC003E2E9A /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0832E8E519636594003E2E9A /* libATKDelay_static.a */; };
-		0832E8E9196365CC003E2E9A /* lib32ATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0832E8E319636583003E2E9A /* lib32ATKDelay_static.a */; };
 		0832E8EA196365DA003E2E9A /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0832E8E519636594003E2E9A /* libATKDelay_static.a */; };
-		0832E8EB196365E8003E2E9A /* lib32ATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0832E8E319636583003E2E9A /* lib32ATKDelay_static.a */; };
 		0832E8EC196365F7003E2E9A /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0832E8E519636594003E2E9A /* libATKDelay_static.a */; };
 		083717CA1953848B00339823 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989752195376D8001783AC /* Background.png */; };
 		083717D21953849800339823 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989752195376D8001783AC /* Background.png */; };
 		083717D51953849E00339823 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989752195376D8001783AC /* Background.png */; };
 		083717D8195384A600339823 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 08989752195376D8001783AC /* Background.png */; };
-		089897BE19537B08001783AC /* lib32ATKCore_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897B819537B08001783AC /* lib32ATKCore_static.a */; };
-		089897BF19537B08001783AC /* lib32ATKDistortion_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897B919537B08001783AC /* lib32ATKDistortion_static.a */; };
-		089897C019537B08001783AC /* lib32ATKEQ_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897BA19537B08001783AC /* lib32ATKEQ_static.a */; };
-		089897C119537B08001783AC /* lib32ATKIO_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897BB19537B08001783AC /* lib32ATKIO_static.a */; };
-		089897C219537B08001783AC /* lib32ATKMock_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897BC19537B08001783AC /* lib32ATKMock_static.a */; };
-		089897C319537B08001783AC /* lib32ATKTools_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897BD19537B08001783AC /* lib32ATKTools_static.a */; };
-		089897C419537B1F001783AC /* lib32ATKCore_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897B819537B08001783AC /* lib32ATKCore_static.a */; };
-		089897C519537B1F001783AC /* lib32ATKDistortion_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897B919537B08001783AC /* lib32ATKDistortion_static.a */; };
-		089897C619537B1F001783AC /* lib32ATKEQ_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897BA19537B08001783AC /* lib32ATKEQ_static.a */; };
-		089897C719537B1F001783AC /* lib32ATKIO_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897BB19537B08001783AC /* lib32ATKIO_static.a */; };
-		089897C819537B1F001783AC /* lib32ATKMock_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897BC19537B08001783AC /* lib32ATKMock_static.a */; };
-		089897C919537B1F001783AC /* lib32ATKTools_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897BD19537B08001783AC /* lib32ATKTools_static.a */; };
-		089897CA19537B2D001783AC /* lib32ATKCore_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897B819537B08001783AC /* lib32ATKCore_static.a */; };
-		089897CB19537B2D001783AC /* lib32ATKDistortion_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897B919537B08001783AC /* lib32ATKDistortion_static.a */; };
-		089897CC19537B2D001783AC /* lib32ATKEQ_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897BA19537B08001783AC /* lib32ATKEQ_static.a */; };
-		089897CD19537B2D001783AC /* lib32ATKIO_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897BB19537B08001783AC /* lib32ATKIO_static.a */; };
-		089897CE19537B2D001783AC /* lib32ATKMock_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897BC19537B08001783AC /* lib32ATKMock_static.a */; };
-		089897CF19537B2D001783AC /* lib32ATKTools_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897BD19537B08001783AC /* lib32ATKTools_static.a */; };
-		089897D019537B3A001783AC /* lib32ATKCore_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897B819537B08001783AC /* lib32ATKCore_static.a */; };
-		089897D119537B3A001783AC /* lib32ATKDistortion_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897B919537B08001783AC /* lib32ATKDistortion_static.a */; };
-		089897D219537B3A001783AC /* lib32ATKEQ_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897BA19537B08001783AC /* lib32ATKEQ_static.a */; };
-		089897D319537B3A001783AC /* lib32ATKIO_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897BB19537B08001783AC /* lib32ATKIO_static.a */; };
-		089897D419537B3A001783AC /* lib32ATKMock_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897BC19537B08001783AC /* lib32ATKMock_static.a */; };
-		089897D519537B3A001783AC /* lib32ATKTools_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089897BD19537B08001783AC /* lib32ATKTools_static.a */; };
 		089897D61953815D001783AC /* libATKCore_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08989755195377BE001783AC /* libATKCore_static.a */; };
 		089897D71953815D001783AC /* libATKDistortion_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08989756195377BE001783AC /* libATKDistortion_static.a */; };
 		089897D81953815D001783AC /* libATKEQ_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08989757195377BE001783AC /* libATKEQ_static.a */; };
@@ -287,26 +259,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0898974B19537659001783AC /* PBXContainerItemProxy */ = {
+		08219B0E1B756BE300AA3998 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4F4AD1F11409A56A0068A6D4 /* base.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = F4306DEB17DDC8800075E8C4;
-			remoteInfo = "base_libc++";
-		};
-		0898974D19537659001783AC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4F4AD1F11409A56A0068A6D4 /* base.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F4128A5417EB4B0B00114E59;
-			remoteInfo = base_ios;
-		};
-		0898974F19537659001783AC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4F4AD1F11409A56A0068A6D4 /* base.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F412026A14C41F68008F9C84;
-			remoteInfo = base_codecoverage;
+			remoteGlobalIDString = 4FA708BC158B47D200BFC572;
+			remoteInfo = base_32_intel;
 		};
 		4F4AD1F51409A56A0068A6D4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -418,7 +376,6 @@
 /* Begin PBXFileReference section */
 		0832E8D91963653A003E2E9A /* KNB02bi43.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KNB02bi43.png; path = resources/img/KNB02bi43.png; sourceTree = "<group>"; };
 		0832E8DA1963653A003E2E9A /* KNB02uni43.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KNB02uni43.png; path = resources/img/KNB02uni43.png; sourceTree = "<group>"; };
-		0832E8E319636583003E2E9A /* lib32ATKDelay_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib32ATKDelay_static.a; path = ../../../ATK32/lib/lib32ATKDelay_static.a; sourceTree = "<group>"; };
 		0832E8E519636594003E2E9A /* libATKDelay_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDelay_static.a; path = ../../../ATK64/lib/libATKDelay_static.a; sourceTree = "<group>"; };
 		08989752195376D8001783AC /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background.png; path = resources/img/Background.png; sourceTree = "<group>"; };
 		08989755195377BE001783AC /* libATKCore_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKCore_static.a; path = ../../../ATK64/lib/libATKCore_static.a; sourceTree = "<group>"; };
@@ -427,12 +384,6 @@
 		08989758195377BE001783AC /* libATKIO_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKIO_static.a; path = ../../../ATK64/lib/libATKIO_static.a; sourceTree = "<group>"; };
 		08989759195377BE001783AC /* libATKMock_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKMock_static.a; path = ../../../ATK64/lib/libATKMock_static.a; sourceTree = "<group>"; };
 		0898975A195377BE001783AC /* libATKTools_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKTools_static.a; path = ../../../ATK64/lib/libATKTools_static.a; sourceTree = "<group>"; };
-		089897B819537B08001783AC /* lib32ATKCore_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib32ATKCore_static.a; path = ../../../ATK32/lib/lib32ATKCore_static.a; sourceTree = "<group>"; };
-		089897B919537B08001783AC /* lib32ATKDistortion_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib32ATKDistortion_static.a; path = ../../../ATK32/lib/lib32ATKDistortion_static.a; sourceTree = "<group>"; };
-		089897BA19537B08001783AC /* lib32ATKEQ_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib32ATKEQ_static.a; path = ../../../ATK32/lib/lib32ATKEQ_static.a; sourceTree = "<group>"; };
-		089897BB19537B08001783AC /* lib32ATKIO_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib32ATKIO_static.a; path = ../../../ATK32/lib/lib32ATKIO_static.a; sourceTree = "<group>"; };
-		089897BC19537B08001783AC /* lib32ATKMock_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib32ATKMock_static.a; path = ../../../ATK32/lib/lib32ATKMock_static.a; sourceTree = "<group>"; };
-		089897BD19537B08001783AC /* lib32ATKTools_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib32ATKTools_static.a; path = ../../../ATK32/lib/lib32ATKTools_static.a; sourceTree = "<group>"; };
 		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -651,19 +602,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0832E8E8196365BC003E2E9A /* libATKDelay_static.a in Frameworks */,
-				0832E8E7196365A2003E2E9A /* lib32ATKDelay_static.a in Frameworks */,
 				089897DC1953816A001783AC /* libATKCore_static.a in Frameworks */,
 				089897DD1953816A001783AC /* libATKDistortion_static.a in Frameworks */,
 				089897DE1953816A001783AC /* libATKEQ_static.a in Frameworks */,
 				089897DF1953816A001783AC /* libATKIO_static.a in Frameworks */,
 				089897E01953816A001783AC /* libATKMock_static.a in Frameworks */,
 				089897E11953816A001783AC /* libATKTools_static.a in Frameworks */,
-				089897CA19537B2D001783AC /* lib32ATKCore_static.a in Frameworks */,
-				089897CB19537B2D001783AC /* lib32ATKDistortion_static.a in Frameworks */,
-				089897CC19537B2D001783AC /* lib32ATKEQ_static.a in Frameworks */,
-				089897CD19537B2D001783AC /* lib32ATKIO_static.a in Frameworks */,
-				089897CE19537B2D001783AC /* lib32ATKMock_static.a in Frameworks */,
-				089897CF19537B2D001783AC /* lib32ATKTools_static.a in Frameworks */,
 				4F8D4C2F13E97806004F7633 /* lice.a in Frameworks */,
 				4F20EF2D132C69FE0030E34C /* Cocoa.framework in Frameworks */,
 				4F20EF2E132C69FE0030E34C /* Carbon.framework in Frameworks */,
@@ -675,19 +619,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0832E8EC196365F7003E2E9A /* libATKDelay_static.a in Frameworks */,
-				0832E8EB196365E8003E2E9A /* lib32ATKDelay_static.a in Frameworks */,
 				089897E819538184001783AC /* libATKCore_static.a in Frameworks */,
 				089897E919538184001783AC /* libATKDistortion_static.a in Frameworks */,
 				089897EA19538184001783AC /* libATKEQ_static.a in Frameworks */,
 				089897EB19538184001783AC /* libATKIO_static.a in Frameworks */,
 				089897EC19538184001783AC /* libATKMock_static.a in Frameworks */,
 				089897ED19538184001783AC /* libATKTools_static.a in Frameworks */,
-				089897BE19537B08001783AC /* lib32ATKCore_static.a in Frameworks */,
-				089897BF19537B08001783AC /* lib32ATKDistortion_static.a in Frameworks */,
-				089897C019537B08001783AC /* lib32ATKEQ_static.a in Frameworks */,
-				089897C119537B08001783AC /* lib32ATKIO_static.a in Frameworks */,
-				089897C219537B08001783AC /* lib32ATKMock_static.a in Frameworks */,
-				089897C319537B08001783AC /* lib32ATKTools_static.a in Frameworks */,
 				4F8D4C2813E9778D004F7633 /* lice.a in Frameworks */,
 				4F3AE1D412C0E5E2001FD7A4 /* Carbon.framework in Frameworks */,
 				4F3AE1D512C0E5E2001FD7A4 /* Cocoa.framework in Frameworks */,
@@ -703,19 +640,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0832E8EA196365DA003E2E9A /* libATKDelay_static.a in Frameworks */,
-				0832E8E9196365CC003E2E9A /* lib32ATKDelay_static.a in Frameworks */,
 				089897E219538177001783AC /* libATKCore_static.a in Frameworks */,
 				089897E319538177001783AC /* libATKDistortion_static.a in Frameworks */,
 				089897E419538177001783AC /* libATKEQ_static.a in Frameworks */,
 				089897E519538177001783AC /* libATKIO_static.a in Frameworks */,
 				089897E619538177001783AC /* libATKMock_static.a in Frameworks */,
 				089897E719538177001783AC /* libATKTools_static.a in Frameworks */,
-				089897C419537B1F001783AC /* lib32ATKCore_static.a in Frameworks */,
-				089897C519537B1F001783AC /* lib32ATKDistortion_static.a in Frameworks */,
-				089897C619537B1F001783AC /* lib32ATKEQ_static.a in Frameworks */,
-				089897C719537B1F001783AC /* lib32ATKIO_static.a in Frameworks */,
-				089897C819537B1F001783AC /* lib32ATKMock_static.a in Frameworks */,
-				089897C919537B1F001783AC /* lib32ATKTools_static.a in Frameworks */,
 				4F9828F6140A9EEE00F3FCC1 /* lice.a in Frameworks */,
 				4F9828D8140A9EB700F3FCC1 /* libbase.a in Frameworks */,
 				4F9828DA140A9EB700F3FCC1 /* Cocoa.framework in Frameworks */,
@@ -728,19 +658,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0832E8E619636594003E2E9A /* libATKDelay_static.a in Frameworks */,
-				0832E8E419636583003E2E9A /* lib32ATKDelay_static.a in Frameworks */,
 				089897D61953815D001783AC /* libATKCore_static.a in Frameworks */,
 				089897D71953815D001783AC /* libATKDistortion_static.a in Frameworks */,
 				089897D81953815D001783AC /* libATKEQ_static.a in Frameworks */,
 				089897D91953815D001783AC /* libATKIO_static.a in Frameworks */,
 				089897DA1953815D001783AC /* libATKMock_static.a in Frameworks */,
 				089897DB1953815D001783AC /* libATKTools_static.a in Frameworks */,
-				089897D019537B3A001783AC /* lib32ATKCore_static.a in Frameworks */,
-				089897D119537B3A001783AC /* lib32ATKDistortion_static.a in Frameworks */,
-				089897D219537B3A001783AC /* lib32ATKEQ_static.a in Frameworks */,
-				089897D319537B3A001783AC /* lib32ATKIO_static.a in Frameworks */,
-				089897D419537B3A001783AC /* lib32ATKMock_static.a in Frameworks */,
-				089897D519537B3A001783AC /* lib32ATKTools_static.a in Frameworks */,
 				4F8D4BCD13E97671004F7633 /* lice.a in Frameworks */,
 				4F78D87513B637E50032E0F3 /* Carbon.framework in Frameworks */,
 				4F78D7D013B637790032E0F3 /* CoreMIDI.framework in Frameworks */,
@@ -754,23 +677,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		089C166AFE841209C02AAC07 /* IPlugExample */ = {
+		08219B121B756BEA00AA3998 /* ATK */ = {
 			isa = PBXGroup;
 			children = (
 				0832E8E519636594003E2E9A /* libATKDelay_static.a */,
-				0832E8E319636583003E2E9A /* lib32ATKDelay_static.a */,
-				089897B819537B08001783AC /* lib32ATKCore_static.a */,
-				089897B919537B08001783AC /* lib32ATKDistortion_static.a */,
-				089897BA19537B08001783AC /* lib32ATKEQ_static.a */,
-				089897BB19537B08001783AC /* lib32ATKIO_static.a */,
-				089897BC19537B08001783AC /* lib32ATKMock_static.a */,
-				089897BD19537B08001783AC /* lib32ATKTools_static.a */,
 				08989755195377BE001783AC /* libATKCore_static.a */,
 				08989756195377BE001783AC /* libATKDistortion_static.a */,
 				08989757195377BE001783AC /* libATKEQ_static.a */,
 				08989758195377BE001783AC /* libATKIO_static.a */,
 				08989759195377BE001783AC /* libATKMock_static.a */,
 				0898975A195377BE001783AC /* libATKTools_static.a */,
+			);
+			name = ATK;
+			sourceTree = "<group>";
+		};
+		089C166AFE841209C02AAC07 /* IPlugExample */ = {
+			isa = PBXGroup;
+			children = (
 				52FBBED30D0CF143001C8B8A /* resource.h */,
 				52FBBED20D0CF13D001C8B8A /* ATKUniversalDelay.h */,
 				52FBBED00D0CF139001C8B8A /* ATKUniversalDelay.cpp */,
@@ -785,6 +708,7 @@
 		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				08219B121B756BEA00AA3998 /* ATK */,
 				4FF01613134E0BCD001447BA /* WDL */,
 				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
 			);
@@ -1037,9 +961,7 @@
 			isa = PBXGroup;
 			children = (
 				4F4AD1F61409A56A0068A6D4 /* libbase.a */,
-				0898974C19537659001783AC /* libbase_libc++.a */,
-				0898974E19537659001783AC /* libbase_ios.a */,
-				0898975019537659001783AC /* libbase_codecoverage.a */,
+				08219B0F1B756BE300AA3998 /* libbase32.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1589,25 +1511,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		0898974C19537659001783AC /* libbase_libc++.a */ = {
+		08219B0F1B756BE300AA3998 /* libbase32.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = "libbase_libc++.a";
-			remoteRef = 0898974B19537659001783AC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0898974E19537659001783AC /* libbase_ios.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libbase_ios.a;
-			remoteRef = 0898974D19537659001783AC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0898975019537659001783AC /* libbase_codecoverage.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libbase_codecoverage.a;
-			remoteRef = 0898974F19537659001783AC /* PBXContainerItemProxy */;
+			path = libbase32.a;
+			remoteRef = 08219B0E1B756BE300AA3998 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		4F4AD1F61409A56A0068A6D4 /* libbase.a */ = {
@@ -2020,6 +1928,7 @@
 		4F20EF30132C69FE0030E34C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = "$(VST_FOLDER)";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
 					"$(VST_DEFS)",
@@ -2039,6 +1948,7 @@
 		4F20EF31132C69FE0030E34C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = "$(VST_FOLDER)";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
 					"$(VST_DEFS)",
@@ -2058,6 +1968,7 @@
 		4F20EF32132C69FE0030E34C /* Tracer */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = "$(VST_FOLDER)";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
 					"$(VST_DEFS)",
@@ -2077,6 +1988,7 @@
 		4F3AE1DD12C0E5E2001FD7A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = "$(AU_FOLDER)";
 				EXPORTED_SYMBOLS_FILE = ATKUniversalDelay.exp;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
@@ -2104,6 +2016,7 @@
 		4F3AE1DE12C0E5E2001FD7A4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = "$(AU_FOLDER)";
 				EXPORTED_SYMBOLS_FILE = ATKUniversalDelay.exp;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
@@ -2131,6 +2044,7 @@
 		4F3AE1DF12C0E5E2001FD7A4 /* Tracer */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = "$(AU_FOLDER)";
 				EXPORTED_SYMBOLS_FILE = ATKUniversalDelay.exp;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
@@ -2158,6 +2072,7 @@
 		4F78DAF213B643610032E0F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = "$(DEBUG_OPTIMIZE)";
@@ -2168,6 +2083,7 @@
 		4F78DAF313B643610032E0F3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -2179,6 +2095,7 @@
 		4F78DAF413B643610032E0F3 /* Tracer */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				PRODUCT_NAME = "AllOSX_32&64_intel";
 			};
 			name = Tracer;
@@ -2186,6 +2103,7 @@
 		4F9828DD140A9EB700F3FCC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = "$(VST3_FOLDER)";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
 					"$(VST3_DEFS)",
@@ -2209,6 +2127,7 @@
 		4F9828DE140A9EB700F3FCC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = "$(VST3_FOLDER)";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
 					"$(VST3_DEFS)",
@@ -2232,6 +2151,7 @@
 		4F9828DF140A9EB700F3FCC1 /* Tracer */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = "$(VST3_FOLDER)";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
 					"$(VST3_DEFS)",
@@ -2255,6 +2175,7 @@
 		4FD16A0C13B63082001D0217 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = "$(APP_FOLDER)";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
 					"$(APP_DEFS)",
@@ -2285,6 +2206,7 @@
 		4FD16A0D13B63082001D0217 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = "$(APP_FOLDER)";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
 					"$(APP_DEFS)",
@@ -2315,6 +2237,7 @@
 		4FD16A0E13B63082001D0217 /* Tracer */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = "$(APP_FOLDER)";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
 					"$(APP_DEFS)",
