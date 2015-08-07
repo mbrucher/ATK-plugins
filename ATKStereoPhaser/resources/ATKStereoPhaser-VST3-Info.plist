@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${BINARY_NAME}</string>
 	<key>CFBundleGetInfoString</key>
-	<string>1.0.0, Copyright MatthieuBrucher, 2014</string>
+	<string>1.0.0, Copyright MatthieuBrucher, 2015</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.MatthieuBrucher.vst3.${BINARY_NAME}</string>
 	<key>CFBundleInfoDictionaryVersion</key>

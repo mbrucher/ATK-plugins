@@ -134,10 +134,10 @@ void ATKExpander::OnParamChange(int paramIdx)
       gainExpanderFilter.set_softness(std::pow(10, GetParam(kSoftness)->Value()));
       break;
     case kAttack:
-      attackReleaseFilter.set_attack(std::exp(-1 / (GetParam(kAttack)->Value() * 1e-3 * GetSampleRate()))); // in ms
+      attackReleaseFilter.set_attack(std::exp(-1e3 / (GetParam(kAttack)->Value() * GetSampleRate()))); // in ms
       break;
     case kRelease:
-      attackReleaseFilter.set_release(std::exp(-1 / (GetParam(kRelease)->Value() * 1e-3 * GetSampleRate()))); // in ms
+      attackReleaseFilter.set_release(std::exp(-1e3 / (GetParam(kRelease)->Value() * GetSampleRate()))); // in ms
       break;
 
     default:

@@ -1,6 +1,10 @@
 ATKUniversalDelay changelog
 htp://matt.eifelle.com
 
+11/08/15 - v1.2.0
+  - fixed length for 192kHz sampling rate
+  - maximum depth rate to 2.9ms (less than max central delay)
+  - built against ATK 0.7.1
 05/08/14 - v1.1.0
   - bumped max delay length to 1s
   - built against ATK 0.4.2
