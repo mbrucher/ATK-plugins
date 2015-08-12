@@ -37,7 +37,7 @@ enum ELayout
 };
 
 ATKChorus::ATKChorus(IPlugInstanceInfo instanceInfo)
-: IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), inFilter(NULL, 1, 0, false), outFilter(NULL, 1, 0, false), noiseGenerator(), delayFilter(10000)
+: IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), delayFilter(50000)
 {
   TRACE;
 
@@ -104,15 +104,22 @@ void ATKChorus::Reset()
   
   int sampling_rate = GetSampleRate();
   
-  inFilter.set_input_sampling_rate(sampling_rate);
-//  inFilter.set_output_sampling_rate(sampling_rate);
-  noiseGenerator.set_output_sampling_rate(sampling_rate);
-  lowPass.set_input_sampling_rate(sampling_rate);
-  offsetFilter.set_input_sampling_rate(sampling_rate);
-  delayFilter.set_input_sampling_rate(sampling_rate);
-//  delayFilter.set_output_sampling_rate(sampling_rate);
-  outFilter.set_input_sampling_rate(sampling_rate);
-  outFilter.set_output_sampling_rate(sampling_rate);
+  if(sampling_rate != inFilter.get_output_sampling_rate())
+  {
+    inFilter.set_input_sampling_rate(sampling_rate);
+    inFilter.set_output_sampling_rate(sampling_rate);
+    noiseGenerator.set_input_sampling_rate(sampling_rate);
+    noiseGenerator.set_output_sampling_rate(sampling_rate);
+    lowPass.set_input_sampling_rate(sampling_rate);
+    lowPass.set_output_sampling_rate(sampling_rate);
+    offsetFilter.set_input_sampling_rate(sampling_rate);
+    delayFilter.set_input_sampling_rate(sampling_rate);
+    delayFilter.set_output_sampling_rate(sampling_rate);
+    outFilter.set_input_sampling_rate(sampling_rate);
+    outFilter.set_output_sampling_rate(sampling_rate);
+  }
+  
+  delayFilter.full_setup();
 }
 
 void ATKChorus::OnParamChange(int paramIdx)
