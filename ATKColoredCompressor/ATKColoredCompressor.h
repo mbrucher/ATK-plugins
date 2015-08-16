@@ -8,7 +8,7 @@
 #include <ATK/Core/OutPointerFilter.h>
 
 #include <ATK/Dynamic/AttackReleaseFilter.h>
-#include <ATK/Dynamic/GainFractionalCompressorFilter.h>
+#include <ATK/Dynamic/GainColoredCompressorFilter.h>
 #include <ATK/Dynamic/PowerFilter.h>
 
 #include <ATK/Tools/ApplyGainFilter.h>
@@ -29,7 +29,7 @@ private:
   ATK::InPointerFilter<double> inFilter;
   ATK::PowerFilter<double> powerFilter;
   ATK::AttackReleaseFilter<double> attackReleaseFilter;
-  ATK::GainFractionalCompressorFilter<double> gainCompressorFilter;
+  ATK::GainColoredCompressorFilter<double> gainCompressorFilter;
   ATK::ApplyGainFilter<double> applyGainFilter;
   ATK::VolumeFilter<double> volumeFilter;
   ATK::DryWetFilter<double> drywetFilter;

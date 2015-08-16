@@ -15,7 +15,9 @@ enum EParams
   kRelease,
   kThreshold,
   kSlope,
-  kColor,
+  kSoftness,
+  kColored,
+  kQuality,
   kMakeup,
   kDryWet,
   kNumParams
@@ -36,11 +38,15 @@ enum ELayout
   kThresholdY = 40,
   kSlopeX = 439,
   kSlopeY = 40,
-  kColorX = 542,
-  kColorY = 40,
-  kMakeupX = 645,
+  kSoftnessX = 542,
+  kSoftnessY = 40,
+  kColoredX = 645,
+  kColoredY = 40,
+  kQualityX = 748,
+  kQualityY = 40,
+  kMakeupX = 851,
   kMakeupY = 40,
-  kDryWetX = 748,
+  kDryWetX = 954,
   kDryWetY = 40,
   
   kKnobFrames = 20,
@@ -64,7 +70,10 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorF
   GetParam(kThreshold)->SetShape(2.);
   GetParam(kSlope)->InitDouble("Slope", 2., 1.5, 100, .1, "-");
   GetParam(kSlope)->SetShape(2.);
-  GetParam(kColor)->InitDouble("Color", 0, -.5, .5, 0.01, "-");
+  GetParam(kColored)->InitDouble("Color", 0, -.5, .5, 0.01, "-");
+  GetParam(kQuality)->InitDouble("Quality", 0.1, 0.01, .5, 0.01, "-");
+  GetParam(kSoftness)->InitDouble("Softness", -2, -4, 0, 0.1, "-");
+  GetParam(kSoftness)->SetShape(2.);
   GetParam(kMakeup)->InitDouble("Makeup Gain", 0, 0, 40, 0.1, "dB"); // Makeup is expressed in amplitude
   GetParam(kMakeup)->SetShape(2.);
   GetParam(kDryWet)->InitDouble("Dry/Wet", 1, 0, 1, 0.01, "-");
@@ -83,15 +92,17 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorF
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kReleaseX, kReleaseY, kReleaseX + 78, kReleaseY + 78 + 21), kRelease, &knob, &text, "ms"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kThresholdX, kThresholdY, kThresholdX + 78, kThresholdY + 78 + 21), kThreshold, &knob, &text, "dB"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kSlopeX, kSlopeY, kSlopeX + 78, kSlopeY + 78 + 21), kSlope, &knob, &text, ""));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kColorX, kColorY, kColor, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kSoftnessX, kSoftnessY, kSoftness, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kColoredX, kColoredY, kColored, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kQualityX, kQualityY, kQuality, &knob));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kMakeupX, kMakeupY, kMakeupX + 78, kMakeupY + 78 + 21), kMakeup, &knob, &text, "dB"));
   pGraphics->AttachControl(new IKnobMultiControl(this, kDryWetX, kDryWetY, kDryWet, &knob1));
   
   AttachGraphics(pGraphics);
   
   //MakePreset("preset 1", ... );
-  MakePreset("Serial Compression", 10., 10., 10., 0., 2., 0., 0., 1.);
-  MakePreset("Parallel Compression", 10., 10., 10., 0., 2., 0., 0., 0.5);
+  MakePreset("Serial Compression", 10., 10., 10., 0., 2., .1, 0., .01, 0., 1.);
+  MakePreset("Parallel Compression", 10., 10., 10., 0., 2., .1, 0., .01, 0., 0.5);
   
   powerFilter.set_input_port(0, &inFilter, 0);
   attackReleaseFilter.set_input_port(0, &powerFilter, 0);
@@ -183,8 +194,14 @@ void ATKColoredCompressor::OnParamChange(int paramIdx)
     case kSlope:
       gainCompressorFilter.set_ratio(GetParam(kSlope)->Value());
       break;
-    case kColor:
-      gainCompressorFilter.set_color(GetParam(kColor)->Value());
+    case kSoftness:
+      gainCompressorFilter.set_softness(std::pow(10, GetParam(kSoftness)->Value()));
+      break;
+    case kColored:
+      gainCompressorFilter.set_color(GetParam(kColored)->Value());
+      break;
+    case kQuality:
+      gainCompressorFilter.set_quality(GetParam(kQuality)->Value());
       break;
     case kAttack:
       attackReleaseFilter.set_attack(std::exp(-1e3/(GetParam(kAttack)->Value() * GetSampleRate()))); // in ms
