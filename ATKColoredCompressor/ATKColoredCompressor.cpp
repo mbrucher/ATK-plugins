@@ -71,7 +71,7 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorF
   GetParam(kSlope)->InitDouble("Slope", 2., 1.5, 100, .1, "-");
   GetParam(kSlope)->SetShape(2.);
   GetParam(kColored)->InitDouble("Color", 0, -.5, .5, 0.01, "-");
-  GetParam(kQuality)->InitDouble("Quality", 0.1, 0.01, .5, 0.01, "-");
+  GetParam(kQuality)->InitDouble("Quality", 0.1, 0.01, .2, 0.01, "-");
   GetParam(kSoftness)->InitDouble("Softness", -2, -4, 0, 0.1, "-");
   GetParam(kSoftness)->SetShape(2.);
   GetParam(kMakeup)->InitDouble("Makeup Gain", 0, 0, 40, 0.1, "dB"); // Makeup is expressed in amplitude
@@ -93,7 +93,7 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorF
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kThresholdX, kThresholdY, kThresholdX + 78, kThresholdY + 78 + 21), kThreshold, &knob, &text, "dB"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kSlopeX, kSlopeY, kSlopeX + 78, kSlopeY + 78 + 21), kSlope, &knob, &text, ""));
   pGraphics->AttachControl(new IKnobMultiControl(this, kSoftnessX, kSoftnessY, kSoftness, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kColoredX, kColoredY, kColored, &knob));
+  pGraphics->AttachControl(new IKnobMultiControl(this, kColoredX, kColoredY, kColored, &knob1));
   pGraphics->AttachControl(new IKnobMultiControl(this, kQualityX, kQualityY, kQuality, &knob));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kMakeupX, kMakeupY, kMakeupX + 78, kMakeupY + 78 + 21), kMakeup, &knob, &text, "dB"));
   pGraphics->AttachControl(new IKnobMultiControl(this, kDryWetX, kDryWetY, kDryWet, &knob1));
