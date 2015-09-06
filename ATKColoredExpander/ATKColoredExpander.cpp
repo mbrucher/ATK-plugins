@@ -70,7 +70,6 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainExpanderFil
   GetParam(kRelease)->InitDouble("Release", 10, 1., 100.0, 0.1, "ms");
   GetParam(kRelease)->SetShape(2.);
   GetParam(kThreshold)->InitDouble("Threshold", 0., -40., 0.0, 0.1, "dB"); // threshold is actually power
-  GetParam(kThreshold)->SetShape(2.);
   GetParam(kSlope)->InitDouble("Slope", 2., 1.5, 100, .1, "-");
   GetParam(kSlope)->SetShape(2.);
   GetParam(kColored)->InitDouble("Color", 0, -.5, .5, 0.01, "-");
@@ -78,11 +77,8 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainExpanderFil
   GetParam(kSoftness)->InitDouble("Softness", -2, -4, 0, 0.1, "-");
   GetParam(kSoftness)->SetShape(2.);
   GetParam(kMaxReduction)->InitDouble("Max reduction", -60, -60, 0, 0.1, "dB");
-  GetParam(kMaxReduction)->SetShape(2.);
   GetParam(kMakeup)->InitDouble("Makeup Gain", 0, 0, 40, 0.1, "dB"); // Makeup is expressed in amplitude
-  GetParam(kMakeup)->SetShape(2.);
   GetParam(kDryWet)->InitDouble("Dry/Wet", 1, 0, 1, 0.01, "-");
-  GetParam(kDryWet)->SetShape(1.);
   
   IGraphics* pGraphics = MakeGraphics(this, kWidth, kHeight);
   pGraphics->AttachBackground(COLORED_COMPRESSOR_ID, COLORED_COMPRESSOR_FN);
@@ -217,6 +213,7 @@ void ATKColoredExpander::OnParamChange(int paramIdx)
       break;
     case kMaxReduction:
       gainExpanderFilter.set_max_reduction_db(GetParam(kMaxReduction)->Value());
+      break;
     case kMakeup:
       volumeFilter.set_volume_db(GetParam(kMakeup)->Value());
       break;
