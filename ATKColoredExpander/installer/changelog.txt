@@ -1,0 +1,5 @@
+ATKColoredExpander changelog
+htp://matt.eifelle.com
+09/05/15 - v1.0.0 initial release
+  - Built against ATK 0.7.2
+  

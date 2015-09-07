@@ -1,6 +1,6 @@
 #include <cmath>
 
-#include "ATKColoredCompressor.h"
+#include "ATKColoredExpander.h"
 #include "IPlug_include_in_plug_src.h"
 #include "IControl.h"
 #include "controls.h"
@@ -18,6 +18,7 @@ enum EParams
   kSoftness,
   kColored,
   kQuality,
+  kMaxReduction,
   kMakeup,
   kDryWet,
   kNumParams
@@ -44,18 +45,20 @@ enum ELayout
   kColoredY = 40,
   kQualityX = 748,
   kQualityY = 40,
-  kMakeupX = 851,
+  kMaxReductionX = 851,
+  kMaxReductionY = 40,
+  kMakeupX = 954,
   kMakeupY = 40,
-  kDryWetX = 954,
+  kDryWetX = 1057,
   kDryWetY = 40,
   
   kKnobFrames = 20,
   kKnobFrames1 = 19
 };
 
-ATKColoredCompressor::ATKColoredCompressor(IPlugInstanceInfo instanceInfo)
+ATKColoredExpander::ATKColoredExpander(IPlugInstanceInfo instanceInfo)
   :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo),
-inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorFilter(1, 256*1024)
+inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainExpanderFilter(1, 256*1024)
 {
   TRACE;
   
@@ -73,6 +76,7 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorF
   GetParam(kQuality)->InitDouble("Quality", 0.1, 0.01, .2, 0.01, "-");
   GetParam(kSoftness)->InitDouble("Softness", -2, -4, 0, 0.1, "-");
   GetParam(kSoftness)->SetShape(2.);
+  GetParam(kMaxReduction)->InitDouble("Max reduction", -60, -60, 0, 0.1, "dB");
   GetParam(kMakeup)->InitDouble("Makeup Gain", 0, 0, 40, 0.1, "dB"); // Makeup is expressed in amplitude
   GetParam(kDryWet)->InitDouble("Dry/Wet", 1, 0, 1, 0.01, "-");
   
@@ -93,18 +97,19 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorF
   pGraphics->AttachControl(new IKnobMultiControl(this, kColoredX, kColoredY, kColored, &knob1));
   pGraphics->AttachControl(new IKnobMultiControl(this, kQualityX, kQualityY, kQuality, &knob));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kMakeupX, kMakeupY, kMakeupX + 78, kMakeupY + 78 + 21), kMakeup, &knob, &text, "dB"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kMaxReductionX, kMaxReductionY, kMaxReductionX + 78, kMaxReductionY + 78 + 21), kMaxReduction, &knob, &text, "dB"));
   pGraphics->AttachControl(new IKnobMultiControl(this, kDryWetX, kDryWetY, kDryWet, &knob1));
   
   AttachGraphics(pGraphics);
   
   //MakePreset("preset 1", ... );
-  MakePreset("Serial Compression", 10., 10., 10., 0., 2., .1, 0., .01, 0., 1.);
-  MakePreset("Parallel Compression", 10., 10., 10., 0., 2., .1, 0., .01, 0., 0.5);
+  MakePreset("Serial Expansion", 10., 10., 10., 0., 2., .1, 0., .01, -60., 0., 1.);
+  MakePreset("Parallel Expansion", 10., 10., 10., 0., 2., .1, 0., .01, -60., 0., 0.5);
   
   powerFilter.set_input_port(0, &inFilter, 0);
   attackReleaseFilter.set_input_port(0, &powerFilter, 0);
-  gainCompressorFilter.set_input_port(0, &attackReleaseFilter, 0);
-  applyGainFilter.set_input_port(0, &gainCompressorFilter, 0);
+  gainExpanderFilter.set_input_port(0, &attackReleaseFilter, 0);
+  applyGainFilter.set_input_port(0, &gainExpanderFilter, 0);
   applyGainFilter.set_input_port(1, &inFilter, 0);
   volumeFilter.set_input_port(0, &applyGainFilter, 0);
   drywetFilter.set_input_port(0, &volumeFilter, 0);
@@ -114,16 +119,16 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorF
   Reset();
 }
 
-ATKColoredCompressor::~ATKColoredCompressor() {}
+ATKColoredExpander::~ATKColoredExpander() {}
 
-void ATKColoredCompressor::ProcessDoubleReplacing(double** inputs, double** outputs, int nFrames)
+void ATKColoredExpander::ProcessDoubleReplacing(double** inputs, double** outputs, int nFrames)
 {
   inFilter.set_pointer(inputs[0], nFrames);
   outFilter.set_pointer(outputs[0], nFrames);
   outFilter.process(nFrames);
 }
 
-void ATKColoredCompressor::Reset()
+void ATKColoredExpander::Reset()
 {
   TRACE;
   IMutexLock lock(this);
@@ -138,8 +143,8 @@ void ATKColoredCompressor::Reset()
     powerFilter.set_output_sampling_rate(sampling_rate);
     attackReleaseFilter.set_input_sampling_rate(sampling_rate);
     attackReleaseFilter.set_output_sampling_rate(sampling_rate);
-    gainCompressorFilter.set_input_sampling_rate(sampling_rate);
-    gainCompressorFilter.set_output_sampling_rate(sampling_rate);
+    gainExpanderFilter.set_input_sampling_rate(sampling_rate);
+    gainExpanderFilter.set_output_sampling_rate(sampling_rate);
     applyGainFilter.set_input_sampling_rate(sampling_rate);
     applyGainFilter.set_output_sampling_rate(sampling_rate);
     volumeFilter.set_input_sampling_rate(sampling_rate);
@@ -166,7 +171,7 @@ void ATKColoredCompressor::Reset()
   attackReleaseFilter.full_setup();
 }
 
-void ATKColoredCompressor::OnParamChange(int paramIdx)
+void ATKColoredExpander::OnParamChange(int paramIdx)
 {
   IMutexLock lock(this);
   
@@ -186,25 +191,28 @@ void ATKColoredCompressor::OnParamChange(int paramIdx)
       break;
     }
     case kThreshold:
-      gainCompressorFilter.set_threshold(std::pow(10, GetParam(kThreshold)->Value() / 10));
+      gainExpanderFilter.set_threshold(std::pow(10, GetParam(kThreshold)->Value() / 10));
       break;
     case kSlope:
-      gainCompressorFilter.set_ratio(GetParam(kSlope)->Value());
+      gainExpanderFilter.set_ratio(GetParam(kSlope)->Value());
       break;
     case kSoftness:
-      gainCompressorFilter.set_softness(std::pow(10, GetParam(kSoftness)->Value()));
+      gainExpanderFilter.set_softness(std::pow(10, GetParam(kSoftness)->Value()));
       break;
     case kColored:
-      gainCompressorFilter.set_color(GetParam(kColored)->Value());
+      gainExpanderFilter.set_color(GetParam(kColored)->Value());
       break;
     case kQuality:
-      gainCompressorFilter.set_quality(GetParam(kQuality)->Value());
+      gainExpanderFilter.set_quality(GetParam(kQuality)->Value());
       break;
     case kAttack:
       attackReleaseFilter.set_attack(std::exp(-1e3/(GetParam(kAttack)->Value() * GetSampleRate()))); // in ms
       break;
     case kRelease:
       attackReleaseFilter.set_release(std::exp(-1e3/(GetParam(kRelease)->Value() * GetSampleRate()))); // in ms
+      break;
+    case kMaxReduction:
+      gainExpanderFilter.set_max_reduction_db(GetParam(kMaxReduction)->Value());
       break;
     case kMakeup:
       volumeFilter.set_volume_db(GetParam(kMakeup)->Value());

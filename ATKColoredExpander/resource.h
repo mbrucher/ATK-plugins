@@ -1,19 +1,19 @@
 #define PLUG_MFR "MatthieuBrucher"
-#define PLUG_NAME "ATKColoredCompressor"
+#define PLUG_NAME "ATKColoredExpander"
 
-#define PLUG_CLASS_NAME ATKColoredCompressor
+#define PLUG_CLASS_NAME ATKColoredExpander
 
 #define BUNDLE_MFR "MatthieuBrucher"
-#define BUNDLE_NAME "ATKColoredCompressor"
+#define BUNDLE_NAME "ATKColoredExpander"
 
-#define PLUG_ENTRY ATKColoredCompressor_Entry
-#define PLUG_VIEW_ENTRY ATKColoredCompressor_ViewEntry
+#define PLUG_ENTRY ATKColoredExpander_Entry
+#define PLUG_VIEW_ENTRY ATKColoredExpander_ViewEntry
 
-#define PLUG_ENTRY_STR "ATKColoredCompressor_Entry"
-#define PLUG_VIEW_ENTRY_STR "ATKColoredCompressor_ViewEntry"
+#define PLUG_ENTRY_STR "ATKColoredExpander_Entry"
+#define PLUG_VIEW_ENTRY_STR "ATKColoredExpander_ViewEntry"
 
-#define VIEW_CLASS ATKColoredCompressor_View
-#define VIEW_CLASS_STR "ATKColoredCompressor_View"
+#define VIEW_CLASS ATKColoredExpander_View
+#define VIEW_CLASS_STR "ATKColoredExpander_View"
 
 // Format        0xMAJR.MN.BG - in HEX! so version 10.1.5 would be 0x000A0105
 #define PLUG_VER 0x00010000
@@ -21,7 +21,7 @@
 
 // http://service.steinberg.de/databases/plugin.nsf/plugIn?openForm
 // 4 chars, single quotes. At least one capital letter
-#define PLUG_UNIQUE_ID '1rnz'
+#define PLUG_UNIQUE_ID 'lvu2'
 // make sure this is not the same as BUNDLE_MFR
 #define PLUG_MFR_ID 'MatB'
 
@@ -34,7 +34,7 @@
 #endif
 
 #define PLUG_MFR_PT "MatthieuBrucher\nMatthieuBrucher\nMatthieuBrucher"
-#define PLUG_NAME_PT "ATKColoredCompressor\n6m9f"
+#define PLUG_NAME_PT "ATKColoredExpander\n6m9f"
 #define PLUG_TYPE_PT "Dynamics"
 #define PLUG_DOES_AUDIOSUITE 1
 
@@ -65,7 +65,7 @@ instrument determined by PLUG _IS _INST
 #define KNOB1_FN "resources/img/bi-small.png"
 
 // GUI default dimensions
-#define GUI_WIDTH 1055
+#define GUI_WIDTH 1158
 #define GUI_HEIGHT 155
 
 // on MSVC, you must define SA_API in the resource editor preprocessor macros as well as the c++ ones

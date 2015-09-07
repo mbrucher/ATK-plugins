@@ -1,6 +1,6 @@
 #include <cmath>
 
-#include "ATKColoredCompressor.h"
+#include "ATKAutoSwell.h"
 #include "IPlug_include_in_plug_src.h"
 #include "IControl.h"
 #include "controls.h"
@@ -16,8 +16,6 @@ enum EParams
   kThreshold,
   kSlope,
   kSoftness,
-  kColored,
-  kQuality,
   kMakeup,
   kDryWet,
   kNumParams
@@ -40,22 +38,18 @@ enum ELayout
   kSlopeY = 40,
   kSoftnessX = 542,
   kSoftnessY = 40,
-  kColoredX = 645,
-  kColoredY = 40,
-  kQualityX = 748,
-  kQualityY = 40,
-  kMakeupX = 851,
+  kMakeupX = 645,
   kMakeupY = 40,
-  kDryWetX = 954,
+  kDryWetX = 748,
   kDryWetY = 40,
   
   kKnobFrames = 20,
   kKnobFrames1 = 19
 };
 
-ATKColoredCompressor::ATKColoredCompressor(IPlugInstanceInfo instanceInfo)
+ATKAutoSwell::ATKAutoSwell(IPlugInstanceInfo instanceInfo)
   :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo),
-inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorFilter(1, 256*1024)
+inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainSwellFilter(1, 256*1024)
 {
   TRACE;
   
@@ -69,8 +63,6 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorF
   GetParam(kThreshold)->InitDouble("Threshold", 0., -40., 0.0, 0.1, "dB"); // threshold is actually power
   GetParam(kSlope)->InitDouble("Slope", 2., 1.5, 100, .1, "-");
   GetParam(kSlope)->SetShape(2.);
-  GetParam(kColored)->InitDouble("Color", 0, -.5, .5, 0.01, "-");
-  GetParam(kQuality)->InitDouble("Quality", 0.1, 0.01, .2, 0.01, "-");
   GetParam(kSoftness)->InitDouble("Softness", -2, -4, 0, 0.1, "-");
   GetParam(kSoftness)->SetShape(2.);
   GetParam(kMakeup)->InitDouble("Makeup Gain", 0, 0, 40, 0.1, "dB"); // Makeup is expressed in amplitude
@@ -90,21 +82,19 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorF
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kThresholdX, kThresholdY, kThresholdX + 78, kThresholdY + 78 + 21), kThreshold, &knob, &text, "dB"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kSlopeX, kSlopeY, kSlopeX + 78, kSlopeY + 78 + 21), kSlope, &knob, &text, ""));
   pGraphics->AttachControl(new IKnobMultiControl(this, kSoftnessX, kSoftnessY, kSoftness, &knob));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kColoredX, kColoredY, kColored, &knob1));
-  pGraphics->AttachControl(new IKnobMultiControl(this, kQualityX, kQualityY, kQuality, &knob));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kMakeupX, kMakeupY, kMakeupX + 78, kMakeupY + 78 + 21), kMakeup, &knob, &text, "dB"));
   pGraphics->AttachControl(new IKnobMultiControl(this, kDryWetX, kDryWetY, kDryWet, &knob1));
   
   AttachGraphics(pGraphics);
   
   //MakePreset("preset 1", ... );
-  MakePreset("Serial Compression", 10., 10., 10., 0., 2., .1, 0., .01, 0., 1.);
-  MakePreset("Parallel Compression", 10., 10., 10., 0., 2., .1, 0., .01, 0., 0.5);
+  MakePreset("Serial Swell", 10., 10., 10., 0., 2., .1, 0., 1.);
+  MakePreset("Parallel Swell", 10., 10., 10., 0., 2., .1, 0., 0.5);
   
   powerFilter.set_input_port(0, &inFilter, 0);
   attackReleaseFilter.set_input_port(0, &powerFilter, 0);
-  gainCompressorFilter.set_input_port(0, &attackReleaseFilter, 0);
-  applyGainFilter.set_input_port(0, &gainCompressorFilter, 0);
+  gainSwellFilter.set_input_port(0, &attackReleaseFilter, 0);
+  applyGainFilter.set_input_port(0, &gainSwellFilter, 0);
   applyGainFilter.set_input_port(1, &inFilter, 0);
   volumeFilter.set_input_port(0, &applyGainFilter, 0);
   drywetFilter.set_input_port(0, &volumeFilter, 0);
@@ -114,16 +104,16 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorF
   Reset();
 }
 
-ATKColoredCompressor::~ATKColoredCompressor() {}
+ATKAutoSwell::~ATKAutoSwell() {}
 
-void ATKColoredCompressor::ProcessDoubleReplacing(double** inputs, double** outputs, int nFrames)
+void ATKAutoSwell::ProcessDoubleReplacing(double** inputs, double** outputs, int nFrames)
 {
   inFilter.set_pointer(inputs[0], nFrames);
   outFilter.set_pointer(outputs[0], nFrames);
   outFilter.process(nFrames);
 }
 
-void ATKColoredCompressor::Reset()
+void ATKAutoSwell::Reset()
 {
   TRACE;
   IMutexLock lock(this);
@@ -138,8 +128,8 @@ void ATKColoredCompressor::Reset()
     powerFilter.set_output_sampling_rate(sampling_rate);
     attackReleaseFilter.set_input_sampling_rate(sampling_rate);
     attackReleaseFilter.set_output_sampling_rate(sampling_rate);
-    gainCompressorFilter.set_input_sampling_rate(sampling_rate);
-    gainCompressorFilter.set_output_sampling_rate(sampling_rate);
+    gainSwellFilter.set_input_sampling_rate(sampling_rate);
+    gainSwellFilter.set_output_sampling_rate(sampling_rate);
     applyGainFilter.set_input_sampling_rate(sampling_rate);
     applyGainFilter.set_output_sampling_rate(sampling_rate);
     volumeFilter.set_input_sampling_rate(sampling_rate);
@@ -166,7 +156,7 @@ void ATKColoredCompressor::Reset()
   attackReleaseFilter.full_setup();
 }
 
-void ATKColoredCompressor::OnParamChange(int paramIdx)
+void ATKAutoSwell::OnParamChange(int paramIdx)
 {
   IMutexLock lock(this);
   
@@ -186,19 +176,13 @@ void ATKColoredCompressor::OnParamChange(int paramIdx)
       break;
     }
     case kThreshold:
-      gainCompressorFilter.set_threshold(std::pow(10, GetParam(kThreshold)->Value() / 10));
+      gainSwellFilter.set_threshold(std::pow(10, GetParam(kThreshold)->Value() / 10));
       break;
     case kSlope:
-      gainCompressorFilter.set_ratio(GetParam(kSlope)->Value());
+      gainSwellFilter.set_ratio(GetParam(kSlope)->Value());
       break;
     case kSoftness:
-      gainCompressorFilter.set_softness(std::pow(10, GetParam(kSoftness)->Value()));
-      break;
-    case kColored:
-      gainCompressorFilter.set_color(GetParam(kColored)->Value());
-      break;
-    case kQuality:
-      gainCompressorFilter.set_quality(GetParam(kQuality)->Value());
+      gainSwellFilter.set_softness(std::pow(10, GetParam(kSoftness)->Value()));
       break;
     case kAttack:
       attackReleaseFilter.set_attack(std::exp(-1e3/(GetParam(kAttack)->Value() * GetSampleRate()))); // in ms
