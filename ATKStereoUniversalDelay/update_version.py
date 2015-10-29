@@ -38,7 +38,7 @@ def main():
   print "update_version.py - setting version to " + FullVersionStr
   print "Updating plist version info..."
   
-  plistpath = scriptpath + "/resources/ATKAutoSwell-VST2-Info.plist"
+  plistpath = scriptpath + "/resources/ATKStereoUniversalDelay-VST2-Info.plist"
   vst2 = plistlib.readPlist(plistpath)
   vst2['CFBundleGetInfoString'] = CFBundleGetInfoString
   vst2['CFBundleVersion'] = CFBundleVersion
@@ -46,7 +46,7 @@ def main():
   plistlib.writePlist(vst2, plistpath)
   replacestrs(plistpath, "//Apple//", "//Apple Computer//");
   
-  plistpath = scriptpath + "/resources/ATKAutoSwell-AU-Info.plist"
+  plistpath = scriptpath + "/resources/ATKStereoUniversalDelay-AU-Info.plist"
   au = plistlib.readPlist(plistpath)
   au['CFBundleGetInfoString'] = CFBundleGetInfoString
   au['CFBundleVersion'] = CFBundleVersion
@@ -54,7 +54,7 @@ def main():
   plistlib.writePlist(au, plistpath)
   replacestrs(plistpath, "//Apple//", "//Apple Computer//");
   
-  plistpath = scriptpath + "/resources/ATKAutoSwell-VST3-Info.plist"
+  plistpath = scriptpath + "/resources/ATKStereoUniversalDelay-VST3-Info.plist"
   vst3 = plistlib.readPlist(plistpath)
   vst3['CFBundleGetInfoString'] = CFBundleGetInfoString
   vst3['CFBundleVersion'] = CFBundleVersion
@@ -62,7 +62,7 @@ def main():
   plistlib.writePlist(vst3, plistpath)
   replacestrs(plistpath, "//Apple//", "//Apple Computer//");
   
-  plistpath = scriptpath + "/resources/ATKAutoSwell-OSXAPP-Info.plist"
+  plistpath = scriptpath + "/resources/ATKStereoUniversalDelay-OSXAPP-Info.plist"
   app = plistlib.readPlist(plistpath)
   app['CFBundleGetInfoString'] = CFBundleGetInfoString
   app['CFBundleVersion'] = CFBundleVersion
@@ -70,7 +70,7 @@ def main():
   plistlib.writePlist(app, plistpath)
   replacestrs(plistpath, "//Apple//", "//Apple Computer//");
   
-#  plistpath = scriptpath + "/resources/ATKAutoSwell-RTAS-Info.plist"
+#  plistpath = scriptpath + "/resources/ATKStereoUniversalDelay-RTAS-Info.plist"
 #  rtas = plistlib.readPlist(plistpath)
 #  rtas['CFBundleGetInfoString'] = CFBundleGetInfoString
 #  rtas['CFBundleVersion'] = CFBundleVersion
@@ -78,7 +78,7 @@ def main():
 #  plistlib.writePlist(rtas, plistpath)
 #  replacestrs(plistpath, "//Apple//", "//Apple Computer//");
   
-#  plistpath = scriptpath + "/resources/ATKAutoSwell-AAX-Info.plist"
+#  plistpath = scriptpath + "/resources/ATKStereoUniversalDelay-AAX-Info.plist"
 #  aax = plistlib.readPlist(plistpath)
 #  aax['CFBundleGetInfoString'] = CFBundleGetInfoString
 #  aax['CFBundleVersion'] = CFBundleVersion
@@ -86,7 +86,7 @@ def main():
 #  plistlib.writePlist(aax, plistpath)
 #  replacestrs(plistpath, "//Apple//", "//Apple Computer//");
   
-#   plistpath = scriptpath + "/resources/ATKAutoSwell-IOSAPP-Info.plist"
+#   plistpath = scriptpath + "/resources/ATKStereoUniversalDelay-IOSAPP-Info.plist"
 #   iosapp = plistlib.readPlist(plistpath)
 #   iosapp['CFBundleGetInfoString'] = CFBundleGetInfoString
 #   iosapp['CFBundleVersion'] = CFBundleVersion
@@ -96,10 +96,10 @@ def main():
 
   print "Updating Mac Installer version info..."
   
-  plistpath = scriptpath + "/installer/ATKAutoSwell.pkgproj"
+  plistpath = scriptpath + "/installer/ATKStereoUniversalDelay.pkgproj"
   installer = plistlib.readPlist(plistpath)
   
-  for x in range(0,4):
+  for x in range(0,len(installer['PACKAGES'])):
     installer['PACKAGES'][x]['PACKAGE_SETTINGS']['VERSION'] = FullVersionStr
   
   plistlib.writePlist(installer, plistpath)
@@ -107,7 +107,7 @@ def main():
   
   print "Updating Windows Installer version info..."
   
-  for line in fileinput.input(scriptpath + "/installer/ATKAutoSwell.iss",inplace=1):
+  for line in fileinput.input(scriptpath + "/installer/ATKStereoUniversalDelay.iss",inplace=1):
     if "AppVersion" in line:
       line="AppVersion=" + FullVersionStr + "\n"
     sys.stdout.write(line)
