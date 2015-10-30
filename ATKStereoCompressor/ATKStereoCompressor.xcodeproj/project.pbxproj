@@ -697,14 +697,6 @@
 		089C166AFE841209C02AAC07 /* IPlugExample */ = {
 			isa = PBXGroup;
 			children = (
-				08861E7F195F618E00EDF23D /* libATKDelay_static.a */,
-				08861E80195F618E00EDF23D /* libATKDynamic_static.a */,
-				08989755195377BE001783AC /* libATKCore_static.a */,
-				08989756195377BE001783AC /* libATKDistortion_static.a */,
-				08989757195377BE001783AC /* libATKEQ_static.a */,
-				08989758195377BE001783AC /* libATKIO_static.a */,
-				08989759195377BE001783AC /* libATKMock_static.a */,
-				0898975A195377BE001783AC /* libATKTools_static.a */,
 				08C1031B1986F77000D1C298 /* controls.h */,
 				52FBBED30D0CF143001C8B8A /* resource.h */,
 				52FBBED20D0CF13D001C8B8A /* ATKStereoCompressor.h */,
@@ -720,6 +712,7 @@
 		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				08E503CE1BE41D7400258809 /* ATK */,
 				4FF01613134E0BCD001447BA /* WDL */,
 				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
 			);
@@ -737,6 +730,21 @@
 				4FD290A8137C34D700CEBE7E /* ATKStereoCompressor.icns */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		08E503CE1BE41D7400258809 /* ATK */ = {
+			isa = PBXGroup;
+			children = (
+				08861E7F195F618E00EDF23D /* libATKDelay_static.a */,
+				08861E80195F618E00EDF23D /* libATKDynamic_static.a */,
+				08989755195377BE001783AC /* libATKCore_static.a */,
+				08989756195377BE001783AC /* libATKDistortion_static.a */,
+				08989757195377BE001783AC /* libATKEQ_static.a */,
+				08989758195377BE001783AC /* libATKIO_static.a */,
+				08989759195377BE001783AC /* libATKMock_static.a */,
+				0898975A195377BE001783AC /* libATKTools_static.a */,
+			);
+			name = ATK;
 			sourceTree = "<group>";
 		};
 		1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */ = {

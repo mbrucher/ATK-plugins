@@ -21,7 +21,7 @@
 
 // http://service.steinberg.de/databases/plugin.nsf/plugIn?openForm
 // 4 chars, single quotes. At least one capital letter
-#define PLUG_UNIQUE_ID '3ybh'
+#define PLUG_UNIQUE_ID 'jsby'
 // make sure this is not the same as BUNDLE_MFR
 #define PLUG_MFR_ID 'MatB'
 
@@ -34,7 +34,7 @@
 #endif
 
 #define PLUG_MFR_PT "MatthieuBrucher\nMatthieuBrucher\nMatthieuBrucher"
-#define PLUG_NAME_PT "ATKStereoUniversalDelay\n3ybj"
+#define PLUG_NAME_PT "ATKStereoUniversalDelay\njsby"
 #define PLUG_TYPE_PT "Delay"
 #define PLUG_DOES_AUDIOSUITE 1
 
