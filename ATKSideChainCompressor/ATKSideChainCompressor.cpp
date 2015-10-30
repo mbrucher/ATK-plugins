@@ -112,7 +112,7 @@ ATKSideChainCompressor::ATKSideChainCompressor(IPlugInstanceInfo instanceInfo)
   GetParam(kActivateChannel1)->InitBool("Enable Channel 1", 1, "");
   GetParam(kActivateChannel2)->InitBool("Enable Channel 2", 1, "");
 
-  GetParam(kPower1)->InitDouble("RMS ch1", 10., 1., 100.0, 0.1, "ms");
+  GetParam(kPower1)->InitDouble("RMS ch1", 10., 0., 100.0, 0.1, "ms");
   GetParam(kPower1)->SetShape(2.);
   GetParam(kAttack1)->InitDouble("Attack ch1", 10., 1., 100.0, 0.1, "ms");
   GetParam(kAttack1)->SetShape(2.);
