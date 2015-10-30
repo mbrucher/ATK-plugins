@@ -67,7 +67,7 @@ instrument determined by PLUG _IS _INST
 #define SWITCH_FN "resources/img/switch2-small.png"
 
 // GUI default dimensions
-#define GUI_WIDTH 952
+#define GUI_WIDTH 1261
 #define GUI_HEIGHT 280
 
 // on MSVC, you must define SA_API in the resource editor preprocessor macros as well as the c++ ones
