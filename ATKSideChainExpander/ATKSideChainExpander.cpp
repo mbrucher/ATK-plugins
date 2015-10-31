@@ -125,7 +125,7 @@ ATKSideChainExpander::ATKSideChainExpander(IPlugInstanceInfo instanceInfo)
   GetParam(kSoftness1)->InitDouble("Softness ch1", -2, -4, 0, 0.1, "-");
   GetParam(kSoftness1)->SetShape(2.);
   GetParam(kColor1)->InitDouble("Color ch1", 0, -.5, .5, 0.01, "-");
-  GetParam(kQuality1)->InitDouble("Quality ch1", 0.1, 0., .2, 0.01, "-");
+  GetParam(kQuality1)->InitDouble("Quality ch1", 0.1, 0.01, .2, 0.01, "-");
   GetParam(kMakeup1)->InitDouble("Makeup Gain ch1", 0, 0, 40, 0.1, "-"); // Makeup is expressed in amplitude
   GetParam(kMakeup1)->SetShape(2.);
   GetParam(kPower2)->InitDouble("RMS ch2", 10., 1., 100.0, 0.1, "ms");
@@ -140,7 +140,7 @@ ATKSideChainExpander::ATKSideChainExpander(IPlugInstanceInfo instanceInfo)
   GetParam(kSoftness2)->InitDouble("Softness ch2", -2, -4, 0, 0.1, "-");
   GetParam(kSoftness2)->SetShape(2.);
   GetParam(kColor2)->InitDouble("Color ch2", 0, -.5, .5, 0.01, "-");
-  GetParam(kQuality2)->InitDouble("Quality ch2", 0.1, 0., .2, 0.01, "-");
+  GetParam(kQuality2)->InitDouble("Quality ch2", 0.1, 0.01, .2, 0.01, "-");
   GetParam(kMakeup2)->InitDouble("Makeup Gain ch2", 0, 0, 40, 0.1, "-"); // Makeup is expressed in amplitude
   GetParam(kMakeup2)->SetShape(2.);
   GetParam(kDryWet)->InitDouble("Dry/Wet", 1, 0, 1, 0.01, "-");
