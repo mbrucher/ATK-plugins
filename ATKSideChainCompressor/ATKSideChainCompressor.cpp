@@ -90,7 +90,7 @@ enum ELayout
   kMakeup2X = 1057,
   kMakeup2Y = 160,
 
-  kSideChainX = 1160,
+  kSideChainX = 1173,
   kSideChainY = 82,
   kDryWetX = 1160,
   kDryWetY = 160,

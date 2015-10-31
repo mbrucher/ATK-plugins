@@ -1,10 +1,14 @@
 ATKSideChainCompressor changelog
 htp://matt.eifelle.com
 
-14/07/15 - v1.0.0 initial release
-  - Built against ATK 0.7.0
-10/11/15 - v2.0.0
+
+03/11/15 - v2.0.0
+
   - Using colored gain function
+
   - Allow different RMS times
+
   - switch between internal link and side chain
   - Built against ATK 1.0.0
+14/07/15 - v1.0.0 initial release
+  - Built against ATK 0.7.0
