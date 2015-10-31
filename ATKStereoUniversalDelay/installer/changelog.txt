@@ -1,0 +1,5 @@
+ATKStereoUniversalDelay changelog
+htp://matt.eifelle.com
+
+20/10/15 - v1.0.0
+  - built against ATK 1.0.0

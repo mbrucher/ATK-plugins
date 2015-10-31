@@ -1,0 +1,6 @@
+ATKStereoLimiter changelog
+htp://matt.eifelle.com
+
+26/08/14 - v1.0.0 initial release
+  - built againt ATK 0.5.0
+  

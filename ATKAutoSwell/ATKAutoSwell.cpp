@@ -61,7 +61,7 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainSwellFilter
   GetParam(kRelease)->InitDouble("Release", 10, 1., 100.0, 0.1, "ms");
   GetParam(kRelease)->SetShape(2.);
   GetParam(kThreshold)->InitDouble("Threshold", 0., -40., 0.0, 0.1, "dB"); // threshold is actually power
-  GetParam(kSlope)->InitDouble("Slope", 2., 1.5, 100, .1, "-");
+  GetParam(kSlope)->InitDouble("Slope", 2., 0.1, 10, .1, "-");
   GetParam(kSlope)->SetShape(2.);
   GetParam(kSoftness)->InitDouble("Softness", -2, -4, 0, 0.1, "-");
   GetParam(kSoftness)->SetShape(2.);

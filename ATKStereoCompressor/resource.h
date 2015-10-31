@@ -34,7 +34,7 @@
 #endif
 
 #define PLUG_MFR_PT "MatthieuBrucher\nMatthieuBrucher\nMatthieuBrucher"
-#define PLUG_NAME_PT "ATKStereoCompressor\n6m9f"
+#define PLUG_NAME_PT "ATKStereoCompressor\nkoo2"
 #define PLUG_TYPE_PT "Dynamics"
 #define PLUG_DOES_AUDIOSUITE 1
 

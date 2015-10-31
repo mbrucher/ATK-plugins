@@ -9,7 +9,7 @@
 #include <ATK/Core/PipelineGlobalSinkFilter.h>
 
 #include <ATK/Dynamic/AttackReleaseFilter.h>
-#include <ATK/Dynamic/GainCompressorFilter.h>
+#include <ATK/Dynamic/GainColoredCompressorFilter.h>
 #include <ATK/Dynamic/PowerFilter.h>
 
 #include <ATK/Tools/ApplyGainFilter.h>
@@ -44,8 +44,8 @@ private:
 
   ATK::AttackReleaseFilter<double> attackReleaseFilter1;
   ATK::AttackReleaseFilter<double> attackReleaseFilter2;
-  ATK::GainCompressorFilter<double> gainCompressorFilter1;
-  ATK::GainCompressorFilter<double> gainCompressorFilter2;
+  ATK::GainColoredCompressorFilter<double> gainColoredCompressorFilter1;
+  ATK::GainColoredCompressorFilter<double> gainColoredCompressorFilter2;
   ATK::ApplyGainFilter<double> applyGainFilter;
   ATK::VolumeFilter<double> makeupFilter1;
   ATK::VolumeFilter<double> makeupFilter2;
@@ -60,12 +60,17 @@ private:
 
   ATK::PipelineGlobalSinkFilter endpoint;
 
+  IKnobMultiControlText* power2;
   IKnobMultiControlText* attack2;
   IKnobMultiControlText* release2;
   IKnobMultiControlText* threshold2;
   IKnobMultiControlText* ratio2;
   IKnobMultiControl* softness2;
+  IKnobMultiControl* color2;
+  IKnobMultiControl* quality2;
   IKnobMultiControlText* makeup2;
+  
+  bool sidechain;
 };
 
 #endif
