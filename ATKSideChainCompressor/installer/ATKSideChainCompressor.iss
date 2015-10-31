@@ -1,6 +1,6 @@
 [Setup]
 AppName=ATKSideChainCompressor
-AppVersion=1.0.0
+AppVersion=2.0.0
 DefaultDirName={pf}\ATKSideChainCompressor
 DefaultGroupName=ATKSideChainCompressor
 Compression=lzma2
