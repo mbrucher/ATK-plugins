@@ -175,37 +175,37 @@ void ATKStereoUniversalDelay::OnParamChange(int paramIdx)
       delayFilter.set_delay_ch1(GetParam(kDelayL)->Value() / 1000. * GetSampleRate());
       break;
     case kDelayR:
-      delayFilter.set_delay_ch1(GetParam(kDelayR)->Value() / 1000. * GetSampleRate());
+      delayFilter.set_delay_ch2(GetParam(kDelayR)->Value() / 1000. * GetSampleRate());
       break;
     case kBlendL:
       delayFilter.set_blend_ch1((GetParam(kBlendL)->Value()) / 100.);
       break;
     case kBlendR:
-      delayFilter.set_blend_ch1((GetParam(kBlendR)->Value()) / 100.);
+      delayFilter.set_blend_ch2((GetParam(kBlendR)->Value()) / 100.);
       break;
     case kFeedforwardLL:
       delayFilter.set_feedforward_ch1_ch1((GetParam(kFeedforwardLL)->Value()) / 100.);
       break;
     case kFeedforwardLR:
-      delayFilter.set_feedforward_ch1_ch1((GetParam(kFeedforwardLR)->Value()) / 100.);
+      delayFilter.set_feedforward_ch1_ch2((GetParam(kFeedforwardLR)->Value()) / 100.);
       break;
     case kFeedforwardRL:
-      delayFilter.set_feedforward_ch1_ch1((GetParam(kFeedforwardRL)->Value()) / 100.);
+      delayFilter.set_feedforward_ch2_ch1((GetParam(kFeedforwardRL)->Value()) / 100.);
       break;
     case kFeedforwardRR:
-      delayFilter.set_feedforward_ch1_ch1((GetParam(kFeedforwardRR)->Value()) / 100.);
+      delayFilter.set_feedforward_ch2_ch2((GetParam(kFeedforwardRR)->Value()) / 100.);
       break;
     case kFeedbackLL:
       delayFilter.set_feedback_ch1_ch1((GetParam(kFeedbackLL)->Value()) / 100.);
       break;
     case kFeedbackLR:
-      delayFilter.set_feedback_ch1_ch1((GetParam(kFeedbackLR)->Value()) / 100.);
+      delayFilter.set_feedback_ch1_ch2((GetParam(kFeedbackLR)->Value()) / 100.);
       break;
     case kFeedbackRL:
-      delayFilter.set_feedback_ch1_ch1((GetParam(kFeedbackRL)->Value()) / 100.);
+      delayFilter.set_feedback_ch2_ch1((GetParam(kFeedbackRL)->Value()) / 100.);
       break;
     case kFeedbackRR:
-      delayFilter.set_feedback_ch1_ch1((GetParam(kFeedbackRR)->Value()) / 100.);
+      delayFilter.set_feedback_ch2_ch2((GetParam(kFeedbackRR)->Value()) / 100.);
       break;
 
     default:
