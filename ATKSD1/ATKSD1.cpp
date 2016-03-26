@@ -4,6 +4,7 @@
 #include "resource.h"
 
 const int kNumPrograms = 1;
+const int OVERSAMPLING = 8;
 
 enum EParams
 {
@@ -97,12 +98,12 @@ void ATKSD1::Reset()
   inFilter.set_input_sampling_rate(sampling_rate);
   inFilter.set_output_sampling_rate(sampling_rate);
   oversamplingFilter.set_input_sampling_rate(sampling_rate);
-  oversamplingFilter.set_output_sampling_rate(sampling_rate * 8);
-  overdriveFilter.set_input_sampling_rate(sampling_rate * 8);
-  overdriveFilter.set_output_sampling_rate(sampling_rate * 8);
-  lowpassFilter.set_input_sampling_rate(sampling_rate * 8);
-  lowpassFilter.set_output_sampling_rate(sampling_rate * 8);
-  decimationFilter.set_input_sampling_rate(sampling_rate * 8);
+  oversamplingFilter.set_output_sampling_rate(sampling_rate * OVERSAMPLING);
+  lowpassFilter.set_input_sampling_rate(sampling_rate * OVERSAMPLING);
+  lowpassFilter.set_output_sampling_rate(sampling_rate * OVERSAMPLING);
+  overdriveFilter.set_input_sampling_rate(sampling_rate * OVERSAMPLING);
+  overdriveFilter.set_output_sampling_rate(sampling_rate * OVERSAMPLING);
+  decimationFilter.set_input_sampling_rate(sampling_rate * OVERSAMPLING);
   decimationFilter.set_output_sampling_rate(sampling_rate);
   toneFilter.set_input_sampling_rate(sampling_rate);
   toneFilter.set_output_sampling_rate(sampling_rate);
