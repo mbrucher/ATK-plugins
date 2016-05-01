@@ -34,21 +34,25 @@ enum ELayout
   kPowerY = 40,
   kAttackX = 130,
   kAttackY = 40,
-  kReleaseX = 233,
+  kAttackRatioX = 233,
+  kAttackRatioY = 40,
+  kReleaseX = 336,
   kReleaseY = 40,
-  kThresholdX = 336,
+  kReleaseRatioX = 439,
+  kReleaseRatioY = 40,
+  kThresholdX = 542,
   kThresholdY = 40,
-  kSlopeX = 439,
+  kSlopeX = 645,
   kSlopeY = 40,
-  kSoftnessX = 542,
+  kSoftnessX = 748,
   kSoftnessY = 40,
-  kColoredX = 645,
+  kColoredX = 851,
   kColoredY = 40,
-  kQualityX = 748,
+  kQualityX = 954,
   kQualityY = 40,
-  kMakeupX = 851,
+  kMakeupX = 1057,
   kMakeupY = 40,
-  kDryWetX = 954,
+  kDryWetX = 1160,
   kDryWetY = 40,
   
   kKnobFrames = 20,
@@ -71,7 +75,7 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorF
   GetParam(kRelease)->SetShape(2.);
   GetParam(kReleaseRatio)->InitDouble("Release Ratio", 10, 0., 100.0, 0.1, "%");
   GetParam(kThreshold)->InitDouble("Threshold", 0., -40., 0.0, 0.1, "dB"); // threshold is actually power
-  GetParam(kSlope)->InitDouble("Slope", 2., 1.5, 100, .1, "-");
+  GetParam(kSlope)->InitDouble("Slope", 2., 0.1, 100, .1, "-");
   GetParam(kSlope)->SetShape(2.);
   GetParam(kColored)->InitDouble("Color", 0, -.5, .5, 0.01, "-");
   GetParam(kQuality)->InitDouble("Quality", 0.1, 0.01, .2, 0.01, "-");
@@ -90,7 +94,9 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorF
   
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kPowerX, kPowerY, kPowerX + 78, kPowerY + 78 + 21), kPower, &knob, &text, "ms"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kAttackX, kAttackY, kAttackX + 78, kAttackY + 78 + 21), kAttack, &knob, &text, "ms"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kAttackRatioX, kAttackRatioY, kAttackRatioX + 78, kAttackRatioY + 78 + 21), kAttackRatio, &knob, &text, "%"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kReleaseX, kReleaseY, kReleaseX + 78, kReleaseY + 78 + 21), kRelease, &knob, &text, "ms"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kReleaseRatioX, kReleaseRatioY, kReleaseRatioX + 78, kReleaseRatioY + 78 + 21), kReleaseRatio, &knob, &text, "%"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kThresholdX, kThresholdY, kThresholdX + 78, kThresholdY + 78 + 21), kThreshold, &knob, &text, "dB"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kSlopeX, kSlopeY, kSlopeX + 78, kSlopeY + 78 + 21), kSlope, &knob, &text, ""));
   pGraphics->AttachControl(new IKnobMultiControl(this, kSoftnessX, kSoftnessY, kSoftness, &knob));
@@ -109,9 +115,9 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorF
   slowAttackReleaseFilter.set_input_port(0, &powerFilter, 0);
   fastAttackReleaseFilter.set_input_port(0, &powerFilter, 0);
   invertFilter.set_input_port(0, &slowAttackReleaseFilter, 0);
-  sumfilter.set_input_port(0, &invertFilter, 0);
-  sumfilter.set_input_port(1, &fastAttackReleaseFilter, 0);
-  gainCompressorFilter.set_input_port(0, &sumfilter, 0);
+  sumFilter.set_input_port(0, &invertFilter, 0);
+  sumFilter.set_input_port(1, &fastAttackReleaseFilter, 0);
+  gainCompressorFilter.set_input_port(0, &sumFilter, 0);
   applyGainFilter.set_input_port(0, &gainCompressorFilter, 0);
   applyGainFilter.set_input_port(1, &inFilter, 0);
   volumeFilter.set_input_port(0, &applyGainFilter, 0);

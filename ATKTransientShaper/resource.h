@@ -21,7 +21,7 @@
 
 // http://service.steinberg.de/databases/plugin.nsf/plugIn?openForm
 // 4 chars, single quotes. At least one capital letter
-#define PLUG_UNIQUE_ID '1rnz'
+#define PLUG_UNIQUE_ID 'madg'
 // make sure this is not the same as BUNDLE_MFR
 #define PLUG_MFR_ID 'MatB'
 
@@ -34,7 +34,7 @@
 #endif
 
 #define PLUG_MFR_PT "MatthieuBrucher\nMatthieuBrucher\nMatthieuBrucher"
-#define PLUG_NAME_PT "ATKTransientShaper\n1rnz"
+#define PLUG_NAME_PT "ATKTransientShaper\nmadg"
 #define PLUG_TYPE_PT "Dynamics"
 #define PLUG_DOES_AUDIOSUITE 1
 
@@ -65,7 +65,7 @@ instrument determined by PLUG _IS _INST
 #define KNOB1_FN "resources/img/bi-small.png"
 
 // GUI default dimensions
-#define GUI_WIDTH 1055
+#define GUI_WIDTH 1261
 #define GUI_HEIGHT 155
 
 // on MSVC, you must define SA_API in the resource editor preprocessor macros as well as the c++ ones
@@ -74,7 +74,7 @@ instrument determined by PLUG _IS _INST
 #endif
 
 // vst3 stuff
-#define MFR_URL "matt.eifelle.com"
+#define MFR_URL "www.audio-tk.com"
 #define MFR_EMAIL "spam@me.com"
 #define EFFECT_TYPE_VST3 "Fx|Dynamics"
 
