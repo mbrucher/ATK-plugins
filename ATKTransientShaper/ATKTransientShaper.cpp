@@ -70,12 +70,12 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorF
   GetParam(kPower)->SetShape(2.);
   GetParam(kAttack)->InitDouble("Attack", 10., 1., 100.0, 0.1, "ms");
   GetParam(kAttack)->SetShape(2.);
-  GetParam(kAttackRatio)->InitDouble("Attack Ratio", 10., 0., 100.0, 0.1, "%");
+  GetParam(kAttackRatio)->InitDouble("Attack Ratio", 10., 0.1, 100.0, 0.1, "%");
   GetParam(kRelease)->InitDouble("Release", 10, 1., 100.0, 0.1, "ms");
   GetParam(kRelease)->SetShape(2.);
-  GetParam(kReleaseRatio)->InitDouble("Release Ratio", 10, 0., 100.0, 0.1, "%");
-  GetParam(kThreshold)->InitDouble("Threshold", 0., -40., 0.0, 0.1, "dB"); // threshold is actually power
-  GetParam(kSlope)->InitDouble("Slope", 2., 0.1, 100, .1, "-");
+  GetParam(kReleaseRatio)->InitDouble("Release Ratio", 10, 0.1, 100.0, 0.1, "%");
+  GetParam(kThreshold)->InitDouble("Threshold", -30., -60., -20.0, 0.1, "dB"); // threshold is actually power
+  GetParam(kSlope)->InitDouble("Slope", 2., 0.1, 10, .1, "-");
   GetParam(kSlope)->SetShape(2.);
   GetParam(kColored)->InitDouble("Color", 0, -.5, .5, 0.01, "-");
   GetParam(kQuality)->InitDouble("Quality", 0.1, 0.01, .2, 0.01, "-");
@@ -180,10 +180,10 @@ void ATKTransientShaper::Reset()
     {
       powerFilter.set_memory(std::exp(-1e3 / (power * sampling_rate)));
     }
-    slowAttackReleaseFilter.set_release(std::exp(-1e3/(GetParam(kRelease)->Value() * sampling_rate * GetParam(kReleaseRatio)->Value()))); // in ms
+    slowAttackReleaseFilter.set_release(std::exp(-1e3/(GetParam(kRelease)->Value() * sampling_rate * GetParam(kReleaseRatio)->Value() / 100))); // in ms
     slowAttackReleaseFilter.set_attack(std::exp(-1e3/(GetParam(kAttack)->Value() * sampling_rate))); // in ms
     fastAttackReleaseFilter.set_release(std::exp(-1e3/(GetParam(kRelease)->Value() * sampling_rate))); // in ms
-    fastAttackReleaseFilter.set_attack(std::exp(-1e3/(GetParam(kAttack)->Value() * sampling_rate * GetParam(kAttackRatio)->Value()))); // in ms
+    fastAttackReleaseFilter.set_attack(std::exp(-1e3/(GetParam(kAttack)->Value() * sampling_rate * GetParam(kAttackRatio)->Value() / 100))); // in ms
   }
   
   powerFilter.full_setup();
@@ -227,17 +227,17 @@ void ATKTransientShaper::OnParamChange(int paramIdx)
       break;
     case kAttack:
       slowAttackReleaseFilter.set_attack(std::exp(-1e3/(GetParam(kAttack)->Value() * GetSampleRate()))); // in ms
-      fastAttackReleaseFilter.set_attack(std::exp(-1e3/(GetParam(kAttack)->Value() * GetSampleRate() * GetParam(kAttackRatio)->Value()))); // in ms
+      fastAttackReleaseFilter.set_attack(std::exp(-1e3/(GetParam(kAttack)->Value() * GetSampleRate() * GetParam(kAttackRatio)->Value() / 100))); // in ms
       break;
     case kAttackRatio:
-      fastAttackReleaseFilter.set_attack(std::exp(-1e3/(GetParam(kAttack)->Value() * GetSampleRate() * GetParam(kAttackRatio)->Value()))); // in ms
+      fastAttackReleaseFilter.set_attack(std::exp(-1e3/(GetParam(kAttack)->Value() * GetSampleRate() * GetParam(kAttackRatio)->Value() / 100))); // in ms
       break;
     case kRelease:
       fastAttackReleaseFilter.set_release(std::exp(-1e3/(GetParam(kRelease)->Value() * GetSampleRate()))); // in ms
-      slowAttackReleaseFilter.set_release(std::exp(-1e3/(GetParam(kRelease)->Value() * GetSampleRate() * GetParam(kReleaseRatio)->Value()))); // in ms
+      slowAttackReleaseFilter.set_release(std::exp(-1e3/(GetParam(kRelease)->Value() * GetSampleRate() * GetParam(kReleaseRatio)->Value() / 100))); // in ms
       break;
     case kReleaseRatio:
-      slowAttackReleaseFilter.set_release(std::exp(-1e3/(GetParam(kRelease)->Value() * GetSampleRate() * GetParam(kReleaseRatio)->Value()))); // in ms
+      slowAttackReleaseFilter.set_release(std::exp(-1e3/(GetParam(kRelease)->Value() * GetSampleRate() * GetParam(kReleaseRatio)->Value() / 100))); // in ms
       break;
     case kMakeup:
       volumeFilter.set_volume_db(GetParam(kMakeup)->Value());
