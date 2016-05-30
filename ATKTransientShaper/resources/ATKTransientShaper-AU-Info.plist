@@ -9,7 +9,7 @@
 	<key>CFBundleGetInfoString</key>
 	<string>1.0.0, Copyright MatthieuBrucher, 2016</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.MatthieuBrucher.vst3.${BINARY_NAME}</string>
+	<string>com.MatthieuBrucher.audiounit.${BINARY_NAME}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -24,5 +24,7 @@
 	<string>1.0.0</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.5.0</string>
+	<key>NSPrincipalClass</key>
+	<string>ATKTransientShaper_View</string>
 </dict>
 </plist>

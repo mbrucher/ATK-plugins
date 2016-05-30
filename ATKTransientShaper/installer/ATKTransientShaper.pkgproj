@@ -83,7 +83,7 @@
 															<key>GID</key>
 															<integer>80</integer>
 															<key>PATH</key>
-															<string>/Library/Audio/Plug-Ins/VST/ATKAutoSwell.vst</string>
+															<string>/Library/Audio/Plug-Ins/VST/ATKTransientShaper.vst</string>
 															<key>PATH_TYPE</key>
 															<integer>0</integer>
 															<key>PERMISSIONS</key>
@@ -527,7 +527,7 @@
 				<key>CONCLUSION_ACTION</key>
 				<integer>0</integer>
 				<key>IDENTIFIER</key>
-				<string>com.MatthieuBrucher.vst.pkg.ATKAutoSwell</string>
+				<string>com.MatthieuBrucher.vst.pkg.ATKTransientShaper</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
@@ -623,7 +623,7 @@
 															<key>GID</key>
 															<integer>80</integer>
 															<key>PATH</key>
-															<string>/Library/Audio/Plug-Ins/VST3/ATKAutoSwell.vst3</string>
+															<string>/Library/Audio/Plug-Ins/VST3/ATKTransientShaper.vst3</string>
 															<key>PATH_TYPE</key>
 															<integer>0</integer>
 															<key>PERMISSIONS</key>
@@ -1067,7 +1067,7 @@
 				<key>CONCLUSION_ACTION</key>
 				<integer>0</integer>
 				<key>IDENTIFIER</key>
-				<string>com.MatthieuBrucher.vst3.pkg.ATKAutoSwell</string>
+				<string>com.MatthieuBrucher.vst3.pkg.ATKTransientShaper</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
@@ -1163,7 +1163,7 @@
 															<key>GID</key>
 															<integer>80</integer>
 															<key>PATH</key>
-															<string>/Library/Audio/Plug-Ins/Components/ATKAutoSwell.component</string>
+															<string>/Library/Audio/Plug-Ins/Components/ATKTransientShaper.component</string>
 															<key>PATH_TYPE</key>
 															<integer>0</integer>
 															<key>PERMISSIONS</key>
@@ -1607,7 +1607,7 @@
 				<key>CONCLUSION_ACTION</key>
 				<integer>0</integer>
 				<key>IDENTIFIER</key>
-				<string>com.MatthieuBrucher.au.pkg.ATKAutoSwell</string>
+				<string>com.MatthieuBrucher.au.pkg.ATKTransientShaper</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
@@ -1653,7 +1653,7 @@
 				<key>BACKGROUND_PATH</key>
 				<dict>
 					<key>PATH</key>
-					<string>ATKAutoSwell-installer-bg.png</string>
+					<string>ATKTransientShaper-installer-bg.png</string>
 					<key>PATH_TYPE</key>
 					<integer>1</integer>
 				</dict>
@@ -1874,7 +1874,7 @@
 						<key>LANGUAGE</key>
 						<string>English</string>
 						<key>VALUE</key>
-						<string>ATKAutoSwell</string>
+						<string>ATKTransientShaper</string>
 					</dict>
 				</array>
 			</dict>
@@ -2063,7 +2063,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>ATKAutoSwell Installer</string>
+			<string>ATKTransientShaper Installer</string>
 		</dict>
 	</dict>
 	<key>TYPE</key>
