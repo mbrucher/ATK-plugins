@@ -73,14 +73,14 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorF
   GetParam(kAttackRatio)->InitDouble("Attack Ratio", 10., 0.1, 100.0, 0.1, "%");
   GetParam(kRelease)->InitDouble("Release", 10, 1., 100.0, 0.1, "ms");
   GetParam(kRelease)->SetShape(2.);
-  GetParam(kReleaseRatio)->InitDouble("Release Ratio", 10, 0.1, 100.0, 0.1, "%");
+  GetParam(kReleaseRatio)->InitDouble("Release Ratio", 100, 0.1, 100.0, 0.1, "%");
   GetParam(kThreshold)->InitDouble("Threshold", -30., -60., -20.0, 0.1, "dB"); // threshold is actually power
   GetParam(kSlope)->InitDouble("Slope", 2., 0.1, 10, .1, "-");
   GetParam(kSlope)->SetShape(2.);
-  GetParam(kColored)->InitDouble("Color", 0, -.5, .5, 0.01, "-");
-  GetParam(kQuality)->InitDouble("Quality", 0.1, 0.01, .2, 0.01, "-");
   GetParam(kSoftness)->InitDouble("Softness", -2, -4, 0, 0.1, "-");
   GetParam(kSoftness)->SetShape(2.);
+  GetParam(kColored)->InitDouble("Color", 0, -.5, .5, 0.01, "-");
+  GetParam(kQuality)->InitDouble("Quality", 0.1, 0.01, .2, 0.01, "-");
   GetParam(kMakeup)->InitDouble("Makeup Gain", 0, 0, 40, 0.1, "dB"); // Makeup is expressed in amplitude
   GetParam(kDryWet)->InitDouble("Dry/Wet", 1, 0, 1, 0.01, "-");
   
@@ -108,8 +108,8 @@ inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorF
   AttachGraphics(pGraphics);
   
   //MakePreset("preset 1", ... );
-  MakePreset("Serial Shaper", 10., 10., 10., 10., 100., 0., 2., .1, 0., .01, 0., 1.);
-  MakePreset("Parallel Shaper", 10., 10., 10., 10., 100., 0., 2., .1, 0., .01, 0., 0.5);
+  MakePreset("Serial Shaper", 10., 10., 10., 10., 100., -30., 2., -2., 0., .1, 0., 1.);
+  MakePreset("Parallel Shaper", 10., 10., 10., 10., 100., -30., 2., -2., 0., .1, 0., 0.5);
   
   powerFilter.set_input_port(0, &inFilter, 0);
   slowAttackReleaseFilter.set_input_port(0, &powerFilter, 0);
