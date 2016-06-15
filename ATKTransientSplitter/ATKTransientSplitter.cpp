@@ -201,7 +201,7 @@ void ATKTransientSplitter::OnParamChange(int paramIdx)
       break;
     case kSlope:
       gainExpanderFilter.set_ratio(GetParam(kSlope)->Value());
-      gainSwellFilter.set_ratio(1/GetParam(kSlope)->Value());
+      gainSwellFilter.set_ratio(GetParam(kSlope)->Value());
       break;
     case kSoftness:
       gainExpanderFilter.set_softness(std::pow(10, GetParam(kSoftness)->Value()));
