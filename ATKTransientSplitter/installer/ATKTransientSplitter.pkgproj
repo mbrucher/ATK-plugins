@@ -537,7 +537,7 @@
 				<key>RELOCATABLE</key>
 				<true/>
 				<key>VERSION</key>
-				<string>1.0.0</string>
+				<string>0.1.0</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -1077,7 +1077,7 @@
 				<key>RELOCATABLE</key>
 				<true/>
 				<key>VERSION</key>
-				<string>1.0.0</string>
+				<string>0.1.0</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -1617,7 +1617,7 @@
 				<key>RELOCATABLE</key>
 				<true/>
 				<key>VERSION</key>
-				<string>1.0.0</string>
+				<string>0.1.0</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>

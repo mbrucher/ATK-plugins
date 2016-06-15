@@ -16,8 +16,8 @@
 #define VIEW_CLASS_STR "ATKTransientSplitter_View"
 
 // Format        0xMAJR.MN.BG - in HEX! so version 10.1.5 would be 0x000A0105
-#define PLUG_VER 0x00010000
-#define VST3_VER_STR "1.0.0"
+#define PLUG_VER 0x00000100
+#define VST3_VER_STR "0.1.0"
 
 // http://service.steinberg.de/databases/plugin.nsf/plugIn?openForm
 // 4 chars, single quotes. At least one capital letter
@@ -65,7 +65,7 @@ instrument determined by PLUG _IS _INST
 #define KNOB1_FN "resources/img/bi-small.png"
 
 // GUI default dimensions
-#define GUI_WIDTH 1261
+#define GUI_WIDTH 849
 #define GUI_HEIGHT 155
 
 // on MSVC, you must define SA_API in the resource editor preprocessor macros as well as the c++ ones
