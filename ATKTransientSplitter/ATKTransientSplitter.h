@@ -9,13 +9,13 @@
 #include <ATK/Core/PipelineGlobalSinkFilter.h>
 
 #include <ATK/Dynamic/AttackReleaseFilter.h>
-#include <ATK/Dynamic/GainExpanderFilter.h>
 #include <ATK/Dynamic/GainSwellFilter.h>
 #include <ATK/Dynamic/PowerFilter.h>
 
 #include <ATK/Tools/ApplyGainFilter.h>
 #include <ATK/Tools/DryWetFilter.h>
 #include <ATK/Tools/SumFilter.h>
+#include <ATK/Tools/OneMinusFilter.h>
 #include <ATK/Tools/VolumeFilter.h>
 
 class ATKTransientSplitter : public IPlug
@@ -35,8 +35,8 @@ private:
   ATK::AttackReleaseFilter<double> fastAttackReleaseFilter;
   ATK::VolumeFilter<double> invertFilter;
   ATK::SumFilter<double> sumFilter;
-  ATK::GainExpanderFilter<double> gainExpanderFilter;
   ATK::GainSwellFilter<double> gainSwellFilter;
+  ATK::OneMinusFilter<double> oneMinusFilter;
   ATK::ApplyGainFilter<double> applyGainFilter;
   ATK::OutPointerFilter<double> outTransientFilter;
   ATK::OutPointerFilter<double> outSustainFilter;

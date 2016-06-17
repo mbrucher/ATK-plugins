@@ -49,7 +49,7 @@ enum ELayout
 
 ATKTransientSplitter::ATKTransientSplitter(IPlugInstanceInfo instanceInfo)
   :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo),
-inFilter(nullptr, 1, 0, false), gainExpanderFilter(1, 256*1024), gainSwellFilter(1, 256*1024), applyGainFilter(2), outTransientFilter(nullptr, 1, 0, false), outSustainFilter(nullptr, 1, 0, false)
+inFilter(nullptr, 1, 0, false), gainSwellFilter(1, 256*1024), outTransientFilter(nullptr, 1, 0, false), outSustainFilter(nullptr, 1, 0, false)
 {
   TRACE;
   
@@ -96,14 +96,12 @@ inFilter(nullptr, 1, 0, false), gainExpanderFilter(1, 256*1024), gainSwellFilter
   invertFilter.set_input_port(0, &slowAttackReleaseFilter, 0);
   sumFilter.set_input_port(0, &invertFilter, 0);
   sumFilter.set_input_port(1, &fastAttackReleaseFilter, 0);
-  gainExpanderFilter.set_input_port(0, &sumFilter, 0);
   gainSwellFilter.set_input_port(0, &sumFilter, 0);
-  applyGainFilter.set_input_port(0, &gainExpanderFilter, 0);
+  applyGainFilter.set_input_port(0, &gainSwellFilter, 0);
   applyGainFilter.set_input_port(1, &inFilter, 0);
-  applyGainFilter.set_input_port(2, &gainSwellFilter, 0);
-  applyGainFilter.set_input_port(3, &inFilter, 0);
-  outTransientFilter.set_input_port(0, &applyGainFilter, 0);
-  outSustainFilter.set_input_port(0, &applyGainFilter, 1);
+  oneMinusFilter.set_input_port(0, &applyGainFilter, 0);
+  outTransientFilter.set_input_port(0, &oneMinusFilter, 0);
+  outSustainFilter.set_input_port(0, &applyGainFilter, 0);
   
   invertFilter.set_volume(-1);
   sinkFilter.add_filter(&outTransientFilter);
@@ -143,12 +141,12 @@ void ATKTransientSplitter::Reset()
     invertFilter.set_output_sampling_rate(sampling_rate);
     sumFilter.set_input_sampling_rate(sampling_rate);
     sumFilter.set_output_sampling_rate(sampling_rate);
-    gainExpanderFilter.set_input_sampling_rate(sampling_rate);
-    gainExpanderFilter.set_output_sampling_rate(sampling_rate);
     gainSwellFilter.set_input_sampling_rate(sampling_rate);
     gainSwellFilter.set_output_sampling_rate(sampling_rate);
     applyGainFilter.set_input_sampling_rate(sampling_rate);
     applyGainFilter.set_output_sampling_rate(sampling_rate);
+    oneMinusFilter.set_input_sampling_rate(sampling_rate);
+    oneMinusFilter.set_output_sampling_rate(sampling_rate);
     outTransientFilter.set_input_sampling_rate(sampling_rate);
     outTransientFilter.set_output_sampling_rate(sampling_rate);
     outSustainFilter.set_input_sampling_rate(sampling_rate);
@@ -196,15 +194,12 @@ void ATKTransientSplitter::OnParamChange(int paramIdx)
       break;
     }
     case kThreshold:
-      gainExpanderFilter.set_threshold(std::pow(10, GetParam(kThreshold)->Value() / 10));
       gainSwellFilter.set_threshold(std::pow(10, GetParam(kThreshold)->Value() / 10));
       break;
     case kSlope:
-      gainExpanderFilter.set_ratio(GetParam(kSlope)->Value());
       gainSwellFilter.set_ratio(GetParam(kSlope)->Value());
       break;
     case kSoftness:
-      gainExpanderFilter.set_softness(std::pow(10, GetParam(kSoftness)->Value()));
       gainSwellFilter.set_softness(std::pow(10, GetParam(kSoftness)->Value()));
       break;
     case kAttack:
