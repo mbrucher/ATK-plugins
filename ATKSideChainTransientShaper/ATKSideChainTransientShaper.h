@@ -40,10 +40,15 @@ private:
 
   ATK::PowerFilter<double> powerFilter1;
   ATK::PowerFilter<double> powerFilter2;
-  ATK::SumFilter<double> sumFilter; // in case we link both channels
+  ATK::SumFilter<double> sumLinkFilter; // in case we link both channels
 
-  ATK::AttackReleaseFilter<double> attackReleaseFilter1;
-  ATK::AttackReleaseFilter<double> attackReleaseFilter2;
+  ATK::AttackReleaseFilter<double> slowAttackReleaseFilter1;
+  ATK::AttackReleaseFilter<double> slowAttackReleaseFilter2;
+  ATK::AttackReleaseFilter<double> fastAttackReleaseFilter1;
+  ATK::AttackReleaseFilter<double> fastAttackReleaseFilter2;
+  ATK::VolumeFilter<double> invertFilter;
+  ATK::SumFilter<double> sumFilter1;
+  ATK::SumFilter<double> sumFilter2;
   ATK::GainColoredCompressorFilter<double> gainColoredCompressorFilter1;
   ATK::GainColoredCompressorFilter<double> gainColoredCompressorFilter2;
   ATK::ApplyGainFilter<double> applyGainFilter;
@@ -62,7 +67,9 @@ private:
 
   IKnobMultiControlText* power2;
   IKnobMultiControlText* attack2;
+  IKnobMultiControlText* attackratio2;
   IKnobMultiControlText* release2;
+  IKnobMultiControlText* releaseratio2;
   IKnobMultiControlText* threshold2;
   IKnobMultiControlText* ratio2;
   IKnobMultiControl* softness2;

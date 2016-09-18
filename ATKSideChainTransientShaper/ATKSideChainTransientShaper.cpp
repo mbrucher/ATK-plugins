@@ -16,7 +16,9 @@ enum EParams
   kActivateChannel2,
   kPower1,
   kAttack1,
+  kAttackRatio1,
   kRelease1,
+  kReleaseRatio1,
   kThreshold1,
   kRatio1,
   kSoftness1,
@@ -25,7 +27,9 @@ enum EParams
   kMakeup1,
   kPower2,
   kAttack2,
+  kAttackRatio2,
   kRelease2,
+  kReleaseRatio2,
   kThreshold2,
   kRatio2,
   kSoftness2,
@@ -56,43 +60,51 @@ enum ELayout
   kPower1Y = 40,
   kAttack1X = 336,
   kAttack1Y = 40,
-  kRelease1X = 439,
+  kAttackRatio1X = 439,
+  kAttackRatio1Y = 40,
+  kRelease1X = 542,
   kRelease1Y = 40,
-  kThreshold1X = 542,
+  kReleaseRatio1X = 645,
+  kReleaseRatio1Y = 40,
+  kThreshold1X = 748,
   kThreshold1Y = 40,
-  kRatio1X = 645,
+  kRatio1X = 851,
   kRatio1Y = 40,
-  kSoftness1X = 748,
+  kSoftness1X = 954,
   kSoftness1Y = 40,
-  kColor1X = 851,
+  kColor1X = 1057,
   kColor1Y = 40,
-  kQuality1X = 954,
+  kQuality1X = 1160,
   kQuality1Y = 40,
-  kMakeup1X = 1057,
+  kMakeup1X = 1263,
   kMakeup1Y = 40,
 
   kPower2X = 233,
   kPower2Y = 160,
   kAttack2X = 336,
   kAttack2Y = 160,
-  kRelease2X = 439,
+  kAttackRatio2X = 439,
+  kAttackRatio2Y = 160,
+  kRelease2X = 542,
   kRelease2Y = 160,
-  kThreshold2X = 542,
+  kReleaseRatio2X = 645,
+  kReleaseRatio2Y = 40,
+  kThreshold2X = 748,
   kThreshold2Y = 160,
-  kRatio2X = 645,
+  kRatio2X = 851,
   kRatio2Y = 160,
-  kSoftness2X = 748,
+  kSoftness2X = 954,
   kSoftness2Y = 160,
-  kColor2X = 851,
+  kColor2X = 1057,
   kColor2Y = 160,
-  kQuality2X = 954,
+  kQuality2X = 1160,
   kQuality2Y = 160,
-  kMakeup2X = 1057,
+  kMakeup2X = 1263,
   kMakeup2Y = 160,
 
-  kSideChainX = 1173,
+  kSideChainX = 1379,
   kSideChainY = 82,
-  kDryWetX = 1160,
+  kDryWetX = 1366,
   kDryWetY = 160,
 
   kKnobFrames = 20,
@@ -102,7 +114,7 @@ enum ELayout
 ATKSideChainTransientShaper::ATKSideChainTransientShaper(IPlugInstanceInfo instanceInfo)
   :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo),
   inLFilter(nullptr, 1, 0, false), inRFilter(nullptr, 1, 0, false), inSideChainLFilter(nullptr, 1, 0, false), inSideChainRFilter(nullptr, 1, 0, false),
-  volumesplitFilter(4), applyGainFilter(2), volumemergeFilter(2), drywetFilter(2), outLFilter(nullptr, 1, 0, false), outRFilter(nullptr, 1, 0, false), sidechain(false)
+  volumesplitFilter(4), invertFilter(2), applyGainFilter(2), volumemergeFilter(2), drywetFilter(2), outLFilter(nullptr, 1, 0, false), outRFilter(nullptr, 1, 0, false), sidechain(false)
 {
   TRACE;
 
@@ -116,10 +128,12 @@ ATKSideChainTransientShaper::ATKSideChainTransientShaper(IPlugInstanceInfo insta
   GetParam(kPower1)->SetShape(2.);
   GetParam(kAttack1)->InitDouble("Attack ch1", 10., 1., 100.0, 0.1, "ms");
   GetParam(kAttack1)->SetShape(2.);
+  GetParam(kAttackRatio1)->InitDouble("Attack Ratio ch1", 10., 0., 100.0, 0.1, "%");
   GetParam(kRelease1)->InitDouble("Release ch1", 10, 1., 100.0, 0.1, "ms");
   GetParam(kRelease1)->SetShape(2.);
+  GetParam(kReleaseRatio1)->InitDouble("Release Ratio ch1", 10, 0., 100.0, 0.1, "%");
   GetParam(kThreshold1)->InitDouble("Threshold ch1", 0., -40., 0.0, 0.1, "dB"); // threshold is actually power
-  GetParam(kRatio1)->InitDouble("Ratio ch1", 2., .1, 100, .1, "-");
+  GetParam(kRatio1)->InitDouble("Ratio ch1", 2., 0.1, 100, .1, "-");
   GetParam(kRatio1)->SetShape(2.);
   GetParam(kSoftness1)->InitDouble("Softness ch1", -2, -4, 0, 0.1, "-");
   GetParam(kSoftness1)->SetShape(2.);
@@ -131,10 +145,12 @@ ATKSideChainTransientShaper::ATKSideChainTransientShaper(IPlugInstanceInfo insta
   GetParam(kPower2)->SetShape(2.);
   GetParam(kAttack2)->InitDouble("Attack ch2", 10., 1., 100.0, 0.1, "ms");
   GetParam(kAttack2)->SetShape(2.);
+  GetParam(kAttackRatio2)->InitDouble("Attack Ratio ch2", 10., 0., 100.0, 0.1, "%");
   GetParam(kRelease2)->InitDouble("Release ch2", 10, 1., 100.0, 0.1, "ms");
   GetParam(kRelease2)->SetShape(2.);
+  GetParam(kReleaseRatio2)->InitDouble("Release Ratio ch2", 10, 0., 100.0, 0.1, "%");
   GetParam(kThreshold2)->InitDouble("Threshold ch2", 0., -40., 0.0, 0.1, "dB"); // threshold is actually power
-  GetParam(kRatio2)->InitDouble("Ratio ch2", 2., .1, 100, .1, "-");
+  GetParam(kRatio2)->InitDouble("Ratio ch2", 2., 0.1, 100, .1, "-");
   GetParam(kRatio2)->SetShape(2.);
   GetParam(kSoftness2)->InitDouble("Softness ch2", -2, -4, 0, 0.1, "-");
   GetParam(kSoftness2)->SetShape(2.);
@@ -156,7 +172,9 @@ ATKSideChainTransientShaper::ATKSideChainTransientShaper(IPlugInstanceInfo insta
 
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kPower1X, kPower1Y, kPower1X + 78, kPower1Y + 78 + 21), kPower1, &knob, &text, "ms"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kAttack1X, kAttack1Y, kAttack1X + 78, kAttack1Y + 78 + 21), kAttack1, &knob, &text, "ms"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kAttackRatio1X, kAttackRatio1Y, kAttackRatio1X + 78, kAttackRatio1Y + 78 + 21), kAttackRatio1, &knob, &text, "%"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kRelease1X, kRelease1Y, kRelease1X + 78, kRelease1Y + 78 + 21), kRelease1, &knob, &text, "ms"));
+  pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kReleaseRatio1X, kReleaseRatio1Y, kReleaseRatio1X + 78, kReleaseRatio1Y + 78 + 21), kReleaseRatio1, &knob, &text, "%"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kThreshold1X, kThreshold1Y, kThreshold1X + 78, kThreshold1Y + 78 + 21), kThreshold1, &knob, &text, "dB"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kRatio1X, kRatio1Y, kRatio1X + 78, kRatio1Y + 78 + 21), kRatio1, &knob, &text, ""));
   pGraphics->AttachControl(new IKnobMultiControl(this, kSoftness1X, kSoftness1Y, kSoftness1, &knob));
@@ -168,8 +186,12 @@ ATKSideChainTransientShaper::ATKSideChainTransientShaper(IPlugInstanceInfo insta
   pGraphics->AttachControl(power2);
   attack2 = new IKnobMultiControlText(this, IRECT(kAttack2X, kAttack2Y, kAttack2X + 78, kAttack2Y + 78 + 21), kAttack2, &knob, &text, "ms");
   pGraphics->AttachControl(attack2);
+  attackratio2 = new IKnobMultiControlText(this, IRECT(kAttackRatio2X, kAttackRatio2Y, kAttackRatio2X + 78, kAttackRatio2Y + 78 + 21), kAttackRatio2, &knob, &text, "%");
+  pGraphics->AttachControl(attackratio2);
   release2 = new IKnobMultiControlText(this, IRECT(kRelease2X, kRelease2Y, kRelease2X + 78, kRelease2Y + 78 + 21), kRelease2, &knob, &text, "ms");
   pGraphics->AttachControl(release2);
+  releaseratio2 = new IKnobMultiControlText(this, IRECT(kReleaseRatio2X, kReleaseRatio2Y, kReleaseRatio2X + 78, kReleaseRatio2Y + 78 + 21), kReleaseRatio2, &knob, &text, "%");
+  pGraphics->AttachControl(releaseratio2);
   threshold2 = new IKnobMultiControlText(this, IRECT(kThreshold2X, kThreshold2Y, kThreshold2X + 78, kThreshold2Y + 78 + 21), kThreshold2, &knob, &text, "dB");
   pGraphics->AttachControl(threshold2);
   ratio2 = new IKnobMultiControlText(this, IRECT(kRatio2X, kRatio2Y, kRatio2X + 78, kRatio2Y + 78 + 21), kRatio2, &knob, &text, "");
@@ -194,19 +216,24 @@ ATKSideChainTransientShaper::ATKSideChainTransientShaper(IPlugInstanceInfo insta
   AttachGraphics(pGraphics);
 
   //MakePreset("preset 1", ... );
-  MakePreset("Serial compression", false, false, true, true, 10., 10., 10., 0., 2., -2., 0., 0.1, 0., 10., 10., 10., 0., 2., -2., 0., 0.1, 0., 0., 0.);
-  MakePreset("Middle/side compression", true, false, true, true, 10., 10., 10., 0., 2., -2., 0., 0.1, 0., 10., 10., 10., 0., 2., -2., 0., 0.1, 0., 0., 0.);
-  MakePreset("Parallel compression", false, false, false, false, 10., 10., 10., 0., 2., -2., 0., 0.1, 0., 10., 10., 10., 0., 2., -2., 0., 0.1, 0., 0.5, 0.);
+  MakePreset("Serial compression", false, false, true, true, 10., 10., 10., 10., 100., 0., 2., -2., 0., 0.1, 0., 10., 10., 10., 0., 2., -2., 0., 0.1, 0., 0., 0.);
+  MakePreset("Middle/side compression", true, false, true, true, 10., 10., 10., 10., 100., 0., 2., -2., 0., 0.1, 0., 10., 10., 10., 0., 2., -2., 0., 0.1, 0., 0., 0.);
+  MakePreset("Parallel compression", false, false, false, false, 10., 10., 10., 10., 100., 0., 2., -2., 0., 0.1, 0., 10., 10., 10., 0., 2., -2., 0., 0.1, 0., 0.5, 0.);
 
+  invertFilter.set_volume(-1);
   volumesplitFilter.set_volume(std::sqrt(.5));
   volumemergeFilter.set_volume(std::sqrt(.5));
   endpoint.add_filter(&outLFilter);
   endpoint.add_filter(&outRFilter);
 
   powerFilter1.set_input_port(0, &inSideChainLFilter, 0);
-  gainColoredCompressorFilter1.set_input_port(0, &powerFilter1, 0);
-  attackReleaseFilter1.set_input_port(0, &gainColoredCompressorFilter1, 0);
-  applyGainFilter.set_input_port(0, &attackReleaseFilter1, 0);
+  slowAttackReleaseFilter1.set_input_port(0, &powerFilter1, 0);
+  fastAttackReleaseFilter1.set_input_port(0, &powerFilter1, 0);
+  invertFilter.set_input_port(0, &slowAttackReleaseFilter1, 0);
+  sumFilter1.set_input_port(0, &invertFilter, 0);
+  sumFilter1.set_input_port(1, &fastAttackReleaseFilter1, 0);
+  gainColoredCompressorFilter1.set_input_port(0, &sumFilter1, 0);
+  applyGainFilter.set_input_port(0, &gainColoredCompressorFilter1, 0);
   applyGainFilter.set_input_port(1, &inLFilter, 0);
   makeupFilter1.set_input_port(0, &applyGainFilter, 0);
   drywetFilter.set_input_port(0, &makeupFilter1, 0);
@@ -214,9 +241,13 @@ ATKSideChainTransientShaper::ATKSideChainTransientShaper(IPlugInstanceInfo insta
   outLFilter.set_input_port(0, &drywetFilter, 0);
 
   powerFilter2.set_input_port(0, &inSideChainRFilter, 0);
-  gainColoredCompressorFilter2.set_input_port(0, &powerFilter2, 0);
-  attackReleaseFilter2.set_input_port(0, &gainColoredCompressorFilter2, 0);
-  applyGainFilter.set_input_port(2, &attackReleaseFilter2, 0);
+  slowAttackReleaseFilter2.set_input_port(0, &powerFilter2, 0);
+  fastAttackReleaseFilter2.set_input_port(0, &powerFilter2, 0);
+  invertFilter.set_input_port(1, &slowAttackReleaseFilter2, 0);
+  sumFilter2.set_input_port(2, &invertFilter, 0);
+  sumFilter2.set_input_port(3, &fastAttackReleaseFilter1, 0);
+  gainColoredCompressorFilter2.set_input_port(0, &sumFilter2, 1);
+  applyGainFilter.set_input_port(2, &gainColoredCompressorFilter2, 0);
   applyGainFilter.set_input_port(3, &inRFilter, 0);
   makeupFilter2.set_input_port(0, &applyGainFilter, 1);
   drywetFilter.set_input_port(2, &makeupFilter2, 0);
@@ -235,8 +266,8 @@ ATKSideChainTransientShaper::ATKSideChainTransientShaper(IPlugInstanceInfo insta
   middlesidemergeFilter.set_input_port(1, &makeupFilter2, 0);
   volumemergeFilter.set_input_port(0, &middlesidemergeFilter, 0);
   volumemergeFilter.set_input_port(1, &middlesidemergeFilter, 1);
-  sumFilter.set_input_port(0, &powerFilter1, 0);
-  sumFilter.set_input_port(1, &powerFilter2, 0);
+  sumLinkFilter.set_input_port(0, &powerFilter1, 0);
+  sumLinkFilter.set_input_port(1, &powerFilter2, 0);
 
   Reset();
 }
@@ -302,13 +333,22 @@ void ATKSideChainTransientShaper::Reset()
     middlesidemergeFilter.set_output_sampling_rate(sampling_rate);
     volumemergeFilter.set_input_sampling_rate(sampling_rate);
     volumemergeFilter.set_output_sampling_rate(sampling_rate);
-    sumFilter.set_input_sampling_rate(sampling_rate);
-    sumFilter.set_output_sampling_rate(sampling_rate);
+    sumLinkFilter.set_input_sampling_rate(sampling_rate);
+    sumLinkFilter.set_output_sampling_rate(sampling_rate);
+
+    invertFilter.set_input_sampling_rate(sampling_rate);
+    invertFilter.set_output_sampling_rate(sampling_rate);
+    sumFilter1.set_input_sampling_rate(sampling_rate);
+    sumFilter1.set_output_sampling_rate(sampling_rate);
+    sumFilter2.set_input_sampling_rate(sampling_rate);
+    sumFilter2.set_output_sampling_rate(sampling_rate);
 
     powerFilter1.set_input_sampling_rate(sampling_rate);
     powerFilter1.set_output_sampling_rate(sampling_rate);
-    attackReleaseFilter1.set_input_sampling_rate(sampling_rate);
-    attackReleaseFilter1.set_output_sampling_rate(sampling_rate);
+    slowAttackReleaseFilter1.set_input_sampling_rate(sampling_rate);
+    slowAttackReleaseFilter1.set_output_sampling_rate(sampling_rate);
+    fastAttackReleaseFilter1.set_input_sampling_rate(sampling_rate);
+    fastAttackReleaseFilter1.set_output_sampling_rate(sampling_rate);
     gainColoredCompressorFilter1.set_input_sampling_rate(sampling_rate);
     gainColoredCompressorFilter1.set_output_sampling_rate(sampling_rate);
     makeupFilter1.set_input_sampling_rate(sampling_rate);
@@ -316,8 +356,10 @@ void ATKSideChainTransientShaper::Reset()
 
     powerFilter2.set_input_sampling_rate(sampling_rate);
     powerFilter2.set_output_sampling_rate(sampling_rate);
-    attackReleaseFilter2.set_input_sampling_rate(sampling_rate);
-    attackReleaseFilter2.set_output_sampling_rate(sampling_rate);
+    slowAttackReleaseFilter2.set_input_sampling_rate(sampling_rate);
+    slowAttackReleaseFilter2.set_output_sampling_rate(sampling_rate);
+    fastAttackReleaseFilter2.set_input_sampling_rate(sampling_rate);
+    fastAttackReleaseFilter2.set_output_sampling_rate(sampling_rate);
     gainColoredCompressorFilter2.set_input_sampling_rate(sampling_rate);
     gainColoredCompressorFilter2.set_output_sampling_rate(sampling_rate);
     makeupFilter2.set_input_sampling_rate(sampling_rate);
@@ -349,15 +391,21 @@ void ATKSideChainTransientShaper::Reset()
       powerFilter2.set_memory(std::exp(-1e3 / (power * sampling_rate)));
     }
 
-    attackReleaseFilter1.set_release(std::exp(-1 / (GetParam(kAttack1)->Value() * 1e-3 * sampling_rate))); // in ms
-    attackReleaseFilter1.set_attack(std::exp(-1 / (GetParam(kRelease1)->Value() * 1e-3 * sampling_rate))); // in ms
-    attackReleaseFilter2.set_release(std::exp(-1 / (GetParam(kAttack2)->Value() * 1e-3 * sampling_rate))); // in ms
-    attackReleaseFilter2.set_attack(std::exp(-1 / (GetParam(kRelease2)->Value() * 1e-3 * sampling_rate))); // in ms
+    slowAttackReleaseFilter1.set_release(std::exp(-1e3/(GetParam(kRelease1)->Value() * sampling_rate * GetParam(kReleaseRatio1)->Value()))); // in ms
+    slowAttackReleaseFilter1.set_attack(std::exp(-1e3/(GetParam(kAttack1)->Value() * sampling_rate))); // in ms
+    fastAttackReleaseFilter1.set_release(std::exp(-1e3/(GetParam(kRelease1)->Value() * sampling_rate))); // in ms
+    fastAttackReleaseFilter1.set_attack(std::exp(-1e3/(GetParam(kAttack1)->Value() * sampling_rate * GetParam(kAttackRatio1)->Value()))); // in ms
+    slowAttackReleaseFilter2.set_release(std::exp(-1e3/(GetParam(kRelease2)->Value() * sampling_rate * GetParam(kReleaseRatio2)->Value()))); // in ms
+    slowAttackReleaseFilter2.set_attack(std::exp(-1e3/(GetParam(kAttack2)->Value() * sampling_rate))); // in ms
+    fastAttackReleaseFilter2.set_release(std::exp(-1e3/(GetParam(kRelease2)->Value() * sampling_rate))); // in ms
+    fastAttackReleaseFilter2.set_attack(std::exp(-1e3/(GetParam(kAttack2)->Value() * sampling_rate * GetParam(kAttackRatio2)->Value()))); // in ms
   }
   powerFilter1.full_setup();
   powerFilter2.full_setup();
-  attackReleaseFilter1.full_setup();
-  attackReleaseFilter2.full_setup();
+  slowAttackReleaseFilter1.full_setup();
+  slowAttackReleaseFilter2.full_setup();
+  fastAttackReleaseFilter1.full_setup();
+  fastAttackReleaseFilter2.full_setup();
 }
 
 void ATKSideChainTransientShaper::OnParamChange(int paramIdx)
@@ -419,13 +467,16 @@ void ATKSideChainTransientShaper::OnParamChange(int paramIdx)
   case kLinkChannels:
     if (GetParam(kLinkChannels)->Bool())
     {
-      gainColoredCompressorFilter1.set_input_port(0, &sumFilter, 0);
-      applyGainFilter.set_input_port(2, &attackReleaseFilter1, 0);
+      slowAttackReleaseFilter1.set_input_port(0, &sumLinkFilter, 0);
+      fastAttackReleaseFilter1.set_input_port(0, &sumLinkFilter, 0);
+      applyGainFilter.set_input_port(0, &gainColoredCompressorFilter1, 0);
       makeupFilter2.set_volume_db(GetParam(kMakeup1)->Value());
 
       power2->GrayOut(true);
       attack2->GrayOut(true);
+      attackratio2->GrayOut(true);
       release2->GrayOut(true);
+      releaseratio2->GrayOut(true);
       threshold2->GrayOut(true);
       ratio2->GrayOut(true);
       softness2->GrayOut(true);
@@ -436,12 +487,14 @@ void ATKSideChainTransientShaper::OnParamChange(int paramIdx)
     else
     {
       gainColoredCompressorFilter1.set_input_port(0, &powerFilter1, 0);
-      applyGainFilter.set_input_port(2, &attackReleaseFilter2, 0);
+      applyGainFilter.set_input_port(2, &gainColoredCompressorFilter2, 0);
       makeupFilter2.set_volume_db(GetParam(kMakeup2)->Value());
 
       power2->GrayOut(false);
       attack2->GrayOut(false);
+      attackratio2->GrayOut(false);
       release2->GrayOut(false);
+      releaseratio2->GrayOut(false);
       threshold2->GrayOut(false);
       ratio2->GrayOut(false);
       softness2->GrayOut(false);
@@ -532,10 +585,18 @@ void ATKSideChainTransientShaper::OnParamChange(int paramIdx)
     }
     break;
   case kAttack1:
-    attackReleaseFilter1.set_release(std::exp(-1 / (GetParam(kAttack1)->Value() * 1e-3 * GetSampleRate()))); // in ms
+    slowAttackReleaseFilter1.set_attack(std::exp(-1e3/(GetParam(kAttack1)->Value() * GetSampleRate()))); // in ms
+    fastAttackReleaseFilter1.set_attack(std::exp(-1e3/(GetParam(kAttack1)->Value() * GetSampleRate() * GetParam(kAttackRatio1)->Value()))); // in ms
+    break;
+  case kAttackRatio1:
+    fastAttackReleaseFilter1.set_attack(std::exp(-1e3/(GetParam(kAttack1)->Value() * GetSampleRate() * GetParam(kAttackRatio1)->Value()))); // in ms
     break;
   case kRelease1:
-    attackReleaseFilter1.set_attack(std::exp(-1 / (GetParam(kRelease1)->Value() * 1e-3 * GetSampleRate()))); // in ms
+    fastAttackReleaseFilter1.set_release(std::exp(-1e3/(GetParam(kRelease1)->Value() * GetSampleRate()))); // in ms
+    slowAttackReleaseFilter1.set_release(std::exp(-1e3/(GetParam(kRelease1)->Value() * GetSampleRate() * GetParam(kReleaseRatio1)->Value()))); // in ms
+    break;
+  case kReleaseRatio1:
+    slowAttackReleaseFilter1.set_release(std::exp(-1e3/(GetParam(kRelease1)->Value() * GetSampleRate() * GetParam(kReleaseRatio1)->Value()))); // in ms
     break;
   case kMakeup1:
     makeupFilter1.set_volume_db(GetParam(kMakeup1)->Value());
@@ -573,10 +634,18 @@ void ATKSideChainTransientShaper::OnParamChange(int paramIdx)
     }
     break;
   case kAttack2:
-    attackReleaseFilter2.set_release(std::exp(-1 / (GetParam(kAttack2)->Value() * 1e-3 * GetSampleRate()))); // in ms
+    slowAttackReleaseFilter2.set_attack(std::exp(-1e3/(GetParam(kAttack2)->Value() * GetSampleRate()))); // in ms
+    fastAttackReleaseFilter2.set_attack(std::exp(-1e3/(GetParam(kAttack2)->Value() * GetSampleRate() * GetParam(kAttackRatio2)->Value()))); // in ms
+    break;
+  case kAttackRatio2:
+    fastAttackReleaseFilter2.set_attack(std::exp(-1e3/(GetParam(kAttack2)->Value() * GetSampleRate() * GetParam(kAttackRatio2)->Value()))); // in ms
     break;
   case kRelease2:
-    attackReleaseFilter2.set_attack(std::exp(-1 / (GetParam(kRelease2)->Value() * 1e-3 * GetSampleRate()))); // in ms
+    fastAttackReleaseFilter2.set_release(std::exp(-1e3/(GetParam(kRelease2)->Value() * GetSampleRate()))); // in ms
+    slowAttackReleaseFilter2.set_release(std::exp(-1e3/(GetParam(kRelease2)->Value() * GetSampleRate() * GetParam(kReleaseRatio2)->Value()))); // in ms
+    break;
+  case kReleaseRatio2:
+    slowAttackReleaseFilter2.set_release(std::exp(-1e3/(GetParam(kRelease2)->Value() * GetSampleRate() * GetParam(kReleaseRatio2)->Value()))); // in ms
     break;
   case kMakeup2:
     makeupFilter2.set_volume_db(GetParam(kMakeup2)->Value());
