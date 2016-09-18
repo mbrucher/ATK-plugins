@@ -1,0 +1,8 @@
+ATKSideChainTransientShaper changelog
+htp://matt.eifelle.com
+
+
+27/09/16 - v1.0.0
+  - switch between internal link and side chain
+  - Built against ATK 1.3.2
+
