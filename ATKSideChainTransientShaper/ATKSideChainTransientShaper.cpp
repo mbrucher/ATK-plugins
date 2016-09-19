@@ -244,9 +244,9 @@ ATKSideChainTransientShaper::ATKSideChainTransientShaper(IPlugInstanceInfo insta
   slowAttackReleaseFilter2.set_input_port(0, &powerFilter2, 0);
   fastAttackReleaseFilter2.set_input_port(0, &powerFilter2, 0);
   invertFilter.set_input_port(1, &slowAttackReleaseFilter2, 0);
-  sumFilter2.set_input_port(2, &invertFilter, 0);
-  sumFilter2.set_input_port(3, &fastAttackReleaseFilter1, 0);
-  gainColoredCompressorFilter2.set_input_port(0, &sumFilter2, 1);
+  sumFilter2.set_input_port(0, &invertFilter, 0);
+  sumFilter2.set_input_port(1, &fastAttackReleaseFilter1, 0);
+  gainColoredCompressorFilter2.set_input_port(0, &sumFilter2, 0);
   applyGainFilter.set_input_port(2, &gainColoredCompressorFilter2, 0);
   applyGainFilter.set_input_port(3, &inRFilter, 0);
   makeupFilter2.set_input_port(0, &applyGainFilter, 1);
