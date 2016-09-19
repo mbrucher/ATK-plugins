@@ -88,7 +88,7 @@ enum ELayout
   kRelease2X = 542,
   kRelease2Y = 160,
   kReleaseRatio2X = 645,
-  kReleaseRatio2Y = 40,
+  kReleaseRatio2Y = 160,
   kThreshold2X = 748,
   kThreshold2Y = 160,
   kRatio2X = 851,
@@ -123,6 +123,7 @@ ATKSideChainTransientShaper::ATKSideChainTransientShaper(IPlugInstanceInfo insta
   GetParam(kLinkChannels)->InitBool("Link channels", 0, "");
   GetParam(kActivateChannel1)->InitBool("Enable Channel 1", 1, "");
   GetParam(kActivateChannel2)->InitBool("Enable Channel 2", 1, "");
+  GetParam(kSideChain)->InitBool("Sidechain", 0, "");
 
   GetParam(kPower1)->InitDouble("RMS ch1", 10., 0., 100.0, 0.1, "ms");
   GetParam(kPower1)->SetShape(2.);
@@ -132,7 +133,7 @@ ATKSideChainTransientShaper::ATKSideChainTransientShaper(IPlugInstanceInfo insta
   GetParam(kRelease1)->InitDouble("Release ch1", 10, 1., 100.0, 0.1, "ms");
   GetParam(kRelease1)->SetShape(2.);
   GetParam(kReleaseRatio1)->InitDouble("Release Ratio ch1", 10, 0., 100.0, 0.1, "%");
-  GetParam(kThreshold1)->InitDouble("Threshold ch1", 0., -40., 0.0, 0.1, "dB"); // threshold is actually power
+  GetParam(kThreshold1)->InitDouble("Threshold ch1", -30., -60., -10.0, 0.1, "dB"); // threshold is actually power
   GetParam(kRatio1)->InitDouble("Ratio ch1", 2., 0.1, 100, .1, "-");
   GetParam(kRatio1)->SetShape(2.);
   GetParam(kSoftness1)->InitDouble("Softness ch1", -2, -4, 0, 0.1, "-");
@@ -149,7 +150,7 @@ ATKSideChainTransientShaper::ATKSideChainTransientShaper(IPlugInstanceInfo insta
   GetParam(kRelease2)->InitDouble("Release ch2", 10, 1., 100.0, 0.1, "ms");
   GetParam(kRelease2)->SetShape(2.);
   GetParam(kReleaseRatio2)->InitDouble("Release Ratio ch2", 10, 0., 100.0, 0.1, "%");
-  GetParam(kThreshold2)->InitDouble("Threshold ch2", 0., -40., 0.0, 0.1, "dB"); // threshold is actually power
+  GetParam(kThreshold2)->InitDouble("Threshold ch2", -30., -60., -10.0, 0.1, "dB"); // threshold is actually power
   GetParam(kRatio2)->InitDouble("Ratio ch2", 2., 0.1, 100, .1, "-");
   GetParam(kRatio2)->SetShape(2.);
   GetParam(kSoftness2)->InitDouble("Softness ch2", -2, -4, 0, 0.1, "-");
@@ -216,9 +217,9 @@ ATKSideChainTransientShaper::ATKSideChainTransientShaper(IPlugInstanceInfo insta
   AttachGraphics(pGraphics);
 
   //MakePreset("preset 1", ... );
-  MakePreset("Serial compression", false, false, true, true, 10., 10., 10., 10., 100., 0., 2., -2., 0., 0.1, 0., 10., 10., 10., 0., 2., -2., 0., 0.1, 0., 0., 0.);
-  MakePreset("Middle/side compression", true, false, true, true, 10., 10., 10., 10., 100., 0., 2., -2., 0., 0.1, 0., 10., 10., 10., 0., 2., -2., 0., 0.1, 0., 0., 0.);
-  MakePreset("Parallel compression", false, false, false, false, 10., 10., 10., 10., 100., 0., 2., -2., 0., 0.1, 0., 10., 10., 10., 0., 2., -2., 0., 0.1, 0., 0.5, 0.);
+  MakePreset("Serial compression",      0., 0., 1., 1., 10., 10., 10., 10., 100., -30., 2., -2., 0., 0.1, 0., 10., 10., 10., 10., 100., -30., 2., -2., 0., 0.1, 0., 0., 0.);
+  MakePreset("Middle/side compression", 1., 0., 1., 1., 10., 10., 10., 10., 100., -30., 2., -2., 0., 0.1, 0., 10., 10., 10., 10., 100., -30., 2., -2., 0., 0.1, 0., 0., 0.);
+  MakePreset("Parallel compression",    0., 0., 1., 1., 10., 10., 10., 10., 100., -30., 2., -2., 0., 0.1, 0., 10., 10., 10., 10., 100., -30., 2., -2., 0., 0.1, 0., 0., 0.5);
 
   invertFilter.set_volume(-1);
   volumesplitFilter.set_volume(std::sqrt(.5));
