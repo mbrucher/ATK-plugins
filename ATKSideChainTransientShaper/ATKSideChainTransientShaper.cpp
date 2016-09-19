@@ -245,8 +245,8 @@ ATKSideChainTransientShaper::ATKSideChainTransientShaper(IPlugInstanceInfo insta
   slowAttackReleaseFilter2.set_input_port(0, &powerFilter2, 0);
   fastAttackReleaseFilter2.set_input_port(0, &powerFilter2, 0);
   invertFilter.set_input_port(1, &slowAttackReleaseFilter2, 0);
-  sumFilter2.set_input_port(0, &invertFilter, 0);
-  sumFilter2.set_input_port(1, &fastAttackReleaseFilter1, 0);
+  sumFilter2.set_input_port(0, &invertFilter, 1);
+  sumFilter2.set_input_port(1, &fastAttackReleaseFilter2, 0);
   gainColoredCompressorFilter2.set_input_port(0, &sumFilter2, 0);
   applyGainFilter.set_input_port(2, &gainColoredCompressorFilter2, 0);
   applyGainFilter.set_input_port(3, &inRFilter, 0);
@@ -470,7 +470,7 @@ void ATKSideChainTransientShaper::OnParamChange(int paramIdx)
     {
       slowAttackReleaseFilter1.set_input_port(0, &sumLinkFilter, 0);
       fastAttackReleaseFilter1.set_input_port(0, &sumLinkFilter, 0);
-      applyGainFilter.set_input_port(0, &gainColoredCompressorFilter1, 0);
+      applyGainFilter.set_input_port(2, &gainColoredCompressorFilter1, 0);
       makeupFilter2.set_volume_db(GetParam(kMakeup1)->Value());
 
       power2->GrayOut(true);
@@ -487,7 +487,8 @@ void ATKSideChainTransientShaper::OnParamChange(int paramIdx)
     }
     else
     {
-      gainColoredCompressorFilter1.set_input_port(0, &powerFilter1, 0);
+      slowAttackReleaseFilter1.set_input_port(0, &powerFilter1, 0);
+      fastAttackReleaseFilter1.set_input_port(0, &powerFilter1, 0);
       applyGainFilter.set_input_port(2, &gainColoredCompressorFilter2, 0);
       makeupFilter2.set_volume_db(GetParam(kMakeup2)->Value());
 
