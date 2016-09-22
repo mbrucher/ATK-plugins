@@ -269,13 +269,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0873779F1B48975E002A4CB6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4F4AD1F11409A56A0068A6D4 /* base.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4FA708BC158B47D200BFC572;
-			remoteInfo = base_32_intel;
-		};
 		4F4AD1F51409A56A0068A6D4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4F4AD1F11409A56A0068A6D4 /* base.xcodeproj */;
@@ -380,6 +373,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4F9828AA140A9EB700F3FCC1;
 			remoteInfo = "VST3_32&64_intel";
+		};
+		4FA708BE158B47F000BFC572 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F4AD1F11409A56A0068A6D4 /* base.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4FA708BC158B47D200BFC572;
+			remoteInfo = base_32;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -993,7 +993,7 @@
 			isa = PBXGroup;
 			children = (
 				4F4AD1F61409A56A0068A6D4 /* libbase.a */,
-				087377A01B48975E002A4CB6 /* libbase32.a */,
+				4FA708BF158B47F000BFC572 /* libbase32.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1516,6 +1516,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 0720;
 			};
 			buildConfigurationList = 1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "ATKSideChainTransientShaper" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1559,13 +1560,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		087377A01B48975E002A4CB6 /* libbase32.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libbase32.a;
-			remoteRef = 0873779F1B48975E002A4CB6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		4F4AD1F61409A56A0068A6D4 /* libbase.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1606,6 +1600,13 @@
 			fileType = archive.ar;
 			path = lice32.a;
 			remoteRef = 4F8D4C1613E976A7004F7633 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4FA708BF158B47F000BFC572 /* libbase32.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libbase32.a;
+			remoteRef = 4FA708BE158B47F000BFC572 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1913,6 +1914,7 @@
 				INSTALL_OWNER = root;
 				INSTALL_PATH = /;
 				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
+				MACOSX_DEPLOYMENT_TARGET = "$(DEPLOYMENT_TARGET)";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -1962,6 +1964,7 @@
 				INSTALL_OWNER = root;
 				INSTALL_PATH = /;
 				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
+				MACOSX_DEPLOYMENT_TARGET = "$(DEPLOYMENT_TARGET)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"$(GCC_CFLAGS)",
@@ -1990,9 +1993,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/matthieu/src/ATK64/lib,
-					/Users/matthieu/src/ATK32/lib,
 				);
 				SKIP_INSTALL = NO;
+				WARNING_CFLAGS = "-Wno-main";
 				WRAPPER_EXTENSION = vst;
 			};
 			name = Debug;
@@ -2010,9 +2013,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/matthieu/src/ATK64/lib,
-					/Users/matthieu/src/ATK32/lib,
 				);
 				SKIP_INSTALL = NO;
+				WARNING_CFLAGS = "-Wno-main";
 				WRAPPER_EXTENSION = vst;
 			};
 			name = Release;
@@ -2030,9 +2033,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/matthieu/src/ATK64/lib,
-					/Users/matthieu/src/ATK32/lib,
 				);
 				SKIP_INSTALL = NO;
+				WARNING_CFLAGS = "-Wno-main";
 				WRAPPER_EXTENSION = vst;
 			};
 			name = Tracer;
@@ -2051,7 +2054,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/matthieu/src/ATK64/lib,
-					/Users/matthieu/src/ATK32/lib,
 				);
 				OTHER_LDFLAGS = "-bundle";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I $CA_SDK/AudioUnits/AUPublic/AUBase";
@@ -2079,7 +2081,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/matthieu/src/ATK64/lib,
-					/Users/matthieu/src/ATK32/lib,
 				);
 				OTHER_LDFLAGS = "-bundle";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I $CA_SDK/AudioUnits/AUPublic/AUBase";
@@ -2107,7 +2108,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/matthieu/src/ATK64/lib,
-					/Users/matthieu/src/ATK32/lib,
 				);
 				OTHER_LDFLAGS = "-bundle";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I $CA_SDK/AudioUnits/AUPublic/AUBase";
@@ -2124,6 +2124,8 @@
 		4F78DAF213B643610032E0F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APP_DEFS = "SA_API __MACOSX_CORE__";
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = "$(DEBUG_OPTIMIZE)";
@@ -2134,6 +2136,8 @@
 		4F78DAF313B643610032E0F3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APP_DEFS = "SA_API __MACOSX_CORE__";
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -2145,6 +2149,8 @@
 		4F78DAF413B643610032E0F3 /* Tracer */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APP_DEFS = "SA_API __MACOSX_CORE__";
+				ARCHS = "$(ARCHS_STANDARD)";
 				PRODUCT_NAME = "AllOSX_32&64_intel";
 			};
 			name = Tracer;
@@ -2166,7 +2172,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/matthieu/src/ATK64/lib,
-					/Users/matthieu/src/ATK32/lib,
 				);
 				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = vst3;
@@ -2190,7 +2195,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/matthieu/src/ATK64/lib,
-					/Users/matthieu/src/ATK32/lib,
 				);
 				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = vst3;
@@ -2214,7 +2218,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/matthieu/src/ATK64/lib,
-					/Users/matthieu/src/ATK32/lib,
 				);
 				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = vst3;
@@ -2224,6 +2227,7 @@
 		4FD16A0C13B63082001D0217 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APP_DEFS = "SA_API __MACOSX_CORE__";
 				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = "$(APP_FOLDER)";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
@@ -2238,7 +2242,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/matthieu/src/ATK64/lib,
-					/Users/matthieu/src/ATK32/lib,
 				);
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -2255,6 +2258,7 @@
 		4FD16A0D13B63082001D0217 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APP_DEFS = "SA_API __MACOSX_CORE__";
 				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = "$(APP_FOLDER)";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
@@ -2269,7 +2273,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/matthieu/src/ATK64/lib,
-					/Users/matthieu/src/ATK32/lib,
 				);
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -2286,6 +2289,7 @@
 		4FD16A0E13B63082001D0217 /* Tracer */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APP_DEFS = "SA_API __MACOSX_CORE__";
 				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = "$(APP_FOLDER)";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
@@ -2300,7 +2304,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/matthieu/src/ATK64/lib,
-					/Users/matthieu/src/ATK32/lib,
 				);
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -2343,6 +2346,7 @@
 				INSTALL_OWNER = root;
 				INSTALL_PATH = /;
 				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
+				MACOSX_DEPLOYMENT_TARGET = "$(DEPLOYMENT_TARGET)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"$(GCC_CFLAGS)",
