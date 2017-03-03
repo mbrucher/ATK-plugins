@@ -1,6 +1,4 @@
 #import <Cocoa/Cocoa.h>
-
-#import <Cocoa/Cocoa.h>
 #include "swell.h"
 
 int main(int argc, char *argv[])
@@ -24,3 +22,4 @@ void CenterWindow(HWND hwnd)
     [turd center];
   }
 }
+
