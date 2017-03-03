@@ -1,6 +1,9 @@
 ATKLimiter changelog
-htp://matt.eifelle.com
+htp://www.audio-tk.com
 
+03/03/17 - v1.0.1 bug fix release
+  - built against ATK 1.4.1
+  - AU fixes
 19/08/14 - v1.0.0 initial release
-  - built againt ATK 0.5.0
+  - built against ATK 0.5.0
   
