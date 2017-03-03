@@ -1,6 +1,6 @@
 [Setup]
 AppName=ATKColoredCompressor
-AppVersion=1.0.0
+AppVersion=1.0.1
 DefaultDirName={pf}\ATKColoredCompressor
 DefaultGroupName=ATKColoredCompressor
 Compression=lzma2
