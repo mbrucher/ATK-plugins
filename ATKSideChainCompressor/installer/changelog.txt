@@ -1,5 +1,5 @@
 ATKSideChainCompressor changelog
-htp://www.audio-tk.com
+http://www.audio-tk.com
 
 03/03/17 - v2.0.1 bug fix release
   - built against ATK 1.4.1

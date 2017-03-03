@@ -1,6 +1,6 @@
 [Setup]
 AppName=ATKSideChainExpander
-AppVersion=2.0.0
+AppVersion=2.0.1
 DefaultDirName={pf}\ATKSideChainExpander
 DefaultGroupName=ATKSideChainExpander
 Compression=lzma2
