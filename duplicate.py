@@ -109,8 +109,9 @@ def dirwalk(dir, searchproject, replaceproject, searchman, replaceman):
         print(("Replacing captitalized project name strings in file " + filename))
         replacestrs(fullpath, searchproject.upper(), replaceproject.upper())
         
-        print(("Replacing manufacturer name strings in file " + filename))
-        replacestrs(fullpath, searchman, replaceman)
+        if replaceman is not None:
+          print(("Replacing manufacturer name strings in file " + filename))
+          replacestrs(fullpath, searchman, replaceman)
       else:
         print(("NOT replacing name strings in file " + filename))
       
@@ -126,13 +127,15 @@ def main():
   global VERSION
   print(("\nIPlug Project Duplicator v" + VERSION + " by Oli Larkin ------------------------------\n"))
   
-  if len(sys.argv) != 4:
+  if len(sys.argv) < 3:
     print("Usage: duplicate.py inputprojectname outputprojectname [manufacturername]")
     sys.exit(1)
   else:
     input=sys.argv[1]
     output=sys.argv[2]
-    manufacturer=sys.argv[3]
+    manufacturer=None
+    if len(sys.argv) > 3:
+      manufacturer = sys.argv[3]
 
     if ' ' in input:
       print("error: input project name has spaces")
@@ -142,7 +145,7 @@ def main():
       print("error: output project name has spaces")
       sys.exit(1)
     
-    if ' ' in manufacturer:
+    if manufacturer and ' ' in manufacturer:
       print("error: manufacturer name has spaces")
       sys.exit(1)
     
@@ -171,10 +174,6 @@ def main():
     for dir in dirwalk(cpath, input, output, "AcmeInc", manufacturer):
       pass
     
-    print("\ncopying gitignore template into project folder")
-
-    copy('gitignore_template', output + "/.gitignore")
-
     print("\ndone - don't forget to change PLUG_UID and MFR_UID in config.h")
     
 if __name__ == '__main__':
