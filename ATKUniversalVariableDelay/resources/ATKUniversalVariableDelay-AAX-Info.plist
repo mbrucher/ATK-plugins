@@ -7,30 +7,26 @@
 	<key>CFBundleExecutable</key>
 	<string>${BINARY_NAME}</string>
 	<key>CFBundleGetInfoString</key>
-	<string>1.0.3, Copyright MatthieuBrucher, 2017</string>
-	<key>CFBundleIconFile</key>
-	<string>${BINARY_NAME}.icns</string>
+	<string>1.0.0, Copyright MatthieuBrucher, 2017</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.MatthieuBrucher.standalone.${BINARY_NAME}</string>
+	<string>com.MatthieuBrucher.aax.${BINARY_NAME}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>${BINARY_NAME}</string>
 	<key>CFBundlePackageType</key>
-	<string>APPL</string>
+	<string>TDMw</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.3</string>
+	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
-	<string>Acme</string>
+	<string>PTul</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.3</string>
-	<key>LSApplicationCategoryType</key>
-	<string>public.app-category.music</string>
-	<key>LSMinimumSystemVersion</key>
-	<string>10.5.0</string>
-	<key>NSMainNibFile</key>
-	<string>MainMenu</string>
-	<key>NSPrincipalClass</key>
-	<string>SWELLApplication</string>
+	<string>1.0.0</string>
+	<key>LSMultipleInstancesProhibited</key>
+	<string>true</string>
+	<key>LSPrefersCarbon</key>
+	<false/>
+	<key>NSAppleScriptEnabled</key>
+	<string>No</string>
 </dict>
 </plist>
