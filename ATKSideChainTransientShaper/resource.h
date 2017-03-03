@@ -76,7 +76,7 @@ instrument determined by PLUG _IS _INST
 #endif
 
 // vst3 stuff
-#define MFR_URL "matt.eifelle.com"
+#define MFR_URL "www.audio-tk.com"
 #define MFR_EMAIL "spam@me.com"
 #define EFFECT_TYPE_VST3 "Fx|Dynamics"
 
