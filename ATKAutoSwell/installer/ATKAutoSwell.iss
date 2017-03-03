@@ -1,6 +1,6 @@
 [Setup]
 AppName=ATKAutoSwell
-AppVersion=1.0.0
+AppVersion=1.0.1
 DefaultDirName={pf}\ATKAutoSwell
 DefaultGroupName=ATKAutoSwell
 Compression=lzma2
@@ -16,40 +16,41 @@ Name: "full"; Description: "Full installation"
 Name: "custom"; Description: "Custom installation"; Flags: iscustom
 
 [Components]
-;Name: "app"; Description: "Standalone application (.exe)"; Types: full custom;
+Name: "app"; Description: "Standalone application (.exe)"; Types: full custom;
 Name: "vst2_32"; Description: "32-bit VST2 Plugin (.dll)"; Types: full custom;
 Name: "vst2_64"; Description: "64-bit VST2 Plugin (.dll)"; Types: full custom; Check: Is64BitInstallMode;
 Name: "vst3_32"; Description: "32-bit VST3 Plugin (.vst3)"; Types: full custom;
 Name: "vst3_64"; Description: "64-bit VST3 Plugin (.vst3)"; Types: full custom; Check: Is64BitInstallMode;
-;Name: "rtas_32"; Description: "32-bit RTAS Plugin (.dpm)"; Types: full custom;
-;Name: "aax_32"; Description: "32-bit AAX Plugin (.aaxplugin)"; Types: full custom;
-;Name: "aax_64"; Description: "64-bit AAX Plugin (.aaxplugin)"; Types: full custom; Check: Is64BitInstallMode;
+Name: "rtas_32"; Description: "32-bit RTAS Plugin (.dpm)"; Types: full custom;
+Name: "aax_32"; Description: "32-bit AAX Plugin (.aaxplugin)"; Types: full custom;
+Name: "aax_64"; Description: "64-bit AAX Plugin (.aaxplugin)"; Types: full custom; Check: Is64BitInstallMode;
+Name: "manual"; Description: "User guide"; Types: full custom; Flags: fixed
 
 [Files]
-;Source: "..\build-win\app\Win32\bin\ATKAutoSwell.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Components:app; Flags: ignoreversion;
-;Source: "..\build-win\app\x64\bin\ATKAutoSwell.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Components:app; Flags: ignoreversion;
+Source: "..\build-win\app\Win32\bin\ATKAutoSwell.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Components:app; Flags: ignoreversion;
+Source: "..\build-win\app\x64\bin\ATKAutoSwell.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Components:app; Flags: ignoreversion;
 
 Source: "..\build-win\vst2\Win32\bin\ATKAutoSwell.dll"; DestDir: {code:GetVST2Dir_32}; Check: not Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
 Source: "..\build-win\vst2\Win32\bin\ATKAutoSwell.dll"; DestDir: {code:GetVST2Dir_32}; Check: Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
-Source: "..\build-win\vst2\x64\bin\ATKAutoSwell x64.dll"; DestDir: {code:GetVST2Dir_64}; Check: Is64BitInstallMode; Components:vst2_64; Flags: ignoreversion;
+Source: "..\build-win\vst2\x64\bin\ATKAutoSwell.dll"; DestDir: {code:GetVST2Dir_64}; Check: Is64BitInstallMode; Components:vst2_64; Flags: ignoreversion;
 
 Source: "..\build-win\vst3\Win32\bin\ATKAutoSwell.vst3"; DestDir: "{cf}\VST3\"; Check: not Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
 Source: "..\build-win\vst3\Win32\bin\ATKAutoSwell.vst3"; DestDir: "{cf32}\VST3\"; Check: Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
-Source: "..\build-win\vst3\x64\bin\ATKAutoSwell x64.vst3"; DestDir: "{cf64}\VST3\"; Check: Is64BitInstallMode; Components:vst3_64; Flags: ignoreversion;
+Source: "..\build-win\vst3\x64\bin\ATKAutoSwell.vst3"; DestDir: "{cf64}\VST3\"; Check: Is64BitInstallMode; Components:vst3_64; Flags: ignoreversion;
 
-;Source: "..\build-win\rtas\bin\ATKAutoSwell.dpm"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
-;Source: "..\build-win\rtas\bin\ATKAutoSwell.dpm.rsr"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
+Source: "..\build-win\rtas\bin\ATKAutoSwell.dpm"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
+Source: "..\build-win\rtas\bin\ATKAutoSwell.dpm.rsr"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
 
-;Source: "..\build-win\aax\bin\ATKAutoSwell.aaxplugin\*.*"; DestDir: "{cf32}\Avid\Audio\Plug-Ins\ATKAutoSwell.aaxplugin\"; Components:aax_32; Flags: ignoreversion recursesubdirs;
-;Source: "..\build-win\aax\bin\ATKAutoSwell.aaxplugin\*.*"; DestDir: "{cf}\Avid\Audio\Plug-Ins\ATKAutoSwell.aaxplugin\"; Components:aax_64; Flags: ignoreversion recursesubdirs;
+Source: "..\build-win\aax\bin\ATKAutoSwell.aaxplugin\*.*"; DestDir: "{cf32}\Avid\Audio\Plug-Ins\ATKAutoSwell.aaxplugin\"; Components:aax_32; Flags: ignoreversion recursesubdirs;
+Source: "..\build-win\aax\bin\ATKAutoSwell.aaxplugin\*.*"; DestDir: "{cf}\Avid\Audio\Plug-Ins\ATKAutoSwell.aaxplugin\"; Components:aax_64; Flags: ignoreversion recursesubdirs;
 
-;Source: "..\manual\ATKAutoSwell_manual.pdf"; DestDir: "{app}"
+Source: "..\manual\ATKAutoSwell_manual.pdf"; DestDir: "{app}"
 Source: "changelog.txt"; DestDir: "{app}"
 Source: "readmewin.rtf"; DestDir: "{app}"; DestName: "readme.rtf"; Flags: isreadme
-Source: "license.rtf"; DestDir: "{app}"; DestName: "license.rtf"
 
 [Icons]
 Name: "{group}\ATKAutoSwell"; Filename: "{app}\ATKAutoSwell.exe"
+Name: "{group}\User guide"; Filename: "{app}\ATKAutoSwell_manual.pdf"
 Name: "{group}\Changelog"; Filename: "{app}\changelog.txt"
 ;Name: "{group}\readme"; Filename: "{app}\readme.rtf"
 Name: "{group}\Uninstall ATKAutoSwell"; Filename: "{app}\unins000.exe"
