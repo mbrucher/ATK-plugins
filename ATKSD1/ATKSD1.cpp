@@ -29,7 +29,7 @@ enum ELayout
 };
 
 ATKSD1::ATKSD1(IPlugInstanceInfo instanceInfo)
-  :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), mDrive(0.), mTone(50), mLevel(100),
+  :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo),
     inFilter(NULL, 1, 0, false), outFilter(NULL, 1, 0, false)
 {
   TRACE;
