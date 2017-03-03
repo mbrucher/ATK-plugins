@@ -45,8 +45,8 @@ ATKSD1::ATKSD1(IPlugInstanceInfo instanceInfo)
   IGraphics* pGraphics = MakeGraphics(this, kWidth, kHeight);
   pGraphics->AttachBackground(SD1_ID, SD1_FN);
 
-  IBitmap bigknob = pGraphics->LoadIBitmap(BIGKNOB_ID, BIGKNOB_FN, kKnobFrames);
-  IBitmap smallknob = pGraphics->LoadIBitmap(SMALLKNOB_ID, SMALLKNOB_FN, kKnobFrames);
+  auto bigknob = pGraphics->LoadIBitmap(BIGKNOB_ID, BIGKNOB_FN, kKnobFrames);
+  auto smallknob = pGraphics->LoadIBitmap(SMALLKNOB_ID, SMALLKNOB_FN, kKnobFrames);
 
   pGraphics->AttachControl(new IKnobMultiControl(this, kDriveX, kDriveY, kDrive, &bigknob));
   pGraphics->AttachControl(new IKnobMultiControl(this, kToneX, kToneY, kTone, &smallknob));
