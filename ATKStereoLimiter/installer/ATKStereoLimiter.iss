@@ -1,6 +1,6 @@
 [Setup]
 AppName=ATKStereoLimiter
-AppVersion=1.0.0
+AppVersion=1.0.1
 DefaultDirName={pf}\ATKStereoLimiter
 DefaultGroupName=ATKStereoLimiter
 Compression=lzma2

@@ -56,7 +56,8 @@ ATKStereoLimiter::ATKStereoLimiter(IPlugInstanceInfo instanceInfo)
 
   IBitmap knob = pGraphics->LoadIBitmap(KNOB_ID, KNOB_FN, kKnobFrames);
   IBitmap knob1 = pGraphics->LoadIBitmap(KNOB1_ID, KNOB1_FN, kKnobFrames1);
-  IText text = IText(10, 0, 0, IText::kStyleBold);
+  IColor color = IColor(255, 255, 255, 255);
+  IText text = IText(10, &color, nullptr, IText::kStyleBold);
   
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kReleaseX, kReleaseY, kReleaseX + 78, kReleaseY + 78 + 21), kRelease, &knob, &text, "ms"));
   pGraphics->AttachControl(new IKnobMultiControlText(this, IRECT(kThresholdX, kThresholdY, kThresholdX + 78, kThresholdY + 78 + 21), kThreshold, &knob, &text, "dB"));

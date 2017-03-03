@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4FD16A0813B63081001D0217"
-               BuildableName = "ATKUniversalDelay.app"
+               BuildableName = "IPlugEffect.app"
                BlueprintName = "APP"
-               ReferencedContainer = "container:ATKUniversalDelay.xcodeproj">
+               ReferencedContainer = "container:IPlugEffect.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4FD16A0813B63081001D0217"
-            BuildableName = "ATKUniversalDelay.app"
+            BuildableName = "IPlugEffect.app"
             BlueprintName = "APP"
-            ReferencedContainer = "container:ATKUniversalDelay.xcodeproj">
+            ReferencedContainer = "container:IPlugEffect.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4FD16A0813B63081001D0217"
-            BuildableName = "ATKUniversalDelay.app"
+            BuildableName = "IPlugEffect.app"
             BlueprintName = "APP"
-            ReferencedContainer = "container:ATKUniversalDelay.xcodeproj">
+            ReferencedContainer = "container:IPlugEffect.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4FD16A0813B63081001D0217"
-            BuildableName = "ATKUniversalDelay.app"
+            BuildableName = "IPlugEffect.app"
             BlueprintName = "APP"
-            ReferencedContainer = "container:ATKUniversalDelay.xcodeproj">
+            ReferencedContainer = "container:IPlugEffect.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

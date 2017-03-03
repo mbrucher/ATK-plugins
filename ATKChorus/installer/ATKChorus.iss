@@ -1,6 +1,6 @@
 [Setup]
 AppName=ATKChorus
-AppVersion=1.0.0
+AppVersion=1.0.1
 DefaultDirName={pf}\ATKChorus
 DefaultGroupName=ATKChorus
 Compression=lzma2

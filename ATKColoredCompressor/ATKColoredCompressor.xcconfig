@@ -6,8 +6,8 @@
 // the basename of the vst, vst3, app, component, dpm, aaxplugin
 BINARY_NAME = ATKColoredCompressor
 
-ADDITIONAL_INCLUDES = $(ATKROOT)/include/ $(BOOSTROOT)/include
-ADDITIONAL_LIBRARY_PATHS = $(ATKROOT)/lib/ $(BOOSTROOT)/lib
+ADDITIONAL_INCLUDES = $(ATKROOT)/include/ $(BOOSTROOT)
+ADDITIONAL_LIBRARY_PATHS = $(ATKROOT)/lib/ $(ATK32ROOT)/lib/
 
 // for jack headers
 //ADDITIONAL_APP_INCLUDES = /usr/local/include

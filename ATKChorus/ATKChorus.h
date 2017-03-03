@@ -24,7 +24,7 @@ public:
 private:
   ATK::InPointerFilter<double> inFilter;
   ATK::WhiteNoiseGeneratorFilter<double> noiseGenerator;
-  ATK::IIRFilter<ATK::LowPassCoefficients<double> > lowPass;
+  ATK::IIRFilter<ATK::SecondOrderLowPassCoefficients<double> > lowPass;
   ATK::OffsetVolumeFilter<double> offsetFilter;
   ATK::UniversalVariableDelayLineFilter<double> delayFilter;
   ATK::OutPointerFilter<double> outFilter;

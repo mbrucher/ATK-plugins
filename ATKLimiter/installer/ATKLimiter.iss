@@ -1,6 +1,6 @@
 [Setup]
 AppName=ATKLimiter
-AppVersion=1.0.0
+AppVersion=1.0.1
 DefaultDirName={pf}\ATKLimiter
 DefaultGroupName=ATKLimiter
 Compression=lzma2

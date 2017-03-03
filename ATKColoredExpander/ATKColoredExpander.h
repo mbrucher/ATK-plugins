@@ -29,7 +29,7 @@ private:
   ATK::InPointerFilter<double> inFilter;
   ATK::PowerFilter<double> powerFilter;
   ATK::AttackReleaseFilter<double> attackReleaseFilter;
-  ATK::GainMaxColoredExpanderFilter<double> gainExpanderFilter;
+  ATK::GainFilter<ATK::GainMaxColoredExpanderFilter<double>> gainExpanderFilter;
   ATK::ApplyGainFilter<double> applyGainFilter;
   ATK::VolumeFilter<double> volumeFilter;
   ATK::DryWetFilter<double> drywetFilter;

@@ -14,6 +14,7 @@ enum EParams
   kLinkChannels,
   kActivateChannel1,
   kActivateChannel2,
+
   kPower1,
   kAttack1,
   kAttackRatio1,
@@ -25,6 +26,7 @@ enum EParams
   kColor1,
   kQuality1,
   kMakeup1,
+
   kPower2,
   kAttack2,
   kAttackRatio2,
@@ -36,6 +38,7 @@ enum EParams
   kColor2,
   kQuality2,
   kMakeup2,
+
   kSideChain,
   kDryWet,
   kNumParams

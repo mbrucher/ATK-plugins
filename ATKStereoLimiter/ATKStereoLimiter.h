@@ -35,7 +35,7 @@ private:
   ATK::MaxFilter<double> maxFilter;
 
   ATK::AttackReleaseFilter<double> attackReleaseFilter;
-  ATK::GainLimiterFilter<double> gainLimiterFilter;
+  ATK::GainFilter<ATK::GainLimiterFilter<double>> gainLimiterFilter;
   ATK::ApplyGainFilter<double> applyGainFilter;
 
   ATK::DryWetFilter<double> drywetFilter;

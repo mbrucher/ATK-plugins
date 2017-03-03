@@ -1,6 +1,6 @@
 [Setup]
 AppName=ATKTransientSplitter
-AppVersion=1.0.0
+AppVersion=1.0.1
 DefaultDirName={pf}\ATKTransientSplitter
 DefaultGroupName=ATKTransientSplitter
 Compression=lzma2

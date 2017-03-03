@@ -9,7 +9,6 @@ def replacestrs(filename, s, r):
   files = glob.glob(filename)
   
   for line in fileinput.input(files,inplace=1):
-    string.find(line, s)
     line = line.replace(s, r)
     sys.stdout.write(line)
 
@@ -21,7 +20,7 @@ def main():
 
   for line in fileinput.input(scriptpath + "/resource.h",inplace=0):
     if "#define PLUG_VER " in line:
-      FullVersion = int(string.lstrip(line, "#define PLUG_VER "), 16)
+      FullVersion = int(line.lstrip("#define PLUG_VER "), 16)
       major = FullVersion & 0xFFFF0000
       MajorStr = str(major >> 16)
       minor = FullVersion & 0x0000FF00
@@ -35,10 +34,11 @@ def main():
   CFBundleGetInfoString = FullVersionStr + ", Copyright MatthieuBrucher, " + str(today.year)
   CFBundleVersion = FullVersionStr
   
-  print "update_version.py - setting version to " + FullVersionStr
-  print "Updating plist version info..."
+  print("update_version.py - setting version to " + FullVersionStr)
+  print("Updating plist version info...")
   
   plistpath = scriptpath + "/resources/ATKSD1-VST2-Info.plist"
+  print(plistpath)
   vst2 = plistlib.readPlist(plistpath)
   vst2['CFBundleGetInfoString'] = CFBundleGetInfoString
   vst2['CFBundleVersion'] = CFBundleVersion
@@ -77,7 +77,7 @@ def main():
 #  rtas['CFBundleShortVersionString'] = CFBundleVersion
 #  plistlib.writePlist(rtas, plistpath)
 #  replacestrs(plistpath, "//Apple//", "//Apple Computer//");
-  
+#  
 #  plistpath = scriptpath + "/resources/ATKSD1-AAX-Info.plist"
 #  aax = plistlib.readPlist(plistpath)
 #  aax['CFBundleGetInfoString'] = CFBundleGetInfoString
@@ -85,7 +85,7 @@ def main():
 #  aax['CFBundleShortVersionString'] = CFBundleVersion
 #  plistlib.writePlist(aax, plistpath)
 #  replacestrs(plistpath, "//Apple//", "//Apple Computer//");
-  
+
 #   plistpath = scriptpath + "/resources/ATKSD1-IOSAPP-Info.plist"
 #   iosapp = plistlib.readPlist(plistpath)
 #   iosapp['CFBundleGetInfoString'] = CFBundleGetInfoString
@@ -94,18 +94,18 @@ def main():
 #   plistlib.writePlist(iosapp, plistpath)
 #   replacestrs(plistpath, "//Apple//", "//Apple Computer//");
 
-  print "Updating Mac Installer version info..."
+  print("Updating Mac Installer version info...")
   
   plistpath = scriptpath + "/installer/ATKSD1.pkgproj"
   installer = plistlib.readPlist(plistpath)
   
-  for x in range(0,len(installer['PACKAGES'])):
-    installer['PACKAGES'][x]['PACKAGE_SETTINGS']['VERSION'] = FullVersionStr
+  for x in installer['PACKAGES']:
+    x['PACKAGE_SETTINGS']['VERSION'] = FullVersionStr
   
   plistlib.writePlist(installer, plistpath)
   replacestrs(plistpath, "//Apple//", "//Apple Computer//");
   
-  print "Updating Windows Installer version info..."
+  print("Updating Windows Installer version info...")
   
   for line in fileinput.input(scriptpath + "/installer/ATKSD1.iss",inplace=1):
     if "AppVersion" in line:
