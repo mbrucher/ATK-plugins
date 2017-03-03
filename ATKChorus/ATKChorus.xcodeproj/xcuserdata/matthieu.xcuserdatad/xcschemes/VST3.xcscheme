@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4F9828AA140A9EB700F3FCC1"
-               BuildableName = "ATKChorus.vst3"
+               BuildableName = "IPlugEffect.vst3"
                BlueprintName = "VST3"
-               ReferencedContainer = "container:ATKChorus.xcodeproj">
+               ReferencedContainer = "container:IPlugEffect.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

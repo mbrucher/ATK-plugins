@@ -25,7 +25,7 @@ private:
   ATK::InPointerFilter<double> inFilter;
   ATK::PowerFilter<double> powerFilter;
   ATK::AttackReleaseFilter<double> attackReleaseFilter;
-  ATK::GainLimiterFilter<double> gainLimiterFilter;
+  ATK::GainFilter<ATK::GainLimiterFilter<double>> gainLimiterFilter;
   ATK::ApplyGainFilter<double> applyGainFilter;
   ATK::VolumeFilter<double> volumeFilter;
   ATK::OutPointerFilter<double> outFilter;

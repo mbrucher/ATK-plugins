@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4FB600121567CB0A0020189A"
-               BuildableName = "ATKSD1.aaxplugin"
+               BuildableName = "IPlugEffect.aaxplugin"
                BlueprintName = "AAX"
-               ReferencedContainer = "container:ATKSD1.xcodeproj">
+               ReferencedContainer = "container:IPlugEffect.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

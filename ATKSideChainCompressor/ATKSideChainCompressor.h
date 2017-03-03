@@ -44,8 +44,8 @@ private:
 
   ATK::AttackReleaseFilter<double> attackReleaseFilter1;
   ATK::AttackReleaseFilter<double> attackReleaseFilter2;
-  ATK::GainColoredCompressorFilter<double> gainColoredCompressorFilter1;
-  ATK::GainColoredCompressorFilter<double> gainColoredCompressorFilter2;
+  ATK::GainFilter<ATK::GainColoredCompressorFilter<double>> gainColoredCompressorFilter1;
+  ATK::GainFilter<ATK::GainColoredCompressorFilter<double>> gainColoredCompressorFilter2;
   ATK::ApplyGainFilter<double> applyGainFilter;
   ATK::VolumeFilter<double> makeupFilter1;
   ATK::VolumeFilter<double> makeupFilter2;

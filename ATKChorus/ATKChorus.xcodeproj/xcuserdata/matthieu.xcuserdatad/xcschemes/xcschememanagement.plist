@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AAX.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>APP.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>RTAS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>VST2.xcscheme</key>
 		<dict>
@@ -47,7 +57,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4F7F5C4213E95EC8002918FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4F9828AA140A9EB700F3FCC1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4FB600121567CB0A0020189A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -16,8 +16,8 @@
 #define VIEW_CLASS_STR "ATKColoredCompressor_View"
 
 // Format        0xMAJR.MN.BG - in HEX! so version 10.1.5 would be 0x000A0105
-#define PLUG_VER 0x00010000
-#define VST3_VER_STR "1.0.0"
+#define PLUG_VER 0x00010001
+#define VST3_VER_STR "1.0.1"
 
 // http://service.steinberg.de/databases/plugin.nsf/plugIn?openForm
 // 4 chars, single quotes. At least one capital letter
@@ -74,7 +74,7 @@ instrument determined by PLUG _IS _INST
 #endif
 
 // vst3 stuff
-#define MFR_URL "matt.eifelle.com"
+#define MFR_URL "www.audio-tk.com"
 #define MFR_EMAIL "spam@me.com"
 #define EFFECT_TYPE_VST3 "Fx|Dynamics"
 

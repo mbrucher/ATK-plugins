@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4F7F5C4213E95EC8002918FD"
-               BuildableName = "ATKSD1.dpm"
+               BuildableName = "IPlugEffect.dpm"
                BlueprintName = "RTAS"
-               ReferencedContainer = "container:ATKSD1.xcodeproj">
+               ReferencedContainer = "container:IPlugEffect.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

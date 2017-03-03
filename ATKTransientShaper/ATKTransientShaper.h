@@ -33,7 +33,7 @@ private:
   ATK::AttackReleaseFilter<double> fastAttackReleaseFilter;
   ATK::VolumeFilter<double> invertFilter;
   ATK::SumFilter<double> sumFilter;
-  ATK::GainColoredCompressorFilter<double> gainCompressorFilter;
+  ATK::GainFilter<ATK::GainColoredCompressorFilter<double>> gainCompressorFilter;
   ATK::ApplyGainFilter<double> applyGainFilter;
   ATK::VolumeFilter<double> volumeFilter;
   ATK::DryWetFilter<double> drywetFilter;

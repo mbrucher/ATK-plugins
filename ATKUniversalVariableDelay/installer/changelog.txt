@@ -1,6 +1,9 @@
 ATKUniversalVariableDelay changelog
-htp://matt.eifelle.com
+http://www.audio-tk.com
 
+03/03/17 - v1.0.3 bug fix release
+  - built against ATK 1.4.1
+  - AU fixes
 11/08/15 - v1.0.2
   - Properly handle maximum delay of 6ms at 192kHz (maximum variable delay for now)
   - built against ATK 0.7.1

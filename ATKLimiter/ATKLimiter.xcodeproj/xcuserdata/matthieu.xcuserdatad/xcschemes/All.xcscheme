@@ -17,7 +17,7 @@
                BlueprintIdentifier = "4F78DAF113B643600032E0F3"
                BuildableName = "All"
                BlueprintName = "All"
-               ReferencedContainer = "container:ATKLimiter.xcodeproj">
+               ReferencedContainer = "container:IPlugEffect.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

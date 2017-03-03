@@ -1,6 +1,6 @@
 [Setup]
 AppName=ATKUniversalDelay
-AppVersion=1.2.0
+AppVersion=1.2.1
 DefaultDirName={pf}\ATKUniversalDelay
 DefaultGroupName=ATKUniversalDelay
 Compression=lzma2

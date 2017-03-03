@@ -1,6 +1,9 @@
 ATKTransientShaper changelog
-htp://matt.eifelle.com
+http://www.audio-tk.com
 
+03/03/17 - v1.0.1 bug fix release
+  - built against ATK 1.4.1
+  - AU fixes
 29/07/15 - v1.0.0 initial release
   - Built against ATK 0.7.1
   
