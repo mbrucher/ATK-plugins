@@ -1,6 +1,9 @@
 ATKTransientSplitter changelog
-htp://www.audio-tk.com/
+http://www.audio-tk.com
 
+03/03/17 - v1.0.1 bug fix release
+  - built against ATK 1.4.1
+  - AU fixes
 21/06/16 - v1.0.0 initial release
   - Built against ATK 1.3.1
   

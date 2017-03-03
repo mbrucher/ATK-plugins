@@ -35,7 +35,7 @@ private:
   ATK::AttackReleaseFilter<double> fastAttackReleaseFilter;
   ATK::VolumeFilter<double> invertFilter;
   ATK::SumFilter<double> sumFilter;
-  ATK::GainSwellFilter<double> gainSwellFilter;
+  ATK::GainFilter<ATK::GainSwellFilter<double>> gainSwellFilter;
   ATK::OneMinusFilter<double> oneMinusFilter;
   ATK::ApplyGainFilter<double> applyGainFilter;
   ATK::OutPointerFilter<double> outTransientFilter;
