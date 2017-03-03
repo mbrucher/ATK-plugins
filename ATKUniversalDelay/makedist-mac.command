@@ -38,6 +38,16 @@ AU=${AU//\AU_FOLDER = }/$PLUGIN_NAME.component
 APP=`echo | grep APP_FOLDER ../../common.xcconfig`
 APP=${APP//\APP_FOLDER = }/$PLUGIN_NAME.app
 
+# Dev build folder
+RTAS=`echo | grep RTAS_FOLDER ../../common.xcconfig`
+RTAS=${RTAS//\RTAS_FOLDER = }/$PLUGIN_NAME.dpm
+RTAS_FINAL="/Library/Application Support/Digidesign/Plug-Ins/$PLUGIN_NAME.dpm"
+
+# Dev build folder
+AAX=`echo | grep AAX_FOLDER ../../common.xcconfig`
+AAX=${AAX//\AAX_FOLDER = }/$PLUGIN_NAME.aaxplugin
+AAX_FINAL="/Library/Application Support/Avid/Audio/Plug-Ins/$PLUGIN_NAME.aaxplugin"
+
 PKG="installer/build-mac/$PLUGIN_NAME Installer.pkg"
 PKG_US="installer/build-mac/$PLUGIN_NAME Installer.unsigned.pkg"
 
@@ -86,6 +96,26 @@ then
   sudo rm -f -R $VST3
 fi
 
+if [ -d "${RTAS}" ] 
+then
+  sudo rm -f -R "${RTAS}"
+fi
+
+if [ -d "${RTAS_FINAL}" ] 
+then
+  sudo rm -f -R "${RTAS_FINAL}"
+fi
+
+if [ -d "${AAX}" ] 
+then
+  sudo rm -f -R "${AAX}"
+fi
+
+if [ -d "${AAX_FINAL}" ] 
+then
+  sudo rm -f -R "${AAX_FINAL}"
+fi
+
 #---------------------------------------------------------------------------------------------------------
 
 # build xcode project. Change target to build individual formats 
@@ -106,9 +136,9 @@ fi
 #icon stuff - http://maxao.free.fr/telechargements/setfileicon.gz
 echo "setting icons"
 echo ""
-./setfileicon resources/$PLUGIN_NAME.icns $AU
-./setfileicon resources/$PLUGIN_NAME.icns $VST2
-./setfileicon resources/$PLUGIN_NAME.icns $VST3
+setfileicon resources/$PLUGIN_NAME.icns $AU
+setfileicon resources/$PLUGIN_NAME.icns $VST2
+setfileicon resources/$PLUGIN_NAME.icns $VST3
 
 #---------------------------------------------------------------------------------------------------------
 
@@ -141,8 +171,8 @@ strip -x $APP/Contents/MacOS/$PLUGIN_NAME
 
 #10.8 Gatekeeper/Developer ID stuff
 
-echo "code app binary for Gatekeeper on 10.8"
-echo ""
+#echo "code app binary for Gatekeeper on 10.8"
+#echo ""
 #codesign -f -s "Developer ID Application: ""${CERT_ID}" $APP
 
 #TODO: code-sign plug-in binaries too?
@@ -150,11 +180,12 @@ echo ""
 #---------------------------------------------------------------------------------------------------------
 
 # installer, uses Packages http://s.sudre.free.fr/Software/Packages/about.html
-sudo rm -R -f installer/$PLUGIN_NAME-mac.dmg
+sudo sudo rm -R -f installer/$PLUGIN_NAME-mac.dmg
 
 echo "building installer"
 echo ""
-packagesbuild ./installer/$PLUGIN_NAME.pkgproj
+chmod 0777 installer
+packagesbuild installer/$PLUGIN_NAME.pkgproj
 
 echo "code-sign installer for Gatekeeper on 10.8"
 echo ""
