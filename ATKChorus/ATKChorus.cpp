@@ -37,7 +37,7 @@ enum ELayout
 };
 
 ATKChorus::ATKChorus(IPlugInstanceInfo instanceInfo)
-: IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), delayFilter(50000)
+: IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), delayFilter(500000)
 {
   TRACE;
 
