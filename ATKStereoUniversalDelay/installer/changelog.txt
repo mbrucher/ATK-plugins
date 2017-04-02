@@ -1,5 +1,5 @@
 ATKStereoUniversalDelay changelog
-htp://matt.eifelle.com
+htp://blog.audio-tk.com
 
-20/10/15 - v1.0.0
-  - built against ATK 1.0.0
+18/04/17 - v1.0.0
+  - built against ATK 2.0.0-pre

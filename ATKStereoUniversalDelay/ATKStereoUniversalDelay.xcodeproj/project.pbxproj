@@ -24,6 +24,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		083ABB831E91898100CE85F2 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 083ABB821E91897A00CE85F2 /* Background.png */; };
+		083ABB841E91898400CE85F2 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 083ABB821E91897A00CE85F2 /* Background.png */; };
+		083ABB851E91898800CE85F2 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 083ABB821E91897A00CE85F2 /* Background.png */; };
+		083ABB861E91898D00CE85F2 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 083ABB821E91897A00CE85F2 /* Background.png */; };
 		08590E941E698A2F0055C8C6 /* libATKAdaptive_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 088846E51E698489001EEE9E /* libATKAdaptive_static.a */; };
 		08590E951E698A2F0055C8C6 /* libATKCore_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 088846E61E698489001EEE9E /* libATKCore_static.a */; };
 		08590E961E698A2F0055C8C6 /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 088846E71E698489001EEE9E /* libATKDelay_static.a */; };
@@ -125,16 +129,12 @@
 		08590F031E698DE00055C8C6 /* libATKTools_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 088846F01E698489001EEE9E /* libATKTools_static.a */; };
 		08590F041E698DE00055C8C6 /* libATKUtility_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 088846F11E698489001EEE9E /* libATKUtility_static.a */; };
 		08590F821E69B74E0055C8C6 /* bi-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 08590F811E69B7440055C8C6 /* bi-small.png */; };
-		08590F831E69B74E0055C8C6 /* metal.png in Resources */ = {isa = PBXBuildFile; fileRef = 08590F7F1E69B6690055C8C6 /* metal.png */; };
 		08590F841E69B74E0055C8C6 /* uni-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 08590F801E69B6690055C8C6 /* uni-small.png */; };
 		08590F851E69B7540055C8C6 /* bi-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 08590F811E69B7440055C8C6 /* bi-small.png */; };
-		08590F861E69B7540055C8C6 /* metal.png in Resources */ = {isa = PBXBuildFile; fileRef = 08590F7F1E69B6690055C8C6 /* metal.png */; };
 		08590F871E69B7540055C8C6 /* uni-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 08590F801E69B6690055C8C6 /* uni-small.png */; };
 		08590F881E69B7580055C8C6 /* bi-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 08590F811E69B7440055C8C6 /* bi-small.png */; };
-		08590F891E69B7580055C8C6 /* metal.png in Resources */ = {isa = PBXBuildFile; fileRef = 08590F7F1E69B6690055C8C6 /* metal.png */; };
 		08590F8A1E69B7580055C8C6 /* uni-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 08590F801E69B6690055C8C6 /* uni-small.png */; };
 		08590F8B1E69B75C0055C8C6 /* bi-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 08590F811E69B7440055C8C6 /* bi-small.png */; };
-		08590F8C1E69B75C0055C8C6 /* metal.png in Resources */ = {isa = PBXBuildFile; fileRef = 08590F7F1E69B6690055C8C6 /* metal.png */; };
 		08590F8D1E69B75C0055C8C6 /* uni-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 08590F801E69B6690055C8C6 /* uni-small.png */; };
 		4F1F1BEA135B1F60003A5BB2 /* wdlendian.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F1F1BE9135B1F60003A5BB2 /* wdlendian.h */; };
 		4F20EECB132C69FE0030E34C /* ATKStereoUniversalDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52FBBED00D0CF139001C8B8A /* ATKStereoUniversalDelay.cpp */; };
@@ -446,6 +446,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		083ABB821E91897A00CE85F2 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background.png; path = resources/img/Background.png; sourceTree = "<group>"; };
 		08590EA21E698A650055C8C6 /* libATKAdaptive_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKAdaptive_static32.a; path = ../../../ATK32/lib/libATKAdaptive_static32.a; sourceTree = "<group>"; };
 		08590EA31E698A650055C8C6 /* libATKCore_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKCore_static32.a; path = ../../../ATK32/lib/libATKCore_static32.a; sourceTree = "<group>"; };
 		08590EA41E698A650055C8C6 /* libATKDelay_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDelay_static32.a; path = ../../../ATK32/lib/libATKDelay_static32.a; sourceTree = "<group>"; };
@@ -458,7 +459,6 @@
 		08590EAB1E698A650055C8C6 /* libATKSpecial_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKSpecial_static32.a; path = ../../../ATK32/lib/libATKSpecial_static32.a; sourceTree = "<group>"; };
 		08590EAC1E698A650055C8C6 /* libATKTools_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKTools_static32.a; path = ../../../ATK32/lib/libATKTools_static32.a; sourceTree = "<group>"; };
 		08590EAD1E698A650055C8C6 /* libATKUtility_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKUtility_static32.a; path = ../../../ATK32/lib/libATKUtility_static32.a; sourceTree = "<group>"; };
-		08590F7F1E69B6690055C8C6 /* metal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = metal.png; path = resources/img/metal.png; sourceTree = "<group>"; };
 		08590F801E69B6690055C8C6 /* uni-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "uni-small.png"; path = "resources/img/uni-small.png"; sourceTree = "<group>"; };
 		08590F811E69B7440055C8C6 /* bi-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bi-small.png"; path = "resources/img/bi-small.png"; sourceTree = "<group>"; };
 		088846A11E697A0B001EEE9E /* IAutoGUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAutoGUI.h; path = ../../WDL/IPlug/IAutoGUI.h; sourceTree = "<group>"; };
@@ -1440,8 +1440,8 @@
 		4FD16A0213B6303B001D0217 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				083ABB821E91897A00CE85F2 /* Background.png */,
 				08590F811E69B7440055C8C6 /* bi-small.png */,
-				08590F7F1E69B6690055C8C6 /* metal.png */,
 				08590F801E69B6690055C8C6 /* uni-small.png */,
 			);
 			name = img;
@@ -1796,8 +1796,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				083ABB841E91898400CE85F2 /* Background.png in Resources */,
 				08590F851E69B7540055C8C6 /* bi-small.png in Resources */,
-				08590F861E69B7540055C8C6 /* metal.png in Resources */,
 				08590F871E69B7540055C8C6 /* uni-small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1806,8 +1806,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				083ABB861E91898D00CE85F2 /* Background.png in Resources */,
 				08590F8B1E69B75C0055C8C6 /* bi-small.png in Resources */,
-				08590F8C1E69B75C0055C8C6 /* metal.png in Resources */,
 				08590F8D1E69B75C0055C8C6 /* uni-small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1816,8 +1816,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				083ABB851E91898800CE85F2 /* Background.png in Resources */,
 				08590F881E69B7580055C8C6 /* bi-small.png in Resources */,
-				08590F891E69B7580055C8C6 /* metal.png in Resources */,
 				08590F8A1E69B7580055C8C6 /* uni-small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1826,8 +1826,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				083ABB831E91898100CE85F2 /* Background.png in Resources */,
 				08590F821E69B74E0055C8C6 /* bi-small.png in Resources */,
-				08590F831E69B74E0055C8C6 /* metal.png in Resources */,
 				08590F841E69B74E0055C8C6 /* uni-small.png in Resources */,
 				4F78D88613B6382B0032E0F3 /* ATKStereoUniversalDelay.icns in Resources */,
 				4F78D89913B639100032E0F3 /* InfoPlist.strings in Resources */,
