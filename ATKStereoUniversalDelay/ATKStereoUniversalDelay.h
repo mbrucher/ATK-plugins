@@ -6,7 +6,7 @@
 #include <ATK/Core/InPointerFilter.h>
 #include <ATK/Core/OutPointerFilter.h>
 #include <ATK/Core/PipelineGlobalSinkFilter.h>
-#include <ATK/Delay/StereoUniversalFixedDelayLineFilter.h>
+#include <ATK/Delay/MultipleUniversalFixedDelayLineFilter.h>
 
 class ATKStereoUniversalDelay : public IPlug
 {
@@ -21,7 +21,7 @@ public:
 private:
   ATK::InPointerFilter<double> inFilterL;
   ATK::InPointerFilter<double> inFilterR;
-  ATK::StereoUniversalFixedDelayLineFilter<double> delayFilter;
+  ATK::MultipleUniversalFixedDelayLineFilter<double, 2> delayFilter;
   ATK::OutPointerFilter<double> outFilterL;
   ATK::OutPointerFilter<double> outFilterR;
   ATK::PipelineGlobalSinkFilter endPoint;
