@@ -10,7 +10,7 @@
 #include <ATK/Tools/VolumeFilter.h>
 #include <ATK/EQ/ButterworthFilter.h>
 #include <ATK/EQ/IIRFilter.h>
-#include <ATK/EQ/SD1ToneFilter.h>
+#include <ATK/EQ/PedalToneStackFilter.h>
 #include <ATK/EQ/ChamberlinFilter.h>
 #include <ATK/Distortion/SD1OverdriveFilter.h>
 
