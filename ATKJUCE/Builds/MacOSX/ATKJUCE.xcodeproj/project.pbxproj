@@ -86,6 +86,136 @@
 		089DB5DB1EB538D900354B95 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35DB8A9AB18380E4AA93EEA5 /* OpenGL.framework */; };
 		089DB5DC1EB538D900354B95 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20E1E21C0DC0394F6E636F8 /* QuartzCore.framework */; };
 		089DB5DD1EB538D900354B95 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6630BDA58E39C6B7C9487DD8 /* WebKit.framework */; };
+		089DB60F1EB54A5200354B95 /* libATKAdaptive_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F61EB54A0D00354B95 /* libATKAdaptive_static32.a */; };
+		089DB6101EB54A5200354B95 /* libATKCore_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F71EB54A0D00354B95 /* libATKCore_static32.a */; };
+		089DB6111EB54A5200354B95 /* libATKDelay_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F81EB54A0D00354B95 /* libATKDelay_static32.a */; };
+		089DB6121EB54A5200354B95 /* libATKDistortion_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F91EB54A0D00354B95 /* libATKDistortion_static32.a */; };
+		089DB6131EB54A5200354B95 /* libATKDynamic_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FA1EB54A0D00354B95 /* libATKDynamic_static32.a */; };
+		089DB6141EB54A5200354B95 /* libATKEQ_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FB1EB54A0D00354B95 /* libATKEQ_static32.a */; };
+		089DB6151EB54A5200354B95 /* libATKIO_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FC1EB54A0D00354B95 /* libATKIO_static32.a */; };
+		089DB6161EB54A5200354B95 /* libATKPreamplifier_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FD1EB54A0D00354B95 /* libATKPreamplifier_static32.a */; };
+		089DB6171EB54A5200354B95 /* libATKReverberation_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FE1EB54A0D00354B95 /* libATKReverberation_static32.a */; };
+		089DB6181EB54A5200354B95 /* libATKSpecial_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FF1EB54A0D00354B95 /* libATKSpecial_static32.a */; };
+		089DB6191EB54A5200354B95 /* libATKTools_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB6001EB54A0D00354B95 /* libATKTools_static32.a */; };
+		089DB61A1EB54A5200354B95 /* libATKUtility_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB6011EB54A0D00354B95 /* libATKUtility_static32.a */; };
+		089DB61B1EB54A5200354B95 /* libATKAdaptive_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5E91EB549F200354B95 /* libATKAdaptive_static.a */; };
+		089DB61C1EB54A5200354B95 /* libATKCore_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EA1EB549F200354B95 /* libATKCore_static.a */; };
+		089DB61D1EB54A5200354B95 /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EB1EB549F200354B95 /* libATKDelay_static.a */; };
+		089DB61E1EB54A5200354B95 /* libATKDistortion_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EC1EB549F200354B95 /* libATKDistortion_static.a */; };
+		089DB61F1EB54A5200354B95 /* libATKDynamic_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5ED1EB549F200354B95 /* libATKDynamic_static.a */; };
+		089DB6201EB54A5200354B95 /* libATKEQ_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EE1EB549F200354B95 /* libATKEQ_static.a */; };
+		089DB6211EB54A5200354B95 /* libATKIO_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EF1EB549F200354B95 /* libATKIO_static.a */; };
+		089DB6221EB54A5200354B95 /* libATKMock_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F01EB549F200354B95 /* libATKMock_static.a */; };
+		089DB6231EB54A5200354B95 /* libATKPreamplifier_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F11EB549F200354B95 /* libATKPreamplifier_static.a */; };
+		089DB6241EB54A5200354B95 /* libATKReverberation_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F21EB549F200354B95 /* libATKReverberation_static.a */; };
+		089DB6251EB54A5200354B95 /* libATKSpecial_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F31EB549F200354B95 /* libATKSpecial_static.a */; };
+		089DB6261EB54A5200354B95 /* libATKTools_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F41EB549F200354B95 /* libATKTools_static.a */; };
+		089DB6271EB54A5200354B95 /* libATKUtility_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F51EB549F200354B95 /* libATKUtility_static.a */; };
+		089DB6281EB54A5600354B95 /* libATKAdaptive_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F61EB54A0D00354B95 /* libATKAdaptive_static32.a */; };
+		089DB6291EB54A5600354B95 /* libATKCore_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F71EB54A0D00354B95 /* libATKCore_static32.a */; };
+		089DB62A1EB54A5600354B95 /* libATKDelay_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F81EB54A0D00354B95 /* libATKDelay_static32.a */; };
+		089DB62B1EB54A5600354B95 /* libATKDistortion_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F91EB54A0D00354B95 /* libATKDistortion_static32.a */; };
+		089DB62C1EB54A5600354B95 /* libATKDynamic_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FA1EB54A0D00354B95 /* libATKDynamic_static32.a */; };
+		089DB62D1EB54A5600354B95 /* libATKEQ_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FB1EB54A0D00354B95 /* libATKEQ_static32.a */; };
+		089DB62E1EB54A5600354B95 /* libATKIO_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FC1EB54A0D00354B95 /* libATKIO_static32.a */; };
+		089DB62F1EB54A5600354B95 /* libATKPreamplifier_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FD1EB54A0D00354B95 /* libATKPreamplifier_static32.a */; };
+		089DB6301EB54A5600354B95 /* libATKReverberation_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FE1EB54A0D00354B95 /* libATKReverberation_static32.a */; };
+		089DB6311EB54A5600354B95 /* libATKSpecial_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FF1EB54A0D00354B95 /* libATKSpecial_static32.a */; };
+		089DB6321EB54A5600354B95 /* libATKTools_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB6001EB54A0D00354B95 /* libATKTools_static32.a */; };
+		089DB6331EB54A5600354B95 /* libATKUtility_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB6011EB54A0D00354B95 /* libATKUtility_static32.a */; };
+		089DB6341EB54A5600354B95 /* libATKAdaptive_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5E91EB549F200354B95 /* libATKAdaptive_static.a */; };
+		089DB6351EB54A5600354B95 /* libATKCore_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EA1EB549F200354B95 /* libATKCore_static.a */; };
+		089DB6361EB54A5600354B95 /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EB1EB549F200354B95 /* libATKDelay_static.a */; };
+		089DB6371EB54A5600354B95 /* libATKDistortion_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EC1EB549F200354B95 /* libATKDistortion_static.a */; };
+		089DB6381EB54A5600354B95 /* libATKDynamic_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5ED1EB549F200354B95 /* libATKDynamic_static.a */; };
+		089DB6391EB54A5600354B95 /* libATKEQ_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EE1EB549F200354B95 /* libATKEQ_static.a */; };
+		089DB63A1EB54A5600354B95 /* libATKIO_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EF1EB549F200354B95 /* libATKIO_static.a */; };
+		089DB63B1EB54A5600354B95 /* libATKMock_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F01EB549F200354B95 /* libATKMock_static.a */; };
+		089DB63C1EB54A5600354B95 /* libATKPreamplifier_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F11EB549F200354B95 /* libATKPreamplifier_static.a */; };
+		089DB63D1EB54A5600354B95 /* libATKReverberation_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F21EB549F200354B95 /* libATKReverberation_static.a */; };
+		089DB63E1EB54A5600354B95 /* libATKSpecial_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F31EB549F200354B95 /* libATKSpecial_static.a */; };
+		089DB63F1EB54A5600354B95 /* libATKTools_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F41EB549F200354B95 /* libATKTools_static.a */; };
+		089DB6401EB54A5600354B95 /* libATKUtility_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F51EB549F200354B95 /* libATKUtility_static.a */; };
+		089DB6411EB54A5A00354B95 /* libATKAdaptive_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F61EB54A0D00354B95 /* libATKAdaptive_static32.a */; };
+		089DB6421EB54A5A00354B95 /* libATKCore_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F71EB54A0D00354B95 /* libATKCore_static32.a */; };
+		089DB6431EB54A5A00354B95 /* libATKDelay_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F81EB54A0D00354B95 /* libATKDelay_static32.a */; };
+		089DB6441EB54A5A00354B95 /* libATKDistortion_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F91EB54A0D00354B95 /* libATKDistortion_static32.a */; };
+		089DB6451EB54A5A00354B95 /* libATKDynamic_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FA1EB54A0D00354B95 /* libATKDynamic_static32.a */; };
+		089DB6461EB54A5A00354B95 /* libATKEQ_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FB1EB54A0D00354B95 /* libATKEQ_static32.a */; };
+		089DB6471EB54A5A00354B95 /* libATKIO_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FC1EB54A0D00354B95 /* libATKIO_static32.a */; };
+		089DB6481EB54A5A00354B95 /* libATKPreamplifier_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FD1EB54A0D00354B95 /* libATKPreamplifier_static32.a */; };
+		089DB6491EB54A5A00354B95 /* libATKReverberation_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FE1EB54A0D00354B95 /* libATKReverberation_static32.a */; };
+		089DB64A1EB54A5A00354B95 /* libATKSpecial_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FF1EB54A0D00354B95 /* libATKSpecial_static32.a */; };
+		089DB64B1EB54A5A00354B95 /* libATKTools_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB6001EB54A0D00354B95 /* libATKTools_static32.a */; };
+		089DB64C1EB54A5A00354B95 /* libATKUtility_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB6011EB54A0D00354B95 /* libATKUtility_static32.a */; };
+		089DB64D1EB54A5A00354B95 /* libATKAdaptive_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5E91EB549F200354B95 /* libATKAdaptive_static.a */; };
+		089DB64E1EB54A5A00354B95 /* libATKCore_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EA1EB549F200354B95 /* libATKCore_static.a */; };
+		089DB64F1EB54A5A00354B95 /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EB1EB549F200354B95 /* libATKDelay_static.a */; };
+		089DB6501EB54A5A00354B95 /* libATKDistortion_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EC1EB549F200354B95 /* libATKDistortion_static.a */; };
+		089DB6511EB54A5A00354B95 /* libATKDynamic_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5ED1EB549F200354B95 /* libATKDynamic_static.a */; };
+		089DB6521EB54A5A00354B95 /* libATKEQ_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EE1EB549F200354B95 /* libATKEQ_static.a */; };
+		089DB6531EB54A5A00354B95 /* libATKIO_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EF1EB549F200354B95 /* libATKIO_static.a */; };
+		089DB6541EB54A5A00354B95 /* libATKMock_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F01EB549F200354B95 /* libATKMock_static.a */; };
+		089DB6551EB54A5A00354B95 /* libATKPreamplifier_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F11EB549F200354B95 /* libATKPreamplifier_static.a */; };
+		089DB6561EB54A5A00354B95 /* libATKReverberation_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F21EB549F200354B95 /* libATKReverberation_static.a */; };
+		089DB6571EB54A5A00354B95 /* libATKSpecial_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F31EB549F200354B95 /* libATKSpecial_static.a */; };
+		089DB6581EB54A5A00354B95 /* libATKTools_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F41EB549F200354B95 /* libATKTools_static.a */; };
+		089DB6591EB54A5A00354B95 /* libATKUtility_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F51EB549F200354B95 /* libATKUtility_static.a */; };
+		089DB65A1EB54A5D00354B95 /* libATKAdaptive_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F61EB54A0D00354B95 /* libATKAdaptive_static32.a */; };
+		089DB65B1EB54A5D00354B95 /* libATKCore_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F71EB54A0D00354B95 /* libATKCore_static32.a */; };
+		089DB65C1EB54A5D00354B95 /* libATKDelay_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F81EB54A0D00354B95 /* libATKDelay_static32.a */; };
+		089DB65D1EB54A5D00354B95 /* libATKDistortion_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F91EB54A0D00354B95 /* libATKDistortion_static32.a */; };
+		089DB65E1EB54A5D00354B95 /* libATKDynamic_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FA1EB54A0D00354B95 /* libATKDynamic_static32.a */; };
+		089DB65F1EB54A5D00354B95 /* libATKEQ_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FB1EB54A0D00354B95 /* libATKEQ_static32.a */; };
+		089DB6601EB54A5D00354B95 /* libATKIO_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FC1EB54A0D00354B95 /* libATKIO_static32.a */; };
+		089DB6611EB54A5D00354B95 /* libATKPreamplifier_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FD1EB54A0D00354B95 /* libATKPreamplifier_static32.a */; };
+		089DB6621EB54A5D00354B95 /* libATKReverberation_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FE1EB54A0D00354B95 /* libATKReverberation_static32.a */; };
+		089DB6631EB54A5D00354B95 /* libATKSpecial_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FF1EB54A0D00354B95 /* libATKSpecial_static32.a */; };
+		089DB6641EB54A5D00354B95 /* libATKTools_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB6001EB54A0D00354B95 /* libATKTools_static32.a */; };
+		089DB6651EB54A5D00354B95 /* libATKUtility_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB6011EB54A0D00354B95 /* libATKUtility_static32.a */; };
+		089DB6661EB54A5D00354B95 /* libATKAdaptive_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5E91EB549F200354B95 /* libATKAdaptive_static.a */; };
+		089DB6671EB54A5D00354B95 /* libATKCore_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EA1EB549F200354B95 /* libATKCore_static.a */; };
+		089DB6681EB54A5D00354B95 /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EB1EB549F200354B95 /* libATKDelay_static.a */; };
+		089DB6691EB54A5D00354B95 /* libATKDistortion_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EC1EB549F200354B95 /* libATKDistortion_static.a */; };
+		089DB66A1EB54A5D00354B95 /* libATKDynamic_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5ED1EB549F200354B95 /* libATKDynamic_static.a */; };
+		089DB66B1EB54A5D00354B95 /* libATKEQ_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EE1EB549F200354B95 /* libATKEQ_static.a */; };
+		089DB66C1EB54A5D00354B95 /* libATKIO_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EF1EB549F200354B95 /* libATKIO_static.a */; };
+		089DB66D1EB54A5D00354B95 /* libATKMock_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F01EB549F200354B95 /* libATKMock_static.a */; };
+		089DB66E1EB54A5D00354B95 /* libATKPreamplifier_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F11EB549F200354B95 /* libATKPreamplifier_static.a */; };
+		089DB66F1EB54A5D00354B95 /* libATKReverberation_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F21EB549F200354B95 /* libATKReverberation_static.a */; };
+		089DB6701EB54A5D00354B95 /* libATKSpecial_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F31EB549F200354B95 /* libATKSpecial_static.a */; };
+		089DB6711EB54A5D00354B95 /* libATKTools_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F41EB549F200354B95 /* libATKTools_static.a */; };
+		089DB6721EB54A5D00354B95 /* libATKUtility_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F51EB549F200354B95 /* libATKUtility_static.a */; };
+		089DB6731EB54A6000354B95 /* libATKAdaptive_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F61EB54A0D00354B95 /* libATKAdaptive_static32.a */; };
+		089DB6741EB54A6000354B95 /* libATKCore_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F71EB54A0D00354B95 /* libATKCore_static32.a */; };
+		089DB6751EB54A6000354B95 /* libATKDelay_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F81EB54A0D00354B95 /* libATKDelay_static32.a */; };
+		089DB6761EB54A6000354B95 /* libATKDistortion_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F91EB54A0D00354B95 /* libATKDistortion_static32.a */; };
+		089DB6771EB54A6000354B95 /* libATKDynamic_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FA1EB54A0D00354B95 /* libATKDynamic_static32.a */; };
+		089DB6781EB54A6000354B95 /* libATKEQ_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FB1EB54A0D00354B95 /* libATKEQ_static32.a */; };
+		089DB6791EB54A6000354B95 /* libATKIO_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FC1EB54A0D00354B95 /* libATKIO_static32.a */; };
+		089DB67A1EB54A6000354B95 /* libATKPreamplifier_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FD1EB54A0D00354B95 /* libATKPreamplifier_static32.a */; };
+		089DB67B1EB54A6000354B95 /* libATKReverberation_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FE1EB54A0D00354B95 /* libATKReverberation_static32.a */; };
+		089DB67C1EB54A6000354B95 /* libATKSpecial_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5FF1EB54A0D00354B95 /* libATKSpecial_static32.a */; };
+		089DB67D1EB54A6000354B95 /* libATKTools_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB6001EB54A0D00354B95 /* libATKTools_static32.a */; };
+		089DB67E1EB54A6000354B95 /* libATKUtility_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB6011EB54A0D00354B95 /* libATKUtility_static32.a */; };
+		089DB67F1EB54A6000354B95 /* libATKAdaptive_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5E91EB549F200354B95 /* libATKAdaptive_static.a */; };
+		089DB6801EB54A6000354B95 /* libATKCore_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EA1EB549F200354B95 /* libATKCore_static.a */; };
+		089DB6811EB54A6000354B95 /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EB1EB549F200354B95 /* libATKDelay_static.a */; };
+		089DB6821EB54A6000354B95 /* libATKDistortion_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EC1EB549F200354B95 /* libATKDistortion_static.a */; };
+		089DB6831EB54A6000354B95 /* libATKDynamic_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5ED1EB549F200354B95 /* libATKDynamic_static.a */; };
+		089DB6841EB54A6000354B95 /* libATKEQ_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EE1EB549F200354B95 /* libATKEQ_static.a */; };
+		089DB6851EB54A6000354B95 /* libATKIO_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5EF1EB549F200354B95 /* libATKIO_static.a */; };
+		089DB6861EB54A6000354B95 /* libATKMock_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F01EB549F200354B95 /* libATKMock_static.a */; };
+		089DB6871EB54A6000354B95 /* libATKPreamplifier_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F11EB549F200354B95 /* libATKPreamplifier_static.a */; };
+		089DB6881EB54A6000354B95 /* libATKReverberation_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F21EB549F200354B95 /* libATKReverberation_static.a */; };
+		089DB6891EB54A6000354B95 /* libATKSpecial_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F31EB549F200354B95 /* libATKSpecial_static.a */; };
+		089DB68A1EB54A6000354B95 /* libATKTools_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F41EB549F200354B95 /* libATKTools_static.a */; };
+		089DB68B1EB54A6000354B95 /* libATKUtility_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DB5F51EB549F200354B95 /* libATKUtility_static.a */; };
+		089DB6911EB54DA100354B95 /* libATKJUCE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8EBA119502F36AF23848C0 /* libATKJUCE.a */; };
+		089DB6921EB54DBF00354B95 /* libATKJUCE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8EBA119502F36AF23848C0 /* libATKJUCE.a */; };
+		089DB6931EB54DC300354B95 /* libATKJUCE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8EBA119502F36AF23848C0 /* libATKJUCE.a */; };
+		089DB6941EB54DC700354B95 /* libATKJUCE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8EBA119502F36AF23848C0 /* libATKJUCE.a */; };
+		089DB6951EB54DCA00354B95 /* libATKJUCE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8EBA119502F36AF23848C0 /* libATKJUCE.a */; };
 		0A71D9439C3124E9B1B8860A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6495E762771E272C81096AD3 /* CoreMedia.framework */; };
 		0A72DA5BBBDDAD021FEB6074 /* PluginEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D046B5ED0F62C32989B7674A /* PluginEditor.cpp */; };
 		151C9BA8E655C2378136CC34 /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939E1FFB55E0B4F713589142 /* CoreAudioKit.framework */; };
@@ -189,6 +319,32 @@
 
 /* Begin PBXFileReference section */
 		04D4AD16103FA624F178AB15 /* juce_events */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_events; path = ../../../../../JUCE/modules/juce_events; sourceTree = SOURCE_ROOT; };
+		089DB5E91EB549F200354B95 /* libATKAdaptive_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKAdaptive_static.a; path = ../../../../../ATK64/lib/libATKAdaptive_static.a; sourceTree = "<group>"; };
+		089DB5EA1EB549F200354B95 /* libATKCore_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKCore_static.a; path = ../../../../../ATK64/lib/libATKCore_static.a; sourceTree = "<group>"; };
+		089DB5EB1EB549F200354B95 /* libATKDelay_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDelay_static.a; path = ../../../../../ATK64/lib/libATKDelay_static.a; sourceTree = "<group>"; };
+		089DB5EC1EB549F200354B95 /* libATKDistortion_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDistortion_static.a; path = ../../../../../ATK64/lib/libATKDistortion_static.a; sourceTree = "<group>"; };
+		089DB5ED1EB549F200354B95 /* libATKDynamic_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDynamic_static.a; path = ../../../../../ATK64/lib/libATKDynamic_static.a; sourceTree = "<group>"; };
+		089DB5EE1EB549F200354B95 /* libATKEQ_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKEQ_static.a; path = ../../../../../ATK64/lib/libATKEQ_static.a; sourceTree = "<group>"; };
+		089DB5EF1EB549F200354B95 /* libATKIO_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKIO_static.a; path = ../../../../../ATK64/lib/libATKIO_static.a; sourceTree = "<group>"; };
+		089DB5F01EB549F200354B95 /* libATKMock_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKMock_static.a; path = ../../../../../ATK64/lib/libATKMock_static.a; sourceTree = "<group>"; };
+		089DB5F11EB549F200354B95 /* libATKPreamplifier_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKPreamplifier_static.a; path = ../../../../../ATK64/lib/libATKPreamplifier_static.a; sourceTree = "<group>"; };
+		089DB5F21EB549F200354B95 /* libATKReverberation_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKReverberation_static.a; path = ../../../../../ATK64/lib/libATKReverberation_static.a; sourceTree = "<group>"; };
+		089DB5F31EB549F200354B95 /* libATKSpecial_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKSpecial_static.a; path = ../../../../../ATK64/lib/libATKSpecial_static.a; sourceTree = "<group>"; };
+		089DB5F41EB549F200354B95 /* libATKTools_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKTools_static.a; path = ../../../../../ATK64/lib/libATKTools_static.a; sourceTree = "<group>"; };
+		089DB5F51EB549F200354B95 /* libATKUtility_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKUtility_static.a; path = ../../../../../ATK64/lib/libATKUtility_static.a; sourceTree = "<group>"; };
+		089DB5F61EB54A0D00354B95 /* libATKAdaptive_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKAdaptive_static32.a; path = ../../../../../ATK32/lib/libATKAdaptive_static32.a; sourceTree = "<group>"; };
+		089DB5F71EB54A0D00354B95 /* libATKCore_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKCore_static32.a; path = ../../../../../ATK32/lib/libATKCore_static32.a; sourceTree = "<group>"; };
+		089DB5F81EB54A0D00354B95 /* libATKDelay_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDelay_static32.a; path = ../../../../../ATK32/lib/libATKDelay_static32.a; sourceTree = "<group>"; };
+		089DB5F91EB54A0D00354B95 /* libATKDistortion_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDistortion_static32.a; path = ../../../../../ATK32/lib/libATKDistortion_static32.a; sourceTree = "<group>"; };
+		089DB5FA1EB54A0D00354B95 /* libATKDynamic_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDynamic_static32.a; path = ../../../../../ATK32/lib/libATKDynamic_static32.a; sourceTree = "<group>"; };
+		089DB5FB1EB54A0D00354B95 /* libATKEQ_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKEQ_static32.a; path = ../../../../../ATK32/lib/libATKEQ_static32.a; sourceTree = "<group>"; };
+		089DB5FC1EB54A0D00354B95 /* libATKIO_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKIO_static32.a; path = ../../../../../ATK32/lib/libATKIO_static32.a; sourceTree = "<group>"; };
+		089DB5FD1EB54A0D00354B95 /* libATKPreamplifier_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKPreamplifier_static32.a; path = ../../../../../ATK32/lib/libATKPreamplifier_static32.a; sourceTree = "<group>"; };
+		089DB5FE1EB54A0D00354B95 /* libATKReverberation_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKReverberation_static32.a; path = ../../../../../ATK32/lib/libATKReverberation_static32.a; sourceTree = "<group>"; };
+		089DB5FF1EB54A0D00354B95 /* libATKSpecial_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKSpecial_static32.a; path = ../../../../../ATK32/lib/libATKSpecial_static32.a; sourceTree = "<group>"; };
+		089DB6001EB54A0D00354B95 /* libATKTools_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKTools_static32.a; path = ../../../../../ATK32/lib/libATKTools_static32.a; sourceTree = "<group>"; };
+		089DB6011EB54A0D00354B95 /* libATKUtility_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKUtility_static32.a; path = ../../../../../ATK32/lib/libATKUtility_static32.a; sourceTree = "<group>"; };
+		089DB68C1EB54A9200354B95 /* ATKJUCE.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = ATKJUCE.xcconfig; path = ../../ATKJUCE.xcconfig; sourceTree = "<group>"; };
 		09320A84AF45A38DCCF28836 /* juce_audio_formats */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_audio_formats; path = ../../../../../JUCE/modules/juce_audio_formats; sourceTree = SOURCE_ROOT; };
 		0CC3FB467885B72F08596AEB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0FDACCB27092B22F45EF955E /* juce_audio_utils */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_audio_utils; path = ../../../../../JUCE/modules/juce_audio_utils; sourceTree = SOURCE_ROOT; };
@@ -267,6 +423,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				089DB6931EB54DC300354B95 /* libATKJUCE.a in Frameworks */,
+				089DB6411EB54A5A00354B95 /* libATKAdaptive_static32.a in Frameworks */,
+				089DB6421EB54A5A00354B95 /* libATKCore_static32.a in Frameworks */,
+				089DB6431EB54A5A00354B95 /* libATKDelay_static32.a in Frameworks */,
+				089DB6441EB54A5A00354B95 /* libATKDistortion_static32.a in Frameworks */,
+				089DB6451EB54A5A00354B95 /* libATKDynamic_static32.a in Frameworks */,
+				089DB6461EB54A5A00354B95 /* libATKEQ_static32.a in Frameworks */,
+				089DB6471EB54A5A00354B95 /* libATKIO_static32.a in Frameworks */,
+				089DB6481EB54A5A00354B95 /* libATKPreamplifier_static32.a in Frameworks */,
+				089DB6491EB54A5A00354B95 /* libATKReverberation_static32.a in Frameworks */,
+				089DB64A1EB54A5A00354B95 /* libATKSpecial_static32.a in Frameworks */,
+				089DB64B1EB54A5A00354B95 /* libATKTools_static32.a in Frameworks */,
+				089DB64C1EB54A5A00354B95 /* libATKUtility_static32.a in Frameworks */,
+				089DB64D1EB54A5A00354B95 /* libATKAdaptive_static.a in Frameworks */,
+				089DB64E1EB54A5A00354B95 /* libATKCore_static.a in Frameworks */,
+				089DB64F1EB54A5A00354B95 /* libATKDelay_static.a in Frameworks */,
+				089DB6501EB54A5A00354B95 /* libATKDistortion_static.a in Frameworks */,
+				089DB6511EB54A5A00354B95 /* libATKDynamic_static.a in Frameworks */,
+				089DB6521EB54A5A00354B95 /* libATKEQ_static.a in Frameworks */,
+				089DB6531EB54A5A00354B95 /* libATKIO_static.a in Frameworks */,
+				089DB6541EB54A5A00354B95 /* libATKMock_static.a in Frameworks */,
+				089DB6551EB54A5A00354B95 /* libATKPreamplifier_static.a in Frameworks */,
+				089DB6561EB54A5A00354B95 /* libATKReverberation_static.a in Frameworks */,
+				089DB6571EB54A5A00354B95 /* libATKSpecial_static.a in Frameworks */,
+				089DB6581EB54A5A00354B95 /* libATKTools_static.a in Frameworks */,
+				089DB6591EB54A5A00354B95 /* libATKUtility_static.a in Frameworks */,
 				089DB5B31EB538D900354B95 /* Accelerate.framework in Frameworks */,
 				089DB5B41EB538D900354B95 /* AudioToolbox.framework in Frameworks */,
 				EA91DEEA1B3F83907895483C /* AudioUnit.framework in Frameworks */,
@@ -289,6 +471,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				089DB6911EB54DA100354B95 /* libATKJUCE.a in Frameworks */,
+				089DB6731EB54A6000354B95 /* libATKAdaptive_static32.a in Frameworks */,
+				089DB6741EB54A6000354B95 /* libATKCore_static32.a in Frameworks */,
+				089DB6751EB54A6000354B95 /* libATKDelay_static32.a in Frameworks */,
+				089DB6761EB54A6000354B95 /* libATKDistortion_static32.a in Frameworks */,
+				089DB6771EB54A6000354B95 /* libATKDynamic_static32.a in Frameworks */,
+				089DB6781EB54A6000354B95 /* libATKEQ_static32.a in Frameworks */,
+				089DB6791EB54A6000354B95 /* libATKIO_static32.a in Frameworks */,
+				089DB67A1EB54A6000354B95 /* libATKPreamplifier_static32.a in Frameworks */,
+				089DB67B1EB54A6000354B95 /* libATKReverberation_static32.a in Frameworks */,
+				089DB67C1EB54A6000354B95 /* libATKSpecial_static32.a in Frameworks */,
+				089DB67D1EB54A6000354B95 /* libATKTools_static32.a in Frameworks */,
+				089DB67E1EB54A6000354B95 /* libATKUtility_static32.a in Frameworks */,
+				089DB67F1EB54A6000354B95 /* libATKAdaptive_static.a in Frameworks */,
+				089DB6801EB54A6000354B95 /* libATKCore_static.a in Frameworks */,
+				089DB6811EB54A6000354B95 /* libATKDelay_static.a in Frameworks */,
+				089DB6821EB54A6000354B95 /* libATKDistortion_static.a in Frameworks */,
+				089DB6831EB54A6000354B95 /* libATKDynamic_static.a in Frameworks */,
+				089DB6841EB54A6000354B95 /* libATKEQ_static.a in Frameworks */,
+				089DB6851EB54A6000354B95 /* libATKIO_static.a in Frameworks */,
+				089DB6861EB54A6000354B95 /* libATKMock_static.a in Frameworks */,
+				089DB6871EB54A6000354B95 /* libATKPreamplifier_static.a in Frameworks */,
+				089DB6881EB54A6000354B95 /* libATKReverberation_static.a in Frameworks */,
+				089DB6891EB54A6000354B95 /* libATKSpecial_static.a in Frameworks */,
+				089DB68A1EB54A6000354B95 /* libATKTools_static.a in Frameworks */,
+				089DB68B1EB54A6000354B95 /* libATKUtility_static.a in Frameworks */,
 				41C1AD93314888AF2B3E43F7 /* Accelerate.framework in Frameworks */,
 				4A01F54387890EAA061D9CE9 /* AudioToolbox.framework in Frameworks */,
 				F3C2225FD56C623C9D170F69 /* AVFoundation.framework in Frameworks */,
@@ -309,6 +517,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				089DB6941EB54DC700354B95 /* libATKJUCE.a in Frameworks */,
+				089DB6281EB54A5600354B95 /* libATKAdaptive_static32.a in Frameworks */,
+				089DB6291EB54A5600354B95 /* libATKCore_static32.a in Frameworks */,
+				089DB62A1EB54A5600354B95 /* libATKDelay_static32.a in Frameworks */,
+				089DB62B1EB54A5600354B95 /* libATKDistortion_static32.a in Frameworks */,
+				089DB62C1EB54A5600354B95 /* libATKDynamic_static32.a in Frameworks */,
+				089DB62D1EB54A5600354B95 /* libATKEQ_static32.a in Frameworks */,
+				089DB62E1EB54A5600354B95 /* libATKIO_static32.a in Frameworks */,
+				089DB62F1EB54A5600354B95 /* libATKPreamplifier_static32.a in Frameworks */,
+				089DB6301EB54A5600354B95 /* libATKReverberation_static32.a in Frameworks */,
+				089DB6311EB54A5600354B95 /* libATKSpecial_static32.a in Frameworks */,
+				089DB6321EB54A5600354B95 /* libATKTools_static32.a in Frameworks */,
+				089DB6331EB54A5600354B95 /* libATKUtility_static32.a in Frameworks */,
+				089DB6341EB54A5600354B95 /* libATKAdaptive_static.a in Frameworks */,
+				089DB6351EB54A5600354B95 /* libATKCore_static.a in Frameworks */,
+				089DB6361EB54A5600354B95 /* libATKDelay_static.a in Frameworks */,
+				089DB6371EB54A5600354B95 /* libATKDistortion_static.a in Frameworks */,
+				089DB6381EB54A5600354B95 /* libATKDynamic_static.a in Frameworks */,
+				089DB6391EB54A5600354B95 /* libATKEQ_static.a in Frameworks */,
+				089DB63A1EB54A5600354B95 /* libATKIO_static.a in Frameworks */,
+				089DB63B1EB54A5600354B95 /* libATKMock_static.a in Frameworks */,
+				089DB63C1EB54A5600354B95 /* libATKPreamplifier_static.a in Frameworks */,
+				089DB63D1EB54A5600354B95 /* libATKReverberation_static.a in Frameworks */,
+				089DB63E1EB54A5600354B95 /* libATKSpecial_static.a in Frameworks */,
+				089DB63F1EB54A5600354B95 /* libATKTools_static.a in Frameworks */,
+				089DB6401EB54A5600354B95 /* libATKUtility_static.a in Frameworks */,
 				089DB5C11EB538D900354B95 /* Accelerate.framework in Frameworks */,
 				089DB5C21EB538D900354B95 /* AudioToolbox.framework in Frameworks */,
 				089DB5C31EB538D900354B95 /* AudioUnit.framework in Frameworks */,
@@ -331,6 +565,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				089DB6921EB54DBF00354B95 /* libATKJUCE.a in Frameworks */,
+				089DB65A1EB54A5D00354B95 /* libATKAdaptive_static32.a in Frameworks */,
+				089DB65B1EB54A5D00354B95 /* libATKCore_static32.a in Frameworks */,
+				089DB65C1EB54A5D00354B95 /* libATKDelay_static32.a in Frameworks */,
+				089DB65D1EB54A5D00354B95 /* libATKDistortion_static32.a in Frameworks */,
+				089DB65E1EB54A5D00354B95 /* libATKDynamic_static32.a in Frameworks */,
+				089DB65F1EB54A5D00354B95 /* libATKEQ_static32.a in Frameworks */,
+				089DB6601EB54A5D00354B95 /* libATKIO_static32.a in Frameworks */,
+				089DB6611EB54A5D00354B95 /* libATKPreamplifier_static32.a in Frameworks */,
+				089DB6621EB54A5D00354B95 /* libATKReverberation_static32.a in Frameworks */,
+				089DB6631EB54A5D00354B95 /* libATKSpecial_static32.a in Frameworks */,
+				089DB6641EB54A5D00354B95 /* libATKTools_static32.a in Frameworks */,
+				089DB6651EB54A5D00354B95 /* libATKUtility_static32.a in Frameworks */,
+				089DB6661EB54A5D00354B95 /* libATKAdaptive_static.a in Frameworks */,
+				089DB6671EB54A5D00354B95 /* libATKCore_static.a in Frameworks */,
+				089DB6681EB54A5D00354B95 /* libATKDelay_static.a in Frameworks */,
+				089DB6691EB54A5D00354B95 /* libATKDistortion_static.a in Frameworks */,
+				089DB66A1EB54A5D00354B95 /* libATKDynamic_static.a in Frameworks */,
+				089DB66B1EB54A5D00354B95 /* libATKEQ_static.a in Frameworks */,
+				089DB66C1EB54A5D00354B95 /* libATKIO_static.a in Frameworks */,
+				089DB66D1EB54A5D00354B95 /* libATKMock_static.a in Frameworks */,
+				089DB66E1EB54A5D00354B95 /* libATKPreamplifier_static.a in Frameworks */,
+				089DB66F1EB54A5D00354B95 /* libATKReverberation_static.a in Frameworks */,
+				089DB6701EB54A5D00354B95 /* libATKSpecial_static.a in Frameworks */,
+				089DB6711EB54A5D00354B95 /* libATKTools_static.a in Frameworks */,
+				089DB6721EB54A5D00354B95 /* libATKUtility_static.a in Frameworks */,
 				089DB5A51EB538D900354B95 /* Accelerate.framework in Frameworks */,
 				089DB5A61EB538D900354B95 /* AudioToolbox.framework in Frameworks */,
 				089DB5A71EB538D900354B95 /* AVFoundation.framework in Frameworks */,
@@ -351,6 +611,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				089DB6951EB54DCA00354B95 /* libATKJUCE.a in Frameworks */,
+				089DB60F1EB54A5200354B95 /* libATKAdaptive_static32.a in Frameworks */,
+				089DB6101EB54A5200354B95 /* libATKCore_static32.a in Frameworks */,
+				089DB6111EB54A5200354B95 /* libATKDelay_static32.a in Frameworks */,
+				089DB6121EB54A5200354B95 /* libATKDistortion_static32.a in Frameworks */,
+				089DB6131EB54A5200354B95 /* libATKDynamic_static32.a in Frameworks */,
+				089DB6141EB54A5200354B95 /* libATKEQ_static32.a in Frameworks */,
+				089DB6151EB54A5200354B95 /* libATKIO_static32.a in Frameworks */,
+				089DB6161EB54A5200354B95 /* libATKPreamplifier_static32.a in Frameworks */,
+				089DB6171EB54A5200354B95 /* libATKReverberation_static32.a in Frameworks */,
+				089DB6181EB54A5200354B95 /* libATKSpecial_static32.a in Frameworks */,
+				089DB6191EB54A5200354B95 /* libATKTools_static32.a in Frameworks */,
+				089DB61A1EB54A5200354B95 /* libATKUtility_static32.a in Frameworks */,
+				089DB61B1EB54A5200354B95 /* libATKAdaptive_static.a in Frameworks */,
+				089DB61C1EB54A5200354B95 /* libATKCore_static.a in Frameworks */,
+				089DB61D1EB54A5200354B95 /* libATKDelay_static.a in Frameworks */,
+				089DB61E1EB54A5200354B95 /* libATKDistortion_static.a in Frameworks */,
+				089DB61F1EB54A5200354B95 /* libATKDynamic_static.a in Frameworks */,
+				089DB6201EB54A5200354B95 /* libATKEQ_static.a in Frameworks */,
+				089DB6211EB54A5200354B95 /* libATKIO_static.a in Frameworks */,
+				089DB6221EB54A5200354B95 /* libATKMock_static.a in Frameworks */,
+				089DB6231EB54A5200354B95 /* libATKPreamplifier_static.a in Frameworks */,
+				089DB6241EB54A5200354B95 /* libATKReverberation_static.a in Frameworks */,
+				089DB6251EB54A5200354B95 /* libATKSpecial_static.a in Frameworks */,
+				089DB6261EB54A5200354B95 /* libATKTools_static.a in Frameworks */,
+				089DB6271EB54A5200354B95 /* libATKUtility_static.a in Frameworks */,
 				089DB5D11EB538D900354B95 /* Accelerate.framework in Frameworks */,
 				089DB5D21EB538D900354B95 /* AudioToolbox.framework in Frameworks */,
 				089DB5D31EB538D900354B95 /* AVFoundation.framework in Frameworks */,
@@ -370,6 +656,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		089DB5E81EB549D700354B95 /* ATK */ = {
+			isa = PBXGroup;
+			children = (
+				089DB5F61EB54A0D00354B95 /* libATKAdaptive_static32.a */,
+				089DB5F71EB54A0D00354B95 /* libATKCore_static32.a */,
+				089DB5F81EB54A0D00354B95 /* libATKDelay_static32.a */,
+				089DB5F91EB54A0D00354B95 /* libATKDistortion_static32.a */,
+				089DB5FA1EB54A0D00354B95 /* libATKDynamic_static32.a */,
+				089DB5FB1EB54A0D00354B95 /* libATKEQ_static32.a */,
+				089DB5FC1EB54A0D00354B95 /* libATKIO_static32.a */,
+				089DB5FD1EB54A0D00354B95 /* libATKPreamplifier_static32.a */,
+				089DB5FE1EB54A0D00354B95 /* libATKReverberation_static32.a */,
+				089DB5FF1EB54A0D00354B95 /* libATKSpecial_static32.a */,
+				089DB6001EB54A0D00354B95 /* libATKTools_static32.a */,
+				089DB6011EB54A0D00354B95 /* libATKUtility_static32.a */,
+				089DB5E91EB549F200354B95 /* libATKAdaptive_static.a */,
+				089DB5EA1EB549F200354B95 /* libATKCore_static.a */,
+				089DB5EB1EB549F200354B95 /* libATKDelay_static.a */,
+				089DB5EC1EB549F200354B95 /* libATKDistortion_static.a */,
+				089DB5ED1EB549F200354B95 /* libATKDynamic_static.a */,
+				089DB5EE1EB549F200354B95 /* libATKEQ_static.a */,
+				089DB5EF1EB549F200354B95 /* libATKIO_static.a */,
+				089DB5F01EB549F200354B95 /* libATKMock_static.a */,
+				089DB5F11EB549F200354B95 /* libATKPreamplifier_static.a */,
+				089DB5F21EB549F200354B95 /* libATKReverberation_static.a */,
+				089DB5F31EB549F200354B95 /* libATKSpecial_static.a */,
+				089DB5F41EB549F200354B95 /* libATKTools_static.a */,
+				089DB5F51EB549F200354B95 /* libATKUtility_static.a */,
+			);
+			name = ATK;
+			sourceTree = "<group>";
+		};
 		14E2A7E277579C68897A5E09 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -440,8 +758,10 @@
 		C62FD169EBD2658F35E48361 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				089DB68C1EB54A9200354B95 /* ATKJUCE.xcconfig */,
 				E5D3DF5AFB529EE848F69725 /* ATKJUCE.entitlements */,
 				3BA5BDCE44DD79065C98B5A5 /* ATKJUCE */,
+				089DB5E81EB549D700354B95 /* ATK */,
 				BE8799EFEE5F5EE6AA9DE049 /* Juce Modules */,
 				EB2F5E3F0D17C30EEFCF2C78 /* Juce Library Code */,
 				14E2A7E277579C68897A5E09 /* Resources */,
@@ -943,47 +1263,13 @@
 					../../../../../JUCE/modules,
 					../../../../../JUCE/modules/juce_audio_plugin_client,
 					"$(inherited)",
+					"$(ADDITIONAL_INCLUDES)",
 				);
 				INSTALL_PATH = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_CPLUSPLUSFLAGS = (
-					"-I",
-					../../../../../ATK64/include,
-					"-I",
-					../../../../../../local/boost_1_63_0,
-				);
-				OTHER_LDFLAGS = (
-					"-L",
-					../../../../../ATK64/lib,
-					"-L",
-					../../../../../ATK32/lib,
-					"-lATKAdaptive_static32",
-					"-lATKCore_static32",
-					"-lATKDelay_static32",
-					"-lATKDistortion_static32",
-					"-lATKDynamic_static32",
-					"-lATKEQ_static32",
-					"-lATKIO_static32",
-					"-lATKPreamplifier_static32",
-					"-lATKReverberation_static32",
-					"-lATKSpecial_static32",
-					"-lATKTools_static32",
-					"-lATKUtility_static32",
-					"-lATKAdaptive_static",
-					"-lATKCore_static",
-					"-lATKDelay_static",
-					"-lATKDistortion_static",
-					"-lATKDynamic_static",
-					"-lATKEQ_static",
-					"-lATKIO_static",
-					"-lATKMock_static",
-					"-lATKPreamplifier_static",
-					"-lATKReverberation_static",
-					"-lATKSpecial_static",
-					"-lATKTools_static",
-					"-lATKUtility_static",
-				);
+				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MatthieuBrucher.ATKJUCE;
 				SDKROOT_ppc = macosx10.5;
 			};
@@ -1023,47 +1309,13 @@
 					../../../../../JUCE/modules,
 					../../../../../JUCE/modules/juce_audio_plugin_client,
 					"$(inherited)",
+					"$(ADDITIONAL_INCLUDES)",
 				);
 				INSTALL_PATH = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_CPLUSPLUSFLAGS = (
-					"-I",
-					../../../../../ATK64/include,
-					"-I",
-					../../../../../../local/boost_1_63_0,
-				);
-				OTHER_LDFLAGS = (
-					"-L",
-					../../../../../ATK64/lib,
-					"-L",
-					../../../../../ATK32/lib,
-					"-lATKAdaptive_static32",
-					"-lATKCore_static32",
-					"-lATKDelay_static32",
-					"-lATKDistortion_static32",
-					"-lATKDynamic_static32",
-					"-lATKEQ_static32",
-					"-lATKIO_static32",
-					"-lATKPreamplifier_static32",
-					"-lATKReverberation_static32",
-					"-lATKSpecial_static32",
-					"-lATKTools_static32",
-					"-lATKUtility_static32",
-					"-lATKAdaptive_static",
-					"-lATKCore_static",
-					"-lATKDelay_static",
-					"-lATKDistortion_static",
-					"-lATKDynamic_static",
-					"-lATKEQ_static",
-					"-lATKIO_static",
-					"-lATKMock_static",
-					"-lATKPreamplifier_static",
-					"-lATKReverberation_static",
-					"-lATKSpecial_static",
-					"-lATKTools_static",
-					"-lATKUtility_static",
-				);
+				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MatthieuBrucher.ATKJUCE;
 				SDKROOT_ppc = macosx10.5;
 			};
@@ -1109,48 +1361,12 @@
 				);
 				INFOPLIST_FILE = "Info-VST.plist";
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
+				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_CPLUSPLUSFLAGS = (
-					"-I",
-					../../../../../ATK64/include,
-					"-I",
-					../../../../../../local/boost_1_63_0,
-				);
-				OTHER_LDFLAGS = (
-					"-bundle",
-					"-lATKJUCE",
-					"-L",
-					../../../../../ATK64/lib,
-					"-L",
-					../../../../../ATK32/lib,
-					"-lATKAdaptive_static32",
-					"-lATKCore_static32",
-					"-lATKDelay_static32",
-					"-lATKDistortion_static32",
-					"-lATKDynamic_static32",
-					"-lATKEQ_static32",
-					"-lATKIO_static32",
-					"-lATKPreamplifier_static32",
-					"-lATKReverberation_static32",
-					"-lATKSpecial_static32",
-					"-lATKTools_static32",
-					"-lATKUtility_static32",
-					"-lATKAdaptive_static",
-					"-lATKCore_static",
-					"-lATKDelay_static",
-					"-lATKDistortion_static",
-					"-lATKDynamic_static",
-					"-lATKEQ_static",
-					"-lATKIO_static",
-					"-lATKMock_static",
-					"-lATKPreamplifier_static",
-					"-lATKReverberation_static",
-					"-lATKSpecial_static",
-					"-lATKTools_static",
-					"-lATKUtility_static",
-				);
+				OTHER_CPLUSPLUSFLAGS = "";
+				OTHER_LDFLAGS = "-bundle";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MatthieuBrucher.ATKJUCE;
 				SDKROOT_ppc = macosx10.5;
 				WRAPPER_EXTENSION = vst;
@@ -1193,46 +1409,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Info-AUv3_AppExtension.plist";
+				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_CPLUSPLUSFLAGS = (
-					"-I",
-					../../../../../ATK64/include,
-					"-I",
-					../../../../../../local/boost_1_63_0,
-				);
-				OTHER_LDFLAGS = (
-					"-lATKJUCE",
-					"-L",
-					../../../../../ATK64/lib,
-					"-L",
-					../../../../../ATK32/lib,
-					"-lATKAdaptive_static32",
-					"-lATKCore_static32",
-					"-lATKDelay_static32",
-					"-lATKDistortion_static32",
-					"-lATKDynamic_static32",
-					"-lATKEQ_static32",
-					"-lATKIO_static32",
-					"-lATKPreamplifier_static32",
-					"-lATKReverberation_static32",
-					"-lATKSpecial_static32",
-					"-lATKTools_static32",
-					"-lATKUtility_static32",
-					"-lATKAdaptive_static",
-					"-lATKCore_static",
-					"-lATKDelay_static",
-					"-lATKDistortion_static",
-					"-lATKDynamic_static",
-					"-lATKEQ_static",
-					"-lATKIO_static",
-					"-lATKMock_static",
-					"-lATKPreamplifier_static",
-					"-lATKReverberation_static",
-					"-lATKSpecial_static",
-					"-lATKTools_static",
-					"-lATKUtility_static",
-				);
+				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MatthieuBrucher.ATKJUCE.ATKJUCEAUv3;
 				SDKROOT_ppc = macosx10.5;
 			};
@@ -1278,48 +1458,12 @@
 				);
 				INFOPLIST_FILE = "Info-VST3.plist";
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST3/";
+				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_CPLUSPLUSFLAGS = (
-					"-I",
-					../../../../../ATK64/include,
-					"-I",
-					../../../../../../local/boost_1_63_0,
-				);
-				OTHER_LDFLAGS = (
-					"-bundle",
-					"-lATKJUCE",
-					"-L",
-					../../../../../ATK64/lib,
-					"-L",
-					../../../../../ATK32/lib,
-					"-lATKAdaptive_static32",
-					"-lATKCore_static32",
-					"-lATKDelay_static32",
-					"-lATKDistortion_static32",
-					"-lATKDynamic_static32",
-					"-lATKEQ_static32",
-					"-lATKIO_static32",
-					"-lATKPreamplifier_static32",
-					"-lATKReverberation_static32",
-					"-lATKSpecial_static32",
-					"-lATKTools_static32",
-					"-lATKUtility_static32",
-					"-lATKAdaptive_static",
-					"-lATKCore_static",
-					"-lATKDelay_static",
-					"-lATKDistortion_static",
-					"-lATKDynamic_static",
-					"-lATKEQ_static",
-					"-lATKIO_static",
-					"-lATKMock_static",
-					"-lATKPreamplifier_static",
-					"-lATKReverberation_static",
-					"-lATKSpecial_static",
-					"-lATKTools_static",
-					"-lATKUtility_static",
-				);
+				OTHER_CPLUSPLUSFLAGS = "";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MatthieuBrucher.ATKJUCE;
 				SDKROOT_ppc = macosx10.5;
 				WRAPPER_EXTENSION = vst3;
@@ -1328,6 +1472,7 @@
 		};
 		728BB92BC96137D6D091FE25 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 089DB68C1EB54A9200354B95 /* ATKJUCE.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1387,48 +1532,12 @@
 				);
 				INFOPLIST_FILE = "Info-VST.plist";
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
+				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_CPLUSPLUSFLAGS = (
-					"-I",
-					../../../../../ATK64/include,
-					"-I",
-					../../../../../../local/boost_1_63_0,
-				);
-				OTHER_LDFLAGS = (
-					"-bundle",
-					"-lATKJUCE",
-					"-L",
-					../../../../../ATK64/lib,
-					"-L",
-					../../../../../ATK32/lib,
-					"-lATKAdaptive_static32",
-					"-lATKCore_static32",
-					"-lATKDelay_static32",
-					"-lATKDistortion_static32",
-					"-lATKDynamic_static32",
-					"-lATKEQ_static32",
-					"-lATKIO_static32",
-					"-lATKPreamplifier_static32",
-					"-lATKReverberation_static32",
-					"-lATKSpecial_static32",
-					"-lATKTools_static32",
-					"-lATKUtility_static32",
-					"-lATKAdaptive_static",
-					"-lATKCore_static",
-					"-lATKDelay_static",
-					"-lATKDistortion_static",
-					"-lATKDynamic_static",
-					"-lATKEQ_static",
-					"-lATKIO_static",
-					"-lATKMock_static",
-					"-lATKPreamplifier_static",
-					"-lATKReverberation_static",
-					"-lATKSpecial_static",
-					"-lATKTools_static",
-					"-lATKUtility_static",
-				);
+				OTHER_CPLUSPLUSFLAGS = "";
+				OTHER_LDFLAGS = "-bundle";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MatthieuBrucher.ATKJUCE;
 				SDKROOT_ppc = macosx10.5;
 				WRAPPER_EXTENSION = vst;
@@ -1474,48 +1583,12 @@
 				);
 				INFOPLIST_FILE = "Info-AU.plist";
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
+				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_CPLUSPLUSFLAGS = (
-					"-I",
-					../../../../../ATK64/include,
-					"-I",
-					../../../../../../local/boost_1_63_0,
-				);
-				OTHER_LDFLAGS = (
-					"-bundle",
-					"-lATKJUCE",
-					"-L",
-					../../../../../ATK64/lib,
-					"-L",
-					../../../../../ATK32/lib,
-					"-lATKAdaptive_static32",
-					"-lATKCore_static32",
-					"-lATKDelay_static32",
-					"-lATKDistortion_static32",
-					"-lATKDynamic_static32",
-					"-lATKEQ_static32",
-					"-lATKIO_static32",
-					"-lATKPreamplifier_static32",
-					"-lATKReverberation_static32",
-					"-lATKSpecial_static32",
-					"-lATKTools_static32",
-					"-lATKUtility_static32",
-					"-lATKAdaptive_static",
-					"-lATKCore_static",
-					"-lATKDelay_static",
-					"-lATKDistortion_static",
-					"-lATKDynamic_static",
-					"-lATKEQ_static",
-					"-lATKIO_static",
-					"-lATKMock_static",
-					"-lATKPreamplifier_static",
-					"-lATKReverberation_static",
-					"-lATKSpecial_static",
-					"-lATKTools_static",
-					"-lATKUtility_static",
-				);
+				OTHER_CPLUSPLUSFLAGS = "";
+				OTHER_LDFLAGS = "-bundle";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MatthieuBrucher.ATKJUCE;
 				SDKROOT_ppc = macosx10.5;
@@ -1562,48 +1635,12 @@
 				);
 				INFOPLIST_FILE = "Info-VST3.plist";
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST3/";
+				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_CPLUSPLUSFLAGS = (
-					"-I",
-					../../../../../ATK64/include,
-					"-I",
-					../../../../../../local/boost_1_63_0,
-				);
-				OTHER_LDFLAGS = (
-					"-bundle",
-					"-lATKJUCE",
-					"-L",
-					../../../../../ATK64/lib,
-					"-L",
-					../../../../../ATK32/lib,
-					"-lATKAdaptive_static32",
-					"-lATKCore_static32",
-					"-lATKDelay_static32",
-					"-lATKDistortion_static32",
-					"-lATKDynamic_static32",
-					"-lATKEQ_static32",
-					"-lATKIO_static32",
-					"-lATKPreamplifier_static32",
-					"-lATKReverberation_static32",
-					"-lATKSpecial_static32",
-					"-lATKTools_static32",
-					"-lATKUtility_static32",
-					"-lATKAdaptive_static",
-					"-lATKCore_static",
-					"-lATKDelay_static",
-					"-lATKDistortion_static",
-					"-lATKDynamic_static",
-					"-lATKEQ_static",
-					"-lATKIO_static",
-					"-lATKMock_static",
-					"-lATKPreamplifier_static",
-					"-lATKReverberation_static",
-					"-lATKSpecial_static",
-					"-lATKTools_static",
-					"-lATKUtility_static",
-				);
+				OTHER_CPLUSPLUSFLAGS = "";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MatthieuBrucher.ATKJUCE;
 				SDKROOT_ppc = macosx10.5;
 				WRAPPER_EXTENSION = vst3;
@@ -1647,46 +1684,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Info-AUv3_AppExtension.plist";
+				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_CPLUSPLUSFLAGS = (
-					"-I",
-					../../../../../ATK64/include,
-					"-I",
-					../../../../../../local/boost_1_63_0,
-				);
-				OTHER_LDFLAGS = (
-					"-lATKJUCE",
-					"-L",
-					../../../../../ATK64/lib,
-					"-L",
-					../../../../../ATK32/lib,
-					"-lATKAdaptive_static32",
-					"-lATKCore_static32",
-					"-lATKDelay_static32",
-					"-lATKDistortion_static32",
-					"-lATKDynamic_static32",
-					"-lATKEQ_static32",
-					"-lATKIO_static32",
-					"-lATKPreamplifier_static32",
-					"-lATKReverberation_static32",
-					"-lATKSpecial_static32",
-					"-lATKTools_static32",
-					"-lATKUtility_static32",
-					"-lATKAdaptive_static",
-					"-lATKCore_static",
-					"-lATKDelay_static",
-					"-lATKDistortion_static",
-					"-lATKDynamic_static",
-					"-lATKEQ_static",
-					"-lATKIO_static",
-					"-lATKMock_static",
-					"-lATKPreamplifier_static",
-					"-lATKReverberation_static",
-					"-lATKSpecial_static",
-					"-lATKTools_static",
-					"-lATKUtility_static",
-				);
+				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MatthieuBrucher.ATKJUCE.ATKJUCEAUv3;
 				SDKROOT_ppc = macosx10.5;
 			};
@@ -1732,48 +1733,12 @@
 				);
 				INFOPLIST_FILE = "Info-AU.plist";
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
+				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_CPLUSPLUSFLAGS = (
-					"-I",
-					../../../../../ATK64/include,
-					"-I",
-					../../../../../../local/boost_1_63_0,
-				);
-				OTHER_LDFLAGS = (
-					"-bundle",
-					"-lATKJUCE",
-					"-L",
-					../../../../../ATK64/lib,
-					"-L",
-					../../../../../ATK32/lib,
-					"-lATKAdaptive_static32",
-					"-lATKCore_static32",
-					"-lATKDelay_static32",
-					"-lATKDistortion_static32",
-					"-lATKDynamic_static32",
-					"-lATKEQ_static32",
-					"-lATKIO_static32",
-					"-lATKPreamplifier_static32",
-					"-lATKReverberation_static32",
-					"-lATKSpecial_static32",
-					"-lATKTools_static32",
-					"-lATKUtility_static32",
-					"-lATKAdaptive_static",
-					"-lATKCore_static",
-					"-lATKDelay_static",
-					"-lATKDistortion_static",
-					"-lATKDynamic_static",
-					"-lATKEQ_static",
-					"-lATKIO_static",
-					"-lATKMock_static",
-					"-lATKPreamplifier_static",
-					"-lATKReverberation_static",
-					"-lATKSpecial_static",
-					"-lATKTools_static",
-					"-lATKUtility_static",
-				);
+				OTHER_CPLUSPLUSFLAGS = "";
+				OTHER_LDFLAGS = "-bundle";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MatthieuBrucher.ATKJUCE;
 				SDKROOT_ppc = macosx10.5;
@@ -1817,46 +1782,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Info-Standalone_Plugin.plist";
+				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_CPLUSPLUSFLAGS = (
-					"-I",
-					../../../../../ATK64/include,
-					"-I",
-					../../../../../../local/boost_1_63_0,
-				);
-				OTHER_LDFLAGS = (
-					"-lATKJUCE",
-					"-L",
-					../../../../../ATK64/lib,
-					"-L",
-					../../../../../ATK32/lib,
-					"-lATKAdaptive_static32",
-					"-lATKCore_static32",
-					"-lATKDelay_static32",
-					"-lATKDistortion_static32",
-					"-lATKDynamic_static32",
-					"-lATKEQ_static32",
-					"-lATKIO_static32",
-					"-lATKPreamplifier_static32",
-					"-lATKReverberation_static32",
-					"-lATKSpecial_static32",
-					"-lATKTools_static32",
-					"-lATKUtility_static32",
-					"-lATKAdaptive_static",
-					"-lATKCore_static",
-					"-lATKDelay_static",
-					"-lATKDistortion_static",
-					"-lATKDynamic_static",
-					"-lATKEQ_static",
-					"-lATKIO_static",
-					"-lATKMock_static",
-					"-lATKPreamplifier_static",
-					"-lATKReverberation_static",
-					"-lATKSpecial_static",
-					"-lATKTools_static",
-					"-lATKUtility_static",
-				);
+				OTHER_CPLUSPLUSFLAGS = "";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MatthieuBrucher.ATKJUCE;
 				SDKROOT_ppc = macosx10.5;
 			};
@@ -1864,6 +1794,7 @@
 		};
 		F2C3DB643A4B5CBA3209595B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 089DB68C1EB54A9200354B95 /* ATKJUCE.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1917,46 +1848,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Info-Standalone_Plugin.plist";
+				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
-				OTHER_CPLUSPLUSFLAGS = (
-					"-I",
-					../../../../../ATK64/include,
-					"-I",
-					../../../../../../local/boost_1_63_0,
-				);
-				OTHER_LDFLAGS = (
-					"-lATKJUCE",
-					"-L",
-					../../../../../ATK64/lib,
-					"-L",
-					../../../../../ATK32/lib,
-					"-lATKAdaptive_static32",
-					"-lATKCore_static32",
-					"-lATKDelay_static32",
-					"-lATKDistortion_static32",
-					"-lATKDynamic_static32",
-					"-lATKEQ_static32",
-					"-lATKIO_static32",
-					"-lATKPreamplifier_static32",
-					"-lATKReverberation_static32",
-					"-lATKSpecial_static32",
-					"-lATKTools_static32",
-					"-lATKUtility_static32",
-					"-lATKAdaptive_static",
-					"-lATKCore_static",
-					"-lATKDelay_static",
-					"-lATKDistortion_static",
-					"-lATKDynamic_static",
-					"-lATKEQ_static",
-					"-lATKIO_static",
-					"-lATKMock_static",
-					"-lATKPreamplifier_static",
-					"-lATKReverberation_static",
-					"-lATKSpecial_static",
-					"-lATKTools_static",
-					"-lATKUtility_static",
-				);
+				OTHER_CPLUSPLUSFLAGS = "";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MatthieuBrucher.ATKJUCE;
 				SDKROOT_ppc = macosx10.5;
 			};

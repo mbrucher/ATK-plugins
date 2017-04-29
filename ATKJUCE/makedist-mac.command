@@ -37,9 +37,9 @@ echo ""
 
 #---------------------------------------------------------------------------------------------------------
 
-# build xcode project. Change target to build individual formats -xcconfig $PLUGIN_NAME.xcconfig
+# build xcode project. Change target to build individual formats
 echo "Build"
-xcodebuild -project Builds/MacOSX/$PLUGIN_NAME.xcodeproj -target "$PLUGIN_NAME - All" -configuration Release 2> ./build-mac.log
+xcodebuild -project Builds/MacOSX/$PLUGIN_NAME.xcodeproj -xcconfig $PLUGIN_NAME.xcconfig -target "$PLUGIN_NAME - All" -configuration Release 2> ./build-mac.log
 
 if [ -s build-mac.log ]
 then
@@ -80,10 +80,10 @@ else
   fi
   
   hdiutil convert installer/$PLUGIN_NAME.dmg -format UDZO -o installer/$PLUGIN_NAME-mac.dmg
-  sudo rm -R -f installer/$PLUGIN_NAME.dmg
+  rm -R -f installer/$PLUGIN_NAME.dmg
 fi
 
-sudo rm -R -f installer/build-mac/
+rm -R -f installer/build-mac/
 
 #---------------------------------------------------------------------------------------------------------
 
