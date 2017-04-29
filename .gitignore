@@ -22,6 +22,8 @@ gui/*
 PCH
 *.psd
 *.APS
+Builds
+JuceLibraryCode
 
 Icon?
 .DS_Stor*
