@@ -26,25 +26,25 @@ Name: "vst3_64"; Description: "64-bit VST3 Plugin (.vst3)"; Types: full custom; 
 ;Name: "rtas_32"; Description: "32-bit RTAS Plugin (.dpm)"; Types: full custom;
 ;Name: "aax_32"; Description: "32-bit AAX Plugin (.aaxplugin)"; Types: full custom;
 ;Name: "aax_64"; Description: "64-bit AAX Plugin (.aaxplugin)"; Types: full custom; Check: Is64BitInstallMode;
-Name: "manual"; Description: "User guide"; Types: full custom; Flags: fixed
+;Name: "manual"; Description: "User guide"; Types: full custom; Flags: fixed
 
 [Files]
-Source: "..\build-win\app\Win32\bin\ATKJUCE.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Components:app; Flags: ignoreversion;
-Source: "..\build-win\app\x64\bin\ATKJUCE.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Components:app; Flags: ignoreversion;
+Source: "..\Builds\VisualStudio2017\Win32\Release\Standalone Plugin\ATKJUCE.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Components:app; Flags: ignoreversion;
+Source: "..\Builds\VisualStudio2017\x64\Release\Standalone Plugin\ATKJUCE.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Components:app; Flags: ignoreversion;
 
-Source: "..\build-win\vst2\Win32\bin\ATKJUCE.dll"; DestDir: {code:GetVST2Dir_32}; Check: not Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
-Source: "..\build-win\vst2\Win32\bin\ATKJUCE.dll"; DestDir: {code:GetVST2Dir_32}; Check: Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
-Source: "..\build-win\vst2\x64\bin\ATKJUCE.dll"; DestDir: {code:GetVST2Dir_64}; Check: Is64BitInstallMode; Components:vst2_64; Flags: ignoreversion;
+Source: "..\Builds\VisualStudio2017\Win32\Release\VST\ATKJUCE.dll"; DestDir: {code:GetVST2Dir_32}; Check: not Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
+Source: "..\Builds\VisualStudio2017\Win32\Release\VST\ATKJUCE.dll"; DestDir: {code:GetVST2Dir_32}; Check: Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
+Source: "..\Builds\VisualStudio2017\x64\Release\VST\ATKJUCE.dll"; DestDir: {code:GetVST2Dir_64}; Check: Is64BitInstallMode; Components:vst2_64; Flags: ignoreversion;
 
-Source: "..\build-win\vst3\Win32\bin\ATKJUCE.vst3"; DestDir: "{cf}\VST3\"; Check: not Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
-Source: "..\build-win\vst3\Win32\bin\ATKJUCE.vst3"; DestDir: "{cf32}\VST3\"; Check: Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
-Source: "..\build-win\vst3\x64\bin\ATKJUCE.vst3"; DestDir: "{cf64}\VST3\"; Check: Is64BitInstallMode; Components:vst3_64; Flags: ignoreversion;
+Source: "..\Builds\VisualStudio2017\Win32\Release\VST3\ATKJUCE.vst3"; DestDir: "{cf}\VST3\"; Check: not Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
+Source: "..\Builds\VisualStudio2017\Win32\Release\VST3\ATKJUCE.vst3"; DestDir: "{cf32}\VST3\"; Check: Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
+Source: "..\Builds\VisualStudio2017\x64\Release\VST3\ATKJUCE.vst3"; DestDir: "{cf64}\VST3\"; Check: Is64BitInstallMode; Components:vst3_64; Flags: ignoreversion;
 
-Source: "..\build-win\rtas\bin\ATKJUCE.dpm"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
-Source: "..\build-win\rtas\bin\ATKJUCE.dpm.rsr"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
+Source: "..\Builds\VisualStudio2017\Win32\Release\rtas\ATKJUCE.dpm"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
+Source: "..\Builds\VisualStudio2017\Win32\Release\rtas\ATKJUCE.dpm.rsr"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
 
-Source: "..\build-win\aax\bin\ATKJUCE.aaxplugin\*.*"; DestDir: "{cf32}\Avid\Audio\Plug-Ins\ATKJUCE.aaxplugin\"; Components:aax_32; Flags: ignoreversion recursesubdirs;
-Source: "..\build-win\aax\bin\ATKJUCE.aaxplugin\*.*"; DestDir: "{cf}\Avid\Audio\Plug-Ins\ATKJUCE.aaxplugin\"; Components:aax_64; Flags: ignoreversion recursesubdirs;
+Source: "..\Builds\VisualStudio2017\Win32\Release\aax\ATKJUCE.aaxplugin\*.*"; DestDir: "{cf32}\Avid\Audio\Plug-Ins\ATKJUCE.aaxplugin\"; Components:aax_32; Flags: ignoreversion recursesubdirs;
+Source: "..\Builds\VisualStudio2017\x64\Release\aax\ATKJUCE.aaxplugin\*.*"; DestDir: "{cf}\Avid\Audio\Plug-Ins\ATKJUCE.aaxplugin\"; Components:aax_64; Flags: ignoreversion recursesubdirs;
 
 Source: "..\manual\ATKJUCE_manual.pdf"; DestDir: "{app}"
 Source: "changelog.txt"; DestDir: "{app}"
@@ -52,7 +52,7 @@ Source: "readmewin.rtf"; DestDir: "{app}"; DestName: "readme.rtf"; Flags: isread
 
 [Icons]
 Name: "{group}\ATKJUCE"; Filename: "{app}\ATKJUCE.exe"
-Name: "{group}\User guide"; Filename: "{app}\ATKJUCE_manual.pdf"
+;Name: "{group}\User guide"; Filename: "{app}\ATKJUCE_manual.pdf"
 Name: "{group}\Changelog"; Filename: "{app}\changelog.txt"
 ;Name: "{group}\readme"; Filename: "{app}\readme.rtf"
 Name: "{group}\Uninstall ATKJUCE"; Filename: "{app}\unins000.exe"
