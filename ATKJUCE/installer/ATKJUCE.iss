@@ -40,13 +40,13 @@ Source: "..\Builds\VisualStudio2017\Win32\Release\VST3\ATKJUCE.vst3"; DestDir: "
 Source: "..\Builds\VisualStudio2017\Win32\Release\VST3\ATKJUCE.vst3"; DestDir: "{cf32}\VST3\"; Check: Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
 Source: "..\Builds\VisualStudio2017\x64\Release\VST3\ATKJUCE.vst3"; DestDir: "{cf64}\VST3\"; Check: Is64BitInstallMode; Components:vst3_64; Flags: ignoreversion;
 
-Source: "..\Builds\VisualStudio2017\Win32\Release\rtas\ATKJUCE.dpm"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
-Source: "..\Builds\VisualStudio2017\Win32\Release\rtas\ATKJUCE.dpm.rsr"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
+;Source: "..\Builds\VisualStudio2017\Win32\Release\rtas\ATKJUCE.dpm"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
+;Source: "..\Builds\VisualStudio2017\Win32\Release\rtas\ATKJUCE.dpm.rsr"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
 
-Source: "..\Builds\VisualStudio2017\Win32\Release\aax\ATKJUCE.aaxplugin\*.*"; DestDir: "{cf32}\Avid\Audio\Plug-Ins\ATKJUCE.aaxplugin\"; Components:aax_32; Flags: ignoreversion recursesubdirs;
-Source: "..\Builds\VisualStudio2017\x64\Release\aax\ATKJUCE.aaxplugin\*.*"; DestDir: "{cf}\Avid\Audio\Plug-Ins\ATKJUCE.aaxplugin\"; Components:aax_64; Flags: ignoreversion recursesubdirs;
+;Source: "..\Builds\VisualStudio2017\Win32\Release\aax\ATKJUCE.aaxplugin\*.*"; DestDir: "{cf32}\Avid\Audio\Plug-Ins\ATKJUCE.aaxplugin\"; Components:aax_32; Flags: ignoreversion recursesubdirs;
+;Source: "..\Builds\VisualStudio2017\x64\Release\aax\ATKJUCE.aaxplugin\*.*"; DestDir: "{cf}\Avid\Audio\Plug-Ins\ATKJUCE.aaxplugin\"; Components:aax_64; Flags: ignoreversion recursesubdirs;
 
-Source: "..\manual\ATKJUCE_manual.pdf"; DestDir: "{app}"
+;Source: "..\manual\ATKJUCE_manual.pdf"; DestDir: "{app}"
 Source: "changelog.txt"; DestDir: "{app}"
 Source: "readmewin.rtf"; DestDir: "{app}"; DestName: "readme.rtf"; Flags: isreadme
 
