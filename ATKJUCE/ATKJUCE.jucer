@@ -22,7 +22,11 @@
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" vst3Folder="../../../SDKs/VST3_SDK">
+    <XCODE_MAC targetFolder="Builds/MacOSX" vst3Folder="../../../SDKs/VST3_SDK"
+               externalLibraries="ATKAdaptive_static32&#13;ATKCore_static32&#13;ATKDelay_static32&#13;ATKDistortion_static32&#13;ATKDynamic_static32&#13;ATKEQ_static32&#13;ATKIO_static32&#13;ATKPreamplifier_static32&#13;ATKReverberation_static32&#13;ATKSpecial_static32&#13;ATKTools_static32&#13;ATKUtility_static32&#10;ATKAdaptive_static&#13;ATKCore_static&#13;ATKDelay_static&#13;ATKDistortion_static&#13;ATKDynamic_static&#13;ATKEQ_static&#13;ATKIO_static&#13;ATKMock_static&#13;ATKPreamplifier_static&#13;ATKReverberation_static&#13;ATKSpecial_static&#13;ATKTools_static&#13;ATKUtility_static"
+               extraLinkerFlags="-L ../../../../../ATK64/lib&#10;-L ../../../../../ATK32/lib"
+               extraCompilerFlags="-I ../../../../../ATK64/include&#10;-I ../../../../../../local/boost_1_63_0"
+               extraDefs="HAS_STD_ALIGN" keepCustomXcodeSchemes="1">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="ATKJUCE"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="ATKJUCE"/>

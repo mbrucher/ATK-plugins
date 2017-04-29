@@ -22,8 +22,9 @@ ATKJUCEAudioProcessor::ATKJUCEAudioProcessor()
                       #endif
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ),
 #endif
+inL(nullptr, 1, 0, false), inR(nullptr, 1, 0, false), outL(nullptr, 1, 0, false), outR(nullptr, 1, 0, false)
 {
 }
 
@@ -105,9 +106,7 @@ bool ATKJUCEAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) 
     return true;
   #else
     // This is the place where you check if the layout is supported.
-    // In this template code we only support mono or stereo.
-    if (layouts.getMainOutputChannelSet() != AudioChannelSet::mono()
-     && layouts.getMainOutputChannelSet() != AudioChannelSet::stereo())
+    if (layouts.getMainOutputChannelSet() != AudioChannelSet::stereo())
         return false;
 
     // This checks if the input layout matches the output layout
@@ -135,14 +134,16 @@ void ATKJUCEAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer&
     for (int i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
 
-    // This is the place where you'd normally do the guts of your plugin's
-    // audio processing...
-    for (int channel = 0; channel < totalNumInputChannels; ++channel)
-    {
-        float* channelData = buffer.getWritePointer (channel);
-
-        // ..do something to the data...
-    }
+  assert(totalNumInputChannels == totalNumOutputChannels);
+  assert(totalNumOutputChannels == 2);
+  
+  inL.set_pointer(buffer.getReadPointer(0), buffer.getNumSamples());
+  inR.set_pointer(buffer.getReadPointer(1), buffer.getNumSamples());
+  outL.set_pointer(buffer.getWritePointer(0), buffer.getNumSamples());
+  outR.set_pointer(buffer.getWritePointer(1), buffer.getNumSamples());
+ 
+  outL.process(buffer.getNumSamples());
+  outR.process(buffer.getNumSamples());
 }
 
 //==============================================================================

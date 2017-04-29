@@ -12,6 +12,9 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
+#include <ATK/Core/InPointerFilter.h>
+#include <ATK/Core/OutPointerFilter.h>
+
 
 //==============================================================================
 /**
@@ -58,4 +61,9 @@ public:
 private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ATKJUCEAudioProcessor)
+  
+  ATK::InPointerFilter<float> inL;
+  ATK::InPointerFilter<float> inR;
+  ATK::OutPointerFilter<float> outL;
+  ATK::OutPointerFilter<float> outR;
 };
