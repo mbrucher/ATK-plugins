@@ -14,8 +14,9 @@
 
 //==============================================================================
 ATKJUCEAudioProcessor::ATKJUCEAudioProcessor()
+:
 #ifndef JucePlugin_PreferredChannelConfigurations
-     : AudioProcessor (BusesProperties()
+    AudioProcessor (BusesProperties()
                      #if ! JucePlugin_IsMidiEffect
                       #if ! JucePlugin_IsSynth
                        .withInput  ("Input",  AudioChannelSet::stereo(), true)

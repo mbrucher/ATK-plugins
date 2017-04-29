@@ -24,6 +24,11 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
+		<key>ATKJUCE - Standalone Plugin.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>ATKJUCE - VST.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -53,6 +58,11 @@
 			<true/>
 		</dict>
 		<key>773919D3850B64098E0405CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>82CE43508A29FBF6EB0DF24B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
