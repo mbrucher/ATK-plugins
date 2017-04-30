@@ -89,8 +89,17 @@ void ATKJUCEAudioProcessor::changeProgramName (int index, const String& newName)
 //==============================================================================
 void ATKJUCEAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    // Use this method as the place to do any pre-playback
-    // initialisation that you need..
+	auto intsamplerate = std::lround(sampleRate);
+
+	inL.set_input_sampling_rate(intsamplerate);
+	inL.set_output_sampling_rate(intsamplerate);
+	inR.set_input_sampling_rate(intsamplerate);
+	inR.set_output_sampling_rate(intsamplerate);
+
+	outL.set_input_sampling_rate(intsamplerate);
+	outL.set_output_sampling_rate(intsamplerate);
+	outR.set_input_sampling_rate(intsamplerate);
+	outR.set_output_sampling_rate(intsamplerate);
 }
 
 void ATKJUCEAudioProcessor::releaseResources()

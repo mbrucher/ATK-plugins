@@ -22,8 +22,11 @@ gui/*
 PCH
 *.psd
 *.APS
-Builds
-JuceLibraryCode
+x64
+Win32
+.vs
+*.db
+*.nib
 
 Icon?
 .DS_Stor*
