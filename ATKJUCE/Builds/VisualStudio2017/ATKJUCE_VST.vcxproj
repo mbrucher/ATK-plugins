@@ -21,6 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{11648528-861C-3C5D-B81F-18BAA6F4485C}</ProjectGuid>
     <PlatformToolset>v141</PlatformToolset>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -123,6 +124,9 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <OutputFile>$(IntDir)\ATKJUCE.bsc</OutputFile>
     </Bscmake>
+    <BuildLog>
+      <Path>$(SolutionDir)$(IntDir)$(MSBuildProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
@@ -166,6 +170,9 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <OutputFile>$(IntDir)\ATKJUCE.bsc</OutputFile>
     </Bscmake>
+    <BuildLog>
+      <Path>$(SolutionDir)$(IntDir)$(MSBuildProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
@@ -209,6 +216,9 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <OutputFile>$(IntDir)\ATKJUCE.bsc</OutputFile>
     </Bscmake>
+    <BuildLog>
+      <Path>$(SolutionDir)$(IntDir)$(MSBuildProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
@@ -253,6 +263,9 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <OutputFile>$(IntDir)\ATKJUCE.bsc</OutputFile>
     </Bscmake>
+    <BuildLog>
+      <Path>$(SolutionDir)$(IntDir)$(MSBuildProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\JuceLibraryCode\include_juce_audio_plugin_client_VST2.cpp" />
