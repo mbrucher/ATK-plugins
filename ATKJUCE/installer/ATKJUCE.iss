@@ -32,8 +32,7 @@ Name: "vst3_64"; Description: "64-bit VST3 Plugin (.vst3)"; Types: full custom; 
 Source: "..\Builds\VisualStudio2017\Win32\Release\Standalone Plugin\ATKJUCE.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Components:app; Flags: ignoreversion;
 Source: "..\Builds\VisualStudio2017\x64\Release\Standalone Plugin\ATKJUCE.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Components:app; Flags: ignoreversion;
 
-Source: "..\Builds\VisualStudio2017\Win32\Release\VST\ATKJUCE.dll"; DestDir: {code:GetVST2Dir_32}; Check: not Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
-Source: "..\Builds\VisualStudio2017\Win32\Release\VST\ATKJUCE.dll"; DestDir: {code:GetVST2Dir_32}; Check: Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
+Source: "..\Builds\VisualStudio2017\Win32\Release\VST\ATKJUCE.dll"; DestDir: {code:GetVST2Dir_32}; Components:vst2_32; Flags: ignoreversion;
 Source: "..\Builds\VisualStudio2017\x64\Release\VST\ATKJUCE.dll"; DestDir: {code:GetVST2Dir_64}; Check: Is64BitInstallMode; Components:vst2_64; Flags: ignoreversion;
 
 Source: "..\Builds\VisualStudio2017\Win32\Release\VST3\ATKJUCE.vst3"; DestDir: "{cf}\VST3\"; Check: not Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
