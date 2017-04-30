@@ -27,6 +27,8 @@ ATKJUCEAudioProcessor::ATKJUCEAudioProcessor()
 #endif
 inL(nullptr, 1, 0, false), inR(nullptr, 1, 0, false), outL(nullptr, 1, 0, false), outR(nullptr, 1, 0, false)
 {
+  outL.set_input_port(0, &inL, 0);
+  outR.set_input_port(0, &inR, 0);
 }
 
 ATKJUCEAudioProcessor::~ATKJUCEAudioProcessor()
@@ -132,17 +134,8 @@ bool ATKJUCEAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) 
 
 void ATKJUCEAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
-    const int totalNumInputChannels  = getTotalNumInputChannels();
-    const int totalNumOutputChannels = getTotalNumOutputChannels();
-
-    // In case we have more outputs than inputs, this code clears any output
-    // channels that didn't contain input data, (because these aren't
-    // guaranteed to be empty - they may contain garbage).
-    // This is here to avoid people getting screaming feedback
-    // when they first compile a plugin, but obviously you don't need to keep
-    // this code if your algorithm always overwrites all the output channels.
-    for (int i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
-        buffer.clear (i, 0, buffer.getNumSamples());
+  const int totalNumInputChannels  = getTotalNumInputChannels();
+  const int totalNumOutputChannels = getTotalNumOutputChannels();
 
   assert(totalNumInputChannels == totalNumOutputChannels);
   assert(totalNumOutputChannels == 2);
