@@ -26,6 +26,7 @@ x64
 Win32
 .vs
 *.db
+build
 
 Icon?
 .DS_Stor*
