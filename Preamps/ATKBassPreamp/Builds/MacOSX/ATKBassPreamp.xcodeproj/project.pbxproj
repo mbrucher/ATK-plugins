@@ -345,6 +345,10 @@
 		089DB6001EB54A0D00354B95 /* libATKTools_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKTools_static32.a; path = lib/libATKTools_static32.a; sourceTree = ATK32ROOT; };
 		089DB6011EB54A0D00354B95 /* libATKUtility_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKUtility_static32.a; path = lib/libATKUtility_static32.a; sourceTree = ATK32ROOT; };
 		089DB68C1EB54A9200354B95 /* ATKBassPreamp.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = ATKBassPreamp.xcconfig; path = ../../ATKBassPreamp.xcconfig; sourceTree = "<group>"; };
+		089DB6971EB746FD00354B95 /* Triode2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Triode2.cpp; path = ../../../../ATKJUCEComponents/Preamplifier/Triode2.cpp; sourceTree = "<group>"; };
+		089DB6981EB746FD00354B95 /* Triode2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Triode2.h; path = ../../../../ATKJUCEComponents/Preamplifier/Triode2.h; sourceTree = "<group>"; };
+		089DB6991EB7470E00354B95 /* ToneStackFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ToneStackFilter.cpp; path = ../../../../ATKJUCEComponents/EQ/ToneStackFilter.cpp; sourceTree = "<group>"; };
+		089DB69A1EB7470E00354B95 /* ToneStackFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToneStackFilter.h; path = ../../../../ATKJUCEComponents/EQ/ToneStackFilter.h; sourceTree = "<group>"; };
 		09320A84AF45A38DCCF28836 /* juce_audio_formats */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_audio_formats; path = modules/juce_audio_formats; sourceTree = JUCEROOT; };
 		0CC3FB467885B72F08596AEB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0FDACCB27092B22F45EF955E /* juce_audio_utils */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_audio_utils; path = modules/juce_audio_utils; sourceTree = JUCEROOT; };
@@ -688,6 +692,17 @@
 			name = ATK;
 			sourceTree = "<group>";
 		};
+		089DB6961EB746E700354B95 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				089DB6991EB7470E00354B95 /* ToneStackFilter.cpp */,
+				089DB69A1EB7470E00354B95 /* ToneStackFilter.h */,
+				089DB6971EB746FD00354B95 /* Triode2.cpp */,
+				089DB6981EB746FD00354B95 /* Triode2.h */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
 		14E2A7E277579C68897A5E09 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,6 +719,7 @@
 		3BA5BDCE44DD79065C98B5A5 /* ATKBassPreamp */ = {
 			isa = PBXGroup;
 			children = (
+				089DB6961EB746E700354B95 /* Components */,
 				AA65FEC74661B02B71173482 /* Source */,
 			);
 			name = ATKBassPreamp;
