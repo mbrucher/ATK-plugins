@@ -345,8 +345,8 @@
 		089DB6001EB54A0D00354B95 /* libATKTools_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKTools_static32.a; path = lib/libATKTools_static32.a; sourceTree = ATK32ROOT; };
 		089DB6011EB54A0D00354B95 /* libATKUtility_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKUtility_static32.a; path = lib/libATKUtility_static32.a; sourceTree = ATK32ROOT; };
 		089DB68C1EB54A9200354B95 /* ATKBassPreamp.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = ATKBassPreamp.xcconfig; path = ../../ATKBassPreamp.xcconfig; sourceTree = "<group>"; };
-		089DB6971EB746FD00354B95 /* Triode2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Triode2.cpp; path = ../../../../ATKJUCEComponents/Preamplifier/Triode2.cpp; sourceTree = "<group>"; };
-		089DB6981EB746FD00354B95 /* Triode2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Triode2.h; path = ../../../../ATKJUCEComponents/Preamplifier/Triode2.h; sourceTree = "<group>"; };
+		089DB6971EB746FD00354B95 /* Triode2Filter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Triode2Filter.cpp; path = ../../../../ATKJUCEComponents/Preamplifier/Triode2Filter.cpp; sourceTree = "<group>"; };
+		089DB6981EB746FD00354B95 /* Triode2Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Triode2Filter.h; path = ../../../../ATKJUCEComponents/Preamplifier/Triode2Filter.h; sourceTree = "<group>"; };
 		089DB6991EB7470E00354B95 /* ToneStackFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ToneStackFilter.cpp; path = ../../../../ATKJUCEComponents/EQ/ToneStackFilter.cpp; sourceTree = "<group>"; };
 		089DB69A1EB7470E00354B95 /* ToneStackFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToneStackFilter.h; path = ../../../../ATKJUCEComponents/EQ/ToneStackFilter.h; sourceTree = "<group>"; };
 		089DB69B1EB749A300354B95 /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../../Source/AppConfig.h; sourceTree = SOURCE_ROOT; };
@@ -697,8 +697,8 @@
 			children = (
 				089DB6991EB7470E00354B95 /* ToneStackFilter.cpp */,
 				089DB69A1EB7470E00354B95 /* ToneStackFilter.h */,
-				089DB6971EB746FD00354B95 /* Triode2.cpp */,
-				089DB6981EB746FD00354B95 /* Triode2.h */,
+				089DB6971EB746FD00354B95 /* Triode2Filter.cpp */,
+				089DB6981EB746FD00354B95 /* Triode2Filter.h */,
 			);
 			name = Components;
 			sourceTree = "<group>";
