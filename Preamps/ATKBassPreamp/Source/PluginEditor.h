@@ -13,6 +13,7 @@
 #include "JuceHeader.h"
 #include "PluginProcessor.h"
 
+#include <ATKJUCEComponents/Tools/VolumeFilter.h>
 
 //==============================================================================
 /**
@@ -31,7 +32,7 @@ private:
   // access the processor object that created it.
   ATKBassPreampAudioProcessor& processor;
   
-  juce::Slider levelSlider;
+  ATK::juce::VolumeFilterComponent level;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ATKBassPreampAudioProcessorEditor)
 };

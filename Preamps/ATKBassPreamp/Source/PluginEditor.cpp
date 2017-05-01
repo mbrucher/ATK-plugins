@@ -11,23 +11,16 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-#include <ATKJUCEComponents/JUCE/LookAndFeel.h>
-
 //==============================================================================
 ATKBassPreampAudioProcessorEditor::ATKBassPreampAudioProcessorEditor (ATKBassPreampAudioProcessor& p)
-: AudioProcessorEditor (&p), processor (p), levelSlider(juce::Slider::SliderStyle::Rotary, juce::Slider::TextEntryBoxPosition::TextBoxBelow)
+: AudioProcessorEditor (&p), processor (p), level(p.get_level_filter(), "Volume", -60, 0, 0)
 
 {
-  addAndMakeVisible(levelSlider);
-  levelSlider.setRange (-60, 0);
-  levelSlider.setTextValueSuffix (" dB");
-  levelSlider.setColour(juce::Slider::thumbColourId, juce::Colour::fromFloatRGBA(1, 1, 1, 0));
-  levelSlider.setColour(juce::Slider::rotarySliderFillColourId, juce::Colours::orange);
-  levelSlider.setLookAndFeel(&ATK::juce::SimpleSliderLookAndFeel::get_instance());
+  addAndMakeVisible(level);
   
   // Make sure that before the constructor has finished, you've set the
   // editor's size to whatever you need it to be.
-  setSize (400, 300);
+  setSize (200, 200);
 }
 
 ATKBassPreampAudioProcessorEditor::~ATKBassPreampAudioProcessorEditor()
@@ -36,5 +29,5 @@ ATKBassPreampAudioProcessorEditor::~ATKBassPreampAudioProcessorEditor()
 
 void ATKBassPreampAudioProcessorEditor::resized()
 {
-  levelSlider.setBoundsRelative(0.1, 0.1, 0.8, 0.8);
+  level.setBoundsRelative(0, 0, 1, 1);
 }

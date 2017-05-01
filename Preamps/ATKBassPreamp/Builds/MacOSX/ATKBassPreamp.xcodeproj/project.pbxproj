@@ -217,8 +217,7 @@
 		089DB6941EB54DC700354B95 /* libATKBassPreamp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8EBA119502F36AF23848C0 /* libATKBassPreamp.a */; };
 		089DB6951EB54DCA00354B95 /* libATKBassPreamp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8EBA119502F36AF23848C0 /* libATKBassPreamp.a */; };
 		089DB6A11EB7A55100354B95 /* LookAndFeel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089DB69F1EB7A24F00354B95 /* LookAndFeel.cpp */; };
-		089DB6A21EB7A55400354B95 /* ToneStackFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089DB6991EB7470E00354B95 /* ToneStackFilter.cpp */; };
-		089DB6A31EB7A55600354B95 /* Triode2Filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089DB6971EB746FD00354B95 /* Triode2Filter.cpp */; };
+		089DB6A61EB7D44700354B95 /* VolumeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089DB6A41EB7D43C00354B95 /* VolumeFilter.cpp */; };
 		0A71D9439C3124E9B1B8860A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6495E762771E272C81096AD3 /* CoreMedia.framework */; };
 		0A72DA5BBBDDAD021FEB6074 /* PluginEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D046B5ED0F62C32989B7674A /* PluginEditor.cpp */; };
 		151C9BA8E655C2378136CC34 /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939E1FFB55E0B4F713589142 /* CoreAudioKit.framework */; };
@@ -348,14 +347,14 @@
 		089DB6001EB54A0D00354B95 /* libATKTools_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKTools_static32.a; path = lib/libATKTools_static32.a; sourceTree = ATK32ROOT; };
 		089DB6011EB54A0D00354B95 /* libATKUtility_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKUtility_static32.a; path = lib/libATKUtility_static32.a; sourceTree = ATK32ROOT; };
 		089DB68C1EB54A9200354B95 /* ATKBassPreamp.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = ATKBassPreamp.xcconfig; path = ../../ATKBassPreamp.xcconfig; sourceTree = "<group>"; };
-		089DB6971EB746FD00354B95 /* Triode2Filter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Triode2Filter.cpp; path = ../../../../ATKJUCEComponents/Preamplifier/Triode2Filter.cpp; sourceTree = "<group>"; };
-		089DB6981EB746FD00354B95 /* Triode2Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Triode2Filter.h; path = ../../../../ATKJUCEComponents/Preamplifier/Triode2Filter.h; sourceTree = "<group>"; };
 		089DB6991EB7470E00354B95 /* ToneStackFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ToneStackFilter.cpp; path = ../../../../ATKJUCEComponents/EQ/ToneStackFilter.cpp; sourceTree = "<group>"; };
 		089DB69A1EB7470E00354B95 /* ToneStackFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToneStackFilter.h; path = ../../../../ATKJUCEComponents/EQ/ToneStackFilter.h; sourceTree = "<group>"; };
 		089DB69B1EB749A300354B95 /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../../Source/AppConfig.h; sourceTree = SOURCE_ROOT; };
 		089DB69C1EB749A300354B95 /* JuceHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../Source/JuceHeader.h; sourceTree = SOURCE_ROOT; };
 		089DB69F1EB7A24F00354B95 /* LookAndFeel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LookAndFeel.cpp; path = ../../../../ATKJUCEComponents/JUCE/LookAndFeel.cpp; sourceTree = "<group>"; };
 		089DB6A01EB7A24F00354B95 /* LookAndFeel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LookAndFeel.h; path = ../../../../ATKJUCEComponents/JUCE/LookAndFeel.h; sourceTree = "<group>"; };
+		089DB6A41EB7D43C00354B95 /* VolumeFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VolumeFilter.cpp; path = ../../../../ATKJUCEComponents/Tools/VolumeFilter.cpp; sourceTree = "<group>"; };
+		089DB6A51EB7D43C00354B95 /* VolumeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VolumeFilter.h; path = ../../../../ATKJUCEComponents/Tools/VolumeFilter.h; sourceTree = "<group>"; };
 		09320A84AF45A38DCCF28836 /* juce_audio_formats */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_audio_formats; path = modules/juce_audio_formats; sourceTree = JUCEROOT; };
 		0CC3FB467885B72F08596AEB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0FDACCB27092B22F45EF955E /* juce_audio_utils */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_audio_utils; path = modules/juce_audio_utils; sourceTree = JUCEROOT; };
@@ -700,12 +699,12 @@
 		089DB6961EB746E700354B95 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				089DB6A41EB7D43C00354B95 /* VolumeFilter.cpp */,
+				089DB6A51EB7D43C00354B95 /* VolumeFilter.h */,
 				089DB69F1EB7A24F00354B95 /* LookAndFeel.cpp */,
 				089DB6A01EB7A24F00354B95 /* LookAndFeel.h */,
 				089DB6991EB7470E00354B95 /* ToneStackFilter.cpp */,
 				089DB69A1EB7470E00354B95 /* ToneStackFilter.h */,
-				089DB6971EB746FD00354B95 /* Triode2Filter.cpp */,
-				089DB6981EB746FD00354B95 /* Triode2Filter.h */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -1182,8 +1181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				089DB6A31EB7A55600354B95 /* Triode2Filter.cpp in Sources */,
-				089DB6A21EB7A55400354B95 /* ToneStackFilter.cpp in Sources */,
+				089DB6A61EB7D44700354B95 /* VolumeFilter.cpp in Sources */,
 				089DB6A11EB7A55100354B95 /* LookAndFeel.cpp in Sources */,
 				9DB50A2F4E4F92613479F29A /* PluginProcessor.cpp in Sources */,
 				0A72DA5BBBDDAD021FEB6074 /* PluginEditor.cpp in Sources */,

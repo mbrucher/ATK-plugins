@@ -171,6 +171,11 @@ void ATKBassPreampAudioProcessor::setStateInformation (const void* data, int siz
     // whose contents will have been created by the getStateInformation() call.
 }
 
+ATK::VolumeFilter<double>& ATKBassPreampAudioProcessor::get_level_filter()
+{
+  return levelFilter;
+}
+
 //==============================================================================
 // This creates new instances of the plugin..
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
