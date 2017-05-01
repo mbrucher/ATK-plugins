@@ -1,0 +1,12 @@
+#include "../../../common.xcconfig"
+
+//------------------------------
+// Global settings
+
+// the basename of the vst, vst3, app, component, dpm, aaxplugin
+BINARY_NAME = ATKBassPreamp
+
+THISPLUGINROOT = $(PLUGINROOT)/Preamps/ATKBassPreamp
+
+ADDITIONAL_INCLUDES = $(ATKROOT)/include/ $(BOOSTROOT) $(JUCEINCLUDEROOT) $(VST3SDK) $(THISPLUGINROOT) $(THISPLUGINROOT)/Source
+ADDITIONAL_LIBRARY_PATHS = $(ATKROOT)/lib/ $(ATK32ROOT)/lib/

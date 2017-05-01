@@ -1,27 +1,7 @@
 #!/usr/bin/python
 
-# Python shell script for Duplicating WDL-OL IPlug Projects
-# Oli Larkin 2012-2014 http://www.olilarkin.co.uk
-# License: WTFPL http://sam.zoy.org/wtfpl/COPYING
-# Modified from this script by Bibha Tripathi http://code.activestate.com/recipes/435904-sedawk-python-script-to-rename-subdirectories-of-a/
-# Author accepts no responsibilty for wiping your hd
-
-# NOTES:
-# should work with Python2 or Python3
-# not designed to be fool proof- think carefully about what you choose for a project name
-# best to stick to standard characters in your project names - avoid spaces, numbers and dots
-# windows users need to install python and set it up so you can run it from the command line
-# see http://www.voidspace.org.uk/python/articles/command_line.shtml
-# this involves adding the python folder e.g. C:\Python27\ to your %PATH% environment variable
-
 # USAGE:
-# duplicate.py [inputprojectname] [outputprojectname] [manufacturername]
-
-# TODO:
-# - indentation of directory structure
-# - variable manufacturer name
-
-
+# duplicate.py [inputprojectname] [outputprojectname]
 
 
 import fileinput, glob, string, sys, os, re, uuid
@@ -36,17 +16,15 @@ FILTERED_FILE_EXTENSIONS = [".ico",".icns", ".pdf", ".png", ".zip", ".exe", ".wa
 DONT_COPY = ("*.exe", "*.dmg", "*.pkg", "*.mpkg", "*.svn", "*.ncb", "*.suo", "*sdf", "ipch", "build-*", "*.layout", "*.depend", ".DS_Store")
 
 SUBFOLDERS_TO_SEARCH = [
-"app_wrapper",
-"resources",
-"installer",
-"scripts",
-"manual",
-"ios_wrapper",
-"xcschemes",
-"xcshareddata",
-"xcuserdata",
-"en-osx.lproj",
-"project.xcworkspace"
+  "resources",
+  "installer",
+  "xcschemes",
+  "xcshareddata",
+  "project.xcworkspace",
+  "Builds",
+  "Source",
+  "MacOSX",
+  "VisualStudio2017"
 ]
 
 def checkdirname(name, searchproject):
@@ -64,16 +42,8 @@ def replacestrs(filename, s, r):
     line.find(s)
     line = line.replace(s, r)
     sys.stdout.write(line)
-    
-def replacestrsChop(filename, s, r):
-  files = glob.glob(filename)
-  
-  for line in fileinput.input(files,inplace=1):
-    if(line.startswith(s)): 
-      line = r + "\n"
-    sys.stdout.write(line)
 
-def dirwalk(dir, searchproject, replaceproject, searchman, replaceman):
+def dirwalk(dir, searchproject, replaceproject):
   for f in os.listdir(dir):
     fullpath = os.path.join(dir, f)
     
@@ -83,18 +53,18 @@ def dirwalk(dir, searchproject, replaceproject, searchman, replaceman):
         fullpath = os.path.join(dir, replaceproject + ".xcodeproj")
         
         print("recursing in main xcode project directory: ")
-        for x in dirwalk(fullpath, searchproject, replaceproject, searchman, replaceman):
+        for x in dirwalk(fullpath, searchproject, replaceproject):
           yield x
       elif checkdirname(f, searchproject + "-ios.xcodeproj"):
         os.rename(fullpath, os.path.join(dir, replaceproject + "-ios.xcodeproj"))
         fullpath = os.path.join(dir, replaceproject + "-ios.xcodeproj")
         
         print("recursing in ios xcode project directory: ")
-        for x in dirwalk(fullpath, searchproject, replaceproject, searchman, replaceman):
+        for x in dirwalk(fullpath, searchproject, replaceproject):
           yield x
       elif (f in SUBFOLDERS_TO_SEARCH):
         print('recursing in ' + f + ' directory: ')
-        for x in dirwalk(fullpath, searchproject, replaceproject, searchman, replaceman):
+        for x in dirwalk(fullpath, searchproject, replaceproject):
           yield x
 
     if os.path.isfile(fullpath):
@@ -109,9 +79,6 @@ def dirwalk(dir, searchproject, replaceproject, searchman, replaceman):
         print(("Replacing captitalized project name strings in file " + filename))
         replacestrs(fullpath, searchproject.upper(), replaceproject.upper())
         
-        if replaceman is not None:
-          print(("Replacing manufacturer name strings in file " + filename))
-          replacestrs(fullpath, searchman, replaceman)
       else:
         print(("NOT replacing name strings in file " + filename))
       
@@ -124,18 +91,12 @@ def dirwalk(dir, searchproject, replaceproject, searchman, replaceman):
       yield f, fullpath
 
 def main():
-  global VERSION
-  print(("\nIPlug Project Duplicator v" + VERSION + " by Oli Larkin ------------------------------\n"))
-  
   if len(sys.argv) < 3:
-    print("Usage: duplicate.py inputprojectname outputprojectname [manufacturername]")
+    print("Usage: duplicate.py inputprojectname outputprojectname")
     sys.exit(1)
   else:
     input=sys.argv[1]
     output=sys.argv[2]
-    manufacturer=None
-    if len(sys.argv) > 3:
-      manufacturer = sys.argv[3]
 
     if ' ' in input:
       print("error: input project name has spaces")
@@ -143,10 +104,6 @@ def main():
       
     if ' ' in output:
       print("error: output project name has spaces")
-      sys.exit(1)
-    
-    if manufacturer and ' ' in manufacturer:
-      print("error: manufacturer name has spaces")
       sys.exit(1)
     
     # remove a trailing slash if it exists
@@ -171,10 +128,8 @@ def main():
     cpath = os.path.join(os.getcwd(), output)
 
     #replace manufacturer name strings
-    for dir in dirwalk(cpath, input, output, "AcmeInc", manufacturer):
+    for dir in dirwalk(cpath, input, output):
       pass
-    
-    print("\ndone - don't forget to change PLUG_UID and MFR_UID in config.h")
-    
+
 if __name__ == '__main__':
   main()
