@@ -11,6 +11,7 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+#include <ATKJUCEComponents/JUCE/LookAndFeel.h>
 
 //==============================================================================
 ATKBassPreampAudioProcessorEditor::ATKBassPreampAudioProcessorEditor (ATKBassPreampAudioProcessor& p)
@@ -22,6 +23,7 @@ ATKBassPreampAudioProcessorEditor::ATKBassPreampAudioProcessorEditor (ATKBassPre
   levelSlider.setTextValueSuffix (" dB");
   levelSlider.setColour(juce::Slider::thumbColourId, juce::Colour::fromFloatRGBA(1, 1, 1, 0));
   levelSlider.setColour(juce::Slider::rotarySliderFillColourId, juce::Colours::orange);
+  levelSlider.setLookAndFeel(&ATK::juce::SimpleSliderLookAndFeel::get_instance());
   
   // Make sure that before the constructor has finished, you've set the
   // editor's size to whatever you need it to be.
