@@ -30,14 +30,14 @@ Name: "vst3_64"; Description: "64-bit VST3 Plugin (.vst3)"; Types: full custom; 
 
 [Files]
 Source: "..\Builds\VisualStudio2017\Win32\Release\Standalone Plugin\ATKBassPreamp.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Components:app; Flags: ignoreversion;
-Source: "..\Builds\VisualStudio2017\x64\Release\Standalone Plugin\ATKBassPreamp.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Components:app; Flags: ignoreversion;
+Source: "..\Builds\VisualStudio2017\x64\Release\Standalone Plugin\ATKBassPreamp x64.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Components:app; Flags: ignoreversion;
 
 Source: "..\Builds\VisualStudio2017\Win32\Release\VST\ATKBassPreamp.dll"; DestDir: {code:GetVST2Dir_32}; Components:vst2_32; Flags: ignoreversion;
-Source: "..\Builds\VisualStudio2017\x64\Release\VST\ATKBassPreamp.dll"; DestDir: {code:GetVST2Dir_64}; Check: Is64BitInstallMode; Components:vst2_64; Flags: ignoreversion;
+Source: "..\Builds\VisualStudio2017\x64\Release\VST\ATKBassPreamp x64.dll"; DestDir: {code:GetVST2Dir_64}; Check: Is64BitInstallMode; Components:vst2_64; Flags: ignoreversion;
 
 Source: "..\Builds\VisualStudio2017\Win32\Release\VST3\ATKBassPreamp.vst3"; DestDir: "{cf}\VST3\"; Check: not Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
 Source: "..\Builds\VisualStudio2017\Win32\Release\VST3\ATKBassPreamp.vst3"; DestDir: "{cf32}\VST3\"; Check: Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
-Source: "..\Builds\VisualStudio2017\x64\Release\VST3\ATKBassPreamp.vst3"; DestDir: "{cf64}\VST3\"; Check: Is64BitInstallMode; Components:vst3_64; Flags: ignoreversion;
+Source: "..\Builds\VisualStudio2017\x64\Release\VST3\ATKBassPreamp x64.vst3"; DestDir: "{cf64}\VST3\"; Check: Is64BitInstallMode; Components:vst3_64; Flags: ignoreversion;
 
 ;Source: "..\Builds\VisualStudio2017\Win32\Release\rtas\ATKBassPreamp.dpm"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
 ;Source: "..\Builds\VisualStudio2017\Win32\Release\rtas\ATKBassPreamp.dpm.rsr"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;

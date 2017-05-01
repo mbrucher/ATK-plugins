@@ -1835,10 +1835,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Juce Library Code", "Juce L
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{6F2576C5-3F92-4EB0-A406-8B67D9C531D2}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.cpp = ..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.cpp
+		..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.h = ..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.h
 		..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.cpp = ..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.cpp
 		..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.h = ..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.h
-		..\..\..\..\ATKJUCEComponents\Preamplifier\Triode2Filter.cpp = ..\..\..\..\ATKJUCEComponents\Preamplifier\Triode2Filter.cpp
-		..\..\..\..\ATKJUCEComponents\Preamplifier\Triode2Filter.h = ..\..\..\..\ATKJUCEComponents\Preamplifier\Triode2Filter.h
+		..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.cpp = ..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.cpp
+		..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.h = ..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.h
 	EndProjectSection
 EndProject
 Global
