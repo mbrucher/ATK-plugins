@@ -40,8 +40,8 @@
 #if ! JUCE_DONT_DECLARE_PROJECTINFO
 namespace ProjectInfo
 {
-    const char* const  projectName    = "ATKBassPreamp";
-    const char* const  versionString  = "1.0.0";
-    const int          versionNumber  = 0x10000;
+    const char* const  projectName    = JucePlugin_Name;
+    const char* const  versionString  = JucePlugin_VersionString;
+    const int          versionNumber  = JucePlugin_VersionCode;
 }
 #endif

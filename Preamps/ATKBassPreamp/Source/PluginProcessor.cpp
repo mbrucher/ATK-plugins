@@ -25,10 +25,9 @@ ATKBassPreampAudioProcessor::ATKBassPreampAudioProcessor()
                      #endif
                        ),
 #endif
-inL(nullptr, 1, 0, false), inR(nullptr, 1, 0, false), outL(nullptr, 1, 0, false), outR(nullptr, 1, 0, false)
+inFilter(nullptr, 1, 0, false), overdriveFilter(ATK::Triode2Filter<double, ATK::DempwolfTriodeFunction<double>>::build_standard_filter()), outFilter(nullptr, 1, 0, false)
 {
-  outL.set_input_port(0, &inL, 0);
-  outR.set_input_port(0, &inR, 0);
+  outFilter.set_input_port(0, &inFilter, 0);
 }
 
 ATKBassPreampAudioProcessor::~ATKBassPreampAudioProcessor()
@@ -93,15 +92,10 @@ void ATKBassPreampAudioProcessor::prepareToPlay (double sampleRate, int samplesP
 {
 	auto intsamplerate = std::lround(sampleRate);
 
-	inL.set_input_sampling_rate(intsamplerate);
-	inL.set_output_sampling_rate(intsamplerate);
-	inR.set_input_sampling_rate(intsamplerate);
-	inR.set_output_sampling_rate(intsamplerate);
-
-	outL.set_input_sampling_rate(intsamplerate);
-	outL.set_output_sampling_rate(intsamplerate);
-	outR.set_input_sampling_rate(intsamplerate);
-	outR.set_output_sampling_rate(intsamplerate);
+	inFilter.set_input_sampling_rate(intsamplerate);
+	inFilter.set_output_sampling_rate(intsamplerate);
+	outFilter.set_input_sampling_rate(intsamplerate);
+	outFilter.set_output_sampling_rate(intsamplerate);
 }
 
 void ATKBassPreampAudioProcessor::releaseResources()
@@ -138,15 +132,12 @@ void ATKBassPreampAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiB
   const int totalNumOutputChannels = getTotalNumOutputChannels();
 
   assert(totalNumInputChannels == totalNumOutputChannels);
-  assert(totalNumOutputChannels == 2);
+  assert(totalNumOutputChannels == 1);
   
-  inL.set_pointer(buffer.getReadPointer(0), buffer.getNumSamples());
-  inR.set_pointer(buffer.getReadPointer(1), buffer.getNumSamples());
-  outL.set_pointer(buffer.getWritePointer(0), buffer.getNumSamples());
-  outR.set_pointer(buffer.getWritePointer(1), buffer.getNumSamples());
+  inFilter.set_pointer(buffer.getReadPointer(0), buffer.getNumSamples());
+  outFilter.set_pointer(buffer.getWritePointer(0), buffer.getNumSamples());
  
-  outL.process(buffer.getNumSamples());
-  outR.process(buffer.getNumSamples());
+  outFilter.process(buffer.getNumSamples());
 }
 
 //==============================================================================

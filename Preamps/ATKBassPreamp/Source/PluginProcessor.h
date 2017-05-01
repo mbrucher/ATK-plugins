@@ -15,6 +15,17 @@
 #include <ATK/Core/InPointerFilter.h>
 #include <ATK/Core/OutPointerFilter.h>
 
+#include <ATK/Tools/OversamplingFilter.h>
+#include <ATK/Tools/DecimationFilter.h>
+#include <ATK/Tools/VolumeFilter.h>
+
+#include <ATK/EQ/ButterworthFilter.h>
+#include <ATK/EQ/IIRFilter.h>
+#include <ATK/EQ/ToneStackFilter.h>
+
+#include <ATK/Preamplifier/Triode2Filter.h>
+#include <ATK/Preamplifier/DempwolfTriodeFunction.h>
+
 
 //==============================================================================
 /**
@@ -62,8 +73,13 @@ private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ATKBassPreampAudioProcessor)
   
-  ATK::InPointerFilter<float> inL;
-  ATK::InPointerFilter<float> inR;
-  ATK::OutPointerFilter<float> outL;
-  ATK::OutPointerFilter<float> outR;
+  ATK::InPointerFilter<float> inFilter;
+  ATK::VolumeFilter<double> levelFilter;
+  ATK::OversamplingFilter<double, ATK::Oversampling6points5order_4<double> > oversamplingFilter;
+  ATK::Triode2Filter<double, ATK::DempwolfTriodeFunction<double>> overdriveFilter;
+  ATK::IIRFilter<ATK::ButterworthLowPassCoefficients<double> > lowpassFilter;
+  ATK::DecimationFilter<double> decimationFilter;
+  ATK::IIRFilter<ATK::ToneStackCoefficients<double> > toneFilter;
+  ATK::VolumeFilter<double> volumeFilter;
+  ATK::OutPointerFilter<float> outFilter;
 };

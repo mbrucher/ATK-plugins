@@ -406,10 +406,10 @@
  #define JucePlugin_IAAName                "MatthieuBrucher: ATKBassPreamp"
 #endif
 #ifndef  JucePlugin_MaxNumInputChannels
- #define JucePlugin_MaxNumInputChannels    2
+ #define JucePlugin_MaxNumInputChannels    1
 #endif
 #ifndef  JucePlugin_MaxNumOutputChannels
- #define JucePlugin_MaxNumOutputChannels   2
+ #define JucePlugin_MaxNumOutputChannels   1
 #endif
 #ifndef  JucePlugin_PreferredChannelConfigurations
  #define JucePlugin_PreferredChannelConfigurations  {1,1}
