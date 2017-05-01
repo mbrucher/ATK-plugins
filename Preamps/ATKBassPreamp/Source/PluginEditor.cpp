@@ -14,30 +14,25 @@
 
 //==============================================================================
 ATKBassPreampAudioProcessorEditor::ATKBassPreampAudioProcessorEditor (ATKBassPreampAudioProcessor& p)
-    : AudioProcessorEditor (&p), processor (p)
+: AudioProcessorEditor (&p), processor (p), levelSlider(juce::Slider::SliderStyle::Rotary, juce::Slider::TextEntryBoxPosition::TextBoxBelow)
+
 {
-    // Make sure that before the constructor has finished, you've set the
-    // editor's size to whatever you need it to be.
-    setSize (400, 300);
+  addAndMakeVisible(levelSlider);
+  levelSlider.setRange (-60, 0);
+  levelSlider.setTextValueSuffix (" dB");
+  levelSlider.setColour(juce::Slider::thumbColourId, juce::Colour::fromFloatRGBA(1, 1, 1, 0));
+  levelSlider.setColour(juce::Slider::rotarySliderFillColourId, juce::Colours::orange);
+  
+  // Make sure that before the constructor has finished, you've set the
+  // editor's size to whatever you need it to be.
+  setSize (400, 300);
 }
 
 ATKBassPreampAudioProcessorEditor::~ATKBassPreampAudioProcessorEditor()
 {
 }
 
-//==============================================================================
-void ATKBassPreampAudioProcessorEditor::paint (Graphics& g)
-{
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
-
-    g.setColour (Colours::white);
-    g.setFont (15.0f);
-    g.drawFittedText ("Hello World!", getLocalBounds(), Justification::centred, 1);
-}
-
 void ATKBassPreampAudioProcessorEditor::resized()
 {
-    // This is generally where you'll want to lay out the positions of any
-    // subcomponents in your editor..
+  levelSlider.setBoundsRelative(0.1, 0.1, 0.8, 0.8);
 }

@@ -14,7 +14,7 @@
 
 //==============================================================================
 ATKBassPreampAudioProcessor::ATKBassPreampAudioProcessor()
-:
+  :
 #ifndef JucePlugin_PreferredChannelConfigurations
     AudioProcessor (BusesProperties()
                      #if ! JucePlugin_IsMidiEffect
@@ -25,9 +25,15 @@ ATKBassPreampAudioProcessor::ATKBassPreampAudioProcessor()
                      #endif
                        ),
 #endif
-inFilter(nullptr, 1, 0, false), overdriveFilter(ATK::Triode2Filter<double, ATK::DempwolfTriodeFunction<double>>::build_standard_filter()), outFilter(nullptr, 1, 0, false)
-{
+  inFilter(nullptr, 1, 0, false), overdriveFilter(ATK::Triode2Filter<double, ATK::DempwolfTriodeFunction<double>>::build_standard_filter()), outFilter(nullptr, 1, 0, false)
+{  
   outFilter.set_input_port(0, &inFilter, 0);
+
+  addParameter (level = new AudioParameterFloat ("level", "Level", 0.0f, 1.0f, 1.0f));
+  addParameter (bass = new AudioParameterFloat ("bass", "Bass", 0.0f, 1.0f, 1.0f));
+  addParameter (medium = new AudioParameterFloat ("medium", "Medium", 0.0f, 1.0f, 1.0f));
+  addParameter (high = new AudioParameterFloat ("high", "High", 0.0f, 1.0f, 1.0f));
+  addParameter (gain = new AudioParameterFloat ("gain", "Gain", 0.0f, 1.0f, 1.0f));
 }
 
 ATKBassPreampAudioProcessor::~ATKBassPreampAudioProcessor()
