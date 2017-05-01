@@ -349,6 +349,8 @@
 		089DB6981EB746FD00354B95 /* Triode2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Triode2.h; path = ../../../../ATKJUCEComponents/Preamplifier/Triode2.h; sourceTree = "<group>"; };
 		089DB6991EB7470E00354B95 /* ToneStackFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ToneStackFilter.cpp; path = ../../../../ATKJUCEComponents/EQ/ToneStackFilter.cpp; sourceTree = "<group>"; };
 		089DB69A1EB7470E00354B95 /* ToneStackFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToneStackFilter.h; path = ../../../../ATKJUCEComponents/EQ/ToneStackFilter.h; sourceTree = "<group>"; };
+		089DB69B1EB749A300354B95 /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../../Source/AppConfig.h; sourceTree = SOURCE_ROOT; };
+		089DB69C1EB749A300354B95 /* JuceHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../Source/JuceHeader.h; sourceTree = SOURCE_ROOT; };
 		09320A84AF45A38DCCF28836 /* juce_audio_formats */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_audio_formats; path = modules/juce_audio_formats; sourceTree = JUCEROOT; };
 		0CC3FB467885B72F08596AEB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0FDACCB27092B22F45EF955E /* juce_audio_utils */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_audio_utils; path = modules/juce_audio_utils; sourceTree = JUCEROOT; };
@@ -357,8 +359,6 @@
 		1917F359FEA5F461C7FF1863 /* include_juce_audio_plugin_client_VST3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = include_juce_audio_plugin_client_VST3.cpp; sourceTree = JUCEINCLUDEROOT; };
 		1A62229A7E004396AA602C10 /* juce_audio_basics */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_audio_basics; path = modules/juce_audio_basics; sourceTree = JUCEROOT; };
 		1A91620E219B10EA74A02ABF /* juce_gui_extra */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_gui_extra; path = modules/juce_gui_extra; sourceTree = JUCEROOT; };
-		21E980D4607533A2C5E1CF59 /* Source/JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Source/JuceHeader.h; sourceTree = THISPLUGINROOT; };
-		248EE1774491FC8A136E201D /* Source/AppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Source/AppConfig.h; sourceTree = THISPLUGINROOT; };
 		25581C853F41285A0BED06B1 /* juce_graphics */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_graphics; path = modules/juce_graphics; sourceTree = JUCEROOT; };
 		281EF590E07B817830BEB1E6 /* DiscRecording.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscRecording.framework; path = System/Library/Frameworks/DiscRecording.framework; sourceTree = SDKROOT; };
 		35DB8A9AB18380E4AA93EEA5 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -741,6 +741,8 @@
 		AA65FEC74661B02B71173482 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				089DB69B1EB749A300354B95 /* AppConfig.h */,
+				089DB69C1EB749A300354B95 /* JuceHeader.h */,
 				DBFE0AE9D01498F57C7DE228 /* PluginProcessor.cpp */,
 				4DCA71B9DCF3B601A2BBE2B4 /* PluginProcessor.h */,
 				D046B5ED0F62C32989B7674A /* PluginEditor.cpp */,
@@ -790,7 +792,6 @@
 		EB2F5E3F0D17C30EEFCF2C78 /* Juce Library Code */ = {
 			isa = PBXGroup;
 			children = (
-				248EE1774491FC8A136E201D /* Source/AppConfig.h */,
 				E2E70950103BEC59ECF88F22 /* include_juce_audio_basics.mm */,
 				591B0647237E3B3972758438 /* include_juce_audio_devices.mm */,
 				C34BAAD71E66BC5FB1927698 /* include_juce_audio_formats.mm */,
@@ -814,7 +815,6 @@
 				751EEEE84BEDB5D752761599 /* include_juce_gui_extra.mm */,
 				88B73BD949FBDD36495DFDAF /* include_juce_opengl.mm */,
 				6A5C4718A12FC3F10D581F55 /* include_juce_video.mm */,
-				21E980D4607533A2C5E1CF59 /* Source/JuceHeader.h */,
 			);
 			name = "Juce Library Code";
 			sourceTree = "<group>";
