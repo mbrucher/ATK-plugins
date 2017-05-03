@@ -202,6 +202,11 @@ ATK::VolumeFilter<double>& ATKBassPreampAudioProcessor::get_level_filter()
   return levelFilter;
 }
 
+ATK::VolumeFilter<double>& ATKBassPreampAudioProcessor::get_volume_filter()
+{
+  return volumeFilter;
+}
+
 //==============================================================================
 // This creates new instances of the plugin..
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()

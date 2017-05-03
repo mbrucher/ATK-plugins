@@ -13,14 +13,15 @@
 
 //==============================================================================
 ATKBassPreampAudioProcessorEditor::ATKBassPreampAudioProcessorEditor (ATKBassPreampAudioProcessor& p)
-: AudioProcessorEditor (&p), processor (p), level(p.get_level_filter(), "Volume", -60, 0, 0)
+: AudioProcessorEditor (&p), processor (p), level(p.get_level_filter(), "Gain", -60, 0, 0), volume(p.get_volume_filter(), "Volume", -60, 0, 0)
 
 {
   addAndMakeVisible(level);
+  addAndMakeVisible(volume);
   
   // Make sure that before the constructor has finished, you've set the
   // editor's size to whatever you need it to be.
-  setSize (200, 200);
+  setSize (400, 200);
 }
 
 ATKBassPreampAudioProcessorEditor::~ATKBassPreampAudioProcessorEditor()
@@ -35,5 +36,7 @@ void ATKBassPreampAudioProcessorEditor::paint (Graphics& g)
 
 void ATKBassPreampAudioProcessorEditor::resized()
 {
-  level.setBoundsRelative(0, 0, 1, 1);
+  level.setBoundsRelative(0, 0, .5, 1);
+  volume.setBoundsRelative(0.5, 0, .5, 1);
 }
+

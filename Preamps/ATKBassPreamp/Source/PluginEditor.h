@@ -34,6 +34,7 @@ private:
   ATKBassPreampAudioProcessor& processor;
   
   ATK::juce::VolumeFilterComponent level;
+  ATK::juce::VolumeFilterComponent volume;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ATKBassPreampAudioProcessorEditor)
 };
