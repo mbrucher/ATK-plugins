@@ -70,6 +70,7 @@ public:
   void setStateInformation (const void* data, int sizeInBytes) override;
 
   ATK::VolumeFilter<double>& get_level_filter();
+  ATK::IIRFilter<ATK::ToneStackCoefficients<double> >& get_tone_stack_filter();
   ATK::VolumeFilter<double>& get_volume_filter();
   
 private:

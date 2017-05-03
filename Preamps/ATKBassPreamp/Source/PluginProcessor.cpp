@@ -202,6 +202,11 @@ ATK::VolumeFilter<double>& ATKBassPreampAudioProcessor::get_level_filter()
   return levelFilter;
 }
 
+ATK::IIRFilter<ATK::ToneStackCoefficients<double> >& ATKBassPreampAudioProcessor::get_tone_stack_filter()
+{
+  return toneFilter;
+}
+
 ATK::VolumeFilter<double>& ATKBassPreampAudioProcessor::get_volume_filter()
 {
   return volumeFilter;

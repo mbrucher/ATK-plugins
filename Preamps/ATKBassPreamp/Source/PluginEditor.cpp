@@ -13,15 +13,16 @@
 
 //==============================================================================
 ATKBassPreampAudioProcessorEditor::ATKBassPreampAudioProcessorEditor (ATKBassPreampAudioProcessor& p)
-: AudioProcessorEditor (&p), processor (p), level(p.get_level_filter(), "Gain", -60, 0, 0), volume(p.get_volume_filter(), "Volume", -60, 0, 0)
+: AudioProcessorEditor (&p), processor (p), level(p.get_level_filter(), "Gain", -60, 0, 0), stack(p.get_tone_stack_filter()), volume(p.get_volume_filter(), "Volume", -60, 0, 0)
 
 {
   addAndMakeVisible(level);
+  addAndMakeVisible(stack);
   addAndMakeVisible(volume);
   
   // Make sure that before the constructor has finished, you've set the
   // editor's size to whatever you need it to be.
-  setSize (400, 200);
+  setSize (1000, 200);
 }
 
 ATKBassPreampAudioProcessorEditor::~ATKBassPreampAudioProcessorEditor()
@@ -31,12 +32,13 @@ ATKBassPreampAudioProcessorEditor::~ATKBassPreampAudioProcessorEditor()
 void ATKBassPreampAudioProcessorEditor::paint (Graphics& g)
 {
   // (Our component is opaque, so we must completely fill the background with a solid colour)
-  g.fillAll (::juce::Colours::black);
+  g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
 }
 
 void ATKBassPreampAudioProcessorEditor::resized()
 {
-  level.setBoundsRelative(0, 0, .5, 1);
-  volume.setBoundsRelative(0.5, 0, .5, 1);
+  level.setBoundsRelative(0, 0, .2, 1);
+  stack.setBoundsRelative(0.2, 0, .6, 1);
+  volume.setBoundsRelative(0.8, 0, .2, 1);
 }
 
