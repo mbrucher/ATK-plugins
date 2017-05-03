@@ -25,6 +25,7 @@ public:
   ~ATKBassPreampAudioProcessorEditor();
 
   //==============================================================================
+  void paint (Graphics&) override;
   void resized() override;
 
 private:

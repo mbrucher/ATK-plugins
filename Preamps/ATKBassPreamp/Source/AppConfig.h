@@ -313,7 +313,7 @@
  #define JucePlugin_ManufacturerCode       0x4d617442 // 'MatB'
 #endif
 #ifndef  JucePlugin_PluginCode
- #define JucePlugin_PluginCode             0x4b68716c // 'Khql'
+ #define JucePlugin_PluginCode             0x4b68716a // 'Khql'
 #endif
 #ifndef  JucePlugin_IsSynth
  #define JucePlugin_IsSynth                0

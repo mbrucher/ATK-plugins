@@ -27,6 +27,12 @@ ATKBassPreampAudioProcessorEditor::~ATKBassPreampAudioProcessorEditor()
 {
 }
 
+void ATKBassPreampAudioProcessorEditor::paint (Graphics& g)
+{
+  // (Our component is opaque, so we must completely fill the background with a solid colour)
+  g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+}
+
 void ATKBassPreampAudioProcessorEditor::resized()
 {
   level.setBoundsRelative(0, 0, 1, 1);
