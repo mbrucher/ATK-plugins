@@ -25,7 +25,7 @@ ATKBassPreampAudioProcessor::ATKBassPreampAudioProcessor()
                      #endif
                        ),
 #endif
-  inFilter(nullptr, 1, 0, false), overdriveFilter(ATK::Triode2Filter<double, ATK::DempwolfTriodeFunction<double>>::build_standard_filter()), outFilter(nullptr, 1, 0, false)
+  inFilter(nullptr, 1, 0, false), overdriveFilter(ATK::Triode2Filter<double, ATK::DempwolfTriodeFunction<double>>::build_standard_filter()), toneFilter(ATK::ToneStackCoefficients<double>::buildBassmanStack()), outFilter(nullptr, 1, 0, false)
 {  
   levelFilter.set_input_port(0, &inFilter, 0);
   oversamplingFilter.set_input_port(0, &levelFilter, 0);
@@ -33,7 +33,7 @@ ATKBassPreampAudioProcessor::ATKBassPreampAudioProcessor()
   lowpassFilter.set_input_port(0, &overdriveFilter, 0);
   decimationFilter.set_input_port(0, &lowpassFilter, 0);
   toneFilter.set_input_port(0, &decimationFilter, 0);
-  volumeFilter.set_input_port(0, &decimationFilter, 0);
+  volumeFilter.set_input_port(0, &toneFilter, 0);
   outFilter.set_input_port(0, &volumeFilter, 0);
 
   levelFilter.set_volume(1);
@@ -122,8 +122,8 @@ void ATKBassPreampAudioProcessor::prepareToPlay (double sampleRate, int samplesP
   lowpassFilter.set_output_sampling_rate(intsamplerate * 4);
   decimationFilter.set_input_sampling_rate(intsamplerate * 4);
   decimationFilter.set_output_sampling_rate(intsamplerate);
-  //toneFilter.set_input_sampling_rate(intsamplerate);
-  //toneFilter.set_output_sampling_rate(intsamplerate);
+  toneFilter.set_input_sampling_rate(intsamplerate);
+  toneFilter.set_output_sampling_rate(intsamplerate);
   volumeFilter.set_input_sampling_rate(intsamplerate);
   volumeFilter.set_output_sampling_rate(intsamplerate);
   outFilter.set_input_sampling_rate(intsamplerate);
