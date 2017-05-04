@@ -14,6 +14,7 @@
 #include "PluginProcessor.h"
 
 #include <ATKJUCEComponents/EQ/ToneStackFilter.h>
+#include <ATKJUCEComponents/Tools/DryWetFilter.h>
 #include <ATKJUCEComponents/Tools/VolumeFilter.h>
 
 //==============================================================================
@@ -37,6 +38,7 @@ private:
   ATK::juce::VolumeFilterComponent level;
   ATK::juce::ToneStackFilterComponent stack;
   ATK::juce::VolumeFilterComponent volume;
+  ATK::juce::DryWetFilterComponent drywet;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ATKBassPreampAudioProcessorEditor)
 };

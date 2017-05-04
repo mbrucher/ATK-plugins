@@ -17,6 +17,7 @@
 
 #include <ATK/Tools/OversamplingFilter.h>
 #include <ATK/Tools/DecimationFilter.h>
+#include <ATK/Tools/DryWetFilter.h>
 #include <ATK/Tools/VolumeFilter.h>
 
 #include <ATK/EQ/ButterworthFilter.h>
@@ -69,9 +70,12 @@ public:
   void getStateInformation (MemoryBlock& destData) override;
   void setStateInformation (const void* data, int sizeInBytes) override;
 
-  ATK::VolumeFilter<double>& get_level_filter();
-  ATK::IIRFilter<ATK::ToneStackCoefficients<double> >& get_tone_stack_filter();
-  ATK::VolumeFilter<double>& get_volume_filter();
+  AudioParameterFloat* get_level_parameter();
+  AudioParameterFloat* get_tone_stack_bass_parameter();
+  AudioParameterFloat* get_tone_stack_medium_parameter();
+  AudioParameterFloat* get_tone_stack_high_parameter();
+  AudioParameterFloat* get_volume_parameter();
+  AudioParameterFloat* get_dry_wet_parameter();
   
 private:
   //==============================================================================
@@ -85,6 +89,7 @@ private:
   ATK::DecimationFilter<double> decimationFilter;
   ATK::IIRFilter<ATK::ToneStackCoefficients<double> > toneFilter;
   ATK::VolumeFilter<double> volumeFilter;
+  ATK::DryWetFilter<double> dryWetFilter;
   ATK::OutPointerFilter<float> outFilter;
 
   AudioParameterFloat* level;
@@ -92,4 +97,12 @@ private:
   AudioParameterFloat* medium;
   AudioParameterFloat* high;
   AudioParameterFloat* gain;
+  AudioParameterFloat* drywet;
+  
+  float old_level;
+  float old_bass;
+  float old_medium;
+  float old_high;
+  float old_gain;
+  float old_drywet;
 };

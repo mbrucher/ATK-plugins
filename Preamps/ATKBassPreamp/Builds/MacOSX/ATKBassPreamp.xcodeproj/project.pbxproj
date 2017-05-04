@@ -219,6 +219,7 @@
 		089DB6A11EB7A55100354B95 /* LookAndFeel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089DB69F1EB7A24F00354B95 /* LookAndFeel.cpp */; };
 		089DB6A61EB7D44700354B95 /* VolumeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089DB6A41EB7D43C00354B95 /* VolumeFilter.cpp */; };
 		089DB6A71EBA8B4200354B95 /* ToneStackFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089DB6991EB7470E00354B95 /* ToneStackFilter.cpp */; };
+		089DB6AA1EBBCFC100354B95 /* DryWetFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089DB6A81EBBCFC100354B95 /* DryWetFilter.cpp */; };
 		0A71D9439C3124E9B1B8860A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6495E762771E272C81096AD3 /* CoreMedia.framework */; };
 		0A72DA5BBBDDAD021FEB6074 /* PluginEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D046B5ED0F62C32989B7674A /* PluginEditor.cpp */; };
 		151C9BA8E655C2378136CC34 /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939E1FFB55E0B4F713589142 /* CoreAudioKit.framework */; };
@@ -356,6 +357,8 @@
 		089DB6A01EB7A24F00354B95 /* LookAndFeel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LookAndFeel.h; path = ../../../../ATKJUCEComponents/JUCE/LookAndFeel.h; sourceTree = "<group>"; };
 		089DB6A41EB7D43C00354B95 /* VolumeFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VolumeFilter.cpp; path = ../../../../ATKJUCEComponents/Tools/VolumeFilter.cpp; sourceTree = "<group>"; };
 		089DB6A51EB7D43C00354B95 /* VolumeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VolumeFilter.h; path = ../../../../ATKJUCEComponents/Tools/VolumeFilter.h; sourceTree = "<group>"; };
+		089DB6A81EBBCFC100354B95 /* DryWetFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DryWetFilter.cpp; path = ../../../../ATKJUCEComponents/Tools/DryWetFilter.cpp; sourceTree = "<group>"; };
+		089DB6A91EBBCFC100354B95 /* DryWetFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DryWetFilter.h; path = ../../../../ATKJUCEComponents/Tools/DryWetFilter.h; sourceTree = "<group>"; };
 		09320A84AF45A38DCCF28836 /* juce_audio_formats */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_audio_formats; path = modules/juce_audio_formats; sourceTree = JUCEROOT; };
 		0CC3FB467885B72F08596AEB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0FDACCB27092B22F45EF955E /* juce_audio_utils */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_audio_utils; path = modules/juce_audio_utils; sourceTree = JUCEROOT; };
@@ -700,6 +703,8 @@
 		089DB6961EB746E700354B95 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				089DB6A81EBBCFC100354B95 /* DryWetFilter.cpp */,
+				089DB6A91EBBCFC100354B95 /* DryWetFilter.h */,
 				089DB6A41EB7D43C00354B95 /* VolumeFilter.cpp */,
 				089DB6A51EB7D43C00354B95 /* VolumeFilter.h */,
 				089DB69F1EB7A24F00354B95 /* LookAndFeel.cpp */,
@@ -1186,6 +1191,7 @@
 				089DB6A61EB7D44700354B95 /* VolumeFilter.cpp in Sources */,
 				089DB6A11EB7A55100354B95 /* LookAndFeel.cpp in Sources */,
 				9DB50A2F4E4F92613479F29A /* PluginProcessor.cpp in Sources */,
+				089DB6AA1EBBCFC100354B95 /* DryWetFilter.cpp in Sources */,
 				0A72DA5BBBDDAD021FEB6074 /* PluginEditor.cpp in Sources */,
 				DD2C69B28EA77326C62589E7 /* include_juce_audio_basics.mm in Sources */,
 				85733705856109B7DA5C0CC0 /* include_juce_audio_devices.mm in Sources */,
