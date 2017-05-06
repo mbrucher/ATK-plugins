@@ -37,10 +37,12 @@ def checkdirname(name, searchproject):
 
 def replacestrs(filename, s, r):
   files = glob.glob(filename)
+  s_low = s.lower()
+  r_low = r.lower()
   
   for line in fileinput.input(files,inplace=1):
-    line.find(s)
     line = line.replace(s, r)
+    line = line.replace(s_low, r_low)
     sys.stdout.write(line)
 
 def dirwalk(dir, searchproject, replaceproject):

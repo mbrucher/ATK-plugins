@@ -26,7 +26,7 @@ Name: "vst3_64"; Description: "64-bit VST3 Plugin (.vst3)"; Types: full custom; 
 ;Name: "rtas_32"; Description: "32-bit RTAS Plugin (.dpm)"; Types: full custom;
 ;Name: "aax_32"; Description: "32-bit AAX Plugin (.aaxplugin)"; Types: full custom;
 ;Name: "aax_64"; Description: "64-bit AAX Plugin (.aaxplugin)"; Types: full custom; Check: Is64BitInstallMode;
-;Name: "manual"; Description: "User guide"; Types: full custom; Flags: fixed
+Name: "manual"; Description: "User guide"; Types: full custom; Flags: fixed
 
 [Files]
 Source: "..\Builds\VisualStudio2017\Win32\Release\Standalone Plugin\ATKBassPreamp.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Components:app; Flags: ignoreversion;
@@ -45,7 +45,7 @@ Source: "..\Builds\VisualStudio2017\x64\Release\VST3\ATKBassPreamp x64.vst3"; De
 ;Source: "..\Builds\VisualStudio2017\Win32\Release\aax\ATKBassPreamp.aaxplugin\*.*"; DestDir: "{cf32}\Avid\Audio\Plug-Ins\ATKBassPreamp.aaxplugin\"; Components:aax_32; Flags: ignoreversion recursesubdirs;
 ;Source: "..\Builds\VisualStudio2017\x64\Release\aax\ATKBassPreamp.aaxplugin\*.*"; DestDir: "{cf}\Avid\Audio\Plug-Ins\ATKBassPreamp.aaxplugin\"; Components:aax_64; Flags: ignoreversion recursesubdirs;
 
-;Source: "..\manual\ATKBassPreamp_manual.pdf"; DestDir: "{app}"
+Source: "..\manual\ATKBassPreamp_manual.pdf"; DestDir: "{app}"
 Source: "changelog.txt"; DestDir: "{app}"
 Source: "readmewin.rtf"; DestDir: "{app}"; DestName: "readme.rtf"; Flags: isreadme
 
