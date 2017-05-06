@@ -9,13 +9,13 @@ cd $BASEDIR
 
 #variables
 
-VERSION=`echo | grep "#define JucePlugin_Version " JuceLibraryCode/AppConfig.h`
+VERSION=`echo | grep "#define JucePlugin_Version " Source/AppConfig.h`
 VERSION=${VERSION//\#define JucePlugin_Version }
 VERSION=${VERSION//\'}
 
 FULL_VERSION=$(echo "${VERSION}" | tr -d '[:space:]')
 
-PLUGIN_NAME=`echo | grep "#define JucePlugin_Name " JuceLibraryCode/AppConfig.h`
+PLUGIN_NAME=`echo | grep "#define JucePlugin_Name " Source/AppConfig.h`
 PLUGIN_NAME=${PLUGIN_NAME//\#define JucePlugin_Name }
 PLUGIN_NAME=${PLUGIN_NAME//\"}
 PLUGIN_NAME=$(echo "${PLUGIN_NAME}" | tr -d '[:space:]')
@@ -50,6 +50,8 @@ then
 else
  rm build-mac.log
 fi
+
+asciidoctor -r asciidoctor-pdf -b pdf manual/manual.adoc -o manual/${PLUGIN_NAME}_manual.pdf
 
 #---------------------------------------------------------------------------------------------------------
 

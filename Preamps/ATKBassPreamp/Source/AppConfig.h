@@ -313,7 +313,7 @@
  #define JucePlugin_ManufacturerCode       0x4d617442 // 'MatB'
 #endif
 #ifndef  JucePlugin_PluginCode
- #define JucePlugin_PluginCode             0x4b68716c // 'Khql'
+ #define JucePlugin_PluginCode             0x4b68716a // 'Khql'
 #endif
 #ifndef  JucePlugin_IsSynth
  #define JucePlugin_IsSynth                0
@@ -406,11 +406,11 @@
  #define JucePlugin_IAAName                "MatthieuBrucher: ATKBassPreamp"
 #endif
 #ifndef  JucePlugin_MaxNumInputChannels
- #define JucePlugin_MaxNumInputChannels    2
+ #define JucePlugin_MaxNumInputChannels    1
 #endif
 #ifndef  JucePlugin_MaxNumOutputChannels
- #define JucePlugin_MaxNumOutputChannels   2
+ #define JucePlugin_MaxNumOutputChannels   1
 #endif
 #ifndef  JucePlugin_PreferredChannelConfigurations
- #define JucePlugin_PreferredChannelConfigurations  {2,2}
+ #define JucePlugin_PreferredChannelConfigurations  {1,1}
 #endif

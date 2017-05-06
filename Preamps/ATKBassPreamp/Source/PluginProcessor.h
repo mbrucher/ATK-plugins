@@ -15,55 +15,99 @@
 #include <ATK/Core/InPointerFilter.h>
 #include <ATK/Core/OutPointerFilter.h>
 
+#include <ATK/Tools/OversamplingFilter.h>
+#include <ATK/Tools/DecimationFilter.h>
+#include <ATK/Tools/DryWetFilter.h>
+#include <ATK/Tools/VolumeFilter.h>
+
+#include <ATK/EQ/ButterworthFilter.h>
+#include <ATK/EQ/IIRFilter.h>
+#include <ATK/EQ/ToneStackFilter.h>
+
+#include <ATK/Preamplifier/Triode2Filter.h>
+#include <ATK/Preamplifier/DempwolfTriodeFunction.h>
+
 
 //==============================================================================
 /**
 */
+static const double minVolume = -40;
+static const double maxVolume = 40;
+static const double minGain = -40;
+static const double maxGain = 40;
+
 class ATKBassPreampAudioProcessor  : public AudioProcessor
 {
 public:
-    //==============================================================================
-    ATKBassPreampAudioProcessor();
-    ~ATKBassPreampAudioProcessor();
+  //==============================================================================
+  ATKBassPreampAudioProcessor();
+  ~ATKBassPreampAudioProcessor();
 
-    //==============================================================================
-    void prepareToPlay (double sampleRate, int samplesPerBlock) override;
-    void releaseResources() override;
+  //==============================================================================
+  void prepareToPlay (double sampleRate, int samplesPerBlock) override;
+  void releaseResources() override;
 
-   #ifndef JucePlugin_PreferredChannelConfigurations
-    bool isBusesLayoutSupported (const BusesLayout& layouts) const override;
-   #endif
+#ifndef JucePlugin_PreferredChannelConfigurations
+  bool isBusesLayoutSupported (const BusesLayout& layouts) const override;
+#endif
 
-    void processBlock (AudioSampleBuffer&, MidiBuffer&) override;
+  void processBlock (AudioSampleBuffer&, MidiBuffer&) override;
 
-    //==============================================================================
-    AudioProcessorEditor* createEditor() override;
-    bool hasEditor() const override;
+  //==============================================================================
+  AudioProcessorEditor* createEditor() override;
+  bool hasEditor() const override;
 
-    //==============================================================================
-    const String getName() const override;
+  //==============================================================================
+  const String getName() const override;
 
-    bool acceptsMidi() const override;
-    bool producesMidi() const override;
-    double getTailLengthSeconds() const override;
+  bool acceptsMidi() const override;
+  bool producesMidi() const override;
+  double getTailLengthSeconds() const override;
 
-    //==============================================================================
-    int getNumPrograms() override;
-    int getCurrentProgram() override;
-    void setCurrentProgram (int index) override;
-    const String getProgramName (int index) override;
-    void changeProgramName (int index, const String& newName) override;
+  //==============================================================================
+  int getNumPrograms() override;
+  int getCurrentProgram() override;
+  void setCurrentProgram (int index) override;
+  const String getProgramName (int index) override;
+  void changeProgramName (int index, const String& newName) override;
 
-    //==============================================================================
-    void getStateInformation (MemoryBlock& destData) override;
-    void setStateInformation (const void* data, int sizeInBytes) override;
+  //==============================================================================
+  void getStateInformation (MemoryBlock& destData) override;
+  void setStateInformation (const void* data, int sizeInBytes) override;
 
-private:
-    //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ATKBassPreampAudioProcessor)
+  AudioParameterFloat* get_gain_parameter();
+  AudioParameterFloat* get_tone_stack_bass_parameter();
+  AudioParameterFloat* get_tone_stack_medium_parameter();
+  AudioParameterFloat* get_tone_stack_high_parameter();
+  AudioParameterFloat* get_volume_parameter();
+  AudioParameterFloat* get_dry_wet_parameter();
   
-  ATK::InPointerFilter<float> inL;
-  ATK::InPointerFilter<float> inR;
-  ATK::OutPointerFilter<float> outL;
-  ATK::OutPointerFilter<float> outR;
+private:
+  //==============================================================================
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ATKBassPreampAudioProcessor)
+    
+  ATK::InPointerFilter<float> inFilter;
+  ATK::VolumeFilter<double> levelFilter;
+  ATK::OversamplingFilter<double, ATK::Oversampling6points5order_4<double> > oversamplingFilter;
+  ATK::Triode2Filter<double, ATK::DempwolfTriodeFunction<double>> overdriveFilter;
+  ATK::IIRFilter<ATK::ButterworthLowPassCoefficients<double> > lowpassFilter;
+  ATK::DecimationFilter<double> decimationFilter;
+  ATK::IIRFilter<ATK::ToneStackCoefficients<double> > toneFilter;
+  ATK::VolumeFilter<double> volumeFilter;
+  ATK::DryWetFilter<double> dryWetFilter;
+  ATK::OutPointerFilter<float> outFilter;
+
+  AudioParameterFloat* gain;
+  AudioParameterFloat* bass;
+  AudioParameterFloat* medium;
+  AudioParameterFloat* high;
+  AudioParameterFloat* volume;
+  AudioParameterFloat* drywet;
+  
+  float old_gain;
+  float old_bass;
+  float old_medium;
+  float old_high;
+  float old_volume;
+  float old_drywet;
 };

@@ -1833,6 +1833,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Juce Library Code", "Juce L
 		..\..\JuceLibraryCode\JuceHeader.h = ..\..\JuceLibraryCode\JuceHeader.h
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{6F2576C5-3F92-4EB0-A406-8B67D9C531D2}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.cpp = ..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.cpp
+		..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.h = ..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.h
+		..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.cpp = ..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.cpp
+		..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.h = ..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.h
+		..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.cpp = ..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.cpp
+		..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.h = ..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.h
+		..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.cpp = ..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.cpp
+		..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.h = ..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -2006,5 +2018,6 @@ Global
 		{E2CB2877-DD3A-BACB-DB68-F923744AC12B} = {BEE8B0F9-6809-5091-37B2-F7E15DA8D988}
 		{2239F758-82DD-35D7-2707-FAEFBA6976C4} = {BEE8B0F9-6809-5091-37B2-F7E15DA8D988}
 		{BBC373C2-83EB-17F4-E997-B92B1EBA3304} = {BEE8B0F9-6809-5091-37B2-F7E15DA8D988}
+		{6F2576C5-3F92-4EB0-A406-8B67D9C531D2} = {97600C9C-126B-C299-CAC9-F2747ECAD90C}
 	EndGlobalSection
 EndGlobal
