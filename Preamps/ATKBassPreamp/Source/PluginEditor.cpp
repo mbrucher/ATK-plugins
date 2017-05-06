@@ -13,17 +13,17 @@
 
 //==============================================================================
 ATKBassPreampAudioProcessorEditor::ATKBassPreampAudioProcessorEditor (ATKBassPreampAudioProcessor& p)
-: AudioProcessorEditor (&p), processor (p), level(p.get_level_parameter(), "Gain", -20, 20, 0), stack(p.get_tone_stack_bass_parameter(), p.get_tone_stack_medium_parameter(), p.get_tone_stack_high_parameter()), volume(p.get_volume_parameter(), "Volume", -20, 20, 0), drywet(p.get_dry_wet_parameter())
+: AudioProcessorEditor (&p), processor (p), gain(p.get_gain_parameter(), "Gain", minGain, maxGain, (minGain + maxGain) / 2), stack(p.get_tone_stack_bass_parameter(), p.get_tone_stack_medium_parameter(), p.get_tone_stack_high_parameter()), volume(p.get_volume_parameter(), "Volume", minVolume, maxVolume, (minVolume + maxVolume) / 2), drywet(p.get_dry_wet_parameter())
 
 {
-  addAndMakeVisible(level);
+  addAndMakeVisible(gain);
   addAndMakeVisible(stack);
   addAndMakeVisible(volume);
   addAndMakeVisible(drywet);
   
   // Make sure that before the constructor has finished, you've set the
   // editor's size to whatever you need it to be.
-  setSize (1200, 250);
+  setSize (900, 200);
 }
 
 ATKBassPreampAudioProcessorEditor::~ATKBassPreampAudioProcessorEditor()
@@ -41,9 +41,9 @@ void ATKBassPreampAudioProcessorEditor::paint (Graphics& g)
 
 void ATKBassPreampAudioProcessorEditor::resized()
 {
-  level.setBounds(0, 50, 200, 200);
-  stack.setBounds(200, 50, 600, 200);
-  volume.setBounds(800, 50, 200, 200);
-  drywet.setBounds(1000, 50, 200, 200);
+  gain.setBoundsRelative(0, 1. / 4, 1. / 6, 3. / 4);
+  stack.setBoundsRelative(1. / 6, 1. / 4, 3. / 6, 3. / 4);
+  volume.setBoundsRelative(4. / 6, 1. / 4, 1. / 6, 3. / 4);
+  drywet.setBoundsRelative(5. / 6, 1. / 4, 1. / 6, 3. / 4);
 }
 

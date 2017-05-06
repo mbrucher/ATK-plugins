@@ -35,7 +35,7 @@ private:
   // access the processor object that created it.
   ATKBassPreampAudioProcessor& processor;
   
-  ATK::juce::VolumeFilterComponent level;
+  ATK::juce::VolumeFilterComponent gain;
   ATK::juce::ToneStackFilterComponent stack;
   ATK::juce::VolumeFilterComponent volume;
   ATK::juce::DryWetFilterComponent drywet;

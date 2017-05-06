@@ -262,6 +262,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.cpp" />
     <ClCompile Include="..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.cpp" />
+    <ClCompile Include="..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.cpp" />
     <ClCompile Include="..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.cpp" />
     <ClCompile Include="..\..\Source\PluginProcessor.cpp" />
     <ClCompile Include="..\..\Source\PluginEditor.cpp" />
@@ -281,7 +282,14 @@
     <ClCompile Include="..\..\..\..\JuceLibraryCode\include_juce_opengl.cpp" />
     <ClCompile Include="..\..\..\..\JuceLibraryCode\include_juce_video.cpp" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.h" />
+    <ClInclude Include="..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.h" />
+    <ClInclude Include="..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.h" />
+    <ClInclude Include="..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.h" />
+    <ClInclude Include="..\..\Source\PluginEditor.h" />
+    <ClInclude Include="..\..\Source\PluginProcessor.h" />
+  </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include=".\resources.rc" />
   </ItemGroup>

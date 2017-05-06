@@ -44,19 +44,19 @@ ATKBassPreampAudioProcessor::ATKBassPreampAudioProcessor()
   lowpassFilter.set_order(4);
   lowpassFilter.set_cut_frequency(20000);
   
-  addParameter (level = new AudioParameterFloat ("level", "Level", -20.0f, 20.0f, 0.0f));
-  addParameter (bass = new AudioParameterFloat ("bass", "Bass", -1.0f, 1.0f, 0.f));
-  addParameter (medium = new AudioParameterFloat ("medium", "Medium", -1.0f, 1.0f, 0.f));
-  addParameter (high = new AudioParameterFloat ("high", "High", -1.0f, 1.0f, 0.f));
-  addParameter (gain = new AudioParameterFloat ("gain", "Gain", -20.0f, 20.0f, .0f));
-  addParameter (drywet = new AudioParameterFloat ("drywet", "Dry/Wet", 0.0f, 100.0f, 100.0f));
-  
-  old_level = 0;
-  old_bass = 0;
-  old_medium = 0;
-  old_high = 0;
-  old_gain = 0;
-  old_drywet = 100;
+  addParameter(gain = new AudioParameterFloat("gain", "Gain", minGain, maxGain, (minGain + maxGain) / 2));
+  addParameter(bass = new AudioParameterFloat("bass", "Bass", -1.0f, 1.0f, 0.f));
+  addParameter(medium = new AudioParameterFloat("medium", "Medium", -1.0f, 1.0f, 0.f));
+  addParameter(high = new AudioParameterFloat("high", "High", -1.0f, 1.0f, 0.f));
+  addParameter(volume = new AudioParameterFloat("volume", "Volume", minVolume, maxVolume, (minVolume + maxVolume) / 2));
+  addParameter(drywet = new AudioParameterFloat("drywet", "Dry/Wet", 0.0f, 100.0f, 100.0f));
+
+  old_gain = *gain;
+  old_bass = *bass;
+  old_medium = *medium;
+  old_high = *high;
+  old_volume = *volume;
+  old_drywet = *drywet;
 }
 
 ATKBassPreampAudioProcessor::~ATKBassPreampAudioProcessor()
@@ -173,12 +173,11 @@ bool ATKBassPreampAudioProcessor::isBusesLayoutSupported (const BusesLayout& lay
 
 void ATKBassPreampAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
-  if(*level != old_level)
+  if (*gain != old_gain)
   {
-    old_level = *level;
-    levelFilter.set_volume_db(old_level);
-  }
-  if(*bass != old_bass)
+    old_gain = *gain;
+    levelFilter.set_volume_db(old_gain);
+  }  if(*bass != old_bass)
   {
     old_bass = *bass;
     toneFilter.set_low((old_bass + 1) / 2);
@@ -193,11 +192,12 @@ void ATKBassPreampAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiB
     old_high = *high;
     toneFilter.set_high((old_high + 1) / 2);
   }
-  if(*gain != old_gain)
+  if (*volume != old_volume)
   {
-    old_gain = *gain;
-    volumeFilter.set_volume_db(old_gain);
+    old_volume = *volume;
+    volumeFilter.set_volume_db(old_volume);
   }
+
   if(*drywet != old_drywet)
   {
     old_drywet = *drywet;
@@ -231,28 +231,30 @@ AudioProcessorEditor* ATKBassPreampAudioProcessor::createEditor()
 void ATKBassPreampAudioProcessor::getStateInformation (MemoryBlock& destData)
 {
   MemoryOutputStream store(destData, true);
-  store.writeFloat(*level);
+  store.writeInt(0); // version ID
+  store.writeFloat(*gain);
   store.writeFloat(*bass);
   store.writeFloat(*medium);
   store.writeFloat(*high);
-  store.writeFloat(*gain);
+  store.writeFloat(*volume);
   store.writeFloat(*drywet);
 }
 
 void ATKBassPreampAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
   MemoryInputStream store(data, static_cast<size_t> (sizeInBytes), false);
-  *level = store.readFloat();
+  int version = store.readInt(); // version ID
+  *gain = store.readFloat();
   *bass = store.readFloat();
   *medium = store.readFloat();
   *high = store.readFloat();
-  *gain = store.readFloat();
+  *volume = store.readFloat();
   *drywet = store.readFloat();
 }
 
-AudioParameterFloat* ATKBassPreampAudioProcessor::get_level_parameter()
+AudioParameterFloat* ATKBassPreampAudioProcessor::get_gain_parameter()
 {
-  return level;
+  return gain;
 }
 
 AudioParameterFloat* ATKBassPreampAudioProcessor::get_tone_stack_bass_parameter()
@@ -272,7 +274,7 @@ AudioParameterFloat* ATKBassPreampAudioProcessor::get_tone_stack_high_parameter(
 
 AudioParameterFloat* ATKBassPreampAudioProcessor::get_volume_parameter()
 {
-  return gain;
+  return volume;
 }
 
 AudioParameterFloat* ATKBassPreampAudioProcessor::get_dry_wet_parameter()

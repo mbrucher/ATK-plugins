@@ -1835,6 +1835,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Juce Library Code", "Juce L
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{6F2576C5-3F92-4EB0-A406-8B67D9C531D2}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.cpp = ..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.cpp
+		..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.h = ..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.h
 		..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.cpp = ..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.cpp
 		..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.h = ..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.h
 		..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.cpp = ..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.cpp

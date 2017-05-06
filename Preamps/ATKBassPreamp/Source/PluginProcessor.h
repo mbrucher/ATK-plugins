@@ -31,6 +31,11 @@
 //==============================================================================
 /**
 */
+static const double minVolume = -40;
+static const double maxVolume = 40;
+static const double minGain = -40;
+static const double maxGain = 40;
+
 class ATKBassPreampAudioProcessor  : public AudioProcessor
 {
 public:
@@ -70,7 +75,7 @@ public:
   void getStateInformation (MemoryBlock& destData) override;
   void setStateInformation (const void* data, int sizeInBytes) override;
 
-  AudioParameterFloat* get_level_parameter();
+  AudioParameterFloat* get_gain_parameter();
   AudioParameterFloat* get_tone_stack_bass_parameter();
   AudioParameterFloat* get_tone_stack_medium_parameter();
   AudioParameterFloat* get_tone_stack_high_parameter();
@@ -92,17 +97,17 @@ private:
   ATK::DryWetFilter<double> dryWetFilter;
   ATK::OutPointerFilter<float> outFilter;
 
-  AudioParameterFloat* level;
+  AudioParameterFloat* gain;
   AudioParameterFloat* bass;
   AudioParameterFloat* medium;
   AudioParameterFloat* high;
-  AudioParameterFloat* gain;
+  AudioParameterFloat* volume;
   AudioParameterFloat* drywet;
   
-  float old_level;
+  float old_gain;
   float old_bass;
   float old_medium;
   float old_high;
-  float old_gain;
+  float old_volume;
   float old_drywet;
 };
