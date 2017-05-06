@@ -23,7 +23,7 @@ ATKBassPreampAudioProcessorEditor::ATKBassPreampAudioProcessorEditor (ATKBassPre
   
   // Make sure that before the constructor has finished, you've set the
   // editor's size to whatever you need it to be.
-  setSize (1200, 200);
+  setSize (1200, 250);
 }
 
 ATKBassPreampAudioProcessorEditor::~ATKBassPreampAudioProcessorEditor()
@@ -33,14 +33,17 @@ ATKBassPreampAudioProcessorEditor::~ATKBassPreampAudioProcessorEditor()
 void ATKBassPreampAudioProcessorEditor::paint (Graphics& g)
 {
   // (Our component is opaque, so we must completely fill the background with a solid colour)
-  g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+  g.fillAll(getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+  g.setFont(Font("Times New Roman", 30.0f, Font::bold | Font::italic));
+  g.setColour(Colours::whitesmoke);
+  g.drawText("Bass Preamp", 20, 10, 200, 30, Justification::verticallyCentred);
 }
 
 void ATKBassPreampAudioProcessorEditor::resized()
 {
-  level.setBounds(0, 0, 200, 200);
-  stack.setBounds(200, 0, 600, 200);
-  volume.setBounds(800, 0, 200, 200);
-  drywet.setBounds(1000, 0, 200, 200);
+  level.setBounds(0, 50, 200, 200);
+  stack.setBounds(200, 50, 600, 200);
+  volume.setBounds(800, 50, 200, 200);
+  drywet.setBounds(1000, 50, 200, 200);
 }
 
