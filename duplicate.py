@@ -75,17 +75,17 @@ def dirwalk(dir, searchproject, replaceproject):
       base, extension = os.path.splitext(filename)
       
       if (not(extension in FILTERED_FILE_EXTENSIONS)):
-        print(("Replacing project name strings in file " + filename))
+        print("Replacing project name strings in file " + filename)
         replacestrs(fullpath, searchproject, replaceproject)
         
-        print(("Replacing captitalized project name strings in file " + filename))
+        print("Replacing captitalized project name strings in file " + filename)
         replacestrs(fullpath, searchproject.upper(), replaceproject.upper())
         
       else:
-        print(("NOT replacing name strings in file " + filename))
+        print("NOT replacing name strings in file " + filename)
       
       if filename != newfilename:
-        print(("Renaming file " + filename + " to " + newfilename))
+        print("Renaming file " + filename + " to " + newfilename)
         os.rename(fullpath, os.path.join(dir, newfilename))
   
       yield f, fullpath 
@@ -125,7 +125,7 @@ def main():
       sys.exit(1)
     # rmtree(output)
         
-    print(("copying " + input + " folder to " + output))
+    print("copying " + input + " folder to " + output)
     copytree(input, output, ignore=ignore_patterns(*DONT_COPY))
     cpath = os.path.join(os.getcwd(), output)
 

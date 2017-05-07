@@ -1,4 +1,4 @@
-= ATKBassPreamp
+= ATKGuitarPreamp
 Matthieu Brucher <matthieu.brucher@gmail.com>
 :doctype: book
 :source-highlighter: coderay
@@ -6,9 +6,9 @@ Matthieu Brucher <matthieu.brucher@gmail.com>
 // Uncomment next line to set page size (default is Letter)
 //:pdf-page-size: A4
 
-*ATKBassPreamp* is a free Open Source plugin modeling a bass preamplifier (inverter) followed by a tone stack, modeled after the famous Bassman amplifier.
+*ATKGuitarPreamp* is a free Open Source plugin modeling a guitar preamplifier (inverter from the first stage of an AC30) followed by a tone stack inspired by the JCM800.
 
-image::ATKBassPreamp.png[GUI]
+image::ATKGuitarPreamp.png[GUI]
 
 == Usage
 
@@ -24,4 +24,4 @@ Here is how the parameters interact with the plugin:
 
 == Bugs
 
-There shouldn’t be bugs, but you never know. Please contact me or leave a message on http://www.audio-tk.com[Audio ToolKit web site] or on http://blog.audio-tk.com/tags/atkbasspreamp/[my blog, on the announcement page].
+There shouldn’t be bugs, but you never know. Please contact me or leave a message on http://www.audio-tk.com[Audio ToolKit web site] or on http://blog.audio-tk.com/tags/atkguitarpreamp/[my blog, on the announcement page].
