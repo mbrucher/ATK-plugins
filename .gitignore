@@ -27,7 +27,6 @@ Win32
 .vs
 *.db
 build
-*.pdf
 
 Icon?
 .DS_Stor*

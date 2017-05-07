@@ -8,6 +8,8 @@ Matthieu Brucher <matthieu.brucher@gmail.com>
 
 *ATKBassPreamp* is a free Open Source plugin modeling a bass preamplifier (inverter) followed by a tone stack modeled after the famous Bassman amplifier.
 
+image::ATKBassPreamp.png[]
+
 == Usage
 
 Here is how the parameters interact with the plugin:
