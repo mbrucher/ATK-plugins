@@ -25,7 +25,7 @@ ATKBassPreampAudioProcessor::ATKBassPreampAudioProcessor()
                      #endif
                        ),
 #endif
-  inFilter(nullptr, 1, 0, false), overdriveFilter(ATK::Triode2Filter<double, ATK::DempwolfTriodeFunction<double>>::build_standard_filter()), toneFilter(ATK::ToneStackCoefficients<double>::buildBassmanStack()), outFilter(nullptr, 1, 0, false)
+  inFilter(nullptr, 1, 0, false), overdriveFilter(ATK::Triode2Filter<double, ATK::DempwolfTriodeFunction<double>>::build_standard_filter(100e3, 1e6, 1e6, 820, 300, 22e-9, 250e-6)), toneFilter(ATK::ToneStackCoefficients<double>::buildBassmanStack()), outFilter(nullptr, 1, 0, false)
 {  
   levelFilter.set_input_port(0, &inFilter, 0);
   oversamplingFilter.set_input_port(0, &levelFilter, 0);
