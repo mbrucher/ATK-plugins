@@ -25,7 +25,7 @@ ATKGuitarPreampAudioProcessor::ATKGuitarPreampAudioProcessor()
                      #endif
                        ),
 #endif
-  inFilter(nullptr, 1, 0, false), overdriveFilter(ATK::Triode2Filter<double, ATK::DempwolfTriodeFunction<double>>::build_standard_filter(220e3, 68e3, 1e6, 1.5e3, 300, 47e-9, 22e-6)), toneFilter(ATK::ToneStackCoefficients<double>::buildJCM800Stack()), outFilter(nullptr, 1, 0, false)
+  inFilter(nullptr, 1, 0, false), overdriveFilter(ATK::Triode2Filter<float, ATK::DempwolfTriodeFunction<float>>::build_standard_filter(220e3, 68e3, 1e6, 1.5e3, 300, 47e-9, 22e-6)), toneFilter(ATK::ToneStackCoefficients<float>::buildJCM800Stack()), outFilter(nullptr, 1, 0, false)
 {  
   levelFilter.set_input_port(0, &inFilter, 0);
   oversamplingFilter.set_input_port(0, &levelFilter, 0);

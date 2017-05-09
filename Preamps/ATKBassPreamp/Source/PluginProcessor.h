@@ -87,14 +87,14 @@ private:
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ATKBassPreampAudioProcessor)
     
   ATK::InPointerFilter<float> inFilter;
-  ATK::VolumeFilter<double> levelFilter;
-  ATK::OversamplingFilter<double, ATK::Oversampling6points5order_4<double> > oversamplingFilter;
-  ATK::Triode2Filter<double, ATK::DempwolfTriodeFunction<double>> overdriveFilter;
-  ATK::IIRFilter<ATK::ButterworthLowPassCoefficients<double> > lowpassFilter;
-  ATK::DecimationFilter<double> decimationFilter;
-  ATK::IIRFilter<ATK::ToneStackCoefficients<double> > toneFilter;
-  ATK::VolumeFilter<double> volumeFilter;
-  ATK::DryWetFilter<double> dryWetFilter;
+  ATK::VolumeFilter<float> levelFilter;
+  ATK::OversamplingFilter<float, ATK::Oversampling6points5order_4<float> > oversamplingFilter;
+  ATK::Triode2Filter<float, ATK::DempwolfTriodeFunction<float>> overdriveFilter;
+  ATK::IIRFilter<ATK::ButterworthLowPassCoefficients<float> > lowpassFilter;
+  ATK::DecimationFilter<float> decimationFilter;
+  ATK::IIRFilter<ATK::ToneStackCoefficients<float> > toneFilter;
+  ATK::VolumeFilter<float> volumeFilter;
+  ATK::DryWetFilter<float> dryWetFilter;
   ATK::OutPointerFilter<float> outFilter;
 
   AudioParameterFloat* gain;
