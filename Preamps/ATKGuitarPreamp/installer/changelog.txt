@@ -1,0 +1,7 @@
+ATKGuitarPreamp changelog
+http://www.audio-tk.com
+
+30/05/17 - v1.0.0 initial release
+  - built against ATK 2.0.3
+  - JUCE 5 version
+  

@@ -1,0 +1,3 @@
+[submodule "ATKJUCEComponents"]
+	path = ATKJUCEComponents
+	url = git@github.com:mbrucher/ATKJUCEComponents.git

@@ -182,6 +182,7 @@ copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKChorus.vst3"</Command>
       <AdditionalLibraryDirectories>..\..\VST3_SDK\base\win\$(Platform)\$(Configuration)\;$(x64_LIB_PATHS);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>$(ATKROOT)\64\lib\ATKCore_static.lib;$(ATKROOT)\64\lib\ATKDistortion_static.lib;$(ATKROOT)\64\lib\ATKEQ_static.lib;$(ATKROOT)\64\lib\ATKTools_static.lib;$(ATKROOT)\64\lib\ATKDelay_static.lib;base.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>$(WDL_PATH)\IPlug\IPlugVST3.def</ModuleDefinitionFile>
+      <OutputFile>$(OutDir)$(TargetName) x64$(TargetExt)</OutputFile>
     </Link>
     <PostBuildEvent>
       <Command>echo Post-Build: copy 64bit binary to 64bit VST3 Plugins folder ...
@@ -285,6 +286,7 @@ copy /y "$(TargetPath)" "$(VST3_32_PATH)\ATKChorus.vst3"</Command>
       <AdditionalLibraryDirectories>$(x64_LIB_PATHS);$(WDL_PATH)\lice\build-win\$(Platform)\Release\;..\..\VST3_SDK\base\win\$(Platform)\Release\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>base.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>$(WDL_PATH)\IPlug\IPlugVST3.def</ModuleDefinitionFile>
+      <OutputFile>$(OutDir)$(TargetName) x64$(TargetExt)</OutputFile>
     </Link>
     <PostBuildEvent>
       <Command>echo Post-Build: copy 64bit binary to 64bit VST3 Plugins folder ...
