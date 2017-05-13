@@ -1,4 +1,4 @@
-= ATKJUCE
+= ATKBassPreamp
 Matthieu Brucher <matthieu.brucher@gmail.com>
 :doctype: book
 :source-highlighter: coderay
@@ -6,10 +6,21 @@ Matthieu Brucher <matthieu.brucher@gmail.com>
 // Uncomment next line to set page size (default is Letter)
 //:pdf-page-size: A4
 
-Example plugin for ATK
+*ATKBassPreamp* is a free Open Source plugin modeling a bass preamplifier (inverter) followed by a tone stack, modeled after the famous Bassman amplifier.
+
+image::ATKBassPreamp.png[GUI]
 
 == Usage
 
+Here is how the parameters interact with the plugin:
+
+[square]
+* *Gain* changes the amount of distortion you get from the preamplifier by increasing the input signal level,
+* *Low* handles the amount of low frequencies in the tone stack
+* *Middle* handles the amount of middle frequencies in the tone stack
+* *High* handles the amount of high frequencies in the tone stack
+* *Volume* changes the output volume, before the dry/wet knob
+* *Dry/Wet* balances the amount of processed signal versus input signal
 
 == Bugs
 

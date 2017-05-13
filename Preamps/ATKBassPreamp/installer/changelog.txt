@@ -1,7 +1,7 @@
 ATKBassPreamp changelog
 http://www.audio-tk.com
 
-29/04/17 - v1.0.0 initial release
-  - built against ATK 2.0.1
+23/05/17 - v1.0.0 initial release
+  - built against ATK 2.0.3
   - JUCE 5 version
   
