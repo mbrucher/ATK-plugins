@@ -24,7 +24,7 @@
   </MAINGROUP>
   <EXPORTFORMATS>
     <VS2017 targetFolder="Builds/VisualStudio2017" vst3Folder="" extraDefs="HAS_STD_ALIGN"
-            cppLanguageStandard="stdcpp14" toolset="v141">
+            cppLanguageStandard="stdcpp14" toolset="v141" aaxFolder="E:\Informatique\AAX_SDK_2p2p2">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
                        isDebug="1" optimisation="1" targetName="ATKJUCE"/>
