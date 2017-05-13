@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ATKJUCE - AAX.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>ATKJUCE - AU.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -42,6 +47,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>09655D5AE1AD33835F370AFA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2AFC3B8E2D43E0980FEFF4B4</key>
 		<dict>
 			<key>primary</key>

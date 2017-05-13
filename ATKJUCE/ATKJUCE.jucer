@@ -4,13 +4,13 @@
               splashScreenColour="Dark" projectType="audioplug" version="1.0.0"
               bundleIdentifier="com.MatthieuBrucher.ATKJUCE" includeBinaryInAppConfig="1"
               buildVST="1" buildVST3="1" buildAU="1" buildAUv3="1" buildRTAS="0"
-              buildAAX="0" buildStandalone="1" enableIAA="0" pluginName="ATKJUCE"
+              buildAAX="1" buildStandalone="1" enableIAA="0" pluginName="ATKJUCE"
               pluginDesc="" pluginManufacturer="MatthieuBrucher" pluginManufacturerCode="MatB"
               pluginCode="Khql" pluginChannelConfigs="{2,2}" pluginIsSynth="0"
               pluginWantsMidiIn="0" pluginProducesMidiOut="0" pluginIsMidiEffectPlugin="0"
               pluginEditorRequiresKeys="0" pluginAUExportPrefix="ATKJUCE" pluginRTASCategory=""
               aaxIdentifier="com.MatthieuBrucher.ATKJUCE" pluginAAXCategory="AAX_ePlugInCategory_None"
-              jucerVersion="5.0.0" companyName="Matthieu Brucher" companyWebsite="http://www.audio-tk.com/">
+              jucerVersion="5.0.1" companyName="Matthieu Brucher" companyWebsite="http://www.audio-tk.com/">
   <MAINGROUP id="H9V4ut" name="ATKJUCE">
     <GROUP id="{65FEA80A-F647-1916-F1CE-08CA719AE1BE}" name="Source">
       <FILE id="LX9XxX" name="PluginProcessor.cpp" compile="1" resource="0"
@@ -32,32 +32,6 @@
                        isDebug="0" optimisation="3" targetName="ATKJUCE"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_core" path="../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_events" path="../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_graphics" path="../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_data_structures" path="../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_gui_extra" path="../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_cryptography" path="../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_video" path="../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_opengl" path="../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="../../../../JUCE/modules"/>
-      </MODULEPATHS>
-    </VS2017>
-    <XCODE_MAC targetFolder="Builds/MacOSX" vst3Folder="../../../SDKs/VST3_SDK"
-               externalLibraries="ATKAdaptive_static32&#13;ATKCore_static32&#13;ATKDelay_static32&#13;ATKDistortion_static32&#13;ATKDynamic_static32&#13;ATKEQ_static32&#13;ATKIO_static32&#13;ATKPreamplifier_static32&#13;ATKReverberation_static32&#13;ATKSpecial_static32&#13;ATKTools_static32&#13;ATKUtility_static32&#10;ATKAdaptive_static&#13;ATKCore_static&#13;ATKDelay_static&#13;ATKDistortion_static&#13;ATKDynamic_static&#13;ATKEQ_static&#13;ATKIO_static&#13;ATKMock_static&#13;ATKPreamplifier_static&#13;ATKReverberation_static&#13;ATKSpecial_static&#13;ATKTools_static&#13;ATKUtility_static"
-               extraLinkerFlags="-L ../../../../../ATK64/lib&#10;-L ../../../../../ATK32/lib"
-               extraCompilerFlags="-I ../../../../../ATK64/include&#10;-I ../../../../../../local/boost_1_63_0"
-               extraDefs="HAS_STD_ALIGN" keepCustomXcodeSchemes="1">
-      <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="ATKJUCE"/>
-        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="ATKJUCE"/>
-      </CONFIGURATIONS>
-      <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_events" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_graphics" path="../../../JUCE/modules"/>
@@ -73,6 +47,33 @@
         <MODULEPATH id="juce_audio_processors" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_plugin_client" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_utils" path="../../../JUCE/modules"/>
+      </MODULEPATHS>
+    </VS2017>
+    <XCODE_MAC targetFolder="Builds/MacOSX" vst3Folder="../../SDKs/VST3_SDK"
+               externalLibraries="ATKAdaptive_static32&#13;ATKCore_static32&#13;ATKDelay_static32&#13;ATKDistortion_static32&#13;ATKDynamic_static32&#13;ATKEQ_static32&#13;ATKIO_static32&#13;ATKPreamplifier_static32&#13;ATKReverberation_static32&#13;ATKSpecial_static32&#13;ATKTools_static32&#13;ATKUtility_static32&#10;ATKAdaptive_static&#13;ATKCore_static&#13;ATKDelay_static&#13;ATKDistortion_static&#13;ATKDynamic_static&#13;ATKEQ_static&#13;ATKIO_static&#13;ATKMock_static&#13;ATKPreamplifier_static&#13;ATKReverberation_static&#13;ATKSpecial_static&#13;ATKTools_static&#13;ATKUtility_static"
+               extraLinkerFlags="-L ../../../../ATK64/lib&#10;-L ../../../../ATK32/lib"
+               extraCompilerFlags="-I ../../../../ATK64/include&#10;-I ../../../../../local/boost_1_63_0"
+               extraDefs="HAS_STD_ALIGN" keepCustomXcodeSchemes="1" aaxFolder="../../SDKs/AAX_SDK_2p2p2">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="ATKJUCE"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="ATKJUCE"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_video" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
   </EXPORTFORMATS>
