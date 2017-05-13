@@ -9,13 +9,13 @@ cd $BASEDIR
 
 #variables
 
-VERSION=`echo | grep "#define JucePlugin_Version " JuceLibraryCode/AppConfig.h`
+VERSION=`echo | grep "#define JucePlugin_Version " Source/AppConfig.h`
 VERSION=${VERSION//\#define JucePlugin_Version }
 VERSION=${VERSION//\'}
 
 FULL_VERSION=$(echo "${VERSION}" | tr -d '[:space:]')
 
-PLUGIN_NAME=`echo | grep "#define JucePlugin_Name " JuceLibraryCode/AppConfig.h`
+PLUGIN_NAME=`echo | grep "#define JucePlugin_Name " Source/AppConfig.h`
 PLUGIN_NAME=${PLUGIN_NAME//\#define JucePlugin_Name }
 PLUGIN_NAME=${PLUGIN_NAME//\"}
 PLUGIN_NAME=$(echo "${PLUGIN_NAME}" | tr -d '[:space:]')
@@ -51,6 +51,8 @@ else
  rm build-mac.log
 fi
 
+asciidoctor -r asciidoctor-pdf -b pdf manual/manual.adoc -o manual/${PLUGIN_NAME}_manual.pdf
+
 #---------------------------------------------------------------------------------------------------------
 
 # installer, uses Packages http://s.sudre.free.fr/Software/Packages/about.html
@@ -60,6 +62,13 @@ echo "building installer"
 echo ""
 chmod 0777 installer
 packagesbuild installer/$PLUGIN_NAME.pkgproj
+
+echo "code-sign installer for Gatekeeper on 10.8"
+echo ""
+mv "${PKG}" "${PKG_US}"
+productsign --sign "Developer ID Installer: ""${CERT_ID}" "${PKG_US}" "${PKG}"
+
+rm -R -f "${PKG_US}"
 
 #---------------------------------------------------------------------------------------------------------
 
