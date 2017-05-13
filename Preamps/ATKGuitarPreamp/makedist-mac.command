@@ -63,6 +63,13 @@ echo ""
 chmod 0777 installer
 packagesbuild installer/$PLUGIN_NAME.pkgproj
 
+echo "code-sign installer for Gatekeeper on 10.8"
+echo ""
+mv "${PKG}" "${PKG_US}"
+productsign --sign "Developer ID Installer: ""${CERT_ID}" "${PKG_US}" "${PKG}"
+
+rm -R -f "${PKG_US}"
+
 #---------------------------------------------------------------------------------------------------------
 
 # dmg, can use dmgcanvas http://www.araelium.com/dmgcanvas/ to make a nice dmg
