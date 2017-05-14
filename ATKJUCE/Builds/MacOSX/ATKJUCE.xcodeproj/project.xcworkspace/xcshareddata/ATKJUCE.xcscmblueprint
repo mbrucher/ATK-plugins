@@ -4,11 +4,13 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "BC7348613BD5A6471AA8F17AF9FEE61E155083D1" : 9223372036854775807,
     "11B94510860470908E89574702597330C32284A3" : 9223372036854775807,
     "F6B03F79A43A8DAFC60D7EFA960D90ECB9C8BE9A" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9205568A-822B-4448-838A-2EB7A9855966",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "BC7348613BD5A6471AA8F17AF9FEE61E155083D1" : "ATK-plugins\/ATKJUCEComponents\/",
     "11B94510860470908E89574702597330C32284A3" : "",
     "F6B03F79A43A8DAFC60D7EFA960D90ECB9C8BE9A" : "ATK-plugins\/"
   },
@@ -20,6 +22,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mbrucher\/wdl-ol.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "11B94510860470908E89574702597330C32284A3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:mbrucher\/ATKJUCEComponents.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BC7348613BD5A6471AA8F17AF9FEE61E155083D1"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mbrucher\/ATK-plugins.git",

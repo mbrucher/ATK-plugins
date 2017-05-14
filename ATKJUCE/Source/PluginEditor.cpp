@@ -16,9 +16,10 @@
 ATKJUCEAudioProcessorEditor::ATKJUCEAudioProcessorEditor (ATKJUCEAudioProcessor& p)
     : AudioProcessorEditor (&p), processor (p)
 {
-    // Make sure that before the constructor has finished, you've set the
-    // editor's size to whatever you need it to be.
-    setSize (400, 300);
+//  addAndMakeVisible(&view);
+  // Make sure that before the constructor has finished, you've set the
+  // editor's size to whatever you need it to be.
+  setSize (400, 300);
 }
 
 ATKJUCEAudioProcessorEditor::~ATKJUCEAudioProcessorEditor()

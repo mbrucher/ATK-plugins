@@ -234,6 +234,7 @@
 		08FBDD291EC766070060FC3D /* libATKJUCE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8EBA119502F36AF23848C0 /* libATKJUCE.a */; };
 		08FBDD2A1EC766090060FC3D /* libATKJUCE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8EBA119502F36AF23848C0 /* libATKJUCE.a */; };
 		08FBDD7E1EC767A10060FC3D /* include_juce_audio_basics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 08FBDD7D1EC767A10060FC3D /* include_juce_audio_basics.mm */; };
+		08FBDD911EC876620060FC3D /* FFTViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FBDD8F1EC876620060FC3D /* FFTViewer.cpp */; };
 		0A71D9439C3124E9B1B8860A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6495E762771E272C81096AD3 /* CoreMedia.framework */; };
 		0A72DA5BBBDDAD021FEB6074 /* PluginEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D046B5ED0F62C32989B7674A /* PluginEditor.cpp */; };
 		151C9BA8E655C2378136CC34 /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939E1FFB55E0B4F713589142 /* CoreAudioKit.framework */; };
@@ -374,6 +375,8 @@
 		08FBDCA51EC75D1B0060FC3D /* libATKUtility_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKUtility_static.a; path = ../../../../ATK64/lib/libATKUtility_static.a; sourceTree = "<group>"; };
 		08FBDCA61EC75D3B0060FC3D /* ATKJUCE.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = ATKJUCE.xcconfig; path = ../../ATKJUCE.xcconfig; sourceTree = "<group>"; };
 		08FBDD7D1EC767A10060FC3D /* include_juce_audio_basics.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_basics.mm; path = ../../../JuceLibraryCode/include_juce_audio_basics.mm; sourceTree = "<group>"; };
+		08FBDD8F1EC876620060FC3D /* FFTViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FFTViewer.cpp; path = ../../../ATKJUCEComponents/Tools/FFTViewer.cpp; sourceTree = "<group>"; };
+		08FBDD901EC876620060FC3D /* FFTViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FFTViewer.h; path = ../../../ATKJUCEComponents/Tools/FFTViewer.h; sourceTree = "<group>"; };
 		0CC3FB467885B72F08596AEB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		179BBC10E09DDCC67A2697FA /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		1916682A6D0CFA051E2183C7 /* Info-VST.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-VST.plist"; sourceTree = SOURCE_ROOT; };
@@ -710,6 +713,8 @@
 		08FBDC8B1EC75CC80060FC3D /* ATKJUCEComponents */ = {
 			isa = PBXGroup;
 			children = (
+				08FBDD8F1EC876620060FC3D /* FFTViewer.cpp */,
+				08FBDD901EC876620060FC3D /* FFTViewer.h */,
 			);
 			name = ATKJUCEComponents;
 			sourceTree = "<group>";
@@ -1285,6 +1290,7 @@
 				9DB50A2F4E4F92613479F29A /* PluginProcessor.cpp in Sources */,
 				0A72DA5BBBDDAD021FEB6074 /* PluginEditor.cpp in Sources */,
 				08FBDD7E1EC767A10060FC3D /* include_juce_audio_basics.mm in Sources */,
+				08FBDD911EC876620060FC3D /* FFTViewer.cpp in Sources */,
 				85733705856109B7DA5C0CC0 /* include_juce_audio_devices.mm in Sources */,
 				7D793E12AF8271953E617E54 /* include_juce_audio_formats.mm in Sources */,
 				C43CAD27FE22FF0E6B1A3D8C /* include_juce_audio_plugin_client_utils.cpp in Sources */,
