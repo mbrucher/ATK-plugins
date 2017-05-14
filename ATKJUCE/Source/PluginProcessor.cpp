@@ -10,6 +10,8 @@
 
 #include <cstring>
 
+#include <boost/math/constants/constants.hpp>
+
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
@@ -122,6 +124,11 @@ void ATKJUCEAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBloc
   }
   full_buffer.assign(slice_size * 4, 0);
   fft_buffer.assign(slice_size * 2, 0);
+  window.resize(slice_size * 2, 0);
+  for(size_t i = 0; i < slice_size * 2; ++i)
+  {
+    window[i] = .5 * (1 - std::cos(2 * boost::math::constants::pi<float>() * i / (slice_size * 2 - 1)));
+  }
   current_buffer_index = 0;
   last_checked_out_buffer = -2; // -2 is the indicator of using the second to last slice
 }
@@ -223,13 +230,19 @@ const std::vector<float>& ATKJUCEAudioProcessor::get_last_slice()
     {
       first_index += 4* slice_size;
     }
-    memcpy(reinterpret_cast<char*>(fft_buffer.data()), reinterpret_cast<const char*>(full_buffer.data() + first_index), slice_size * sizeof(float));
+    for(std::size_t i = 0; i < slice_size; ++i)
+    {
+      fft_buffer[i] = window[i] * full_buffer[first_index + i];
+    }
     first_index += slice_size;
     if(first_index > 4 * slice_size)
     {
       first_index -= 4* slice_size;
     }
-    memcpy(reinterpret_cast<char*>(fft_buffer.data() + slice_size), reinterpret_cast<const char*>(full_buffer.data() + first_index), slice_size * sizeof(float));
+    for(std::size_t i = 0; i < slice_size; ++i)
+    {
+      fft_buffer[i + slice_size] = window[i + slice_size] * full_buffer[first_index + i];
+    }
     
     last_checked_out_buffer = current_slice;
   }

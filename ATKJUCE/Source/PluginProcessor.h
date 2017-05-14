@@ -74,6 +74,7 @@ private:
   
   std::vector<float> full_buffer;
   std::vector<float> fft_buffer;
+  std::vector<float> window;
   int slice_size;
   int current_buffer_index;
   int current_slice;
