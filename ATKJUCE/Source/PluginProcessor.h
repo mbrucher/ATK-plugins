@@ -14,6 +14,7 @@
 
 #include <ATK/Core/InPointerFilter.h>
 #include <ATK/Core/OutPointerFilter.h>
+#include <ATK/Core/PipelineGlobalSinkFilter.h>
 
 
 //==============================================================================
@@ -66,4 +67,10 @@ private:
   ATK::InPointerFilter<float> inR;
   ATK::OutPointerFilter<float> outL;
   ATK::OutPointerFilter<float> outR;
+  ATK::OutPointerFilter<float> buffer_filter;
+  ATK::PipelineGlobalSinkFilter pipeline;
+  
+  std::vector<float> fft_buffer;
+  int slize_size;
+  int current_buffer_index;
 };

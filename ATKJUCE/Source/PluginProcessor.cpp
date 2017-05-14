@@ -25,10 +25,13 @@ ATKJUCEAudioProcessor::ATKJUCEAudioProcessor()
                      #endif
                        ),
 #endif
-inL(nullptr, 1, 0, false), inR(nullptr, 1, 0, false), outL(nullptr, 1, 0, false), outR(nullptr, 1, 0, false)
+inL(nullptr, 1, 0, false), inR(nullptr, 1, 0, false), outL(nullptr, 1, 0, false), outR(nullptr, 1, 0, false), buffer_filter(nullptr, 1, 0, false)
 {
   outL.set_input_port(0, &inL, 0);
   outR.set_input_port(0, &inR, 0);
+  buffer_filter.set_input_port(0, &inL, 0);
+  pipeline.add_filter(&outL);
+  pipeline.add_filter(&buffer_filter);
 }
 
 ATKJUCEAudioProcessor::~ATKJUCEAudioProcessor()
@@ -102,6 +105,23 @@ void ATKJUCEAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBloc
 	outL.set_output_sampling_rate(intsamplerate);
 	outR.set_input_sampling_rate(intsamplerate);
 	outR.set_output_sampling_rate(intsamplerate);
+  buffer_filter.set_input_sampling_rate(intsamplerate);
+  buffer_filter.set_output_sampling_rate(intsamplerate);
+  buffer_filter.set_pointer(fft_buffer.data(), fft_buffer.size());
+
+  pipeline.set_input_sampling_rate(intsamplerate);
+
+  if(intsamplerate > 48000)
+  {
+    fft_buffer.assign(1024*32*4, 0);
+    slize_size = 1024*32;
+  }
+  else
+  {
+    fft_buffer.assign(1024*16*4, 0);
+    slize_size = 1024*16;
+  }
+  current_buffer_index = 0;
 }
 
 void ATKJUCEAudioProcessor::releaseResources()
@@ -136,17 +156,29 @@ void ATKJUCEAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer&
 {
   const int totalNumInputChannels  = getTotalNumInputChannels();
   const int totalNumOutputChannels = getTotalNumOutputChannels();
+  
+  auto nb_samples = buffer.getNumSamples();
 
   assert(totalNumInputChannels == totalNumOutputChannels);
   assert(totalNumOutputChannels == 2);
   
-  inL.set_pointer(buffer.getReadPointer(0), buffer.getNumSamples());
-  inR.set_pointer(buffer.getReadPointer(1), buffer.getNumSamples());
-  outL.set_pointer(buffer.getWritePointer(0), buffer.getNumSamples());
-  outR.set_pointer(buffer.getWritePointer(1), buffer.getNumSamples());
+  inL.set_pointer(buffer.getReadPointer(0), nb_samples);
+  inR.set_pointer(buffer.getReadPointer(1), nb_samples);
+  outL.set_pointer(buffer.getWritePointer(0), nb_samples);
+  outR.set_pointer(buffer.getWritePointer(1), nb_samples);
  
-  outL.process(buffer.getNumSamples());
-  outR.process(buffer.getNumSamples());
+  outR.process(nb_samples);
+
+  auto size = std::min(nb_samples, slize_size * 4 - current_buffer_index);
+  
+  pipeline.process(size);
+  
+  current_buffer_index += size;
+  if(current_buffer_index == slize_size * 4)
+  {
+    buffer_filter.set_pointer(fft_buffer.data(), fft_buffer.size());
+    pipeline.process(nb_samples - size);
+  }
 }
 
 //==============================================================================
