@@ -8,9 +8,10 @@
   ==============================================================================
 */
 
+#include <cstring>
+
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-
 
 //==============================================================================
 ATKJUCEAudioProcessor::ATKJUCEAudioProcessor()
@@ -107,21 +108,22 @@ void ATKJUCEAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBloc
 	outR.set_output_sampling_rate(intsamplerate);
   buffer_filter.set_input_sampling_rate(intsamplerate);
   buffer_filter.set_output_sampling_rate(intsamplerate);
-  buffer_filter.set_pointer(fft_buffer.data(), fft_buffer.size());
+  buffer_filter.set_pointer(full_buffer.data(), full_buffer.size());
 
   pipeline.set_input_sampling_rate(intsamplerate);
 
   if(intsamplerate > 48000)
   {
-    fft_buffer.assign(1024*32*4, 0);
-    slize_size = 1024*32;
+    slice_size = 1024*32;
   }
   else
   {
-    fft_buffer.assign(1024*16*4, 0);
-    slize_size = 1024*16;
+    slice_size = 1024*16;
   }
+  full_buffer.assign(slice_size * 4, 0);
+  fft_buffer.assign(slice_size * 2, 0);
   current_buffer_index = 0;
+  last_checked_out_buffer = -2; // -2 is the indicator of using the second to last slice
 }
 
 void ATKJUCEAudioProcessor::releaseResources()
@@ -154,9 +156,6 @@ bool ATKJUCEAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) 
 
 void ATKJUCEAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
-  const int totalNumInputChannels  = getTotalNumInputChannels();
-  const int totalNumOutputChannels = getTotalNumOutputChannels();
-  
   auto nb_samples = buffer.getNumSamples();
 
   assert(totalNumInputChannels == totalNumOutputChannels);
@@ -169,15 +168,24 @@ void ATKJUCEAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer&
  
   outR.process(nb_samples);
 
-  auto size = std::min(nb_samples, slize_size * 4 - current_buffer_index);
+  auto size = std::min(nb_samples, slice_size * 4 - current_buffer_index);
   
   pipeline.process(size);
   
   current_buffer_index += size;
-  if(current_buffer_index == slize_size * 4)
+  if(current_buffer_index == slice_size * 4)
   {
-    buffer_filter.set_pointer(fft_buffer.data(), fft_buffer.size());
+    buffer_filter.set_pointer(full_buffer.data(), full_buffer.size());
     pipeline.process(nb_samples - size);
+    current_buffer_index = 0;
+  }
+  
+  int buffer_index = current_buffer_index;
+  current_slice = 0;
+  while(buffer_index > 0)
+  {
+    ++current_slice;
+    buffer_index -= slice_size;
   }
 }
 
@@ -206,9 +214,31 @@ void ATKJUCEAudioProcessor::setStateInformation (const void* data, int sizeInByt
     // whose contents will have been created by the getStateInformation() call.
 }
 
+const std::vector<float>& ATKJUCEAudioProcessor::get_last_slice()
+{
+  if(last_checked_out_buffer != current_slice)
+  {
+    auto first_index = current_slice * slice_size;
+    if(first_index < 0)
+    {
+      first_index += 4* slice_size;
+    }
+    memcpy(reinterpret_cast<char*>(fft_buffer.data()), reinterpret_cast<const char*>(full_buffer.data() + first_index), slice_size * sizeof(float));
+    first_index += slice_size;
+    if(first_index > 4 * slice_size)
+    {
+      first_index -= 4* slice_size;
+    }
+    memcpy(reinterpret_cast<char*>(fft_buffer.data() + slice_size), reinterpret_cast<const char*>(full_buffer.data() + first_index), slice_size * sizeof(float));
+    
+    last_checked_out_buffer = current_slice;
+  }
+  return fft_buffer;
+}
+
 //==============================================================================
 // This creates new instances of the plugin..
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new ATKJUCEAudioProcessor();
+  return new ATKJUCEAudioProcessor();
 }
