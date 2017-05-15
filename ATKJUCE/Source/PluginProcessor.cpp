@@ -165,9 +165,6 @@ void ATKJUCEAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer&
 {
   auto nb_samples = buffer.getNumSamples();
 
-  assert(totalNumInputChannels == totalNumOutputChannels);
-  assert(totalNumOutputChannels == 2);
-  
   inL.set_pointer(buffer.getReadPointer(0), nb_samples);
   inR.set_pointer(buffer.getReadPointer(1), nb_samples);
   outL.set_pointer(buffer.getWritePointer(0), nb_samples);
