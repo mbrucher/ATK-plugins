@@ -164,7 +164,7 @@ bool ATKJUCEAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) 
 void ATKJUCEAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
   auto nb_samples = buffer.getNumSamples();
-  
+
   inL.set_pointer(buffer.getReadPointer(0), nb_samples);
   inR.set_pointer(buffer.getReadPointer(1), nb_samples);
   outL.set_pointer(buffer.getWritePointer(0), nb_samples);
