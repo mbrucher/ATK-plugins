@@ -61,7 +61,7 @@ public:
   void setStateInformation (const void* data, int sizeInBytes) override;
 
   int get_sampling_rate() const override;
-  const std::vector<double>& get_last_slice() override;
+  const std::vector<double>& get_last_slice(bool& process) override;
   
 private:
   //==============================================================================

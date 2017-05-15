@@ -130,7 +130,8 @@ void ATKJUCEAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBloc
     window[i] = .5 * (1 - std::cos(2 * boost::math::constants::pi<float>() * i / (slice_size * 2 - 1)));
   }
   current_buffer_index = 0;
-  last_checked_out_buffer = -2; // -2 is the indicator of using the second to last slice
+  current_slice = 0;
+  last_checked_out_buffer = -1; // 0 indicates that the valid buffer is 2 slices before
 }
 
 void ATKJUCEAudioProcessor::releaseResources()
@@ -185,7 +186,7 @@ void ATKJUCEAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer&
   }
   
   int buffer_index = current_buffer_index;
-  current_slice = 0;
+  current_slice = -1;
   while(buffer_index > 0)
   {
     ++current_slice;
@@ -223,11 +224,13 @@ int ATKJUCEAudioProcessor::get_sampling_rate() const
   return sampling_rate;
 }
 
-const std::vector<double>& ATKJUCEAudioProcessor::get_last_slice()
+const std::vector<double>& ATKJUCEAudioProcessor::get_last_slice(bool& process)
 {
+  process = false;
   if(last_checked_out_buffer != current_slice)
   {
-    auto first_index = current_slice * slice_size;
+    process = true;
+    auto first_index = (current_slice-2) * slice_size;
     if(first_index < 0)
     {
       first_index += 4* slice_size;
@@ -237,7 +240,7 @@ const std::vector<double>& ATKJUCEAudioProcessor::get_last_slice()
       fft_buffer[i] = window[i] * full_buffer[first_index + i];
     }
     first_index += slice_size;
-    if(first_index > 4 * slice_size)
+    if(first_index >= 4 * slice_size)
     {
       first_index -= 4* slice_size;
     }
