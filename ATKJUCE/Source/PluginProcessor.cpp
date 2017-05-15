@@ -97,24 +97,24 @@ void ATKJUCEAudioProcessor::changeProgramName (int index, const String& newName)
 //==============================================================================
 void ATKJUCEAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-	auto intsamplerate = std::lround(sampleRate);
+	sampling_rate = std::lround(sampleRate);
 
-	inL.set_input_sampling_rate(intsamplerate);
-	inL.set_output_sampling_rate(intsamplerate);
-	inR.set_input_sampling_rate(intsamplerate);
-	inR.set_output_sampling_rate(intsamplerate);
+	inL.set_input_sampling_rate(sampling_rate);
+	inL.set_output_sampling_rate(sampling_rate);
+	inR.set_input_sampling_rate(sampling_rate);
+	inR.set_output_sampling_rate(sampling_rate);
 
-	outL.set_input_sampling_rate(intsamplerate);
-	outL.set_output_sampling_rate(intsamplerate);
-	outR.set_input_sampling_rate(intsamplerate);
-	outR.set_output_sampling_rate(intsamplerate);
-  buffer_filter.set_input_sampling_rate(intsamplerate);
-  buffer_filter.set_output_sampling_rate(intsamplerate);
+	outL.set_input_sampling_rate(sampling_rate);
+	outL.set_output_sampling_rate(sampling_rate);
+	outR.set_input_sampling_rate(sampling_rate);
+	outR.set_output_sampling_rate(sampling_rate);
+  buffer_filter.set_input_sampling_rate(sampling_rate);
+  buffer_filter.set_output_sampling_rate(sampling_rate);
   buffer_filter.set_pointer(full_buffer.data(), full_buffer.size());
 
-  pipeline.set_input_sampling_rate(intsamplerate);
+  pipeline.set_input_sampling_rate(sampling_rate);
 
-  if(intsamplerate > 48000)
+  if(sampling_rate > 48000)
   {
     slice_size = 1024*32;
   }
@@ -164,9 +164,6 @@ bool ATKJUCEAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) 
 void ATKJUCEAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
   auto nb_samples = buffer.getNumSamples();
-
-  assert(totalNumInputChannels == totalNumOutputChannels);
-  assert(totalNumOutputChannels == 2);
   
   inL.set_pointer(buffer.getReadPointer(0), nb_samples);
   inR.set_pointer(buffer.getReadPointer(1), nb_samples);
@@ -221,7 +218,12 @@ void ATKJUCEAudioProcessor::setStateInformation (const void* data, int sizeInByt
     // whose contents will have been created by the getStateInformation() call.
 }
 
-const std::vector<float>& ATKJUCEAudioProcessor::get_last_slice()
+int ATKJUCEAudioProcessor::get_sampling_rate() const
+{
+  return sampling_rate;
+}
+
+const std::vector<double>& ATKJUCEAudioProcessor::get_last_slice()
 {
   if(last_checked_out_buffer != current_slice)
   {

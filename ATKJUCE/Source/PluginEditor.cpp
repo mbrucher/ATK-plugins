@@ -14,7 +14,7 @@
 
 //==============================================================================
 ATKJUCEAudioProcessorEditor::ATKJUCEAudioProcessorEditor (ATKJUCEAudioProcessor& p)
-    : AudioProcessorEditor (&p), processor (p)
+    : AudioProcessorEditor (&p), processor (p), view(&p)
 {
   addAndMakeVisible(&view);
   // Make sure that before the constructor has finished, you've set the

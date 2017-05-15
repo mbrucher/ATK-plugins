@@ -29,6 +29,36 @@
 /* Begin PBXBuildFile section */
 		0575E95B0957BBB38AC1751F /* include_juce_audio_processors.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3AEB89C34826C1CA34FF1B3 /* include_juce_audio_processors.mm */; };
 		0622115090F1DF00057E6476 /* include_juce_audio_plugin_client_AUv3.mm in Sources */ = {isa = PBXBuildFile; fileRef = C3F2755FEF84984974F61569 /* include_juce_audio_plugin_client_AUv3.mm */; };
+		089DEDB51ECA2D3500B7D63B /* libippcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB21ECA2D3500B7D63B /* libippcore.a */; };
+		089DEDB61ECA2D3500B7D63B /* libippcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB21ECA2D3500B7D63B /* libippcore.a */; };
+		089DEDB71ECA2D3500B7D63B /* libippcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB21ECA2D3500B7D63B /* libippcore.a */; };
+		089DEDB81ECA2D3500B7D63B /* libippcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB21ECA2D3500B7D63B /* libippcore.a */; };
+		089DEDB91ECA2D3500B7D63B /* libippcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB21ECA2D3500B7D63B /* libippcore.a */; };
+		089DEDBA1ECA2D3500B7D63B /* libippcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB21ECA2D3500B7D63B /* libippcore.a */; };
+		089DEDBB1ECA2D3500B7D63B /* libipps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB31ECA2D3500B7D63B /* libipps.a */; };
+		089DEDBC1ECA2D3500B7D63B /* libipps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB31ECA2D3500B7D63B /* libipps.a */; };
+		089DEDBD1ECA2D3500B7D63B /* libipps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB31ECA2D3500B7D63B /* libipps.a */; };
+		089DEDBE1ECA2D3500B7D63B /* libipps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB31ECA2D3500B7D63B /* libipps.a */; };
+		089DEDBF1ECA2D3500B7D63B /* libipps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB31ECA2D3500B7D63B /* libipps.a */; };
+		089DEDC01ECA2D3500B7D63B /* libipps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB31ECA2D3500B7D63B /* libipps.a */; };
+		089DEDC11ECA2D3500B7D63B /* libippvm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB41ECA2D3500B7D63B /* libippvm.a */; };
+		089DEDC21ECA2D3500B7D63B /* libippvm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB41ECA2D3500B7D63B /* libippvm.a */; };
+		089DEDC31ECA2D3500B7D63B /* libippvm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB41ECA2D3500B7D63B /* libippvm.a */; };
+		089DEDC41ECA2D3500B7D63B /* libippvm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB41ECA2D3500B7D63B /* libippvm.a */; };
+		089DEDC51ECA2D3500B7D63B /* libippvm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB41ECA2D3500B7D63B /* libippvm.a */; };
+		089DEDC61ECA2D3500B7D63B /* libippvm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 089DEDB41ECA2D3500B7D63B /* libippvm.a */; };
+		089DEDC91ECA313100B7D63B /* libATKAdaptive_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC8D1EC75D0F0060FC3D /* libATKAdaptive_static32.a */; };
+		089DEDCA1ECA313100B7D63B /* libATKCore_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC8E1EC75D0F0060FC3D /* libATKCore_static32.a */; };
+		089DEDCB1ECA313100B7D63B /* libATKDelay_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC8F1EC75D0F0060FC3D /* libATKDelay_static32.a */; };
+		089DEDCC1ECA313100B7D63B /* libATKDistortion_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC901EC75D0F0060FC3D /* libATKDistortion_static32.a */; };
+		089DEDCD1ECA313100B7D63B /* libATKDynamic_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC911EC75D0F0060FC3D /* libATKDynamic_static32.a */; };
+		089DEDCE1ECA313100B7D63B /* libATKEQ_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC921EC75D0F0060FC3D /* libATKEQ_static32.a */; };
+		089DEDCF1ECA313100B7D63B /* libATKIO_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC931EC75D0F0060FC3D /* libATKIO_static32.a */; };
+		089DEDD01ECA313100B7D63B /* libATKPreamplifier_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC941EC75D0F0060FC3D /* libATKPreamplifier_static32.a */; };
+		089DEDD11ECA313100B7D63B /* libATKReverberation_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC951EC75D0F0060FC3D /* libATKReverberation_static32.a */; };
+		089DEDD21ECA313100B7D63B /* libATKSpecial_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC961EC75D0F0060FC3D /* libATKSpecial_static32.a */; };
+		089DEDD31ECA313100B7D63B /* libATKTools_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC971EC75D0F0060FC3D /* libATKTools_static32.a */; };
+		089DEDD41ECA313100B7D63B /* libATKUtility_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC981EC75D0F0060FC3D /* libATKUtility_static32.a */; };
 		08FBDC391EC758C70060FC3D /* RecentFilesMenuTemplate.nib in Resources */ = {isa = PBXBuildFile; fileRef = CD781089B550303B68599125 /* RecentFilesMenuTemplate.nib */; };
 		08FBDC3A1EC758C70060FC3D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D706D2FDEF3C5A8F290FC41 /* Accelerate.framework */; };
 		08FBDC3B1EC758C70060FC3D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C360199AD0D84869F7C80F7 /* AudioToolbox.framework */; };
@@ -330,6 +360,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		089DED941EC99F1A00B7D63B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1DEF58BDE6F32C4EEE708ECC /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -346,6 +385,10 @@
 /* Begin PBXFileReference section */
 		00367249EEC351C4FF9EB8CA /* Info-AAX.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-AAX.plist"; sourceTree = SOURCE_ROOT; };
 		04A425C0C2C3A34EDD1C18F3 /* juce_audio_plugin_client */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_audio_plugin_client; path = ../../../../JUCE/modules/juce_audio_plugin_client; sourceTree = SOURCE_ROOT; };
+		080EA26E1EC9111C00784AEC /* FFTViewerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FFTViewerInterface.h; path = ../../../ATKJUCEComponents/Tools/FFTViewerInterface.h; sourceTree = "<group>"; };
+		089DEDB21ECA2D3500B7D63B /* libippcore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libippcore.a; path = ../../../../../local/ipp/lib/libippcore.a; sourceTree = "<group>"; };
+		089DEDB31ECA2D3500B7D63B /* libipps.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libipps.a; path = ../../../../../local/ipp/lib/libipps.a; sourceTree = "<group>"; };
+		089DEDB41ECA2D3500B7D63B /* libippvm.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libippvm.a; path = ../../../../../local/ipp/lib/libippvm.a; sourceTree = "<group>"; };
 		08FBDC891EC75CC10060FC3D /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../../Source/AppConfig.h; sourceTree = "<group>"; };
 		08FBDC8A1EC75CC10060FC3D /* JuceHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../Source/JuceHeader.h; sourceTree = "<group>"; };
 		08FBDC8D1EC75D0F0060FC3D /* libATKAdaptive_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKAdaptive_static32.a; path = ../../../../ATK32/lib/libATKAdaptive_static32.a; sourceTree = "<group>"; };
@@ -472,6 +515,7 @@
 				08FBDCDA1EC761FA0060FC3D /* libATKAdaptive_static32.a in Frameworks */,
 				08FBDCDB1EC761FA0060FC3D /* libATKCore_static32.a in Frameworks */,
 				08FBDCDC1EC761FA0060FC3D /* libATKDelay_static32.a in Frameworks */,
+				089DEDBE1ECA2D3500B7D63B /* libipps.a in Frameworks */,
 				08FBDCDD1EC761FA0060FC3D /* libATKDistortion_static32.a in Frameworks */,
 				08FBDCDE1EC761FA0060FC3D /* libATKDynamic_static32.a in Frameworks */,
 				08FBDCDF1EC761FA0060FC3D /* libATKEQ_static32.a in Frameworks */,
@@ -485,6 +529,8 @@
 				08FBDC571EC758C70060FC3D /* AudioToolbox.framework in Frameworks */,
 				EA91DEEA1B3F83907895483C /* AudioUnit.framework in Frameworks */,
 				08FBDC581EC758C70060FC3D /* AVFoundation.framework in Frameworks */,
+				089DEDB81ECA2D3500B7D63B /* libippcore.a in Frameworks */,
+				089DEDC41ECA2D3500B7D63B /* libippvm.a in Frameworks */,
 				08FBDC591EC758C70060FC3D /* Carbon.framework in Frameworks */,
 				08FBDC5A1EC758C70060FC3D /* Cocoa.framework in Frameworks */,
 				08FBDC5B1EC758C70060FC3D /* CoreAudio.framework in Frameworks */,
@@ -507,7 +553,9 @@
 				08FBDD0C1EC762190060FC3D /* libATKAdaptive_static.a in Frameworks */,
 				08FBDD0D1EC762190060FC3D /* libATKCore_static.a in Frameworks */,
 				08FBDD0E1EC762190060FC3D /* libATKDelay_static.a in Frameworks */,
+				089DEDB51ECA2D3500B7D63B /* libippcore.a in Frameworks */,
 				08FBDD0F1EC762190060FC3D /* libATKDistortion_static.a in Frameworks */,
+				089DEDC11ECA2D3500B7D63B /* libippvm.a in Frameworks */,
 				08FBDD101EC762190060FC3D /* libATKDynamic_static.a in Frameworks */,
 				08FBDD111EC762190060FC3D /* libATKEQ_static.a in Frameworks */,
 				08FBDD121EC762190060FC3D /* libATKIO_static.a in Frameworks */,
@@ -526,6 +574,7 @@
 				08FBDD1F1EC762190060FC3D /* libATKIO_static32.a in Frameworks */,
 				08FBDD201EC762190060FC3D /* libATKPreamplifier_static32.a in Frameworks */,
 				08FBDD211EC762190060FC3D /* libATKReverberation_static32.a in Frameworks */,
+				089DEDBB1ECA2D3500B7D63B /* libipps.a in Frameworks */,
 				08FBDD221EC762190060FC3D /* libATKSpecial_static32.a in Frameworks */,
 				08FBDD231EC762190060FC3D /* libATKTools_static32.a in Frameworks */,
 				08FBDD241EC762190060FC3D /* libATKUtility_static32.a in Frameworks */,
@@ -563,8 +612,23 @@
 				08FBDCF01EC762020060FC3D /* libATKSpecial_static.a in Frameworks */,
 				08FBDCF11EC762020060FC3D /* libATKTools_static.a in Frameworks */,
 				08FBDCF21EC762020060FC3D /* libATKUtility_static.a in Frameworks */,
+				089DEDC91ECA313100B7D63B /* libATKAdaptive_static32.a in Frameworks */,
+				089DEDCA1ECA313100B7D63B /* libATKCore_static32.a in Frameworks */,
+				089DEDCB1ECA313100B7D63B /* libATKDelay_static32.a in Frameworks */,
+				089DEDCC1ECA313100B7D63B /* libATKDistortion_static32.a in Frameworks */,
+				089DEDCD1ECA313100B7D63B /* libATKDynamic_static32.a in Frameworks */,
+				089DEDCE1ECA313100B7D63B /* libATKEQ_static32.a in Frameworks */,
+				089DEDCF1ECA313100B7D63B /* libATKIO_static32.a in Frameworks */,
+				089DEDD01ECA313100B7D63B /* libATKPreamplifier_static32.a in Frameworks */,
+				089DEDD11ECA313100B7D63B /* libATKReverberation_static32.a in Frameworks */,
+				089DEDD21ECA313100B7D63B /* libATKSpecial_static32.a in Frameworks */,
+				089DEDD31ECA313100B7D63B /* libATKTools_static32.a in Frameworks */,
+				089DEDD41ECA313100B7D63B /* libATKUtility_static32.a in Frameworks */,
+				089DEDC31ECA2D3500B7D63B /* libippvm.a in Frameworks */,
+				089DEDBD1ECA2D3500B7D63B /* libipps.a in Frameworks */,
 				08FBDC481EC758C70060FC3D /* Accelerate.framework in Frameworks */,
 				08FBDC491EC758C70060FC3D /* AudioToolbox.framework in Frameworks */,
+				089DEDB71ECA2D3500B7D63B /* libippcore.a in Frameworks */,
 				08FBDC4A1EC758C70060FC3D /* AVFoundation.framework in Frameworks */,
 				08FBDC4B1EC758C70060FC3D /* Carbon.framework in Frameworks */,
 				08FBDC4C1EC758C70060FC3D /* Cocoa.framework in Frameworks */,
@@ -607,10 +671,13 @@
 				08FBDC6B1EC758C70060FC3D /* CoreAudioKit.framework in Frameworks */,
 				08FBDC6C1EC758C70060FC3D /* CoreMedia.framework in Frameworks */,
 				08FBDC6D1EC758C70060FC3D /* CoreMIDI.framework in Frameworks */,
+				089DEDB91ECA2D3500B7D63B /* libippcore.a in Frameworks */,
 				08FBDC6E1EC758C70060FC3D /* DiscRecording.framework in Frameworks */,
 				08FBDC6F1EC758C70060FC3D /* IOKit.framework in Frameworks */,
 				08FBDC701EC758C70060FC3D /* OpenGL.framework in Frameworks */,
+				089DEDC51ECA2D3500B7D63B /* libippvm.a in Frameworks */,
 				08FBDC711EC758C70060FC3D /* QuartzCore.framework in Frameworks */,
+				089DEDBF1ECA2D3500B7D63B /* libipps.a in Frameworks */,
 				08FBDC721EC758C70060FC3D /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -623,7 +690,9 @@
 				08FBDCF31EC762130060FC3D /* libATKAdaptive_static.a in Frameworks */,
 				08FBDCF41EC762130060FC3D /* libATKCore_static.a in Frameworks */,
 				08FBDCF51EC762130060FC3D /* libATKDelay_static.a in Frameworks */,
+				089DEDB61ECA2D3500B7D63B /* libippcore.a in Frameworks */,
 				08FBDCF61EC762130060FC3D /* libATKDistortion_static.a in Frameworks */,
+				089DEDC21ECA2D3500B7D63B /* libippvm.a in Frameworks */,
 				08FBDCF71EC762130060FC3D /* libATKDynamic_static.a in Frameworks */,
 				08FBDCF81EC762130060FC3D /* libATKEQ_static.a in Frameworks */,
 				08FBDCF91EC762130060FC3D /* libATKIO_static.a in Frameworks */,
@@ -642,6 +711,7 @@
 				08FBDD061EC762130060FC3D /* libATKIO_static32.a in Frameworks */,
 				08FBDD071EC762130060FC3D /* libATKPreamplifier_static32.a in Frameworks */,
 				08FBDD081EC762130060FC3D /* libATKReverberation_static32.a in Frameworks */,
+				089DEDBC1ECA2D3500B7D63B /* libipps.a in Frameworks */,
 				08FBDD091EC762130060FC3D /* libATKSpecial_static32.a in Frameworks */,
 				08FBDD0A1EC762130060FC3D /* libATKTools_static32.a in Frameworks */,
 				08FBDD0B1EC762130060FC3D /* libATKUtility_static32.a in Frameworks */,
@@ -669,7 +739,9 @@
 				08FBDCA71EC761B50060FC3D /* libATKAdaptive_static.a in Frameworks */,
 				08FBDCA81EC761CC0060FC3D /* libATKCore_static.a in Frameworks */,
 				08FBDCA91EC761D20060FC3D /* libATKDelay_static.a in Frameworks */,
+				089DEDBA1ECA2D3500B7D63B /* libippcore.a in Frameworks */,
 				08FBDCAA1EC761E60060FC3D /* libATKDistortion_static.a in Frameworks */,
+				089DEDC61ECA2D3500B7D63B /* libippvm.a in Frameworks */,
 				08FBDCAB1EC761E60060FC3D /* libATKDynamic_static.a in Frameworks */,
 				08FBDCAC1EC761E60060FC3D /* libATKEQ_static.a in Frameworks */,
 				08FBDCAD1EC761E60060FC3D /* libATKIO_static.a in Frameworks */,
@@ -688,6 +760,7 @@
 				08FBDCBA1EC761E60060FC3D /* libATKIO_static32.a in Frameworks */,
 				08FBDCBB1EC761E60060FC3D /* libATKPreamplifier_static32.a in Frameworks */,
 				08FBDCBC1EC761E60060FC3D /* libATKReverberation_static32.a in Frameworks */,
+				089DEDC01ECA2D3500B7D63B /* libipps.a in Frameworks */,
 				08FBDCBD1EC761E60060FC3D /* libATKSpecial_static32.a in Frameworks */,
 				08FBDCBE1EC761E60060FC3D /* libATKTools_static32.a in Frameworks */,
 				08FBDCBF1EC761E60060FC3D /* libATKUtility_static32.a in Frameworks */,
@@ -710,11 +783,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		089DEDC81ECA2F0400B7D63B /* FFT */ = {
+			isa = PBXGroup;
+			children = (
+				089DEDB21ECA2D3500B7D63B /* libippcore.a */,
+				089DEDB31ECA2D3500B7D63B /* libipps.a */,
+				089DEDB41ECA2D3500B7D63B /* libippvm.a */,
+			);
+			name = FFT;
+			sourceTree = "<group>";
+		};
 		08FBDC8B1EC75CC80060FC3D /* ATKJUCEComponents */ = {
 			isa = PBXGroup;
 			children = (
 				08FBDD8F1EC876620060FC3D /* FFTViewer.cpp */,
 				08FBDD901EC876620060FC3D /* FFTViewer.h */,
+				080EA26E1EC9111C00784AEC /* FFTViewerInterface.h */,
 			);
 			name = ATKJUCEComponents;
 			sourceTree = "<group>";
@@ -722,6 +806,7 @@
 		08FBDC8C1EC75CF90060FC3D /* ATK */ = {
 			isa = PBXGroup;
 			children = (
+				089DEDC81ECA2F0400B7D63B /* FFT */,
 				08FBDC991EC75D1B0060FC3D /* libATKAdaptive_static.a */,
 				08FBDC9A1EC75D1B0060FC3D /* libATKCore_static.a */,
 				08FBDC9B1EC75D1B0060FC3D /* libATKDelay_static.a */,
@@ -940,6 +1025,7 @@
 				94D1FD97DB468395D1CCE64A /* Resources */,
 				6205E5F8DD7130D50C4B9829 /* Sources */,
 				C0B5390F2D722EA4F0BDEE2F /* Frameworks */,
+				089DED941EC99F1A00B7D63B /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1481,7 +1567,11 @@
 				HEADER_SEARCH_PATHS = "$(ADDITIONAL_INCLUDES)";
 				INFOPLIST_FILE = "Info-VST.plist";
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
-				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(ADDITIONAL_LIBRARY_PATHS)",
+					"$(PROJECT_DIR)",
+					/opt/intel/compilers_and_libraries_2017.4.181/mac/ipp/lib,
+				);
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
@@ -1525,11 +1615,15 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(ADDITIONAL_INCLUDES)";
 				INFOPLIST_FILE = "Info-AUv3_AppExtension.plist";
-				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(ADDITIONAL_LIBRARY_PATHS)",
+					"$(PROJECT_DIR)",
+					/opt/intel/compilers_and_libraries_2017.4.181/mac/ipp/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_CPLUSPLUSFLAGS = "";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-bundle";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MatthieuBrucher.ATKJUCE.ATKJUCEAUv3;
 				SDKROOT_ppc = macosx10.5;
 			};
@@ -1571,7 +1665,11 @@
 				HEADER_SEARCH_PATHS = "$(ADDITIONAL_INCLUDES)";
 				INFOPLIST_FILE = "Info-VST3.plist";
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST3/";
-				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(ADDITIONAL_LIBRARY_PATHS)",
+					"$(PROJECT_DIR)",
+					/opt/intel/compilers_and_libraries_2017.4.181/mac/ipp/lib,
+				);
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
@@ -1586,7 +1684,7 @@
 		709F64079431D5B70D81F143 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -1622,6 +1720,8 @@
 					"$(inherited)",
 					"$(ADDITIONAL_LIBRARY_PATHS)",
 					"$(AAXSDK)/Libs/Debug",
+					"$(PROJECT_DIR)",
+					/opt/intel/compilers_and_libraries_2017.4.181/mac/ipp/lib,
 				);
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -1696,7 +1796,11 @@
 				HEADER_SEARCH_PATHS = "$(ADDITIONAL_INCLUDES)";
 				INFOPLIST_FILE = "Info-VST.plist";
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
-				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(ADDITIONAL_LIBRARY_PATHS)",
+					"$(PROJECT_DIR)",
+					/opt/intel/compilers_and_libraries_2017.4.181/mac/ipp/lib,
+				);
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
@@ -1743,7 +1847,11 @@
 				HEADER_SEARCH_PATHS = "$(ADDITIONAL_INCLUDES)";
 				INFOPLIST_FILE = "Info-AU.plist";
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
-				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(ADDITIONAL_LIBRARY_PATHS)",
+					"$(PROJECT_DIR)",
+					/opt/intel/compilers_and_libraries_2017.4.181/mac/ipp/lib,
+				);
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
@@ -1791,7 +1899,11 @@
 				HEADER_SEARCH_PATHS = "$(ADDITIONAL_INCLUDES)";
 				INFOPLIST_FILE = "Info-VST3.plist";
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST3/";
-				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(ADDITIONAL_LIBRARY_PATHS)",
+					"$(PROJECT_DIR)",
+					/opt/intel/compilers_and_libraries_2017.4.181/mac/ipp/lib,
+				);
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
@@ -1806,7 +1918,7 @@
 		C6D0627A0C7ED33D4830964E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -1843,6 +1955,8 @@
 					"$(inherited)",
 					"$(ADDITIONAL_LIBRARY_PATHS)",
 					"$(AAXSDK)/Libs/Release",
+					"$(PROJECT_DIR)",
+					/opt/intel/compilers_and_libraries_2017.4.181/mac/ipp/lib,
 				);
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -1891,11 +2005,15 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(ADDITIONAL_INCLUDES)";
 				INFOPLIST_FILE = "Info-AUv3_AppExtension.plist";
-				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(ADDITIONAL_LIBRARY_PATHS)",
+					"$(PROJECT_DIR)",
+					/opt/intel/compilers_and_libraries_2017.4.181/mac/ipp/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_CPLUSPLUSFLAGS = "";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-bundle";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MatthieuBrucher.ATKJUCE.ATKJUCEAUv3;
 				SDKROOT_ppc = macosx10.5;
 			};
@@ -1937,7 +2055,11 @@
 				HEADER_SEARCH_PATHS = "$(ADDITIONAL_INCLUDES)";
 				INFOPLIST_FILE = "Info-AU.plist";
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
-				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(ADDITIONAL_LIBRARY_PATHS)",
+					"$(PROJECT_DIR)",
+					/opt/intel/compilers_and_libraries_2017.4.181/mac/ipp/lib,
+				);
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
@@ -1982,11 +2104,16 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(ADDITIONAL_INCLUDES)";
 				INFOPLIST_FILE = "Info-Standalone_Plugin.plist";
-				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(ADDITIONAL_LIBRARY_PATHS)",
+					"$(PROJECT_DIR)",
+					/opt/intel/compilers_and_libraries_2017.4.181/mac/ipp/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "-static";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MatthieuBrucher.ATKJUCE;
 				SDKROOT_ppc = macosx10.5;
 			};
@@ -2045,11 +2172,16 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(ADDITIONAL_INCLUDES)";
 				INFOPLIST_FILE = "Info-Standalone_Plugin.plist";
-				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(ADDITIONAL_LIBRARY_PATHS)",
+					"$(PROJECT_DIR)",
+					/opt/intel/compilers_and_libraries_2017.4.181/mac/ipp/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "-static";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MatthieuBrucher.ATKJUCE;
 				SDKROOT_ppc = macosx10.5;
 			};

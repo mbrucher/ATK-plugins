@@ -16,11 +16,12 @@
 #include <ATK/Core/OutPointerFilter.h>
 #include <ATK/Core/PipelineGlobalSinkFilter.h>
 
+#include <ATKJUCEComponents/Tools/FFTViewerInterface.h>
 
 //==============================================================================
 /**
 */
-class ATKJUCEAudioProcessor  : public AudioProcessor
+class ATKJUCEAudioProcessor  : public AudioProcessor, public ::ATK::juce::FFTViewerInterface
 {
 public:
   //==============================================================================
@@ -58,8 +59,9 @@ public:
   //==============================================================================
   void getStateInformation (MemoryBlock& destData) override;
   void setStateInformation (const void* data, int sizeInBytes) override;
-  
-  const std::vector<float>& get_last_slice();
+
+  int get_sampling_rate() const override;
+  const std::vector<double>& get_last_slice() override;
   
 private:
   //==============================================================================
@@ -73,8 +75,9 @@ private:
   ATK::PipelineGlobalSinkFilter pipeline;
   
   std::vector<float> full_buffer;
-  std::vector<float> fft_buffer;
+  std::vector<double> fft_buffer;
   std::vector<float> window;
+  int sampling_rate;
   int slice_size;
   int current_buffer_index;
   int current_slice;
