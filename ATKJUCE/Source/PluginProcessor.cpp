@@ -30,11 +30,17 @@ ATKJUCEAudioProcessor::ATKJUCEAudioProcessor()
 #endif
 inL(nullptr, 1, 0, false), inR(nullptr, 1, 0, false), outL(nullptr, 1, 0, false), outR(nullptr, 1, 0, false), buffer_filter(nullptr, 1, 0, false)
 {
-  outL.set_input_port(0, &inL, 0);
-  outR.set_input_port(0, &inR, 0);
+  sum.set_input_port(0, &noise, 0);
+  sum.set_input_port(1, &inL, 0);
+  outL.set_input_port(0, &sum, 0);
   buffer_filter.set_input_port(0, &inL, 0);
   pipeline.add_filter(&outL);
+  pipeline.add_filter(&outR);
   pipeline.add_filter(&buffer_filter);
+
+  outR.set_input_port(0, &inR, 0);
+
+  noise.set_volume(1);
 }
 
 ATKJUCEAudioProcessor::~ATKJUCEAudioProcessor()
@@ -106,7 +112,11 @@ void ATKJUCEAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBloc
 
 	outL.set_input_sampling_rate(sampling_rate);
 	outL.set_output_sampling_rate(sampling_rate);
-	outR.set_input_sampling_rate(sampling_rate);
+  noise.set_input_sampling_rate(sampling_rate);
+  noise.set_output_sampling_rate(sampling_rate);
+  sum.set_input_sampling_rate(sampling_rate);
+  sum.set_output_sampling_rate(sampling_rate);
+  outR.set_input_sampling_rate(sampling_rate);
 	outR.set_output_sampling_rate(sampling_rate);
   buffer_filter.set_input_sampling_rate(sampling_rate);
   buffer_filter.set_output_sampling_rate(sampling_rate);
@@ -163,8 +173,6 @@ void ATKJUCEAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer&
   outL.set_pointer(buffer.getWritePointer(0), nb_samples);
   outR.set_pointer(buffer.getWritePointer(1), nb_samples);
  
-  outR.process(nb_samples);
-
   auto size = std::min(static_cast<unsigned int>(nb_samples), slice_size * 4 - current_buffer_index);
   
   pipeline.process(size);

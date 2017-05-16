@@ -1842,6 +1842,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ATKJUCEComponents", "ATKJUC
 	ProjectSection(SolutionItems) = preProject
 		..\..\..\ATKJUCEComponents\Tools\FFTViewer.cpp = ..\..\..\ATKJUCEComponents\Tools\FFTViewer.cpp
 		..\..\..\ATKJUCEComponents\Tools\FFTViewer.h = ..\..\..\ATKJUCEComponents\Tools\FFTViewer.h
+		..\..\..\ATKJUCEComponents\Tools\FFTViewerInterface.h = ..\..\..\ATKJUCEComponents\Tools\FFTViewerInterface.h
 	EndProjectSection
 EndProject
 Global

@@ -15,6 +15,8 @@
 #include <ATK/Core/InPointerFilter.h>
 #include <ATK/Core/OutPointerFilter.h>
 #include <ATK/Core/PipelineGlobalSinkFilter.h>
+#include <ATK/Tools/SumFilter.h>
+#include <ATK/Tools/WhiteNoiseGeneratorFilter.h>
 
 #include <ATKJUCEComponents/Tools/FFTViewerInterface.h>
 
@@ -70,7 +72,10 @@ private:
   ATK::InPointerFilter<float> inL;
   ATK::InPointerFilter<float> inR;
   ATK::OutPointerFilter<float> outL;
+  ATK::WhiteNoiseGeneratorFilter<float> noise;
+  ATK::SumFilter<float> sum;
   ATK::OutPointerFilter<float> outR;
+
   ATK::OutPointerFilter<float> buffer_filter;
   ATK::PipelineGlobalSinkFilter pipeline;
   
