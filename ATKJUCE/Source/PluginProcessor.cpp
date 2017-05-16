@@ -114,20 +114,12 @@ void ATKJUCEAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBloc
 
   pipeline.set_input_sampling_rate(sampling_rate);
 
-  if(sampling_rate > 48000)
+  full_buffer.assign(slice_size * nb_slices, 0);
+  fft_buffer.assign(slice_size * nb_slices / 2, 0);
+  window.resize(slice_size * nb_slices / 2, 0);
+  for(size_t i = 0; i < slice_size * nb_slices / 2; ++i)
   {
-    slice_size = 1024*32;
-  }
-  else
-  {
-    slice_size = 1024*16;
-  }
-  full_buffer.assign(slice_size * 4, 0);
-  fft_buffer.assign(slice_size * 2, 0);
-  window.resize(slice_size * 2, 0);
-  for(size_t i = 0; i < slice_size * 2; ++i)
-  {
-    window[i] = .5 * (1 - std::cos(2 * boost::math::constants::pi<float>() * i / (slice_size * 2 - 1)));
+    window[i] = .5 * (1 - std::cos(2 * boost::math::constants::pi<float>() * i / (slice_size * nb_slices / 2 - 1)));
   }
   current_buffer_index = 0;
   current_slice = 0;
@@ -173,7 +165,7 @@ void ATKJUCEAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer&
  
   outR.process(nb_samples);
 
-  auto size = std::min(nb_samples, slice_size * 4 - current_buffer_index);
+  auto size = std::min(static_cast<unsigned int>(nb_samples), slice_size * 4 - current_buffer_index);
   
   pipeline.process(size);
   
@@ -186,12 +178,7 @@ void ATKJUCEAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer&
   }
   
   int buffer_index = current_buffer_index;
-  current_slice = -1;
-  while(buffer_index > 0)
-  {
-    ++current_slice;
-    buffer_index -= slice_size;
-  }
+  current_slice = buffer_index / slice_size;
 }
 
 //==============================================================================
@@ -230,7 +217,7 @@ const std::vector<double>& ATKJUCEAudioProcessor::get_last_slice(bool& process)
   if(last_checked_out_buffer != current_slice)
   {
     process = true;
-    auto first_index = (current_slice-2) * slice_size;
+    auto first_index = static_cast<int>((current_slice - 2) * slice_size);
     if(first_index < 0)
     {
       first_index += 4* slice_size;

@@ -78,8 +78,10 @@ private:
   std::vector<double> fft_buffer;
   std::vector<float> window;
   int sampling_rate;
-  int slice_size;
   int current_buffer_index;
   int current_slice;
   int last_checked_out_buffer;
+
+  static const unsigned int slice_size = 1024 * 4;
+  static const unsigned int nb_slices = 4;
 };
