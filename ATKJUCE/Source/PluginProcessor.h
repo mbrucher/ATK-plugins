@@ -13,6 +13,7 @@
 #include "JuceHeader.h"
 
 #include <ATK/Core/InPointerFilter.h>
+#include <ATK/Core/OutCircularPointerFilter.h>
 #include <ATK/Core/OutPointerFilter.h>
 #include <ATK/Core/PipelineGlobalSinkFilter.h>
 #include <ATK/Tools/SumFilter.h>
@@ -66,6 +67,7 @@ public:
   const std::vector<double>& get_last_slice(bool& process) override;
   
 private:
+  void build_window(std::size_t size);
   //==============================================================================
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ATKJUCEAudioProcessor)
   
@@ -76,17 +78,10 @@ private:
   ATK::SumFilter<float> sum;
   ATK::OutPointerFilter<float> outR;
 
-  ATK::OutPointerFilter<float> buffer_filter;
+  ATK::OutCircularPointerFilter<float> buffer_filter;
   ATK::PipelineGlobalSinkFilter pipeline;
   
-  std::vector<float> full_buffer;
-  std::vector<double> fft_buffer;
   std::vector<float> window;
+  std::vector<double> windowed_data;
   int sampling_rate;
-  int current_buffer_index;
-  int current_slice;
-  int last_checked_out_buffer;
-
-  static const unsigned int slice_size = 1024 * 4;
-  static const unsigned int nb_slices = 4;
 };

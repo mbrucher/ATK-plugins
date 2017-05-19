@@ -28,19 +28,19 @@ ATKJUCEAudioProcessor::ATKJUCEAudioProcessor()
                      #endif
                        ),
 #endif
-inL(nullptr, 1, 0, false), inR(nullptr, 1, 0, false), outL(nullptr, 1, 0, false), outR(nullptr, 1, 0, false), buffer_filter(nullptr, 1, 0, false)
+inL(nullptr, 1, 0, false), inR(nullptr, 1, 0, false), outL(nullptr, 1, 0, false), outR(nullptr, 1, 0, false)
 {
   sum.set_input_port(0, &noise, 0);
   sum.set_input_port(1, &inL, 0);
   outL.set_input_port(0, &sum, 0);
-  buffer_filter.set_input_port(0, &inL, 0);
+  buffer_filter.set_input_port(0, &sum, 0);
   pipeline.add_filter(&outL);
   pipeline.add_filter(&outR);
   pipeline.add_filter(&buffer_filter);
 
   outR.set_input_port(0, &inR, 0);
 
-  noise.set_volume(1);
+  noise.set_volume(.001);
 }
 
 ATKJUCEAudioProcessor::~ATKJUCEAudioProcessor()
@@ -103,7 +103,7 @@ void ATKJUCEAudioProcessor::changeProgramName (int index, const String& newName)
 //==============================================================================
 void ATKJUCEAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-	sampling_rate = std::lround(sampleRate);
+  sampling_rate = std::lround(sampleRate);
 
 	inL.set_input_sampling_rate(sampling_rate);
 	inL.set_output_sampling_rate(sampling_rate);
@@ -120,20 +120,8 @@ void ATKJUCEAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBloc
 	outR.set_output_sampling_rate(sampling_rate);
   buffer_filter.set_input_sampling_rate(sampling_rate);
   buffer_filter.set_output_sampling_rate(sampling_rate);
-  buffer_filter.set_pointer(full_buffer.data(), full_buffer.size());
 
   pipeline.set_input_sampling_rate(sampling_rate);
-
-  full_buffer.assign(slice_size * nb_slices, 0);
-  fft_buffer.assign(slice_size * nb_slices / 2, 0);
-  window.resize(slice_size * nb_slices / 2, 0);
-  for(size_t i = 0; i < slice_size * nb_slices / 2; ++i)
-  {
-    window[i] = .5 * (1 - std::cos(2 * boost::math::constants::pi<float>() * i / (slice_size * nb_slices / 2 - 1)));
-  }
-  current_buffer_index = 0;
-  current_slice = 0;
-  last_checked_out_buffer = -1; // 0 indicates that the valid buffer is 2 slices before
 }
 
 void ATKJUCEAudioProcessor::releaseResources()
@@ -173,20 +161,7 @@ void ATKJUCEAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer&
   outL.set_pointer(buffer.getWritePointer(0), nb_samples);
   outR.set_pointer(buffer.getWritePointer(1), nb_samples);
  
-  auto size = std::min(static_cast<unsigned int>(nb_samples), slice_size * 4 - current_buffer_index);
-  
-  pipeline.process(size);
-  
-  current_buffer_index += size;
-  if(current_buffer_index == slice_size * 4)
-  {
-    buffer_filter.set_pointer(full_buffer.data(), full_buffer.size());
-    pipeline.process(nb_samples - size);
-    current_buffer_index = 0;
-  }
-  
-  int buffer_index = current_buffer_index;
-  current_slice = buffer_index / slice_size;
+  pipeline.process(nb_samples);
 }
 
 //==============================================================================
@@ -222,31 +197,29 @@ int ATKJUCEAudioProcessor::get_sampling_rate() const
 const std::vector<double>& ATKJUCEAudioProcessor::get_last_slice(bool& process)
 {
   process = false;
-  if(last_checked_out_buffer != current_slice)
+  const auto& data = buffer_filter.get_last_slice(process);
+  if(process)
   {
-    process = true;
-    auto first_index = static_cast<int>((current_slice - 2) * slice_size);
-    if(first_index < 0)
+    if(window.size() != data.size())
     {
-      first_index += 4* slice_size;
+      build_window(data.size());
+      windowed_data.resize(data.size());
     }
-    for(std::size_t i = 0; i < slice_size; ++i)
+    for(std::size_t i = 0; i < data.size(); ++i)
     {
-      fft_buffer[i] = window[i] * full_buffer[first_index + i];
+      windowed_data[i] = window[i] * data[i];
     }
-    first_index += slice_size;
-    if(first_index >= 4 * slice_size)
-    {
-      first_index -= 4* slice_size;
-    }
-    for(std::size_t i = 0; i < slice_size; ++i)
-    {
-      fft_buffer[i + slice_size] = window[i + slice_size] * full_buffer[first_index + i];
-    }
-    
-    last_checked_out_buffer = current_slice;
   }
-  return fft_buffer;
+  return windowed_data;
+}
+
+void ATKJUCEAudioProcessor::build_window(std::size_t size)
+{
+  window.resize(size, 0);
+  for(size_t i = 0; i < size; ++i)
+  {
+    window[i] = .5 * (1 - std::cos(2 * boost::math::constants::pi<float>() * i / (size / 2 - 1)));
+  }
 }
 
 //==============================================================================
