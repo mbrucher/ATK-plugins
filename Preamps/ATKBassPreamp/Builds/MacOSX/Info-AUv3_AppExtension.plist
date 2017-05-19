@@ -30,7 +30,7 @@
 			<array>
 				<dict>
 					<key>description</key>
-					<string></string>
+					<string>ATKBassPreamp</string>
 					<key>factoryFunction</key>
 					<string>ATKBassPreampFactoryAUv3</string>
 					<key>manufacturer</key>
@@ -40,7 +40,7 @@
 					<key>sandboxSafe</key>
 					<true/>
 					<key>subtype</key>
-					<string>Khql</string>
+					<string>q1zs</string>
 					<key>tags</key>
 					<array>
 						<string>Effects</string>

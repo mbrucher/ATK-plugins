@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>description</key>
-			<string></string>
+			<string>ATKBassPreamp</string>
 			<key>factoryFunction</key>
 			<string>ATKBassPreampFactory</string>
 			<key>manufacturer</key>
@@ -14,7 +14,7 @@
 			<key>name</key>
 			<string>MatthieuBrucher: ATKBassPreamp</string>
 			<key>subtype</key>
-			<string>Khql</string>
+			<string>q1zs</string>
 			<key>type</key>
 			<string>aufx</string>
 			<key>version</key>
