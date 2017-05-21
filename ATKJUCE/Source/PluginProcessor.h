@@ -16,8 +16,6 @@
 #include <ATK/Core/OutCircularPointerFilter.h>
 #include <ATK/Core/OutPointerFilter.h>
 #include <ATK/Core/PipelineGlobalSinkFilter.h>
-#include <ATK/Tools/SumFilter.h>
-#include <ATK/Tools/WhiteNoiseGeneratorFilter.h>
 
 #include <ATKJUCEComponents/Tools/FFTViewerInterface.h>
 
@@ -64,7 +62,8 @@ public:
   void setStateInformation (const void* data, int sizeInBytes) override;
 
   int get_sampling_rate() const override;
-  const std::vector<double>& get_last_slice(bool& process) override;
+  std::size_t get_nb_channels() const override;
+  const std::vector<double>& get_last_slice(std::size_t index, bool& process) override;
   
 private:
   void build_window(std::size_t size);
@@ -74,14 +73,17 @@ private:
   ATK::InPointerFilter<float> inL;
   ATK::InPointerFilter<float> inR;
   ATK::OutPointerFilter<float> outL;
-  ATK::WhiteNoiseGeneratorFilter<float> noise;
-  ATK::SumFilter<float> sum;
   ATK::OutPointerFilter<float> outR;
 
-  ATK::OutCircularPointerFilter<float> buffer_filter;
+  ATK::OutCircularPointerFilter<float> bufferFilterL;
+  ATK::OutCircularPointerFilter<float> bufferFilterR;
   ATK::PipelineGlobalSinkFilter pipeline;
   
   std::vector<float> window;
-  std::vector<double> windowed_data;
+  std::vector<double> windowedDataL;
+  std::vector<double> windowedDataR;
+  
+  bool process_slice(ATK::OutCircularPointerFilter<float>& filter, std::vector<double>& windowedData);
+ 
   int sampling_rate;
 };
