@@ -13,7 +13,7 @@
 
 //==============================================================================
 ATKGuitarPreampAudioProcessorEditor::ATKGuitarPreampAudioProcessorEditor(ATKGuitarPreampAudioProcessor& p, AudioProcessorValueTreeState& paramState)
-: AudioProcessorEditor (&p), processor (p), paramState(paramState), gain(paramState, "gain", "Gain", minGain, maxGain, (minGain + maxGain) / 2), stack(paramState, "bass", "medium", "high"), volume(paramState, "volume", "Volume", minVolume, maxVolume, (minVolume + maxVolume) / 2), drywet(paramState, "drywet")
+: AudioProcessorEditor (&p), processor (p), paramState(paramState), gain(paramState, "gain", "Gain", minGain, maxGain), stack(paramState, "bass", "medium", "high"), volume(paramState, "volume", "Volume", minVolume, maxVolume), drywet(paramState, "drywet")
 
 {
   addAndMakeVisible(gain);
