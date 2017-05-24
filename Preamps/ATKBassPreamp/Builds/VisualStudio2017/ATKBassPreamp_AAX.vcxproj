@@ -111,7 +111,7 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(OutDir)\ATKBassPreamp.aaxdll</OutputFile>
+      <OutputFile>$(OutDir)$(SolutionName) x64$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>libcmt.lib; msvcrt.lib;;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -215,7 +215,7 @@ call "E:\\Informatique\\AAX_SDK_2p2p2\\Utilities\\CreatePackage.bat" "$(OutDir)\
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(OutDir)\ATKBassPreamp.aaxdll</OutputFile>
+      <OutputFile>$(OutDir)$(SolutionName) x64$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -237,7 +237,7 @@ if not exist "$(OutDir)\ATKBassPreamp.aaxplugin\Contents\x64" mkdir "$(OutDir)\A
 </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>copy /Y "$(OutDir)\ATKBassPreamp.aaxdll" "$(OutDir)\ATKBassPreamp.aaxplugin\Contents\x64\ATKBassPreamp.aaxplugin"
+      <Command>copy /Y "$(OutDir)\ATKBassPreamp x64.aaxdll" "$(OutDir)\ATKBassPreamp.aaxplugin\Contents\x64\ATKBassPreamp.aaxplugin"
 call "E:\\Informatique\\AAX_SDK_2p2p2\\Utilities\\CreatePackage.bat" "$(OutDir)\ATKBassPreamp.aaxplugin\Contents\x64" "E:\\Informatique\\AAX_SDK_2p2p2\\Utilities\\PlugIn.ico"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -269,7 +269,7 @@ call "E:\\Informatique\\AAX_SDK_2p2p2\\Utilities\\CreatePackage.bat" "$(OutDir)\
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(OutDir)\ATKBassPreamp.aaxdll</OutputFile>
+      <OutputFile>$(OutDir)$(SolutionName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -291,8 +291,8 @@ if not exist "$(OutDir)\ATKBassPreamp.aaxplugin\Contents\x64" mkdir "$(OutDir)\A
 </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>copy /Y "$(OutDir)\ATKBassPreamp.aaxdll" "$(OutDir)\ATKBassPreamp.aaxplugin\Contents\x64\ATKBassPreamp.aaxplugin"
-call "E:\\Informatique\\AAX_SDK_2p2p2\\Utilities\\CreatePackage.bat" "$(OutDir)\ATKBassPreamp.aaxplugin\Contents\x64" "E:\\Informatique\\AAX_SDK_2p2p2\\Utilities\\PlugIn.ico"</Command>
+      <Command>copy /Y "$(OutDir)\ATKBassPreamp.aaxdll" "$(OutDir)\ATKBassPreamp.aaxplugin\Contents\ATKBassPreamp.aaxplugin"
+call "E:\\Informatique\\AAX_SDK_2p2p2\\Utilities\\CreatePackage.bat" "$(OutDir)\ATKBassPreamp.aaxplugin\Contents" "E:\\Informatique\\AAX_SDK_2p2p2\\Utilities\\PlugIn.ico"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

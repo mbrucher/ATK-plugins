@@ -65,8 +65,8 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\VST\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\VST\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\VST\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ATKGuitarPreamp</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ATKGuitarPreamp</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(BINARY_NAME)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(BINARY_NAME)</TargetName>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(LibraryPath);$(SolutionDir)\$(Platform)\$(Configuration)\Shared Code</LibraryPath>
@@ -75,8 +75,8 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\VST\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\VST\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\VST\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ATKGuitarPreamp</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ATKGuitarPreamp</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(BINARY_NAME)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(BINARY_NAME)</TargetName>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(LibraryPath);$(SolutionDir)\$(Platform)\$(Configuration)\Shared Code</LibraryPath>
@@ -94,7 +94,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\JuceLibraryCode;$(JUCEROOT)\modules;$(ProjectDir)\..\..\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\..\JuceLibraryCode;$(JUCEROOT)\modules;$(ProjectDir)\..\..\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;HAS_STD_ALIGN;JUCER_VS2017_78A5024=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;JucePlugin_Build_VST=1;JucePlugin_Build_VST3=0;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_RTAS=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -111,14 +111,14 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(OutDir)\ATKGuitarPreamp.dll</OutputFile>
+      <OutputFile>$(OutDir)$(SolutionName) x64$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>libcmt.lib; msvcrt.lib;;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(IntDir)\ATKGuitarPreamp.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <LargeAddressAware>true</LargeAddressAware>
-      <AdditionalDependencies>ATKGuitarPreamp.lib;%(AdditionalDependencies);$(ATKROOT)\64\lib\ATKCore_static.lib;$(ATKROOT)\64\lib\ATKDistortion_static.lib;$(ATKROOT)\64\lib\ATKEQ_static.lib;$(ATKROOT)\64\lib\ATKTools_static.lib;$(ATKROOT)\64\lib\ATKDelay_static.lib;$(ATKROOT)\64\lib\ATKDynamic_static.lib</AdditionalDependencies>
+      <AdditionalDependencies>ATKGuitarPreamp.lib;%(AdditionalDependencies);$(ATKROOT)\64\lib\ATKCore_static.lib;$(ATKROOT)\64\lib\ATKDistortion_static.lib;$(ATKROOT)\64\lib\ATKEQ_static.lib;$(ATKROOT)\64\lib\ATKTools_static.lib;$(ATKROOT)\64\lib\ATKDelay_static.lib;$(ATKROOT)\64\lib\ATKDynamic_static.lib;$(ATKROOT)\64\lib\ATKPreamplifier_static.lib</AdditionalDependencies>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -139,7 +139,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\JuceLibraryCode;$(JUCEROOT)\modules;$(ProjectDir)\..\..\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\..\JuceLibraryCode;$(JUCEROOT)\modules;$(ProjectDir)\..\..\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;HAS_STD_ALIGN;JUCER_VS2017_78A5024=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;JucePlugin_Build_VST=1;JucePlugin_Build_VST3=0;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_RTAS=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -157,14 +157,14 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(OutDir)\ATKGuitarPreamp.dll</OutputFile>
+      <OutputFile>$(OutDir)$(SolutionName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>libcmt.lib; msvcrt.lib;;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(IntDir)\ATKGuitarPreamp.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <LargeAddressAware>true</LargeAddressAware>
-      <AdditionalDependencies>ATKGuitarPreamp.lib;%(AdditionalDependencies);$(ATKROOT)\32\lib\ATKCore_static.lib;$(ATKROOT)\32\lib\ATKDistortion_static.lib;$(ATKROOT)\32\lib\ATKEQ_static.lib;$(ATKROOT)\32\lib\ATKTools_static.lib;$(ATKROOT)\32\lib\ATKDelay_static.lib;$(ATKROOT)\32\lib\ATKDynamic_static.lib</AdditionalDependencies>
+      <AdditionalDependencies>ATKGuitarPreamp.lib;%(AdditionalDependencies);$(ATKROOT)\32\lib\ATKCore_static.lib;$(ATKROOT)\32\lib\ATKDistortion_static.lib;$(ATKROOT)\32\lib\ATKEQ_static.lib;$(ATKROOT)\32\lib\ATKTools_static.lib;$(ATKROOT)\32\lib\ATKDelay_static.lib;$(ATKROOT)\32\lib\ATKDynamic_static.lib;$(ATKROOT)\32\lib\ATKPreamplifier_static.lib</AdditionalDependencies>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -184,7 +184,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Full</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\JuceLibraryCode;$(JUCEROOT)\modules;$(ProjectDir)\..\..\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\..\JuceLibraryCode;$(JUCEROOT)\modules;$(ProjectDir)\..\..\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;HAS_STD_ALIGN;JUCER_VS2017_78A5024=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;JucePlugin_Build_VST=1;JucePlugin_Build_VST3=0;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_RTAS=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -201,7 +201,7 @@
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(OutDir)\ATKGuitarPreamp.dll</OutputFile>
+      <OutputFile>$(OutDir)$(SolutionName) x64$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -210,7 +210,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <LargeAddressAware>true</LargeAddressAware>
-      <AdditionalDependencies>ATKGuitarPreamp.lib;%(AdditionalDependencies);$(ATKROOT)\64\lib\ATKCore_static.lib;$(ATKROOT)\64\lib\ATKDistortion_static.lib;$(ATKROOT)\64\lib\ATKEQ_static.lib;$(ATKROOT)\64\lib\ATKTools_static.lib;$(ATKROOT)\64\lib\ATKDelay_static.lib;$(ATKROOT)\64\lib\ATKDynamic_static.lib</AdditionalDependencies>
+      <AdditionalDependencies>ATKGuitarPreamp.lib;%(AdditionalDependencies);$(ATKROOT)\64\lib\ATKCore_static.lib;$(ATKROOT)\64\lib\ATKDistortion_static.lib;$(ATKROOT)\64\lib\ATKEQ_static.lib;$(ATKROOT)\64\lib\ATKTools_static.lib;$(ATKROOT)\64\lib\ATKDelay_static.lib;$(ATKROOT)\64\lib\ATKDynamic_static.lib;$(ATKROOT)\64\lib\ATKPreamplifier_static.lib</AdditionalDependencies>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -230,7 +230,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Full</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\JuceLibraryCode;$(JUCEROOT)\modules;$(ProjectDir)\..\..\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\..\JuceLibraryCode;$(JUCEROOT)\modules;$(ProjectDir)\..\..\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;HAS_STD_ALIGN;JUCER_VS2017_78A5024=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;JucePlugin_Build_VST=1;JucePlugin_Build_VST3=0;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_RTAS=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -248,7 +248,7 @@
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(OutDir)\ATKGuitarPreamp.dll</OutputFile>
+      <OutputFile>$(OutDir)$(SolutionName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -257,7 +257,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <LargeAddressAware>true</LargeAddressAware>
-      <AdditionalDependencies>ATKGuitarPreamp.lib;%(AdditionalDependencies);$(ATKROOT)\32\lib\ATKCore_static.lib;$(ATKROOT)\32\lib\ATKDistortion_static.lib;$(ATKROOT)\32\lib\ATKEQ_static.lib;$(ATKROOT)\32\lib\ATKTools_static.lib;$(ATKROOT)\32\lib\ATKDelay_static.lib;$(ATKROOT)\32\lib\ATKDynamic_static.lib</AdditionalDependencies>
+      <AdditionalDependencies>ATKGuitarPreamp.lib;%(AdditionalDependencies);$(ATKROOT)\32\lib\ATKCore_static.lib;$(ATKROOT)\32\lib\ATKDistortion_static.lib;$(ATKROOT)\32\lib\ATKEQ_static.lib;$(ATKROOT)\32\lib\ATKTools_static.lib;$(ATKROOT)\32\lib\ATKDelay_static.lib;$(ATKROOT)\32\lib\ATKDynamic_static.lib;$(ATKROOT)\32\lib\ATKPreamplifier_static.lib</AdditionalDependencies>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -268,7 +268,7 @@
     </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\JuceLibraryCode\include_juce_audio_plugin_client_VST2.cpp" />
+    <ClCompile Include="..\..\..\..\JuceLibraryCode\include_juce_audio_plugin_client_VST2.cpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
