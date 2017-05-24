@@ -15,11 +15,11 @@
 	<key>CFBundleName</key>
 	<string>ATKBassPreamp</string>
 	<key>CFBundlePackageType</key>
-	<string>BNDL</string>
+	<string>TDMw</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.1</string>
 	<key>CFBundleSignature</key>
-	<string>????</string>
+	<string>PTul</string>
 	<key>CFBundleVersion</key>
 	<string>1.0.1</string>
 	<key>NSHighResolutionCapable</key>

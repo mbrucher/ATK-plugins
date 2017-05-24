@@ -1833,16 +1833,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Juce Library Code", "Juce L
 		..\..\JuceLibraryCode\JuceHeader.h = ..\..\JuceLibraryCode\JuceHeader.h
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{6F2576C5-3F92-4EB0-A406-8B67D9C531D2}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.cpp = ..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.cpp
-		..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.h = ..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.h
-		..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.cpp = ..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.cpp
-		..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.h = ..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.h
-		..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.cpp = ..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.cpp
-		..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.h = ..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.h
-		..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.cpp = ..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.cpp
-		..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.h = ..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.h
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATKGuitarPreamp_AAX", "ATKGuitarPreamp_AAX.vcxproj", "{8C23477C-9256-B21E-2FBE-8E889C3AAF69}"
+	ProjectSection(ProjectDependencies) = postProject
+		{57FB8161-84F5-6463-8809-002B66837DF4} = {57FB8161-84F5-6463-8809-002B66837DF4}
 	EndProjectSection
 EndProject
 Global
@@ -1853,38 +1846,41 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{11648528-861C-3C5D-B81F-18BAA6F4485C}.Debug|Win32.ActiveCfg = Debug|Win32
-		{11648528-861C-3C5D-B81F-18BAA6F4485C}.Debug|Win32.Build.0 = Debug|Win32
+		{11648528-861C-3C5D-B81F-18BAA6F4485C}.Debug|Win32.ActiveCfg = Debug|x64
 		{11648528-861C-3C5D-B81F-18BAA6F4485C}.Debug|x64.ActiveCfg = Debug|x64
 		{11648528-861C-3C5D-B81F-18BAA6F4485C}.Debug|x64.Build.0 = Debug|x64
 		{11648528-861C-3C5D-B81F-18BAA6F4485C}.Release|Win32.ActiveCfg = Release|Win32
 		{11648528-861C-3C5D-B81F-18BAA6F4485C}.Release|Win32.Build.0 = Release|Win32
 		{11648528-861C-3C5D-B81F-18BAA6F4485C}.Release|x64.ActiveCfg = Release|x64
 		{11648528-861C-3C5D-B81F-18BAA6F4485C}.Release|x64.Build.0 = Release|x64
-		{06CB91BC-934E-EB5E-296F-D6A30868134B}.Debug|Win32.ActiveCfg = Debug|Win32
-		{06CB91BC-934E-EB5E-296F-D6A30868134B}.Debug|Win32.Build.0 = Debug|Win32
+		{06CB91BC-934E-EB5E-296F-D6A30868134B}.Debug|Win32.ActiveCfg = Debug|x64
 		{06CB91BC-934E-EB5E-296F-D6A30868134B}.Debug|x64.ActiveCfg = Debug|x64
 		{06CB91BC-934E-EB5E-296F-D6A30868134B}.Debug|x64.Build.0 = Debug|x64
 		{06CB91BC-934E-EB5E-296F-D6A30868134B}.Release|Win32.ActiveCfg = Release|Win32
 		{06CB91BC-934E-EB5E-296F-D6A30868134B}.Release|Win32.Build.0 = Release|Win32
 		{06CB91BC-934E-EB5E-296F-D6A30868134B}.Release|x64.ActiveCfg = Release|x64
 		{06CB91BC-934E-EB5E-296F-D6A30868134B}.Release|x64.Build.0 = Release|x64
-		{27776D6A-7C6D-5DF8-E454-141FC9575677}.Debug|Win32.ActiveCfg = Debug|Win32
-		{27776D6A-7C6D-5DF8-E454-141FC9575677}.Debug|Win32.Build.0 = Debug|Win32
+		{27776D6A-7C6D-5DF8-E454-141FC9575677}.Debug|Win32.ActiveCfg = Debug|x64
 		{27776D6A-7C6D-5DF8-E454-141FC9575677}.Debug|x64.ActiveCfg = Debug|x64
 		{27776D6A-7C6D-5DF8-E454-141FC9575677}.Debug|x64.Build.0 = Debug|x64
 		{27776D6A-7C6D-5DF8-E454-141FC9575677}.Release|Win32.ActiveCfg = Release|Win32
 		{27776D6A-7C6D-5DF8-E454-141FC9575677}.Release|Win32.Build.0 = Release|Win32
 		{27776D6A-7C6D-5DF8-E454-141FC9575677}.Release|x64.ActiveCfg = Release|x64
 		{27776D6A-7C6D-5DF8-E454-141FC9575677}.Release|x64.Build.0 = Release|x64
-		{57FB8161-84F5-6463-8809-002B66837DF4}.Debug|Win32.ActiveCfg = Debug|Win32
-		{57FB8161-84F5-6463-8809-002B66837DF4}.Debug|Win32.Build.0 = Debug|Win32
+		{57FB8161-84F5-6463-8809-002B66837DF4}.Debug|Win32.ActiveCfg = Debug|x64
 		{57FB8161-84F5-6463-8809-002B66837DF4}.Debug|x64.ActiveCfg = Debug|x64
 		{57FB8161-84F5-6463-8809-002B66837DF4}.Debug|x64.Build.0 = Debug|x64
 		{57FB8161-84F5-6463-8809-002B66837DF4}.Release|Win32.ActiveCfg = Release|Win32
 		{57FB8161-84F5-6463-8809-002B66837DF4}.Release|Win32.Build.0 = Release|Win32
 		{57FB8161-84F5-6463-8809-002B66837DF4}.Release|x64.ActiveCfg = Release|x64
 		{57FB8161-84F5-6463-8809-002B66837DF4}.Release|x64.Build.0 = Release|x64
+		{8C23477C-9256-B21E-2FBE-8E889C3AAF69}.Debug|Win32.ActiveCfg = Debug|x64
+		{8C23477C-9256-B21E-2FBE-8E889C3AAF69}.Debug|x64.ActiveCfg = Debug|x64
+		{8C23477C-9256-B21E-2FBE-8E889C3AAF69}.Debug|x64.Build.0 = Debug|x64
+		{8C23477C-9256-B21E-2FBE-8E889C3AAF69}.Release|Win32.ActiveCfg = Release|Win32
+		{8C23477C-9256-B21E-2FBE-8E889C3AAF69}.Release|Win32.Build.0 = Release|Win32
+		{8C23477C-9256-B21E-2FBE-8E889C3AAF69}.Release|x64.ActiveCfg = Release|x64
+		{8C23477C-9256-B21E-2FBE-8E889C3AAF69}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -2018,6 +2014,5 @@ Global
 		{E2CB2877-DD3A-BACB-DB68-F923744AC12B} = {BEE8B0F9-6809-5091-37B2-F7E15DA8D988}
 		{2239F758-82DD-35D7-2707-FAEFBA6976C4} = {BEE8B0F9-6809-5091-37B2-F7E15DA8D988}
 		{BBC373C2-83EB-17F4-E997-B92B1EBA3304} = {BEE8B0F9-6809-5091-37B2-F7E15DA8D988}
-		{6F2576C5-3F92-4EB0-A406-8B67D9C531D2} = {97600C9C-126B-C299-CAC9-F2747ECAD90C}
 	EndGlobalSection
 EndGlobal

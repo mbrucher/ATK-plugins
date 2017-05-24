@@ -1812,6 +1812,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "playback", "playback", "{BB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Juce Library Code", "Juce Library Code", "{B1E33BF4-EA8D-4371-52E9-7A62B5843215}"
 	ProjectSection(SolutionItems) = preProject
+<<<<<<< HEAD
 		..\..\..\JuceLibraryCode\include_juce_audio_basics.cpp = ..\..\..\JuceLibraryCode\include_juce_audio_basics.cpp
 		..\..\..\JuceLibraryCode\include_juce_audio_devices.cpp = ..\..\..\JuceLibraryCode\include_juce_audio_devices.cpp
 		..\..\..\JuceLibraryCode\include_juce_audio_formats.cpp = ..\..\..\JuceLibraryCode\include_juce_audio_formats.cpp
@@ -1830,11 +1831,38 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Juce Library Code", "Juce L
 		..\..\..\JuceLibraryCode\include_juce_gui_extra.cpp = ..\..\..\JuceLibraryCode\include_juce_gui_extra.cpp
 		..\..\..\JuceLibraryCode\include_juce_opengl.cpp = ..\..\..\JuceLibraryCode\include_juce_opengl.cpp
 		..\..\..\JuceLibraryCode\include_juce_video.cpp = ..\..\..\JuceLibraryCode\include_juce_video.cpp
+=======
+		..\..\JuceLibraryCode\include_juce_audio_basics.cpp = ..\..\JuceLibraryCode\include_juce_audio_basics.cpp
+		..\..\JuceLibraryCode\include_juce_audio_devices.cpp = ..\..\JuceLibraryCode\include_juce_audio_devices.cpp
+		..\..\JuceLibraryCode\include_juce_audio_formats.cpp = ..\..\JuceLibraryCode\include_juce_audio_formats.cpp
+		..\..\JuceLibraryCode\include_juce_audio_plugin_client_Standalone.cpp = ..\..\JuceLibraryCode\include_juce_audio_plugin_client_Standalone.cpp
+		..\..\JuceLibraryCode\include_juce_audio_plugin_client_utils.cpp = ..\..\JuceLibraryCode\include_juce_audio_plugin_client_utils.cpp
+		..\..\JuceLibraryCode\include_juce_audio_plugin_client_VST2.cpp = ..\..\JuceLibraryCode\include_juce_audio_plugin_client_VST2.cpp
+		..\..\JuceLibraryCode\include_juce_audio_plugin_client_VST3.cpp = ..\..\JuceLibraryCode\include_juce_audio_plugin_client_VST3.cpp
+		..\..\JuceLibraryCode\include_juce_audio_processors.cpp = ..\..\JuceLibraryCode\include_juce_audio_processors.cpp
+		..\..\JuceLibraryCode\include_juce_audio_utils.cpp = ..\..\JuceLibraryCode\include_juce_audio_utils.cpp
+		..\..\JuceLibraryCode\include_juce_core.cpp = ..\..\JuceLibraryCode\include_juce_core.cpp
+		..\..\JuceLibraryCode\include_juce_cryptography.cpp = ..\..\JuceLibraryCode\include_juce_cryptography.cpp
+		..\..\JuceLibraryCode\include_juce_data_structures.cpp = ..\..\JuceLibraryCode\include_juce_data_structures.cpp
+		..\..\JuceLibraryCode\include_juce_events.cpp = ..\..\JuceLibraryCode\include_juce_events.cpp
+		..\..\JuceLibraryCode\include_juce_graphics.cpp = ..\..\JuceLibraryCode\include_juce_graphics.cpp
+		..\..\JuceLibraryCode\include_juce_gui_basics.cpp = ..\..\JuceLibraryCode\include_juce_gui_basics.cpp
+		..\..\JuceLibraryCode\include_juce_gui_extra.cpp = ..\..\JuceLibraryCode\include_juce_gui_extra.cpp
+		..\..\JuceLibraryCode\include_juce_opengl.cpp = ..\..\JuceLibraryCode\include_juce_opengl.cpp
+		..\..\JuceLibraryCode\include_juce_video.cpp = ..\..\JuceLibraryCode\include_juce_video.cpp
+>>>>>>> 1867eaac752f296085f271e301986d209403aeab
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATKJUCE_AAX", "ATKJUCE_AAX.vcxproj", "{8C23477C-9256-B21E-2FBE-8E889C3AAF69}"
 	ProjectSection(ProjectDependencies) = postProject
 		{57FB8161-84F5-6463-8809-002B66837DF4} = {57FB8161-84F5-6463-8809-002B66837DF4}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ATKJUCEComponents", "ATKJUCEComponents", "{EB66C095-8C4E-47E9-84CA-71D7D4AF27D8}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\ATKJUCEComponents\Tools\FFTViewer.cpp = ..\..\..\ATKJUCEComponents\Tools\FFTViewer.cpp
+		..\..\..\ATKJUCEComponents\Tools\FFTViewer.h = ..\..\..\ATKJUCEComponents\Tools\FFTViewer.h
+		..\..\..\ATKJUCEComponents\Tools\FFTViewerInterface.h = ..\..\..\ATKJUCEComponents\Tools\FFTViewerInterface.h
 	EndProjectSection
 EndProject
 Global
@@ -2013,5 +2041,6 @@ Global
 		{E2CB2877-DD3A-BACB-DB68-F923744AC12B} = {BEE8B0F9-6809-5091-37B2-F7E15DA8D988}
 		{2239F758-82DD-35D7-2707-FAEFBA6976C4} = {BEE8B0F9-6809-5091-37B2-F7E15DA8D988}
 		{BBC373C2-83EB-17F4-E997-B92B1EBA3304} = {BEE8B0F9-6809-5091-37B2-F7E15DA8D988}
+		{EB66C095-8C4E-47E9-84CA-71D7D4AF27D8} = {97600C9C-126B-C299-CAC9-F2747ECAD90C}
 	EndGlobalSection
 EndGlobal

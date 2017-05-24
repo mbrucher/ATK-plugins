@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>description</key>
-			<string></string>
+			<string>ATKBassPreamp</string>
 			<key>factoryFunction</key>
 			<string>ATKBassPreampFactory</string>
 			<key>manufacturer</key>
@@ -14,7 +14,7 @@
 			<key>name</key>
 			<string>MatthieuBrucher: ATKBassPreamp</string>
 			<key>subtype</key>
-			<string>Khql</string>
+			<string>q1zs</string>
 			<key>type</key>
 			<string>aufx</string>
 			<key>version</key>
@@ -26,7 +26,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGetInfoString</key>
-	<string>1.0.0, Copyright MatthieuBrucher, 2017</string>
+	<string>1.0.1, Copyright MatthieuBrucher, 2017</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
@@ -36,11 +36,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>1.0.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.0</string>
+	<string>1.0.1</string>
 	<key>NSHighResolutionCapable</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>

@@ -8,9 +8,12 @@
   ==============================================================================
 */
 
+#include <cstring>
+
+#include <boost/math/constants/constants.hpp>
+
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-
 
 //==============================================================================
 ATKJUCEAudioProcessor::ATKJUCEAudioProcessor()
@@ -28,7 +31,13 @@ ATKJUCEAudioProcessor::ATKJUCEAudioProcessor()
 inL(nullptr, 1, 0, false), inR(nullptr, 1, 0, false), outL(nullptr, 1, 0, false), outR(nullptr, 1, 0, false)
 {
   outL.set_input_port(0, &inL, 0);
+  bufferFilterL.set_input_port(0, &inL, 0);
   outR.set_input_port(0, &inR, 0);
+  bufferFilterR.set_input_port(0, &inR, 0);
+  pipeline.add_filter(&outL);
+  pipeline.add_filter(&outR);
+  pipeline.add_filter(&bufferFilterL);
+  pipeline.add_filter(&bufferFilterR);
 }
 
 ATKJUCEAudioProcessor::~ATKJUCEAudioProcessor()
@@ -91,17 +100,23 @@ void ATKJUCEAudioProcessor::changeProgramName (int index, const String& newName)
 //==============================================================================
 void ATKJUCEAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-	auto intsamplerate = std::lround(sampleRate);
+  sampling_rate = std::lround(sampleRate);
 
-	inL.set_input_sampling_rate(intsamplerate);
-	inL.set_output_sampling_rate(intsamplerate);
-	inR.set_input_sampling_rate(intsamplerate);
-	inR.set_output_sampling_rate(intsamplerate);
+	inL.set_input_sampling_rate(sampling_rate);
+	inL.set_output_sampling_rate(sampling_rate);
+	inR.set_input_sampling_rate(sampling_rate);
+	inR.set_output_sampling_rate(sampling_rate);
 
-	outL.set_input_sampling_rate(intsamplerate);
-	outL.set_output_sampling_rate(intsamplerate);
-	outR.set_input_sampling_rate(intsamplerate);
-	outR.set_output_sampling_rate(intsamplerate);
+	outL.set_input_sampling_rate(sampling_rate);
+	outL.set_output_sampling_rate(sampling_rate);
+  outR.set_input_sampling_rate(sampling_rate);
+	outR.set_output_sampling_rate(sampling_rate);
+  bufferFilterL.set_input_sampling_rate(sampling_rate);
+  bufferFilterL.set_output_sampling_rate(sampling_rate);
+  bufferFilterR.set_input_sampling_rate(sampling_rate);
+  bufferFilterR.set_output_sampling_rate(sampling_rate);
+  
+  pipeline.set_input_sampling_rate(sampling_rate);
 }
 
 void ATKJUCEAudioProcessor::releaseResources()
@@ -134,19 +149,14 @@ bool ATKJUCEAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) 
 
 void ATKJUCEAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
-  const int totalNumInputChannels  = getTotalNumInputChannels();
-  const int totalNumOutputChannels = getTotalNumOutputChannels();
+  auto nb_samples = buffer.getNumSamples();
 
-  assert(totalNumInputChannels == totalNumOutputChannels);
-  assert(totalNumOutputChannels == 2);
-  
-  inL.set_pointer(buffer.getReadPointer(0), buffer.getNumSamples());
-  inR.set_pointer(buffer.getReadPointer(1), buffer.getNumSamples());
-  outL.set_pointer(buffer.getWritePointer(0), buffer.getNumSamples());
-  outR.set_pointer(buffer.getWritePointer(1), buffer.getNumSamples());
+  inL.set_pointer(buffer.getReadPointer(0), nb_samples);
+  inR.set_pointer(buffer.getReadPointer(1), nb_samples);
+  outL.set_pointer(buffer.getWritePointer(0), nb_samples);
+  outR.set_pointer(buffer.getWritePointer(1), nb_samples);
  
-  outL.process(buffer.getNumSamples());
-  outR.process(buffer.getNumSamples());
+  pipeline.process(nb_samples);
 }
 
 //==============================================================================
@@ -174,9 +184,63 @@ void ATKJUCEAudioProcessor::setStateInformation (const void* data, int sizeInByt
     // whose contents will have been created by the getStateInformation() call.
 }
 
+int ATKJUCEAudioProcessor::get_sampling_rate() const
+{
+  return sampling_rate;
+}
+
+std::size_t ATKJUCEAudioProcessor::get_nb_channels() const
+{
+  return 2;
+}
+
+const std::vector<double>& ATKJUCEAudioProcessor::get_last_slice(std::size_t index, bool& process)
+{
+  if(index == 0)
+  {
+    process = process_slice(bufferFilterL, windowedDataL);
+    return windowedDataL;
+  }
+  else
+  {
+    process = process_slice(bufferFilterR, windowedDataR);
+    return windowedDataR;
+  }
+}
+
+bool ATKJUCEAudioProcessor::process_slice(ATK::OutCircularPointerFilter<float>& filter, std::vector<double>& windowedData)
+{
+  bool process = false;
+  
+  const auto& data = filter.get_last_slice(process);
+  if(process)
+  {
+    if(window.size() != data.size())
+    {
+      build_window(data.size());
+    }
+    for(std::size_t i = 0; i < data.size(); ++i)
+    {
+      windowedData[i] = window[i] * data[i];
+    }
+  }
+  return process;
+}
+
+void ATKJUCEAudioProcessor::build_window(std::size_t size)
+{
+  window.resize(size, 0);
+  windowedDataL.resize(size);
+  windowedDataR.resize(size);
+  for(size_t i = 0; i < size; ++i)
+  {
+    window[i] = .5 * (1 - std::cos(2 * boost::math::constants::pi<float>() * i / (size / 2 - 1)));
+  }
+}
+
 //==============================================================================
 // This creates new instances of the plugin..
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new ATKJUCEAudioProcessor();
+  return new ATKJUCEAudioProcessor();
 }

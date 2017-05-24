@@ -3,25 +3,25 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>ATKBassPreamp</string>
+	<string>ATKGuitarPreamp</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGetInfoString</key>
-	<string>1.0.1, Copyright MatthieuBrucher, 2017</string>
+	<string>1.0.0, Copyright MatthieuBrucher, 2017</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleName</key>
-	<string>ATKBassPreamp</string>
+	<string>ATKGuitarPreamp</string>
 	<key>CFBundlePackageType</key>
-	<string>BNDL</string>
+	<string>TDMw</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.1</string>
+	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
-	<string>????</string>
+	<string>PTul</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.1</string>
+	<string>1.0.0</string>
 	<key>NSHighResolutionCapable</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
