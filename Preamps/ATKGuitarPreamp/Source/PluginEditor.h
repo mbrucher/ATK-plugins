@@ -23,7 +23,7 @@
 class ATKGuitarPreampAudioProcessorEditor  : public AudioProcessorEditor
 {
 public:
-  ATKGuitarPreampAudioProcessorEditor (ATKGuitarPreampAudioProcessor&);
+  ATKGuitarPreampAudioProcessorEditor(ATKGuitarPreampAudioProcessor& p, AudioProcessorValueTreeState& paramState);
   ~ATKGuitarPreampAudioProcessorEditor();
 
   //==============================================================================
@@ -34,7 +34,8 @@ private:
   // This reference is provided as a quick way for your editor to
   // access the processor object that created it.
   ATKGuitarPreampAudioProcessor& processor;
-  
+  AudioProcessorValueTreeState& paramState;
+
   ATK::juce::VolumeFilterComponent gain;
   ATK::juce::ToneStackFilterComponent stack;
   ATK::juce::VolumeFilterComponent volume;

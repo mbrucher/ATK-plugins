@@ -1845,6 +1845,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", 
 		..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.h = ..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.h
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATKGuitarPreamp_AAX", "ATKGuitarPreamp_AAX.vcxproj", "{8C23477C-9256-B21E-2FBE-8E889C3AAF69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -1885,6 +1887,14 @@ Global
 		{57FB8161-84F5-6463-8809-002B66837DF4}.Release|Win32.Build.0 = Release|Win32
 		{57FB8161-84F5-6463-8809-002B66837DF4}.Release|x64.ActiveCfg = Release|x64
 		{57FB8161-84F5-6463-8809-002B66837DF4}.Release|x64.Build.0 = Release|x64
+		{8C23477C-9256-B21E-2FBE-8E889C3AAF69}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8C23477C-9256-B21E-2FBE-8E889C3AAF69}.Debug|Win32.Build.0 = Debug|Win32
+		{8C23477C-9256-B21E-2FBE-8E889C3AAF69}.Debug|x64.ActiveCfg = Debug|x64
+		{8C23477C-9256-B21E-2FBE-8E889C3AAF69}.Debug|x64.Build.0 = Debug|x64
+		{8C23477C-9256-B21E-2FBE-8E889C3AAF69}.Release|Win32.ActiveCfg = Release|Win32
+		{8C23477C-9256-B21E-2FBE-8E889C3AAF69}.Release|Win32.Build.0 = Release|Win32
+		{8C23477C-9256-B21E-2FBE-8E889C3AAF69}.Release|x64.ActiveCfg = Release|x64
+		{8C23477C-9256-B21E-2FBE-8E889C3AAF69}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

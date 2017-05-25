@@ -12,8 +12,8 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-ATKGuitarPreampAudioProcessorEditor::ATKGuitarPreampAudioProcessorEditor (ATKGuitarPreampAudioProcessor& p)
-: AudioProcessorEditor (&p), processor (p), gain(p.get_gain_parameter(), "Gain", minGain, maxGain, (minGain + maxGain) / 2), stack(p.get_tone_stack_bass_parameter(), p.get_tone_stack_medium_parameter(), p.get_tone_stack_high_parameter()), volume(p.get_volume_parameter(), "Volume", minVolume, maxVolume, (minVolume + maxVolume) / 2), drywet(p.get_dry_wet_parameter())
+ATKGuitarPreampAudioProcessorEditor::ATKGuitarPreampAudioProcessorEditor(ATKGuitarPreampAudioProcessor& p, AudioProcessorValueTreeState& paramState)
+: AudioProcessorEditor (&p), processor (p), paramState(paramState), gain(paramState, "gain", "Gain", minGain, maxGain), stack(paramState, "bass", "medium", "high"), volume(paramState, "volume", "Volume", minVolume, maxVolume), drywet(paramState, "drywet")
 
 {
   addAndMakeVisible(gain);

@@ -74,13 +74,6 @@ public:
   //==============================================================================
   void getStateInformation (MemoryBlock& destData) override;
   void setStateInformation (const void* data, int sizeInBytes) override;
-
-  AudioParameterFloat* get_gain_parameter();
-  AudioParameterFloat* get_tone_stack_bass_parameter();
-  AudioParameterFloat* get_tone_stack_medium_parameter();
-  AudioParameterFloat* get_tone_stack_high_parameter();
-  AudioParameterFloat* get_volume_parameter();
-  AudioParameterFloat* get_dry_wet_parameter();
   
 private:
   //==============================================================================
@@ -97,12 +90,7 @@ private:
   ATK::DryWetFilter<float> dryWetFilter;
   ATK::OutPointerFilter<float> outFilter;
 
-  AudioParameterFloat* gain;
-  AudioParameterFloat* bass;
-  AudioParameterFloat* medium;
-  AudioParameterFloat* high;
-  AudioParameterFloat* volume;
-  AudioParameterFloat* drywet;
+  AudioProcessorValueTreeState parameters;
   
   float old_gain;
   float old_bass;
