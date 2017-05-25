@@ -200,7 +200,7 @@ void ATKGuitarPreampAudioProcessor::processBlock (AudioSampleBuffer& buffer, Mid
   if (*parameters.getRawParameterValue ("volume") != old_volume)
   {
     old_volume = *parameters.getRawParameterValue ("volume");
-    volumeFilter.set_volume_db(old_volume);
+    volumeFilter.set_volume(-std::pow(10., old_volume / 20));
   }
   
   if(*parameters.getRawParameterValue ("drywet") != old_drywet)
