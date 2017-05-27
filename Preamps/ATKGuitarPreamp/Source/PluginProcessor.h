@@ -34,6 +34,7 @@
 static const double minVolume = -40;
 static const double maxVolume = 40;
 static const double minGain = -40;
+static const double originGain = -24;
 static const double maxGain = 40;
 
 class ATKGuitarPreampAudioProcessor  : public AudioProcessor
