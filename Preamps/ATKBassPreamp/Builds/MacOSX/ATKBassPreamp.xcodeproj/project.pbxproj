@@ -114,18 +114,6 @@
 		08FBDCB11EC761E60060FC3D /* libATKSpecial_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDCA31EC75D1B0060FC3D /* libATKSpecial_static.a */; };
 		08FBDCB21EC761E60060FC3D /* libATKTools_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDCA41EC75D1B0060FC3D /* libATKTools_static.a */; };
 		08FBDCB31EC761E60060FC3D /* libATKUtility_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDCA51EC75D1B0060FC3D /* libATKUtility_static.a */; };
-		08FBDCB41EC761E60060FC3D /* libATKAdaptive_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC8D1EC75D0F0060FC3D /* libATKAdaptive_static32.a */; };
-		08FBDCB51EC761E60060FC3D /* libATKCore_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC8E1EC75D0F0060FC3D /* libATKCore_static32.a */; };
-		08FBDCB61EC761E60060FC3D /* libATKDelay_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC8F1EC75D0F0060FC3D /* libATKDelay_static32.a */; };
-		08FBDCB71EC761E60060FC3D /* libATKDistortion_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC901EC75D0F0060FC3D /* libATKDistortion_static32.a */; };
-		08FBDCB81EC761E60060FC3D /* libATKDynamic_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC911EC75D0F0060FC3D /* libATKDynamic_static32.a */; };
-		08FBDCB91EC761E60060FC3D /* libATKEQ_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC921EC75D0F0060FC3D /* libATKEQ_static32.a */; };
-		08FBDCBA1EC761E60060FC3D /* libATKIO_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC931EC75D0F0060FC3D /* libATKIO_static32.a */; };
-		08FBDCBB1EC761E60060FC3D /* libATKPreamplifier_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC941EC75D0F0060FC3D /* libATKPreamplifier_static32.a */; };
-		08FBDCBC1EC761E60060FC3D /* libATKReverberation_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC951EC75D0F0060FC3D /* libATKReverberation_static32.a */; };
-		08FBDCBD1EC761E60060FC3D /* libATKSpecial_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC961EC75D0F0060FC3D /* libATKSpecial_static32.a */; };
-		08FBDCBE1EC761E60060FC3D /* libATKTools_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC971EC75D0F0060FC3D /* libATKTools_static32.a */; };
-		08FBDCBF1EC761E60060FC3D /* libATKUtility_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC981EC75D0F0060FC3D /* libATKUtility_static32.a */; };
 		08FBDCC01EC761F10060FC3D /* libATKAdaptive_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC991EC75D1B0060FC3D /* libATKAdaptive_static.a */; };
 		08FBDCC11EC761F10060FC3D /* libATKCore_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC9A1EC75D1B0060FC3D /* libATKCore_static.a */; };
 		08FBDCC21EC761F10060FC3D /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC9B1EC75D1B0060FC3D /* libATKDelay_static.a */; };
@@ -152,18 +140,6 @@
 		08FBDCD71EC761FA0060FC3D /* libATKSpecial_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDCA31EC75D1B0060FC3D /* libATKSpecial_static.a */; };
 		08FBDCD81EC761FA0060FC3D /* libATKTools_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDCA41EC75D1B0060FC3D /* libATKTools_static.a */; };
 		08FBDCD91EC761FA0060FC3D /* libATKUtility_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDCA51EC75D1B0060FC3D /* libATKUtility_static.a */; };
-		08FBDCDA1EC761FA0060FC3D /* libATKAdaptive_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC8D1EC75D0F0060FC3D /* libATKAdaptive_static32.a */; };
-		08FBDCDB1EC761FA0060FC3D /* libATKCore_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC8E1EC75D0F0060FC3D /* libATKCore_static32.a */; };
-		08FBDCDC1EC761FA0060FC3D /* libATKDelay_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC8F1EC75D0F0060FC3D /* libATKDelay_static32.a */; };
-		08FBDCDD1EC761FA0060FC3D /* libATKDistortion_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC901EC75D0F0060FC3D /* libATKDistortion_static32.a */; };
-		08FBDCDE1EC761FA0060FC3D /* libATKDynamic_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC911EC75D0F0060FC3D /* libATKDynamic_static32.a */; };
-		08FBDCDF1EC761FA0060FC3D /* libATKEQ_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC921EC75D0F0060FC3D /* libATKEQ_static32.a */; };
-		08FBDCE01EC761FA0060FC3D /* libATKIO_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC931EC75D0F0060FC3D /* libATKIO_static32.a */; };
-		08FBDCE11EC761FA0060FC3D /* libATKPreamplifier_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC941EC75D0F0060FC3D /* libATKPreamplifier_static32.a */; };
-		08FBDCE21EC761FA0060FC3D /* libATKReverberation_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC951EC75D0F0060FC3D /* libATKReverberation_static32.a */; };
-		08FBDCE31EC761FA0060FC3D /* libATKSpecial_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC961EC75D0F0060FC3D /* libATKSpecial_static32.a */; };
-		08FBDCE41EC761FA0060FC3D /* libATKTools_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC971EC75D0F0060FC3D /* libATKTools_static32.a */; };
-		08FBDCE51EC761FA0060FC3D /* libATKUtility_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC981EC75D0F0060FC3D /* libATKUtility_static32.a */; };
 		08FBDCE61EC762020060FC3D /* libATKAdaptive_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC991EC75D1B0060FC3D /* libATKAdaptive_static.a */; };
 		08FBDCE71EC762020060FC3D /* libATKCore_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC9A1EC75D1B0060FC3D /* libATKCore_static.a */; };
 		08FBDCE81EC762020060FC3D /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC9B1EC75D1B0060FC3D /* libATKDelay_static.a */; };
@@ -190,18 +166,6 @@
 		08FBDCFD1EC762130060FC3D /* libATKSpecial_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDCA31EC75D1B0060FC3D /* libATKSpecial_static.a */; };
 		08FBDCFE1EC762130060FC3D /* libATKTools_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDCA41EC75D1B0060FC3D /* libATKTools_static.a */; };
 		08FBDCFF1EC762130060FC3D /* libATKUtility_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDCA51EC75D1B0060FC3D /* libATKUtility_static.a */; };
-		08FBDD001EC762130060FC3D /* libATKAdaptive_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC8D1EC75D0F0060FC3D /* libATKAdaptive_static32.a */; };
-		08FBDD011EC762130060FC3D /* libATKCore_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC8E1EC75D0F0060FC3D /* libATKCore_static32.a */; };
-		08FBDD021EC762130060FC3D /* libATKDelay_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC8F1EC75D0F0060FC3D /* libATKDelay_static32.a */; };
-		08FBDD031EC762130060FC3D /* libATKDistortion_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC901EC75D0F0060FC3D /* libATKDistortion_static32.a */; };
-		08FBDD041EC762130060FC3D /* libATKDynamic_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC911EC75D0F0060FC3D /* libATKDynamic_static32.a */; };
-		08FBDD051EC762130060FC3D /* libATKEQ_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC921EC75D0F0060FC3D /* libATKEQ_static32.a */; };
-		08FBDD061EC762130060FC3D /* libATKIO_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC931EC75D0F0060FC3D /* libATKIO_static32.a */; };
-		08FBDD071EC762130060FC3D /* libATKPreamplifier_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC941EC75D0F0060FC3D /* libATKPreamplifier_static32.a */; };
-		08FBDD081EC762130060FC3D /* libATKReverberation_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC951EC75D0F0060FC3D /* libATKReverberation_static32.a */; };
-		08FBDD091EC762130060FC3D /* libATKSpecial_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC961EC75D0F0060FC3D /* libATKSpecial_static32.a */; };
-		08FBDD0A1EC762130060FC3D /* libATKTools_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC971EC75D0F0060FC3D /* libATKTools_static32.a */; };
-		08FBDD0B1EC762130060FC3D /* libATKUtility_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC981EC75D0F0060FC3D /* libATKUtility_static32.a */; };
 		08FBDD0C1EC762190060FC3D /* libATKAdaptive_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC991EC75D1B0060FC3D /* libATKAdaptive_static.a */; };
 		08FBDD0D1EC762190060FC3D /* libATKCore_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC9A1EC75D1B0060FC3D /* libATKCore_static.a */; };
 		08FBDD0E1EC762190060FC3D /* libATKDelay_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC9B1EC75D1B0060FC3D /* libATKDelay_static.a */; };
@@ -215,18 +179,6 @@
 		08FBDD161EC762190060FC3D /* libATKSpecial_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDCA31EC75D1B0060FC3D /* libATKSpecial_static.a */; };
 		08FBDD171EC762190060FC3D /* libATKTools_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDCA41EC75D1B0060FC3D /* libATKTools_static.a */; };
 		08FBDD181EC762190060FC3D /* libATKUtility_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDCA51EC75D1B0060FC3D /* libATKUtility_static.a */; };
-		08FBDD191EC762190060FC3D /* libATKAdaptive_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC8D1EC75D0F0060FC3D /* libATKAdaptive_static32.a */; };
-		08FBDD1A1EC762190060FC3D /* libATKCore_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC8E1EC75D0F0060FC3D /* libATKCore_static32.a */; };
-		08FBDD1B1EC762190060FC3D /* libATKDelay_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC8F1EC75D0F0060FC3D /* libATKDelay_static32.a */; };
-		08FBDD1C1EC762190060FC3D /* libATKDistortion_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC901EC75D0F0060FC3D /* libATKDistortion_static32.a */; };
-		08FBDD1D1EC762190060FC3D /* libATKDynamic_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC911EC75D0F0060FC3D /* libATKDynamic_static32.a */; };
-		08FBDD1E1EC762190060FC3D /* libATKEQ_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC921EC75D0F0060FC3D /* libATKEQ_static32.a */; };
-		08FBDD1F1EC762190060FC3D /* libATKIO_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC931EC75D0F0060FC3D /* libATKIO_static32.a */; };
-		08FBDD201EC762190060FC3D /* libATKPreamplifier_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC941EC75D0F0060FC3D /* libATKPreamplifier_static32.a */; };
-		08FBDD211EC762190060FC3D /* libATKReverberation_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC951EC75D0F0060FC3D /* libATKReverberation_static32.a */; };
-		08FBDD221EC762190060FC3D /* libATKSpecial_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC961EC75D0F0060FC3D /* libATKSpecial_static32.a */; };
-		08FBDD231EC762190060FC3D /* libATKTools_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC971EC75D0F0060FC3D /* libATKTools_static32.a */; };
-		08FBDD241EC762190060FC3D /* libATKUtility_static32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBDC981EC75D0F0060FC3D /* libATKUtility_static32.a */; };
 		08FBDD251EC765FA0060FC3D /* libATKBassPreamp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8EBA119502F36AF23848C0 /* libATKBassPreamp.a */; };
 		08FBDD261EC765FD0060FC3D /* libATKBassPreamp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8EBA119502F36AF23848C0 /* libATKBassPreamp.a */; };
 		08FBDD271EC766010060FC3D /* libATKBassPreamp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8EBA119502F36AF23848C0 /* libATKBassPreamp.a */; };
@@ -351,18 +303,6 @@
 		04A425C0C2C3A34EDD1C18F3 /* juce_audio_plugin_client */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_plugin_client; path = ../../../../../JUCE/modules/juce_audio_plugin_client; sourceTree = SOURCE_ROOT; };
 		08FBDC891EC75CC10060FC3D /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../../Source/AppConfig.h; sourceTree = "<group>"; };
 		08FBDC8A1EC75CC10060FC3D /* JuceHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../Source/JuceHeader.h; sourceTree = "<group>"; };
-		08FBDC8D1EC75D0F0060FC3D /* libATKAdaptive_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKAdaptive_static32.a; path = ../../../../../ATK32/lib/libATKAdaptive_static32.a; sourceTree = "<group>"; };
-		08FBDC8E1EC75D0F0060FC3D /* libATKCore_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKCore_static32.a; path = ../../../../../ATK32/lib/libATKCore_static32.a; sourceTree = "<group>"; };
-		08FBDC8F1EC75D0F0060FC3D /* libATKDelay_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDelay_static32.a; path = ../../../../../ATK32/lib/libATKDelay_static32.a; sourceTree = "<group>"; };
-		08FBDC901EC75D0F0060FC3D /* libATKDistortion_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDistortion_static32.a; path = ../../../../../ATK32/lib/libATKDistortion_static32.a; sourceTree = "<group>"; };
-		08FBDC911EC75D0F0060FC3D /* libATKDynamic_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDynamic_static32.a; path = ../../../../../ATK32/lib/libATKDynamic_static32.a; sourceTree = "<group>"; };
-		08FBDC921EC75D0F0060FC3D /* libATKEQ_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKEQ_static32.a; path = ../../../../../ATK32/lib/libATKEQ_static32.a; sourceTree = "<group>"; };
-		08FBDC931EC75D0F0060FC3D /* libATKIO_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKIO_static32.a; path = ../../../../../ATK32/lib/libATKIO_static32.a; sourceTree = "<group>"; };
-		08FBDC941EC75D0F0060FC3D /* libATKPreamplifier_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKPreamplifier_static32.a; path = ../../../../../ATK32/lib/libATKPreamplifier_static32.a; sourceTree = "<group>"; };
-		08FBDC951EC75D0F0060FC3D /* libATKReverberation_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKReverberation_static32.a; path = ../../../../../ATK32/lib/libATKReverberation_static32.a; sourceTree = "<group>"; };
-		08FBDC961EC75D0F0060FC3D /* libATKSpecial_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKSpecial_static32.a; path = ../../../../../ATK32/lib/libATKSpecial_static32.a; sourceTree = "<group>"; };
-		08FBDC971EC75D0F0060FC3D /* libATKTools_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKTools_static32.a; path = ../../../../../ATK32/lib/libATKTools_static32.a; sourceTree = "<group>"; };
-		08FBDC981EC75D0F0060FC3D /* libATKUtility_static32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKUtility_static32.a; path = ../../../../../ATK32/lib/libATKUtility_static32.a; sourceTree = "<group>"; };
 		08FBDC991EC75D1B0060FC3D /* libATKAdaptive_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKAdaptive_static.a; path = ../../../../../ATK64/lib/libATKAdaptive_static.a; sourceTree = "<group>"; };
 		08FBDC9A1EC75D1B0060FC3D /* libATKCore_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKCore_static.a; path = ../../../../../ATK64/lib/libATKCore_static.a; sourceTree = "<group>"; };
 		08FBDC9B1EC75D1B0060FC3D /* libATKDelay_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libATKDelay_static.a; path = ../../../../../ATK64/lib/libATKDelay_static.a; sourceTree = "<group>"; };
@@ -478,18 +418,6 @@
 				08FBDCD71EC761FA0060FC3D /* libATKSpecial_static.a in Frameworks */,
 				08FBDCD81EC761FA0060FC3D /* libATKTools_static.a in Frameworks */,
 				08FBDCD91EC761FA0060FC3D /* libATKUtility_static.a in Frameworks */,
-				08FBDCDA1EC761FA0060FC3D /* libATKAdaptive_static32.a in Frameworks */,
-				08FBDCDB1EC761FA0060FC3D /* libATKCore_static32.a in Frameworks */,
-				08FBDCDC1EC761FA0060FC3D /* libATKDelay_static32.a in Frameworks */,
-				08FBDCDD1EC761FA0060FC3D /* libATKDistortion_static32.a in Frameworks */,
-				08FBDCDE1EC761FA0060FC3D /* libATKDynamic_static32.a in Frameworks */,
-				08FBDCDF1EC761FA0060FC3D /* libATKEQ_static32.a in Frameworks */,
-				08FBDCE01EC761FA0060FC3D /* libATKIO_static32.a in Frameworks */,
-				08FBDCE11EC761FA0060FC3D /* libATKPreamplifier_static32.a in Frameworks */,
-				08FBDCE21EC761FA0060FC3D /* libATKReverberation_static32.a in Frameworks */,
-				08FBDCE31EC761FA0060FC3D /* libATKSpecial_static32.a in Frameworks */,
-				08FBDCE41EC761FA0060FC3D /* libATKTools_static32.a in Frameworks */,
-				08FBDCE51EC761FA0060FC3D /* libATKUtility_static32.a in Frameworks */,
 				08FBDC561EC758C70060FC3D /* Accelerate.framework in Frameworks */,
 				08FBDC571EC758C70060FC3D /* AudioToolbox.framework in Frameworks */,
 				EA91DEEA1B3F83907895483C /* AudioUnit.framework in Frameworks */,
@@ -526,18 +454,6 @@
 				08FBDD161EC762190060FC3D /* libATKSpecial_static.a in Frameworks */,
 				08FBDD171EC762190060FC3D /* libATKTools_static.a in Frameworks */,
 				08FBDD181EC762190060FC3D /* libATKUtility_static.a in Frameworks */,
-				08FBDD191EC762190060FC3D /* libATKAdaptive_static32.a in Frameworks */,
-				08FBDD1A1EC762190060FC3D /* libATKCore_static32.a in Frameworks */,
-				08FBDD1B1EC762190060FC3D /* libATKDelay_static32.a in Frameworks */,
-				08FBDD1C1EC762190060FC3D /* libATKDistortion_static32.a in Frameworks */,
-				08FBDD1D1EC762190060FC3D /* libATKDynamic_static32.a in Frameworks */,
-				08FBDD1E1EC762190060FC3D /* libATKEQ_static32.a in Frameworks */,
-				08FBDD1F1EC762190060FC3D /* libATKIO_static32.a in Frameworks */,
-				08FBDD201EC762190060FC3D /* libATKPreamplifier_static32.a in Frameworks */,
-				08FBDD211EC762190060FC3D /* libATKReverberation_static32.a in Frameworks */,
-				08FBDD221EC762190060FC3D /* libATKSpecial_static32.a in Frameworks */,
-				08FBDD231EC762190060FC3D /* libATKTools_static32.a in Frameworks */,
-				08FBDD241EC762190060FC3D /* libATKUtility_static32.a in Frameworks */,
 				41C1AD93314888AF2B3E43F7 /* Accelerate.framework in Frameworks */,
 				4A01F54387890EAA061D9CE9 /* AudioToolbox.framework in Frameworks */,
 				F3C2225FD56C623C9D170F69 /* AVFoundation.framework in Frameworks */,
@@ -642,18 +558,6 @@
 				08FBDCFD1EC762130060FC3D /* libATKSpecial_static.a in Frameworks */,
 				08FBDCFE1EC762130060FC3D /* libATKTools_static.a in Frameworks */,
 				08FBDCFF1EC762130060FC3D /* libATKUtility_static.a in Frameworks */,
-				08FBDD001EC762130060FC3D /* libATKAdaptive_static32.a in Frameworks */,
-				08FBDD011EC762130060FC3D /* libATKCore_static32.a in Frameworks */,
-				08FBDD021EC762130060FC3D /* libATKDelay_static32.a in Frameworks */,
-				08FBDD031EC762130060FC3D /* libATKDistortion_static32.a in Frameworks */,
-				08FBDD041EC762130060FC3D /* libATKDynamic_static32.a in Frameworks */,
-				08FBDD051EC762130060FC3D /* libATKEQ_static32.a in Frameworks */,
-				08FBDD061EC762130060FC3D /* libATKIO_static32.a in Frameworks */,
-				08FBDD071EC762130060FC3D /* libATKPreamplifier_static32.a in Frameworks */,
-				08FBDD081EC762130060FC3D /* libATKReverberation_static32.a in Frameworks */,
-				08FBDD091EC762130060FC3D /* libATKSpecial_static32.a in Frameworks */,
-				08FBDD0A1EC762130060FC3D /* libATKTools_static32.a in Frameworks */,
-				08FBDD0B1EC762130060FC3D /* libATKUtility_static32.a in Frameworks */,
 				08FBDC3A1EC758C70060FC3D /* Accelerate.framework in Frameworks */,
 				08FBDC3B1EC758C70060FC3D /* AudioToolbox.framework in Frameworks */,
 				08FBDC3C1EC758C70060FC3D /* AVFoundation.framework in Frameworks */,
@@ -688,18 +592,6 @@
 				08FBDCB11EC761E60060FC3D /* libATKSpecial_static.a in Frameworks */,
 				08FBDCB21EC761E60060FC3D /* libATKTools_static.a in Frameworks */,
 				08FBDCB31EC761E60060FC3D /* libATKUtility_static.a in Frameworks */,
-				08FBDCB41EC761E60060FC3D /* libATKAdaptive_static32.a in Frameworks */,
-				08FBDCB51EC761E60060FC3D /* libATKCore_static32.a in Frameworks */,
-				08FBDCB61EC761E60060FC3D /* libATKDelay_static32.a in Frameworks */,
-				08FBDCB71EC761E60060FC3D /* libATKDistortion_static32.a in Frameworks */,
-				08FBDCB81EC761E60060FC3D /* libATKDynamic_static32.a in Frameworks */,
-				08FBDCB91EC761E60060FC3D /* libATKEQ_static32.a in Frameworks */,
-				08FBDCBA1EC761E60060FC3D /* libATKIO_static32.a in Frameworks */,
-				08FBDCBB1EC761E60060FC3D /* libATKPreamplifier_static32.a in Frameworks */,
-				08FBDCBC1EC761E60060FC3D /* libATKReverberation_static32.a in Frameworks */,
-				08FBDCBD1EC761E60060FC3D /* libATKSpecial_static32.a in Frameworks */,
-				08FBDCBE1EC761E60060FC3D /* libATKTools_static32.a in Frameworks */,
-				08FBDCBF1EC761E60060FC3D /* libATKUtility_static32.a in Frameworks */,
 				08FBDC741EC758C70060FC3D /* Accelerate.framework in Frameworks */,
 				08FBDC751EC758C70060FC3D /* AudioToolbox.framework in Frameworks */,
 				08FBDC761EC758C70060FC3D /* AVFoundation.framework in Frameworks */,
@@ -750,18 +642,6 @@
 				08FBDCA31EC75D1B0060FC3D /* libATKSpecial_static.a */,
 				08FBDCA41EC75D1B0060FC3D /* libATKTools_static.a */,
 				08FBDCA51EC75D1B0060FC3D /* libATKUtility_static.a */,
-				08FBDC8D1EC75D0F0060FC3D /* libATKAdaptive_static32.a */,
-				08FBDC8E1EC75D0F0060FC3D /* libATKCore_static32.a */,
-				08FBDC8F1EC75D0F0060FC3D /* libATKDelay_static32.a */,
-				08FBDC901EC75D0F0060FC3D /* libATKDistortion_static32.a */,
-				08FBDC911EC75D0F0060FC3D /* libATKDynamic_static32.a */,
-				08FBDC921EC75D0F0060FC3D /* libATKEQ_static32.a */,
-				08FBDC931EC75D0F0060FC3D /* libATKIO_static32.a */,
-				08FBDC941EC75D0F0060FC3D /* libATKPreamplifier_static32.a */,
-				08FBDC951EC75D0F0060FC3D /* libATKReverberation_static32.a */,
-				08FBDC961EC75D0F0060FC3D /* libATKSpecial_static32.a */,
-				08FBDC971EC75D0F0060FC3D /* libATKTools_static32.a */,
-				08FBDC981EC75D0F0060FC3D /* libATKUtility_static32.a */,
 			);
 			name = ATK;
 			sourceTree = "<group>";
@@ -1414,7 +1294,7 @@
 				HEADER_SEARCH_PATHS = "$(ADDITIONAL_INCLUDES)";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -1454,7 +1334,7 @@
 				HEADER_SEARCH_PATHS = "$(ADDITIONAL_INCLUDES)";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -1501,7 +1381,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
 				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				LIBRARY_STYLE = Bundle;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "-bundle";
@@ -1591,7 +1471,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST3/";
 				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				LIBRARY_STYLE = Bundle;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "-bundle";
@@ -1642,7 +1522,7 @@
 					"$(AAXSDK)/Libs/Debug",
 				);
 				LIBRARY_STYLE = Bundle;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -1716,7 +1596,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
 				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				LIBRARY_STYLE = Bundle;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "-bundle";
@@ -1763,7 +1643,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
 				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				LIBRARY_STYLE = Bundle;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "-bundle";
@@ -1811,7 +1691,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST3/";
 				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				LIBRARY_STYLE = Bundle;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "-bundle";
@@ -1863,7 +1743,7 @@
 					"$(AAXSDK)/Libs/Release",
 				);
 				LIBRARY_STYLE = Bundle;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -1957,7 +1837,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
 				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
 				LIBRARY_STYLE = Bundle;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "-bundle";
@@ -2001,7 +1881,7 @@
 				HEADER_SEARCH_PATHS = "$(ADDITIONAL_INCLUDES)";
 				INFOPLIST_FILE = "Info-Standalone_Plugin.plist";
 				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -2064,7 +1944,7 @@
 				HEADER_SEARCH_PATHS = "$(ADDITIONAL_INCLUDES)";
 				INFOPLIST_FILE = "Info-Standalone_Plugin.plist";
 				LIBRARY_SEARCH_PATHS = "$(ADDITIONAL_LIBRARY_PATHS)";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "";
