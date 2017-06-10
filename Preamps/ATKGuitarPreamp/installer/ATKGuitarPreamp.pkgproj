@@ -83,7 +83,7 @@
 															<key>GID</key>
 															<integer>80</integer>
 															<key>PATH</key>
-															<string>../Builds/MacOSX/build/Release/ATKGuitarPreamp.vst</string>
+															<string>/Users/matthieu/Library/Audio/Plug-Ins/VST/ATKGuitarPreamp.vst</string>
 															<key>PATH_TYPE</key>
 															<integer>1</integer>
 															<key>PERMISSIONS</key>
@@ -623,7 +623,7 @@
 															<key>GID</key>
 															<integer>0</integer>
 															<key>PATH</key>
-															<string>../Builds/MacOSX/build/Release/ATKGuitarPreamp.vst3</string>
+															<string>/Users/matthieu/Library/Audio/Plug-Ins/VST3/ATKGuitarPreamp.vst3</string>
 															<key>PATH_TYPE</key>
 															<integer>1</integer>
 															<key>PERMISSIONS</key>
@@ -1163,7 +1163,7 @@
 															<key>GID</key>
 															<integer>80</integer>
 															<key>PATH</key>
-															<string>../Builds/MacOSX/build/Release/ATKGuitarPreamp.component</string>
+															<string>/Users/matthieu/Library/Audio/Plug-Ins/Components/ATKGuitarPreamp.component</string>
 															<key>PATH_TYPE</key>
 															<integer>1</integer>
 															<key>PERMISSIONS</key>

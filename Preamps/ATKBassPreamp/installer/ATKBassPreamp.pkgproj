@@ -83,7 +83,7 @@
 															<key>GID</key>
 															<integer>80</integer>
 															<key>PATH</key>
-															<string>../Builds/MacOSX/build/Release/ATKBassPreamp.vst</string>
+															<string>/Users/matthieu/Library/Audio/Plug-Ins/VST/ATKBassPreamp.vst</string>
 															<key>PATH_TYPE</key>
 															<integer>1</integer>
 															<key>PERMISSIONS</key>
@@ -623,7 +623,7 @@
 															<key>GID</key>
 															<integer>0</integer>
 															<key>PATH</key>
-															<string>../Builds/MacOSX/build/Release/ATKBassPreamp.vst3</string>
+															<string>/Users/matthieu/Library/Audio/Plug-Ins/VST3/ATKBassPreamp.vst3</string>
 															<key>PATH_TYPE</key>
 															<integer>1</integer>
 															<key>PERMISSIONS</key>
@@ -1163,9 +1163,9 @@
 															<key>GID</key>
 															<integer>80</integer>
 															<key>PATH</key>
-															<string>../Builds/MacOSX/build/Release/ATKBassPreamp.component</string>
+															<string>/Users/matthieu/Library/Audio/Plug-Ins/Components/ATKBassPreamp.component</string>
 															<key>PATH_TYPE</key>
-															<integer>1</integer>
+															<integer>0</integer>
 															<key>PERMISSIONS</key>
 															<integer>493</integer>
 															<key>TYPE</key>

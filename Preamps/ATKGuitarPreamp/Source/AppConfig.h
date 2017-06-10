@@ -343,7 +343,10 @@
  #define JucePlugin_VSTUniqueID            JucePlugin_PluginCode
 #endif
 #ifndef  JucePlugin_VSTCategory
- #define JucePlugin_VSTCategory            Vst::PlugType::kFxDistortion
+ #define JucePlugin_VSTCategory            kPlugCategEffect
+#endif
+#ifndef  JucePlugin_VST3Category
+ #define JucePlugin_VST3Category            Vst::PlugType::kFxDistortion
 #endif
 #ifndef  JucePlugin_AUMainType
  #define JucePlugin_AUMainType             kAudioUnitType_Effect
