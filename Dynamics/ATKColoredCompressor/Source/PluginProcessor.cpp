@@ -111,7 +111,7 @@ void ATKColoredCompressorAudioProcessor::changeProgramName (int index, const Str
 //==============================================================================
 void ATKColoredCompressorAudioProcessor::prepareToPlay (double dbSampleRate, int samplesPerBlock)
 {
-	auto sampleRate = std::lround(dbSampleRate);
+	sampleRate = std::lround(dbSampleRate);
   
   if(sampleRate != inFilter.get_output_sampling_rate())
   {
