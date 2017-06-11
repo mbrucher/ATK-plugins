@@ -1,0 +1,13 @@
+ATKColoredCompressor changelog
+http://www.audio-tk.com
+
+12/06/17 - v2.0.0 Main release
+  - update to use JUCE 5
+  - built against ATK 2.1.0
+03/03/17 - v1.0.1 bug fix release
+  - built against ATK 1.4.1
+  - AU fixes
+29/07/15 - v1.0.0 initial release
+  - Built against ATK 0.7.1
+  
+  
