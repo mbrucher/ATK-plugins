@@ -144,10 +144,9 @@ void ATKColoredCompressorAudioProcessor::prepareToPlay (double dbSampleRate, int
     }
     attackReleaseFilter.set_release(std::exp(-1e3/(old_release * sampleRate))); // in ms
     attackReleaseFilter.set_attack(std::exp(-1e3/(old_attack * sampleRate))); // in ms
-
-    powerFilter.full_setup();
-    attackReleaseFilter.full_setup();
   }
+  powerFilter.full_setup();
+  attackReleaseFilter.full_setup();
 }
 
 void ATKColoredCompressorAudioProcessor::releaseResources()
