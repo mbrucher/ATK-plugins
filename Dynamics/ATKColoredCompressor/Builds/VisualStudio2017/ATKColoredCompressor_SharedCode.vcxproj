@@ -260,6 +260,9 @@
     </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\ATKJUCEComponents\Dynamic\AttackReleaseFilter.cpp" />
+    <ClCompile Include="..\..\..\..\ATKJUCEComponents\Dynamic\GainColoredCompressorFilter.cpp" />
+    <ClCompile Include="..\..\..\..\ATKJUCEComponents\Dynamic\PowerFilter.cpp" />
     <ClCompile Include="..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.cpp" />
     <ClCompile Include="..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.cpp" />
     <ClCompile Include="..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.cpp" />

@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATKColoredCompressor_VST", "ATKColoredCompressor_VST.vcxproj", "{11648528-861C-3C5D-B81F-18BAA6F4485C}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -1840,10 +1840,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATKColoredCompressor_AAX", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ATKJUCEComponents", "ATKJUCEComponents", "{42B2B275-74A4-4E84-9E93-022D4D8782BC}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\ATKJUCEComponents\Dynamic\AttackReleaseFilter.cpp = ..\..\..\..\ATKJUCEComponents\Dynamic\AttackReleaseFilter.cpp
+		..\..\..\..\ATKJUCEComponents\Dynamic\AttackReleaseFilter.h = ..\..\..\..\ATKJUCEComponents\Dynamic\AttackReleaseFilter.h
 		..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.cpp = ..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.cpp
 		..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.h = ..\..\..\..\ATKJUCEComponents\Tools\DryWetFilter.h
+		..\..\..\..\ATKJUCEComponents\Dynamic\GainColoredCompressorFilter.cpp = ..\..\..\..\ATKJUCEComponents\Dynamic\GainColoredCompressorFilter.cpp
+		..\..\..\..\ATKJUCEComponents\Dynamic\GainColoredCompressorFilter.h = ..\..\..\..\ATKJUCEComponents\Dynamic\GainColoredCompressorFilter.h
 		..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.cpp = ..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.cpp
 		..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.h = ..\..\..\..\ATKJUCEComponents\JUCE\LookAndFeel.h
+		..\..\..\..\ATKJUCEComponents\Dynamic\PowerFilter.cpp = ..\..\..\..\ATKJUCEComponents\Dynamic\PowerFilter.cpp
+		..\..\..\..\ATKJUCEComponents\Dynamic\PowerFilter.h = ..\..\..\..\ATKJUCEComponents\Dynamic\PowerFilter.h
 		..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.cpp = ..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.cpp
 		..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.h = ..\..\..\..\ATKJUCEComponents\EQ\ToneStackFilter.h
 		..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.cpp = ..\..\..\..\ATKJUCEComponents\Tools\VolumeFilter.cpp
