@@ -25,7 +25,7 @@ ATKColoredCompressorAudioProcessor::ATKColoredCompressorAudioProcessor()
                      #endif
                        ),
 #endif
-  inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorFilter(1, 256*1024), parameters(*this, nullptr), sampleRate(0), old_rms(0), old_attack(0), old_release(0), old_threshold(-1), old_slope(-1), old_softness(-5), old_color(-1), old_quality(-1), old_makeup(-1), old_drywet(-1)
+  inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorFilter(1, 256*1024), parameters(*this, nullptr), sampleRate(0), lastParameterSet(-1), old_rms(0), old_attack(0), old_release(0), old_threshold(-1), old_slope(-1), old_softness(-5), old_color(-1), old_quality(-1), old_makeup(-1), old_drywet(-1)
 {
   powerFilter.set_input_port(0, &inFilter, 0);
   attackReleaseFilter.set_input_port(0, &powerFilter, 0);
@@ -86,22 +86,59 @@ double ATKColoredCompressorAudioProcessor::getTailLengthSeconds() const
 
 int ATKColoredCompressorAudioProcessor::getNumPrograms()
 {
-    return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
-                // so this should be at least 1, even if you're not really implementing programs.
+    return 2;
 }
 
 int ATKColoredCompressorAudioProcessor::getCurrentProgram()
 {
-    return 0;
+    return lastParameterSet;
 }
 
 void ATKColoredCompressorAudioProcessor::setCurrentProgram (int index)
 {
+  if(index != lastParameterSet)
+  {
+    lastParameterSet = index;
+    if(index == 0)
+    {
+      *parameters.getRawParameterValue ("power") = 10;
+      *parameters.getRawParameterValue ("attack") = 10;
+      *parameters.getRawParameterValue ("release") = 10;
+      *parameters.getRawParameterValue ("threshold") = 0;
+      *parameters.getRawParameterValue ("slope") = 2;
+      *parameters.getRawParameterValue ("softness") = .1;
+      *parameters.getRawParameterValue ("color") = 0;
+      *parameters.getRawParameterValue ("quality") = .01;
+      *parameters.getRawParameterValue ("makeup") = 0;
+      *parameters.getRawParameterValue ("drywet") = 100;
+    }
+    else if (index == 1)
+    {
+      *parameters.getRawParameterValue ("power") = 10;
+      *parameters.getRawParameterValue ("attack") = 10;
+      *parameters.getRawParameterValue ("release") = 10;
+      *parameters.getRawParameterValue ("threshold") = 0;
+      *parameters.getRawParameterValue ("slope") = 2;
+      *parameters.getRawParameterValue ("softness") = .1;
+      *parameters.getRawParameterValue ("color") = 0;
+      *parameters.getRawParameterValue ("quality") = .01;
+      *parameters.getRawParameterValue ("makeup") = 0;
+      *parameters.getRawParameterValue ("drywet") = 50;
+    }
+  }
 }
 
 const String ATKColoredCompressorAudioProcessor::getProgramName (int index)
 {
-    return {};
+  if(index == 0)
+  {
+    return "Serial Compression";
+  }
+  else if(index == 1)
+  {
+    return "Parallel Compression";
+  }
+  return {};
 }
 
 void ATKColoredCompressorAudioProcessor::changeProgramName (int index, const String& newName)
@@ -265,7 +302,7 @@ AudioProcessorEditor* ATKColoredCompressorAudioProcessor::createEditor()
 void ATKColoredCompressorAudioProcessor::getStateInformation (MemoryBlock& destData)
 {
   MemoryOutputStream store(destData, true);
-  //store.writeInt(0); // version ID
+  store.writeInt(0); // version ID
   store.writeFloat(*parameters.getRawParameterValue ("power"));
   store.writeFloat(*parameters.getRawParameterValue ("attack"));
   store.writeFloat(*parameters.getRawParameterValue ("release"));
@@ -281,7 +318,7 @@ void ATKColoredCompressorAudioProcessor::getStateInformation (MemoryBlock& destD
 void ATKColoredCompressorAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
   MemoryInputStream store(data, static_cast<size_t> (sizeInBytes), false);
-  //int version = store.readInt(); // version ID
+  int version = store.readInt(); // version ID
   *parameters.getRawParameterValue ("power") = store.readFloat();
   *parameters.getRawParameterValue ("attack") = store.readFloat();
   *parameters.getRawParameterValue ("release") = store.readFloat();

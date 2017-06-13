@@ -81,6 +81,7 @@ private:
 
   AudioProcessorValueTreeState parameters;
   int sampleRate;
+  int lastParameterSet;
 
   float old_rms;
   float old_attack;
