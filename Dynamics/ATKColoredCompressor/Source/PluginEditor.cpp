@@ -24,7 +24,7 @@ ATKColoredCompressorAudioProcessorEditor::ATKColoredCompressorAudioProcessorEdit
   
   // Make sure that before the constructor has finished, you've set the
   // editor's size to whatever you need it to be.
-  setSize (900, 200);
+  setSize (1000, 200);
 }
 
 ATKColoredCompressorAudioProcessorEditor::~ATKColoredCompressorAudioProcessorEditor()
