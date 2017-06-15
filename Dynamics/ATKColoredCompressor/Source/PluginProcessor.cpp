@@ -48,7 +48,7 @@ ATKColoredCompressorAudioProcessor::ATKColoredCompressorAudioProcessor()
   parameters.createAndAddParameter("makeup", "Makeup gain", " dB", NormalisableRange<float>(0, 40), 0, nullptr, nullptr);
   parameters.createAndAddParameter("drywet", "Dry/Wet", "", NormalisableRange<float>(0, 100), 100, nullptr, nullptr);
   
-  parameters.state = ValueTree (Identifier ("ATKColoredCompressor"));;
+  parameters.state = ValueTree (Identifier ("ATKColoredCompressor"));
 }
 
 ATKColoredCompressorAudioProcessor::~ATKColoredCompressorAudioProcessor()
@@ -101,29 +101,17 @@ void ATKColoredCompressorAudioProcessor::setCurrentProgram (int index)
     lastParameterSet = index;
     if(index == 0)
     {
-      parameters.getParameter("power")->setValue(10);
-      parameters.getParameter ("attack")->setValue(10);
-      parameters.getParameter ("release")->setValue(10);
-      parameters.getParameter ("threshold")->setValue(0);
-      parameters.getParameter ("slope")->setValue(2);
-      parameters.getParameter ("softness")->setValue(.1);
-      parameters.getParameter ("color")->setValue(0);
-      parameters.getParameter ("quality")->setValue(.01);
-      parameters.getParameter ("makeup")->setValue(0);
-      parameters.getParameter ("drywet")->setValue(100);
+      const char* preset0 = "<ATKColoredCompressor><PARAM id=\"power\" value=\"10\" /><PARAM id=\"attack\" value=\"10\" /><PARAM id=\"release\" value=\"10\" /> <PARAM id=\"threshold\" value=\"0\" /><PARAM id=\"slope\" value=\"2\" /><PARAM id=\"color\" value = \"0\" /><PARAM id=\"quality\" value=\"0.10000000149011611938\" /><PARAM id=\"softness\" value=\"-2\" /><PARAM id=\"makeup\" value=\"0\" /><PARAM id=\"drywet\" value=\"100\" /></ATKColoredCompressor>";
+      XmlDocument doc(preset0);
+
+      parameters.state = ValueTree::fromXml(*doc.getDocumentElement());
     }
     else if (index == 1)
     {
-      parameters.getParameter("power")->setValue(10);
-      parameters.getParameter ("attack")->setValue(10);
-      parameters.getParameter ("release")->setValue(10);
-      parameters.getParameter ("threshold")->setValue(0);
-      parameters.getParameter ("slope")->setValue(2);
-      parameters.getParameter ("softness")->setValue(.1);
-      parameters.getParameter ("color")->setValue(0);
-      parameters.getParameter ("quality")->setValue(.01);
-      parameters.getParameter ("makeup")->setValue(0);
-      parameters.getParameter ("drywet")->setValue(50);
+      const char* preset1 = "<ATKColoredCompressor><PARAM id=\"power\" value=\"10\" /><PARAM id=\"attack\" value=\"10\" /><PARAM id=\"release\" value=\"10\" /> <PARAM id=\"threshold\" value=\"0\" /><PARAM id=\"slope\" value=\"2\" /><PARAM id=\"color\" value = \"0\" /><PARAM id=\"quality\" value=\"0.10000000149011611938\" /><PARAM id=\"softness\" value=\"-2\" /><PARAM id=\"makeup\" value=\"0\" /><PARAM id=\"drywet\" value=\"50\" /></ATKColoredCompressor>";
+      XmlDocument doc(preset1);
+
+      parameters.state = ValueTree::fromXml(*doc.getDocumentElement());
     }
   }
 }
@@ -302,7 +290,10 @@ AudioProcessorEditor* ATKColoredCompressorAudioProcessor::createEditor()
 void ATKColoredCompressorAudioProcessor::getStateInformation (MemoryBlock& destData)
 {
   MemoryOutputStream store(destData, true);
-  store.writeInt(0); // version ID
+  auto str = parameters.state.toXmlString();
+  store.writeString(str);
+/*  store.writeInt(0); // version ID
+
   store.writeFloat(*parameters.getRawParameterValue ("power"));
   store.writeFloat(*parameters.getRawParameterValue ("attack"));
   store.writeFloat(*parameters.getRawParameterValue ("release"));
@@ -312,7 +303,7 @@ void ATKColoredCompressorAudioProcessor::getStateInformation (MemoryBlock& destD
   store.writeFloat(*parameters.getRawParameterValue ("color"));
   store.writeFloat(*parameters.getRawParameterValue ("quality"));
   store.writeFloat(*parameters.getRawParameterValue ("makeup"));
-  store.writeFloat(*parameters.getRawParameterValue ("drywet"));
+  store.writeFloat(*parameters.getRawParameterValue ("drywet"));*/
 }
 
 void ATKColoredCompressorAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
