@@ -13,7 +13,7 @@
 
 //==============================================================================
 ATKColoredExpanderAudioProcessorEditor::ATKColoredExpanderAudioProcessorEditor (ATKColoredExpanderAudioProcessor& p, AudioProcessorValueTreeState& paramState)
-: AudioProcessorEditor (&p), processor (p), paramState(paramState), power(paramState, "power", 0, 100), attackrelease(paramState, "attack", 1, 100,  "release", 1, 100), expander(paramState, "threshold", -40, 0, "slope", 1.5, 100, "softness", -4, 0, "color", -.5, .5, "quality", 0.01, .2, "maxreduc", -60, 0), makeup(paramState, "makeup", "Make-up", 0, 40), drywet(paramState, "drywet")
+: AudioProcessorEditor (&p), processor (p), paramState(paramState), power(paramState, "power"), attackrelease(paramState, "attack", "release"), expander(paramState, "threshold", "slope", "softness", "color", "quality", "maxreduc"), makeup(paramState, "makeup", "Make-up"), drywet(paramState, "drywet")
 
 {
   addAndMakeVisible(power);

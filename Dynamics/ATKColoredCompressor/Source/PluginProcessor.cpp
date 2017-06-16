@@ -37,13 +37,13 @@ ATKColoredCompressorAudioProcessor::ATKColoredCompressorAudioProcessor()
   drywetFilter.set_input_port(1, &inFilter, 0);
   outFilter.set_input_port(0, &drywetFilter, 0);
   
-  parameters.createAndAddParameter("power", "Power", " ms", NormalisableRange<float>(0, 100), 10, nullptr, nullptr);
-  parameters.createAndAddParameter("attack", "Attack", " ms", NormalisableRange<float>(1, 100), 10, nullptr, nullptr);
-  parameters.createAndAddParameter("release", "Release", " ms",  NormalisableRange<float>(1, 100), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("power", "Power", " ms", NormalisableRange<float>(0, 100, 1, 0.3), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("attack", "Attack", " ms", NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("release", "Release", " ms",  NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("threshold", "Threshold", " dB", NormalisableRange<float>(-40, 0), 0, nullptr, nullptr);
-  parameters.createAndAddParameter("slope", "Slope", "", NormalisableRange<float>(1.5, 100), 2, nullptr, nullptr);
+  parameters.createAndAddParameter("slope", "Slope", "", NormalisableRange<float>(1.5, 100, 1, 0.3), 2, nullptr, nullptr);
   parameters.createAndAddParameter("color", "Color", "", NormalisableRange<float>(-.5, .5), 0, nullptr, nullptr);
-  parameters.createAndAddParameter("quality", "Quality", "", NormalisableRange<float>(0.01, .2), .1, nullptr, nullptr);
+  parameters.createAndAddParameter("quality", "Quality", "", NormalisableRange<float>(0.01, .2, 1, 0.3), .1, nullptr, nullptr);
   parameters.createAndAddParameter("softness", "Softness", "", NormalisableRange<float>(-4, 0), -2, nullptr, nullptr);
   parameters.createAndAddParameter("makeup", "Makeup gain", " dB", NormalisableRange<float>(0, 40), 0, nullptr, nullptr);
   parameters.createAndAddParameter("drywet", "Dry/Wet", "", NormalisableRange<float>(0, 100), 100, nullptr, nullptr);
@@ -290,38 +290,18 @@ AudioProcessorEditor* ATKColoredCompressorAudioProcessor::createEditor()
 void ATKColoredCompressorAudioProcessor::getStateInformation (MemoryBlock& destData)
 {
   MemoryOutputStream store(destData, true);
+  store.writeInt(0); // version ID
   auto str = parameters.state.toXmlString();
   store.writeString(str);
-/*  store.writeInt(0); // version ID
-
-  store.writeFloat(*parameters.getRawParameterValue ("power"));
-  store.writeFloat(*parameters.getRawParameterValue ("attack"));
-  store.writeFloat(*parameters.getRawParameterValue ("release"));
-  store.writeFloat(*parameters.getRawParameterValue ("threshold"));
-  store.writeFloat(*parameters.getRawParameterValue ("slope"));
-  store.writeFloat(*parameters.getRawParameterValue ("softness"));
-  store.writeFloat(*parameters.getRawParameterValue ("color"));
-  store.writeFloat(*parameters.getRawParameterValue ("quality"));
-  store.writeFloat(*parameters.getRawParameterValue ("makeup"));
-  store.writeFloat(*parameters.getRawParameterValue ("drywet"));*/
 }
 
 void ATKColoredCompressorAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-  if(sizeInBytes != 11 * 4)
-    return;
   MemoryInputStream store(data, static_cast<size_t> (sizeInBytes), false);
   int version = store.readInt(); // version ID
-  *parameters.getRawParameterValue ("power") = store.readFloat();
-  *parameters.getRawParameterValue ("attack") = store.readFloat();
-  *parameters.getRawParameterValue ("release") = store.readFloat();
-  *parameters.getRawParameterValue ("threshold") = store.readFloat();
-  *parameters.getRawParameterValue ("slope") = store.readFloat();
-  *parameters.getRawParameterValue ("softness") = store.readFloat();
-  *parameters.getRawParameterValue ("color") = store.readFloat();
-  *parameters.getRawParameterValue ("quality") = store.readFloat();
-  *parameters.getRawParameterValue ("makeup") = store.readFloat();
-  *parameters.getRawParameterValue ("drywet") = store.readFloat();
+  std::unique_ptr<::juce::XmlElement> xml(::juce::XmlDocument::parse(store.readString()));
+  if(xml)
+    parameters.state = ValueTree::fromXml(*xml);
 }
 
 //==============================================================================

@@ -37,13 +37,13 @@ ATKColoredExpanderAudioProcessor::ATKColoredExpanderAudioProcessor()
   drywetFilter.set_input_port(1, &inFilter, 0);
   outFilter.set_input_port(0, &drywetFilter, 0);
   
-  parameters.createAndAddParameter("power", "Power", " ms", NormalisableRange<float>(0, 100), 10, nullptr, nullptr);
-  parameters.createAndAddParameter("attack", "Attack", " ms", NormalisableRange<float>(1, 100), 10, nullptr, nullptr);
-  parameters.createAndAddParameter("release", "Release", " ms",  NormalisableRange<float>(1, 100), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("power", "Power", " ms", NormalisableRange<float>(0, 100, 1, 0.3), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("attack", "Attack", " ms", NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("release", "Release", " ms",  NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("threshold", "Threshold", " dB", NormalisableRange<float>(-40, 0), 0, nullptr, nullptr);
-  parameters.createAndAddParameter("slope", "Slope", "", NormalisableRange<float>(1.5, 100), 2, nullptr, nullptr);
+  parameters.createAndAddParameter("slope", "Slope", "", NormalisableRange<float>(1.5, 100, 1, 0.3), 2, nullptr, nullptr);
   parameters.createAndAddParameter("color", "Color", "", NormalisableRange<float>(-.5, .5), 0, nullptr, nullptr);
-  parameters.createAndAddParameter("quality", "Quality", "", NormalisableRange<float>(0.01, .2), .1, nullptr, nullptr);
+  parameters.createAndAddParameter("quality", "Quality", "", NormalisableRange<float>(0.01, .2, 1, 0.3), .1, nullptr, nullptr);
   parameters.createAndAddParameter("softness", "Softness", "", NormalisableRange<float>(-4, 0), -2, nullptr, nullptr);
   parameters.createAndAddParameter("maxreduc", "Maximum reduction", " dB", NormalisableRange<float>(-60, 0), -60, nullptr, nullptr);
   parameters.createAndAddParameter("makeup", "Makeup gain", " dB", NormalisableRange<float>(0, 40), 0, nullptr, nullptr);
@@ -102,31 +102,17 @@ void ATKColoredExpanderAudioProcessor::setCurrentProgram (int index)
     lastParameterSet = index;
     if(index == 0)
     {
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter("power")) = 10;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("attack")) = 10;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("release")) = 10;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("threshold")) = 0;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("slope")) = 2;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("softness")) = .1;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("color")) = 0;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("quality")) = .01;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("maxreduc")) = -60;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("makeup")) = 0;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("drywet")) = 100;
+      const char* preset0 = "<ATKColoredExpander><PARAM id=\"power\" value=\"10\" /><PARAM id=\"attack\" value=\"10\" /><PARAM id=\"release\" value=\"10\" /><PARAM id=\"threshold\" value=\"0\" /><PARAM id=\"slope\" value=\"2\" /><PARAM id=\"color\" value = \"0\" /><PARAM id=\"quality\" value=\"0.10000000149011611938\" /><PARAM id=\"softness\" value=\"-2\" /><PARAM id=\"maxreduc\" value=\"-60\" /><PARAM id=\"makeup\" value=\"0\" /><PARAM id=\"drywet\" value=\"100\" /></ATKColoredExpander>";
+      XmlDocument doc(preset0);
+      
+      parameters.state = ValueTree::fromXml(*doc.getDocumentElement());
     }
     else if (index == 1)
     {
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter("power")) = 10;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("attack")) = 10;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("release")) = 10;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("threshold")) = 0;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("slope")) = 2;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("softness")) = .1;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("color")) = 0;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("quality")) = .01;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("maxreduc")) = -60;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("makeup")) = 0;
-      *static_cast<::juce::AudioParameterFloat*>(parameters.getParameter ("drywet")) = 50;
+      const char* preset1 = "<ATKColoredExpander><PARAM id=\"power\" value=\"10\" /><PARAM id=\"attack\" value=\"10\" /><PARAM id=\"release\" value=\"10\" /><PARAM id=\"threshold\" value=\"0\" /><PARAM id=\"slope\" value=\"2\" /><PARAM id=\"color\" value = \"0\" /><PARAM id=\"quality\" value=\"0.10000000149011611938\" /><PARAM id=\"softness\" value=\"-2\" /><PARAM id=\"maxreduc\" value=\"-60\" /><PARAM id=\"makeup\" value=\"0\" /><PARAM id=\"drywet\" value=\"50\" /></ATKColoredExpander>";
+      XmlDocument doc(preset1);
+      
+      parameters.state = ValueTree::fromXml(*doc.getDocumentElement());
     }
   }
 }
@@ -310,37 +296,18 @@ AudioProcessorEditor* ATKColoredExpanderAudioProcessor::createEditor()
 void ATKColoredExpanderAudioProcessor::getStateInformation (MemoryBlock& destData)
 {
   MemoryOutputStream store(destData, true);
-  store.writeInt(0); // version ID
-  store.writeFloat(*parameters.getRawParameterValue ("power"));
-  store.writeFloat(*parameters.getRawParameterValue ("attack"));
-  store.writeFloat(*parameters.getRawParameterValue ("release"));
-  store.writeFloat(*parameters.getRawParameterValue ("threshold"));
-  store.writeFloat(*parameters.getRawParameterValue ("slope"));
-  store.writeFloat(*parameters.getRawParameterValue ("softness"));
-  store.writeFloat(*parameters.getRawParameterValue ("color"));
-  store.writeFloat(*parameters.getRawParameterValue ("quality"));
-  store.writeFloat(*parameters.getRawParameterValue ("maxreduc"));
-  store.writeFloat(*parameters.getRawParameterValue ("makeup"));
-  store.writeFloat(*parameters.getRawParameterValue ("drywet"));
+  store.writeInt(1); // version ID
+  auto str = parameters.state.toXmlString();
+  store.writeString(str);
 }
 
 void ATKColoredExpanderAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-  if(sizeInBytes != 12 * 4)
-    return;
   MemoryInputStream store(data, static_cast<size_t> (sizeInBytes), false);
   int version = store.readInt(); // version ID
-  *parameters.getRawParameterValue ("power") = store.readFloat();
-  *parameters.getRawParameterValue ("attack") = store.readFloat();
-  *parameters.getRawParameterValue ("release") = store.readFloat();
-  *parameters.getRawParameterValue ("threshold") = store.readFloat();
-  *parameters.getRawParameterValue ("slope") = store.readFloat();
-  *parameters.getRawParameterValue ("softness") = store.readFloat();
-  *parameters.getRawParameterValue ("color") = store.readFloat();
-  *parameters.getRawParameterValue ("quality") = store.readFloat();
-  *parameters.getRawParameterValue ("maxreduc") = store.readFloat();
-  *parameters.getRawParameterValue ("makeup") = store.readFloat();
-  *parameters.getRawParameterValue ("drywet") = store.readFloat();
+  std::unique_ptr<::juce::XmlElement> xml(::juce::XmlDocument::parse(store.readString()));
+  if(xml)
+    parameters.state = ValueTree::fromXml(*xml);
 }
 
 //==============================================================================
