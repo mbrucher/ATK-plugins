@@ -72,12 +72,12 @@ private:
     
   ATK::InPointerFilter<float> inFilter;
   ATK::OutPointerFilter<float> outFilter;
-  ATK::PowerFilter<double> powerFilter;
-  ATK::AttackReleaseFilter<double> attackReleaseFilter;
-  ATK::GainFilter<ATK::GainMaxColoredExpanderFilter<double>> gainExpanderFilter;
-  ATK::ApplyGainFilter<double> applyGainFilter;
-  ATK::VolumeFilter<double> volumeFilter;
-  ATK::DryWetFilter<double> drywetFilter;
+  ATK::PowerFilter<float> powerFilter;
+  ATK::AttackReleaseFilter<float> attackReleaseFilter;
+  ATK::GainFilter<ATK::GainMaxColoredExpanderFilter<float>> gainExpanderFilter;
+  ATK::ApplyGainFilter<float> applyGainFilter;
+  ATK::VolumeFilter<float> volumeFilter;
+  ATK::DryWetFilter<float> drywetFilter;
 
   AudioProcessorValueTreeState parameters;
   int sampleRate;
