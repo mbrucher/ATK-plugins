@@ -1,0 +1,31 @@
+= ATKColoredCompressor 2.0.0
+Matthieu Brucher <matthieu.brucher@gmail.com>
+:doctype: book
+:source-highlighter: coderay
+:listing-caption: Listing
+// Uncomment next line to set page size (default is Letter)
+//:pdf-page-size: A4
+
+*ATKColoredCompressor* is a free Open Source plugin for mono track dynamic compression. It features soft to hard knee, as well as color/quality parameters.
+
+image::ATKColoredCompressor.png[GUI]
+
+== Usage
+
+Here is how the parameters interact with the plugin:
+
+[square]
+* *RMS* changes the size of the window-like RMS computation. A value of 0 gives peak measurement.
+* *Attack* handles the speed at which the attack-release filter increases its detected value
+* *Release* handles the speed at which the attack-release filter decreases its detected value
+* *Threshold* modifies the threshold from which the compressor starts acting
+* *Ratio* modifies the slope of the compression curve. The higher the ratio, the more the compression.
+* *Softness* is a comprise between soft knee and hard knee
+* *Color* changes the behavior around the threshold. A positive color increases the gain above 1, a negative value decreases the gain.
+* *Quality* handles the range around the threshold on which the color applies
+* *Make-up* Allows to increase the compressor output volume
+* *Dry/Wet* balances the amount of processed signal versus input signal
+
+== Bugs
+
+There shouldn’t be bugs, but you never know. Please contact me or leave a message on http://www.audio-tk.com[Audio ToolKit web site] or on http://blog.audio-tk.com/tags/atkcoloredcompressor/[my blog, on the announcement page].
