@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATKJUCE_VST", "ATKJUCE_VST.vcxproj", "{11648528-861C-3C5D-B81F-18BAA6F4485C}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -1812,7 +1812,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "playback", "playback", "{BB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Juce Library Code", "Juce Library Code", "{B1E33BF4-EA8D-4371-52E9-7A62B5843215}"
 	ProjectSection(SolutionItems) = preProject
-<<<<<<< HEAD
 		..\..\..\JuceLibraryCode\include_juce_audio_basics.cpp = ..\..\..\JuceLibraryCode\include_juce_audio_basics.cpp
 		..\..\..\JuceLibraryCode\include_juce_audio_devices.cpp = ..\..\..\JuceLibraryCode\include_juce_audio_devices.cpp
 		..\..\..\JuceLibraryCode\include_juce_audio_formats.cpp = ..\..\..\JuceLibraryCode\include_juce_audio_formats.cpp
@@ -1831,26 +1830,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Juce Library Code", "Juce L
 		..\..\..\JuceLibraryCode\include_juce_gui_extra.cpp = ..\..\..\JuceLibraryCode\include_juce_gui_extra.cpp
 		..\..\..\JuceLibraryCode\include_juce_opengl.cpp = ..\..\..\JuceLibraryCode\include_juce_opengl.cpp
 		..\..\..\JuceLibraryCode\include_juce_video.cpp = ..\..\..\JuceLibraryCode\include_juce_video.cpp
-=======
-		..\..\JuceLibraryCode\include_juce_audio_basics.cpp = ..\..\JuceLibraryCode\include_juce_audio_basics.cpp
-		..\..\JuceLibraryCode\include_juce_audio_devices.cpp = ..\..\JuceLibraryCode\include_juce_audio_devices.cpp
-		..\..\JuceLibraryCode\include_juce_audio_formats.cpp = ..\..\JuceLibraryCode\include_juce_audio_formats.cpp
-		..\..\JuceLibraryCode\include_juce_audio_plugin_client_Standalone.cpp = ..\..\JuceLibraryCode\include_juce_audio_plugin_client_Standalone.cpp
-		..\..\JuceLibraryCode\include_juce_audio_plugin_client_utils.cpp = ..\..\JuceLibraryCode\include_juce_audio_plugin_client_utils.cpp
-		..\..\JuceLibraryCode\include_juce_audio_plugin_client_VST2.cpp = ..\..\JuceLibraryCode\include_juce_audio_plugin_client_VST2.cpp
-		..\..\JuceLibraryCode\include_juce_audio_plugin_client_VST3.cpp = ..\..\JuceLibraryCode\include_juce_audio_plugin_client_VST3.cpp
-		..\..\JuceLibraryCode\include_juce_audio_processors.cpp = ..\..\JuceLibraryCode\include_juce_audio_processors.cpp
-		..\..\JuceLibraryCode\include_juce_audio_utils.cpp = ..\..\JuceLibraryCode\include_juce_audio_utils.cpp
-		..\..\JuceLibraryCode\include_juce_core.cpp = ..\..\JuceLibraryCode\include_juce_core.cpp
-		..\..\JuceLibraryCode\include_juce_cryptography.cpp = ..\..\JuceLibraryCode\include_juce_cryptography.cpp
-		..\..\JuceLibraryCode\include_juce_data_structures.cpp = ..\..\JuceLibraryCode\include_juce_data_structures.cpp
-		..\..\JuceLibraryCode\include_juce_events.cpp = ..\..\JuceLibraryCode\include_juce_events.cpp
-		..\..\JuceLibraryCode\include_juce_graphics.cpp = ..\..\JuceLibraryCode\include_juce_graphics.cpp
-		..\..\JuceLibraryCode\include_juce_gui_basics.cpp = ..\..\JuceLibraryCode\include_juce_gui_basics.cpp
-		..\..\JuceLibraryCode\include_juce_gui_extra.cpp = ..\..\JuceLibraryCode\include_juce_gui_extra.cpp
-		..\..\JuceLibraryCode\include_juce_opengl.cpp = ..\..\JuceLibraryCode\include_juce_opengl.cpp
-		..\..\JuceLibraryCode\include_juce_video.cpp = ..\..\JuceLibraryCode\include_juce_video.cpp
->>>>>>> 1867eaac752f296085f271e301986d209403aeab
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATKJUCE_AAX", "ATKJUCE_AAX.vcxproj", "{8C23477C-9256-B21E-2FBE-8E889C3AAF69}"
