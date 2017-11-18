@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="KHQl4f" name="ATKColoredCompressor" displaySplashScreen="1" reportAppUsage="1"
-              splashScreenColour="Dark" projectType="audioplug" version="1.0.0"
-              bundleIdentifier="com.MatthieuBrucher.ATKColoredCompressor" includeBinaryInAppConfig="1"
-              buildVST="1" buildVST3="1" buildAU="1" buildAUv3="1" buildRTAS="0"
-              buildAAX="1" buildStandalone="1" enableIAA="0" pluginName="ATKColoredCompressor"
-              pluginDesc="" pluginManufacturer="MatthieuBrucher" pluginManufacturerCode="MatB"
-              pluginCode="Khql" pluginChannelConfigs="{2,2}" pluginIsSynth="0"
+<JUCERPROJECT id="KHQl4f" name="ATKColoredCompressor" displaySplashScreen="1"
+              reportAppUsage="1" splashScreenColour="Dark" projectType="audioplug"
+              version="2.0.0" bundleIdentifier="com.MatthieuBrucher.ATKColoredCompressor"
+              includeBinaryInAppConfig="1" buildVST="1" buildVST3="1" buildAU="1"
+              buildAUv3="1" buildRTAS="0" buildAAX="1" buildStandalone="1"
+              enableIAA="0" pluginName="ATKColoredCompressor" pluginDesc=""
+              pluginManufacturer="MatthieuBrucher" pluginManufacturerCode="MatB"
+              pluginCode="Khql" pluginChannelConfigs="{1,1}" pluginIsSynth="0"
               pluginWantsMidiIn="0" pluginProducesMidiOut="0" pluginIsMidiEffectPlugin="0"
-              pluginEditorRequiresKeys="0" pluginAUExportPrefix="ATKColoredCompressor" pluginRTASCategory=""
-              aaxIdentifier="com.MatthieuBrucher.ATKColoredCompressor" pluginAAXCategory="AAX_ePlugInCategory_None"
-              jucerVersion="5.0.1" companyName="Matthieu Brucher" companyWebsite="http://www.audio-tk.com/">
+              pluginEditorRequiresKeys="0" pluginAUExportPrefix="ATKColoredCompressor"
+              pluginRTASCategory="" aaxIdentifier="com.MatthieuBrucher.ATKColoredCompressor"
+              pluginAAXCategory="AAX_ePlugInCategory_None" jucerVersion="5.2.0"
+              companyName="Matthieu Brucher" companyWebsite="http://www.audio-tk.com/"
+              cppLanguageStandard="14" companyCopyright="Matthieu Brucher">
   <MAINGROUP id="H9V4ut" name="ATKColoredCompressor">
     <GROUP id="{65FEA80A-F647-1916-F1CE-08CA719AE1BE}" name="Source">
       <FILE id="LX9XxX" name="PluginProcessor.cpp" compile="1" resource="0"
@@ -21,15 +24,38 @@
             file="Source/PluginEditor.cpp"/>
       <FILE id="Js7KLE" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
+    <FILE id="dA0tNw" name="AttackReleaseFilter.cpp" compile="1" resource="0"
+          file="../../ATKJUCEComponents/Dynamic/AttackReleaseFilter.cpp"/>
+    <FILE id="Knm7Cc" name="AttackReleaseFilter.h" compile="0" resource="0"
+          file="../../ATKJUCEComponents/Dynamic/AttackReleaseFilter.h"/>
+    <FILE id="YKPRXL" name="DryWetFilter.cpp" compile="1" resource="0"
+          file="../../ATKJUCEComponents/Tools/DryWetFilter.cpp"/>
+    <FILE id="nqsZX6" name="DryWetFilter.h" compile="0" resource="0" file="../../ATKJUCEComponents/Tools/DryWetFilter.h"/>
+    <FILE id="CHvLlj" name="GainColoredCompressorFilter.cpp" compile="1"
+          resource="0" file="../../ATKJUCEComponents/Dynamic/GainColoredCompressorFilter.cpp"/>
+    <FILE id="VDBgjL" name="GainColoredCompressorFilter.h" compile="0"
+          resource="0" file="../../ATKJUCEComponents/Dynamic/GainColoredCompressorFilter.h"/>
+    <FILE id="N4KgQV" name="LookAndFeel.cpp" compile="1" resource="0" file="../../ATKJUCEComponents/JUCE/LookAndFeel.cpp"/>
+    <FILE id="G765s2" name="LookAndFeel.h" compile="0" resource="0" file="../../ATKJUCEComponents/JUCE/LookAndFeel.h"/>
+    <FILE id="WW5c3E" name="PowerFilter.cpp" compile="1" resource="0" file="../../ATKJUCEComponents/Dynamic/PowerFilter.cpp"/>
+    <FILE id="bSKZud" name="PowerFilter.h" compile="0" resource="0" file="../../ATKJUCEComponents/Dynamic/PowerFilter.h"/>
+    <FILE id="faEKgB" name="VolumeFilter.cpp" compile="1" resource="0"
+          file="../../ATKJUCEComponents/Tools/VolumeFilter.cpp"/>
+    <FILE id="UpSv1V" name="VolumeFilter.h" compile="0" resource="0" file="../../ATKJUCEComponents/Tools/VolumeFilter.h"/>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <VS2017 targetFolder="Builds/VisualStudio2017" vst3Folder="" extraDefs="HAS_STD_ALIGN"
-            cppLanguageStandard="stdcpp14" toolset="v141" aaxFolder="E:\Informatique\AAX_SDK_2p2p2">
+    <VS2017 targetFolder="Builds/VisualStudio2017" vst3Folder="" extraDefs="ATK_NO_FFT"
+            cppLanguageStandard="stdcpp14" toolset="v141" aaxFolder="E:\Informatique\AAX_SDK_2p3p0"
+            windowsTargetPlatformVersion="10.0.16299.0">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="1" optimisation="1" targetName="ATKColoredCompressor"/>
+                       isDebug="1" optimisation="1" targetName="ATKColoredCompressor"
+                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
+                       headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../../local/boost_1_63_0"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="0" optimisation="3" targetName="ATKColoredCompressor"/>
+                       isDebug="0" optimisation="3" targetName="ATKColoredCompressor"
+                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
+                       linkTimeOptimisation="1" fastMath="1" headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../../local/boost_1_63_0"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../../JUCE/modules"/>
@@ -39,24 +65,29 @@
         <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
-        <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_processors" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_plugin_client" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_utils" path="../../../JUCE/modules"/>
+        <MODULEPATH id="atk_core" path="../../../AudioTK/modules/JUCE"/>
+        <MODULEPATH id="atk_utility" path="../../../AudioTK/modules/JUCE"/>
+        <MODULEPATH id="atk_dynamic" path="../../../AudioTK/modules/JUCE"/>
+        <MODULEPATH id="atk_tools" path="../../../AudioTK/modules/JUCE"/>
       </MODULEPATHS>
     </VS2017>
-    <XCODE_MAC targetFolder="Builds/MacOSX" vst3Folder="../../SDKs/VST3_SDK"
-               externalLibraries="ATKAdaptive_static32&#13;ATKCore_static32&#13;ATKDelay_static32&#13;ATKDistortion_static32&#13;ATKDynamic_static32&#13;ATKEQ_static32&#13;ATKIO_static32&#13;ATKPreamplifier_static32&#13;ATKReverberation_static32&#13;ATKSpecial_static32&#13;ATKTools_static32&#13;ATKUtility_static32&#10;ATKAdaptive_static&#13;ATKCore_static&#13;ATKDelay_static&#13;ATKDistortion_static&#13;ATKDynamic_static&#13;ATKEQ_static&#13;ATKIO_static&#13;ATKMock_static&#13;ATKPreamplifier_static&#13;ATKReverberation_static&#13;ATKSpecial_static&#13;ATKTools_static&#13;ATKUtility_static"
-               extraLinkerFlags="-L ../../../../ATK64/lib&#10;-L ../../../../ATK32/lib"
-               extraCompilerFlags="-I ../../../../ATK64/include&#10;-I ../../../../../local/boost_1_63_0"
-               extraDefs="HAS_STD_ALIGN" keepCustomXcodeSchemes="1" aaxFolder="../../SDKs/AAX_SDK_2p2p2">
+    <XCODE_MAC targetFolder="Builds/MacOSX" vst3Folder="../../../SDKs/VST3_SDK"
+               externalLibraries="" extraLinkerFlags="" extraCompilerFlags="-msse4.2"
+               extraDefs="ATK_NO_FFT" keepCustomXcodeSchemes="1" aaxFolder="../../../SDKs/AAX_SDK_2p3p0">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="ATKColoredCompressor"/>
-        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="ATKColoredCompressor"/>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="ATKColoredCompressor"
+                       enablePluginBinaryCopyStep="1" headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../../local/boost_1_63_0"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="ATKColoredCompressor"
+                       enablePluginBinaryCopyStep="1" stripLocalSymbols="1" fastMath="1"
+                       headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../../local/boost_1_63_0"
+                       aaxBinaryLocation="$(HOME)/Library/Application Support/Avid/Audio/Plug-Ins/"
+                       osxSDK="10.12 SDK" osxCompatibility="10.9 SDK" osxArchitecture="64BitUniversal"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../JUCE/modules"/>
@@ -66,33 +97,38 @@
         <MODULEPATH id="juce_gui_basics" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_cryptography" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_video" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_opengl" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_processors" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_utils" path="../../JUCE/modules"/>
+        <MODULEPATH id="atk_core" path="../../../AudioTK/modules/JUCE"/>
+        <MODULEPATH id="atk_utility" path="../../../AudioTK/modules/JUCE"/>
+        <MODULEPATH id="atk_dynamic" path="../../../AudioTK/modules/JUCE"/>
+        <MODULEPATH id="atk_tools" path="../../../AudioTK/modules/JUCE"/>
       </MODULEPATHS>
     </XCODE_MAC>
   </EXPORTFORMATS>
   <MODULES>
+    <MODULE id="atk_core" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="atk_dynamic" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="atk_tools" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="atk_utility" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
   <JUCEOPTIONS JUCE_QUICKTIME="disabled"/>
   <LIVE_SETTINGS>

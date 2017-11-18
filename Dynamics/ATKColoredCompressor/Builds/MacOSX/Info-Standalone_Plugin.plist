@@ -11,7 +11,7 @@
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>com.MatthieuBrucher.ATKColoredCompressor</string>
 	<key>CFBundleName</key>
 	<string>ATKColoredCompressor</string>
 	<key>CFBundlePackageType</key>

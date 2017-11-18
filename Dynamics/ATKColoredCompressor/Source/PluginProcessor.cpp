@@ -172,6 +172,8 @@ void ATKColoredCompressorAudioProcessor::prepareToPlay (double dbSampleRate, int
   }
   powerFilter.full_setup();
   attackReleaseFilter.full_setup();
+  
+  outFilter.dryrun(samplesPerBlock);
 }
 
 void ATKColoredCompressorAudioProcessor::releaseResources()

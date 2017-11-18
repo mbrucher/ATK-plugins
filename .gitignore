@@ -4,7 +4,7 @@
 *.zip
 *.suo
 *.ncb
-*.vcproj.*
+*.vcxproj.*
 *.pkg
 *.dmg
 *.depend
