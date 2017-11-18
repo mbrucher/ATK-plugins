@@ -33,6 +33,5 @@ void ATKJUCEAudioProcessorEditor::paint (Graphics& g)
 
 void ATKJUCEAudioProcessorEditor::resized()
 {
-    // This is generally where you'll want to lay out the positions of any
-    // subcomponents in your editor..
+  view.setBoundsRelative(0, 0, 1, 1);
 }
