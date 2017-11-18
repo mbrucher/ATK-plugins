@@ -35,7 +35,7 @@ Source: "..\Builds\VisualStudio2017\Win32\Release\VST3\ATKColoredCompressor.vst3
 Source: "..\Builds\VisualStudio2017_x64\x64\Release\VST3\ATKColoredCompressor_x64.vst3"; DestDir: "{cf64}\VST3\"; Check: Is64BitInstallMode; Components:vst3_64; Flags: ignoreversion;
 
 Source: "..\Builds\VisualStudio2017\Win32\Release\aax\ATKColoredCompressor.aaxplugin\*.*"; DestDir: "{cf32}\Avid\Audio\Plug-Ins\ATKColoredCompressor.aaxplugin\"; Components:aax_32; Flags: ignoreversion recursesubdirs;
-Source: "..\Builds\VisualStudio2017_x64\x64\Release\aax\ATKColoredCompressor_x64.aaxplugin\*.*"; DestDir: "{cf}\Avid\Audio\Plug-Ins\ATKColoredCompressor.aaxplugin\"; Components:aax_64; Flags: ignoreversion recursesubdirs;
+Source: "..\Builds\VisualStudio2017_x64\x64\Release\aax\ATKColoredCompressor_x64.aaxplugin\*.*"; DestDir: "{cf}\Avid\Audio\Plug-Ins\ATKColoredCompressor_x64.aaxplugin\"; Components:aax_64; Flags: ignoreversion recursesubdirs;
 
 Source: "..\manual\ATKColoredCompressor_manual.pdf"; DestDir: "{app}"
 Source: "changelog.txt"; DestDir: "{app}"

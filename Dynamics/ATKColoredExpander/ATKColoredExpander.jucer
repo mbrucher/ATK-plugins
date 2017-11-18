@@ -44,18 +44,19 @@
   </MAINGROUP>
   <EXPORTFORMATS>
     <VS2017 targetFolder="Builds/VisualStudio2017" vst3Folder="" extraDefs="ATK_NO_FFT"
-            cppLanguageStandard="stdcpp14" toolset="v141" aaxFolder="E:\Informatique\AAX_SDK_2p3p0"
-            windowsTargetPlatformVersion="10.0.16299.0" extraCompilerFlags="-msse4.2">
+            cppLanguageStandard="stdcpp14" toolset="v141" aaxFolder="" windowsTargetPlatformVersion="10.0.16299.0"
+            extraCompilerFlags="">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="Win32"
                        isDebug="1" optimisation="1" targetName="ATKColoredExpander"
                        debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
-                       headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../../local/boost_1_63_0"/>
-        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../boost_1_65_1"
+                       defines="ATK_NO_FFT"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="Win32"
                        isDebug="0" optimisation="3" targetName="ATKColoredExpander"
                        debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
-                       linkTimeOptimisation="1" headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../../local/boost_1_63_0"
-                       fastMath="1"/>
+                       linkTimeOptimisation="1" headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../boost_1_65_1"
+                       fastMath="1" defines="ATK_NO_FFT"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../../JUCE/modules"/>
@@ -108,6 +109,40 @@
         <MODULEPATH id="atk_dynamic" path="../../../AudioTK/modules/JUCE"/>
       </MODULEPATHS>
     </XCODE_MAC>
+    <VS2017 targetFolder="Builds/VisualStudio2017_x64" vst3Folder="" aaxFolder=""
+            windowsTargetPlatformVersion="10.0.16299.0">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
+                       linkTimeOptimisation="0" isDebug="1" optimisation="1" targetName="ATKColoredExpander_x64"
+                       headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../boost_1_65_1"
+                       defines="ATK_NO_FFT"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
+                       linkTimeOptimisation="1" isDebug="0" optimisation="3" targetName="ATKColoredExpander_x64"
+                       headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../boost_1_65_1"
+                       defines="ATK_NO_FFT" fastMath="1"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="atk_utility" path="../../../AudioTK/modules/JUCE"/>
+        <MODULEPATH id="atk_tools" path="../../../AudioTK/modules/JUCE"/>
+        <MODULEPATH id="atk_dynamic" path="../../../AudioTK/modules/JUCE"/>
+        <MODULEPATH id="atk_core" path="../../../AudioTK/modules/JUCE"/>
+      </MODULEPATHS>
+    </VS2017>
   </EXPORTFORMATS>
   <MODULES>
     <MODULE id="atk_core" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
