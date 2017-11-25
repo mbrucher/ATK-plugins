@@ -1,6 +1,8 @@
 ATKBassPreamp changelog
 http://www.audio-tk.com
 
+25/05/17 - v1.0.2 bug fix release
+  - fixed the dry/wet stage
 24/05/17 - v1.0.1 bug fix release
   - fixed a bug where the tone stack would get reinitialized when opened
 23/05/17 - v1.0.0 initial release

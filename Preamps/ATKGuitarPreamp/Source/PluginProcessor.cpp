@@ -39,13 +39,13 @@ inFilter(nullptr, 1, 0, false), overdriveFilter(ATK::Triode2Filter<float, ATK::D
   dryWetFilter.set_input_port(1, &inFilter, 0);
   outFilter.set_input_port(0, &dryWetFilter, 0);
 
-  levelFilter.set_volume(1);
-  volumeFilter.set_volume(1);
+  levelFilter.set_volume_db(originGain);
+  volumeFilter.set_volume(-1);
   dryWetFilter.set_dry(1);
   lowpassFilter.set_order(4);
   lowpassFilter.set_cut_frequency(20000);
   
-  parameters.createAndAddParameter("gain", "Gain", " dB", NormalisableRange<float>(minGain, maxGain), (minGain + maxGain) / 2, nullptr, nullptr);
+  parameters.createAndAddParameter("gain", "Gain", " dB", NormalisableRange<float>(minGain, maxGain), originGain, nullptr, nullptr);
   parameters.createAndAddParameter("bass", "Bass", "", NormalisableRange<float>(-1.0f, 1.0f), 0.f, nullptr, nullptr);
   parameters.createAndAddParameter("medium", "Medium", "",  NormalisableRange<float>(-1.0f, 1.0f), 0.f, nullptr, nullptr);
   parameters.createAndAddParameter("high", "High", "", NormalisableRange<float>(-1.0f, 1.0f), 0.f, nullptr, nullptr);
