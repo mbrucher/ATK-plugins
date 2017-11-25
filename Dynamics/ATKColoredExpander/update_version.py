@@ -23,7 +23,7 @@ def update_plist(plistpath, CFBundleGetInfoString, CFBundleVersion):
 def main():
 
   FullVersionStr = ""
-  for line in fileinput.input(scriptpath + "/Source/AppConfig.h",inplace=0):
+  for line in fileinput.input(scriptpath + "/JuceLibraryCode/AppConfig.h",inplace=0):
     if "#define JucePlugin_Version " in line:
       FullVersionStr = line.lstrip("#define JucePlugin_Version ").strip()
     

@@ -173,6 +173,8 @@ void ATKColoredExpanderAudioProcessor::prepareToPlay (double dbSampleRate, int s
   }
   powerFilter.full_setup();
   attackReleaseFilter.full_setup();
+  
+  outFilter.dryrun(samplesPerBlock);
 }
 
 void ATKColoredExpanderAudioProcessor::releaseResources()

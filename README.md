@@ -1,33 +1,19 @@
 ATK-plugins
 ===========
 
-Audio plugins based on the Audio Toolkit and WDL-OL
+Audio plugins based on the Audio Toolkit and JUCE for the newest plugins and WDL-OL for the older ones.
 
 Build instructions
 ------------------
 
-Get WDL-OL from github, and copy this repository besides WDL-OL. Specify in common.xcconfig the ATKROOT and BOOSTROOT path.
+* On Windows
+
+  * For WDL-OL, get WDL-OL from github, and copy this repository inside the WDL-OL folder. Set ATKROOT, ATK32ROOT and BOOSTROOT paths as environment variables.
+  * For JUCE, get JUCE from juce.com. Set ATKROOT, ATK32ROOT, JUCEROOT and BOOSTROOT as environment variables. You may need to add also IPPROOT, VST3SDK and AAXSDK.
+  
+* On macOS:
+
+  * For WDL-OL, get WDL-OL from github, and copy this repository inside the WDL-OL folder. Specify in WDL-OL's common.xcconfig the ATKROOT, ATK32ROOT and BOOSTROOT path.
+  * For JUCE, get JUCE from juce.com. Specify in a file called common.xcconfig located in the parent folder the variables ATKROOT, ATK32ROOT and BOOSTROOT path. You may need to add also IPPROOT, VST3SDK and AAXSDK.
 
 Once this is done, compile the plugin you want.
-
-Boss SD1
---------
-
-This plugin emulates almost all stages of the Boss SD1 overdrive, namely:
-* the overdrive stage
-* the tone stage
-* the level stage
-
-The input stage and output stage are not emulated, as they depend on previous and after elements like guitars, pedals...
-
-It uses a 32x oversampling to limit aliasing (which is why the plugin uses so much CPU).
-
-ATKCompressor
--------------
-
-This plugin is a mono compressor, with a power gain filter (RMS computation done by an AR(1) filter with a 1ms memory), attack/release filter and then a gain compressor (threshold from -40dB to 0dB, power scale, ratio/slope from 1 to 100, softness) that drives a filter that applies the computed gain. A make-up filter is available after the compressor.
-
-ATKExpander
--------------
-
-This plugin is a mono expander/noise gate, with a power gain filter (RMS computation done by an AR(1) filter with a 1ms memory), attack/release filter and then a gain expander (threshold from -60dB to 0dB, power scale, ratio/slope from 1 to 100, softness) that drives a filter that applies the computed gain.

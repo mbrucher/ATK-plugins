@@ -12,16 +12,9 @@
 
 #include "JuceHeader.h"
 
-#include <ATK/Core/InPointerFilter.h>
-#include <ATK/Core/OutPointerFilter.h>
-
-#include <ATK/Dynamic/AttackReleaseFilter.h>
-#include <ATK/Dynamic/GainMaxColoredExpanderFilter.h>
-#include <ATK/Dynamic/PowerFilter.h>
-
-#include <ATK/Tools/ApplyGainFilter.h>
-#include <ATK/Tools/DryWetFilter.h>
-#include <ATK/Tools/VolumeFilter.h>
+#include <atk_core/atk_core.h>
+#include <atk_dynamic/atk_dynamic.h>
+#include <atk_tools/atk_tools.h>
 
 
 //==============================================================================
