@@ -56,7 +56,7 @@
                        isDebug="0" optimisation="3" targetName="ATKColoredExpander"
                        debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
                        linkTimeOptimisation="1" headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../boost_1_65_1"
-                       fastMath="1" defines="ATK_NO_FFT"/>
+                       fastMath="1" defines="ATK_NO_FFT" useRuntimeLibDLL="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../../JUCE/modules"/>
@@ -121,7 +121,7 @@
                        debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
                        linkTimeOptimisation="1" isDebug="0" optimisation="3" targetName="ATKColoredExpander_x64"
                        headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../boost_1_65_1"
-                       defines="ATK_NO_FFT" fastMath="1"/>
+                       defines="ATK_NO_FFT" fastMath="1" useRuntimeLibDLL="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
