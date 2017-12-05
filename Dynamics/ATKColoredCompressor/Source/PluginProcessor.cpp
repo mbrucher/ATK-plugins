@@ -41,9 +41,9 @@ ATKColoredCompressorAudioProcessor::ATKColoredCompressorAudioProcessor()
   parameters.createAndAddParameter("attack", "Attack", " ms", NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("release", "Release", " ms",  NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("threshold", "Threshold", " dB", NormalisableRange<float>(-40, 0), 0, nullptr, nullptr);
-  parameters.createAndAddParameter("slope", "Slope", "", NormalisableRange<float>(1.5, 100, 1, 0.3), 2, nullptr, nullptr);
+  parameters.createAndAddParameter("slope", "Slope", "", NormalisableRange<float>(1.5, 20, .1, 0.3), 2, nullptr, nullptr);
   parameters.createAndAddParameter("color", "Color", "", NormalisableRange<float>(-.5, .5), 0, nullptr, nullptr);
-  parameters.createAndAddParameter("quality", "Quality", "", NormalisableRange<float>(0.01, .2, 1, 0.3), .1, nullptr, nullptr);
+  parameters.createAndAddParameter("quality", "Quality", "", NormalisableRange<float>(1, 20, .1, 0.3), 1, nullptr, nullptr);
   parameters.createAndAddParameter("softness", "Softness", "", NormalisableRange<float>(-4, 0), -2, nullptr, nullptr);
   parameters.createAndAddParameter("makeup", "Makeup gain", " dB", NormalisableRange<float>(0, 40), 0, nullptr, nullptr);
   parameters.createAndAddParameter("drywet", "Dry/Wet", "", NormalisableRange<float>(0, 100), 100, nullptr, nullptr);
@@ -101,14 +101,14 @@ void ATKColoredCompressorAudioProcessor::setCurrentProgram (int index)
     lastParameterSet = index;
     if(index == 0)
     {
-      const char* preset0 = "<ATKColoredCompressor><PARAM id=\"power\" value=\"10\" /><PARAM id=\"attack\" value=\"10\" /><PARAM id=\"release\" value=\"10\" /> <PARAM id=\"threshold\" value=\"0\" /><PARAM id=\"slope\" value=\"2\" /><PARAM id=\"color\" value = \"0\" /><PARAM id=\"quality\" value=\"0.10000000149011611938\" /><PARAM id=\"softness\" value=\"-2\" /><PARAM id=\"makeup\" value=\"0\" /><PARAM id=\"drywet\" value=\"100\" /></ATKColoredCompressor>";
+      const char* preset0 = "<ATKColoredCompressor><PARAM id=\"power\" value=\"10\" /><PARAM id=\"attack\" value=\"10\" /><PARAM id=\"release\" value=\"10\" /> <PARAM id=\"threshold\" value=\"0\" /><PARAM id=\"slope\" value=\"2\" /><PARAM id=\"color\" value = \"0\" /><PARAM id=\"quality\" value=\"10\" /><PARAM id=\"softness\" value=\"-2\" /><PARAM id=\"makeup\" value=\"0\" /><PARAM id=\"drywet\" value=\"100\" /></ATKColoredCompressor>";
       XmlDocument doc(preset0);
 
       parameters.state = ValueTree::fromXml(*doc.getDocumentElement());
     }
     else if (index == 1)
     {
-      const char* preset1 = "<ATKColoredCompressor><PARAM id=\"power\" value=\"10\" /><PARAM id=\"attack\" value=\"10\" /><PARAM id=\"release\" value=\"10\" /> <PARAM id=\"threshold\" value=\"0\" /><PARAM id=\"slope\" value=\"2\" /><PARAM id=\"color\" value = \"0\" /><PARAM id=\"quality\" value=\"0.10000000149011611938\" /><PARAM id=\"softness\" value=\"-2\" /><PARAM id=\"makeup\" value=\"0\" /><PARAM id=\"drywet\" value=\"50\" /></ATKColoredCompressor>";
+      const char* preset1 = "<ATKColoredCompressor><PARAM id=\"power\" value=\"10\" /><PARAM id=\"attack\" value=\"10\" /><PARAM id=\"release\" value=\"10\" /> <PARAM id=\"threshold\" value=\"0\" /><PARAM id=\"slope\" value=\"2\" /><PARAM id=\"color\" value = \"0\" /><PARAM id=\"quality\" value=\"10\" /><PARAM id=\"softness\" value=\"-2\" /><PARAM id=\"makeup\" value=\"0\" /><PARAM id=\"drywet\" value=\"50\" /></ATKColoredCompressor>";
       XmlDocument doc(preset1);
 
       parameters.state = ValueTree::fromXml(*doc.getDocumentElement());
@@ -251,7 +251,7 @@ void ATKColoredCompressorAudioProcessor::processBlock (AudioSampleBuffer& buffer
   if(*parameters.getRawParameterValue ("quality") != old_quality)
   {
     old_quality = *parameters.getRawParameterValue ("quality");
-    gainCompressorFilter.set_quality(old_quality);
+    gainCompressorFilter.set_quality(old_quality / 100);
   }
   if(*parameters.getRawParameterValue ("makeup") != old_makeup)
   {
