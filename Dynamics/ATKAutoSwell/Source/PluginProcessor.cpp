@@ -41,7 +41,7 @@ ATKAutoSwellAudioProcessor::ATKAutoSwellAudioProcessor()
   parameters.createAndAddParameter("attack", "Attack", " ms", NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("release", "Release", " ms",  NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("threshold", "Threshold", " dB", NormalisableRange<float>(-40, 0), 0, nullptr, nullptr);
-  parameters.createAndAddParameter("slope", "Slope", "", NormalisableRange<float>(0.1, 10, .1, 0.3), 2, nullptr, nullptr);
+  parameters.createAndAddParameter("slope", "Slope", "", NormalisableRange<float>(0.1, 10, .01, 0.3), 2, nullptr, nullptr);
   parameters.createAndAddParameter("softness", "Softness", "", NormalisableRange<float>(-4, 0), -2, nullptr, nullptr);
   parameters.createAndAddParameter("makeup", "Makeup gain", " dB", NormalisableRange<float>(-20, 20), 0, nullptr, nullptr);
   parameters.createAndAddParameter("drywet", "Dry/Wet", "", NormalisableRange<float>(0, 100), 100, nullptr, nullptr);
