@@ -1,9 +1,9 @@
 ATKAutoSwell changelog
 http://www.audio-tk.com
 
-21/11/17 - v2.0.0 major release
+06/02/18 - v2.0.0 major release
   - update to use JUCE 5.2
-  - built against ATK 2.2.2
+  - built against ATK 2.3.0
 03/03/17 - v1.0.1 bug fix release
   - built against ATK 1.4.1
   - AU fixes
