@@ -102,14 +102,18 @@ void ATKAutoSwellAudioProcessor::setCurrentProgram (int index)
       const char* preset0 = "<ATKAutoSwell><PARAM id=\"power\" value=\"10\" /><PARAM id=\"attack\" value=\"10\" /><PARAM id=\"release\" value=\"10\" /> <PARAM id=\"threshold\" value=\"0\" /><PARAM id=\"slope\" value=\"2\" /><PARAM id=\"softness\" value=\"-2\" /><PARAM id=\"makeup\" value=\"0\" /><PARAM id=\"drywet\" value=\"100\" /></ATKAutoSwell>";
       XmlDocument doc(preset0);
 
-      parameters.state = ValueTree::fromXml(*doc.getDocumentElement());
+      auto el = doc.getDocumentElement();
+      parameters.state = ValueTree::fromXml(*el);
+      delete el;
     }
     else if (index == 1)
     {
       const char* preset1 = "<ATKAutoSwell><PARAM id=\"power\" value=\"10\" /><PARAM id=\"attack\" value=\"10\" /><PARAM id=\"release\" value=\"10\" /> <PARAM id=\"threshold\" value=\"0\" /><PARAM id=\"slope\" value=\"2\" /><PARAM id=\"softness\" value=\"-2\" /><PARAM id=\"makeup\" value=\"0\" /><PARAM id=\"drywet\" value=\"50\" /></ATKAutoSwell>";
       XmlDocument doc(preset1);
 
-      parameters.state = ValueTree::fromXml(*doc.getDocumentElement());
+      auto el = doc.getDocumentElement();
+      parameters.state = ValueTree::fromXml(*el);
+      delete el;
     }
   }
 }
