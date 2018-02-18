@@ -13,7 +13,7 @@
 
 
 //==============================================================================
-ATKColoredCompressorAudioProcessor::ATKColoredCompressorAudioProcessor()
+ATKAutoSwellAudioProcessor::ATKAutoSwellAudioProcessor()
   :
 #ifndef JucePlugin_PreferredChannelConfigurations
     AudioProcessor (BusesProperties()
@@ -25,7 +25,7 @@ ATKColoredCompressorAudioProcessor::ATKColoredCompressorAudioProcessor()
                      #endif
                        ),
 #endif
-  inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorFilter(1, 256*1024), parameters(*this, nullptr), sampleRate(0), lastParameterSet(-1), old_rms(0), old_attack(0), old_release(0), old_threshold(-1), old_slope(-1), old_softness(-5), old_color(-1), old_quality(-1), old_makeup(-1), old_drywet(-1)
+  inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorFilter(1, 256*1024), parameters(*this, nullptr), sampleRate(0), lastParameterSet(-1), old_rms(0), old_attack(0), old_release(0), old_threshold(-1), old_slope(-1), old_softness(-5), old_makeup(-1), old_drywet(-1)
 {
   powerFilter.set_input_port(0, &inFilter, 0);
   attackReleaseFilter.set_input_port(0, &powerFilter, 0);
@@ -41,27 +41,25 @@ ATKColoredCompressorAudioProcessor::ATKColoredCompressorAudioProcessor()
   parameters.createAndAddParameter("attack", "Attack", " ms", NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("release", "Release", " ms",  NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("threshold", "Threshold", " dB", NormalisableRange<float>(-40, 0), 0, nullptr, nullptr);
-  parameters.createAndAddParameter("slope", "Slope", "", NormalisableRange<float>(1.5, 20, .1, 0.3), 2, nullptr, nullptr);
-  parameters.createAndAddParameter("color", "Color", "", NormalisableRange<float>(-.5, .5), 0, nullptr, nullptr);
-  parameters.createAndAddParameter("quality", "Quality", "", NormalisableRange<float>(1, 20, .1, 0.3), 1, nullptr, nullptr);
+  parameters.createAndAddParameter("slope", "Slope", "", NormalisableRange<float>(0.1, 10, .01, 0.3), 2, nullptr, nullptr);
   parameters.createAndAddParameter("softness", "Softness", "", NormalisableRange<float>(-4, 0), -2, nullptr, nullptr);
-  parameters.createAndAddParameter("makeup", "Makeup gain", " dB", NormalisableRange<float>(0, 40), 0, nullptr, nullptr);
+  parameters.createAndAddParameter("makeup", "Makeup gain", " dB", NormalisableRange<float>(-20, 20), 0, nullptr, nullptr);
   parameters.createAndAddParameter("drywet", "Dry/Wet", "", NormalisableRange<float>(0, 100), 100, nullptr, nullptr);
   
-  parameters.state = ValueTree (Identifier ("ATKColoredCompressor"));
+  parameters.state = ValueTree (Identifier ("ATKAutoSwell"));
 }
 
-ATKColoredCompressorAudioProcessor::~ATKColoredCompressorAudioProcessor()
+ATKAutoSwellAudioProcessor::~ATKAutoSwellAudioProcessor()
 {
 }
 
 //==============================================================================
-const String ATKColoredCompressorAudioProcessor::getName() const
+const String ATKAutoSwellAudioProcessor::getName() const
 {
     return JucePlugin_Name;
 }
 
-bool ATKColoredCompressorAudioProcessor::acceptsMidi() const
+bool ATKAutoSwellAudioProcessor::acceptsMidi() const
 {
    #if JucePlugin_WantsMidiInput
     return true;
@@ -70,7 +68,7 @@ bool ATKColoredCompressorAudioProcessor::acceptsMidi() const
    #endif
 }
 
-bool ATKColoredCompressorAudioProcessor::producesMidi() const
+bool ATKAutoSwellAudioProcessor::producesMidi() const
 {
    #if JucePlugin_ProducesMidiOutput
     return true;
@@ -79,44 +77,48 @@ bool ATKColoredCompressorAudioProcessor::producesMidi() const
    #endif
 }
 
-double ATKColoredCompressorAudioProcessor::getTailLengthSeconds() const
+double ATKAutoSwellAudioProcessor::getTailLengthSeconds() const
 {
     return 0.0;
 }
 
-int ATKColoredCompressorAudioProcessor::getNumPrograms()
+int ATKAutoSwellAudioProcessor::getNumPrograms()
 {
     return 2;
 }
 
-int ATKColoredCompressorAudioProcessor::getCurrentProgram()
+int ATKAutoSwellAudioProcessor::getCurrentProgram()
 {
     return lastParameterSet;
 }
 
-void ATKColoredCompressorAudioProcessor::setCurrentProgram (int index)
+void ATKAutoSwellAudioProcessor::setCurrentProgram (int index)
 {
   if(index != lastParameterSet)
   {
     lastParameterSet = index;
     if(index == 0)
     {
-      const char* preset0 = "<ATKColoredCompressor><PARAM id=\"power\" value=\"10\" /><PARAM id=\"attack\" value=\"10\" /><PARAM id=\"release\" value=\"10\" /> <PARAM id=\"threshold\" value=\"0\" /><PARAM id=\"slope\" value=\"2\" /><PARAM id=\"color\" value = \"0\" /><PARAM id=\"quality\" value=\"10\" /><PARAM id=\"softness\" value=\"-2\" /><PARAM id=\"makeup\" value=\"0\" /><PARAM id=\"drywet\" value=\"100\" /></ATKColoredCompressor>";
+      const char* preset0 = "<ATKAutoSwell><PARAM id=\"power\" value=\"10\" /><PARAM id=\"attack\" value=\"10\" /><PARAM id=\"release\" value=\"10\" /> <PARAM id=\"threshold\" value=\"0\" /><PARAM id=\"slope\" value=\"2\" /><PARAM id=\"softness\" value=\"-2\" /><PARAM id=\"makeup\" value=\"0\" /><PARAM id=\"drywet\" value=\"100\" /></ATKAutoSwell>";
       XmlDocument doc(preset0);
 
-      parameters.state = ValueTree::fromXml(*doc.getDocumentElement());
+      auto el = doc.getDocumentElement();
+      parameters.state = ValueTree::fromXml(*el);
+      delete el;
     }
     else if (index == 1)
     {
-      const char* preset1 = "<ATKColoredCompressor><PARAM id=\"power\" value=\"10\" /><PARAM id=\"attack\" value=\"10\" /><PARAM id=\"release\" value=\"10\" /> <PARAM id=\"threshold\" value=\"0\" /><PARAM id=\"slope\" value=\"2\" /><PARAM id=\"color\" value = \"0\" /><PARAM id=\"quality\" value=\"10\" /><PARAM id=\"softness\" value=\"-2\" /><PARAM id=\"makeup\" value=\"0\" /><PARAM id=\"drywet\" value=\"50\" /></ATKColoredCompressor>";
+      const char* preset1 = "<ATKAutoSwell><PARAM id=\"power\" value=\"10\" /><PARAM id=\"attack\" value=\"10\" /><PARAM id=\"release\" value=\"10\" /> <PARAM id=\"threshold\" value=\"0\" /><PARAM id=\"slope\" value=\"2\" /><PARAM id=\"softness\" value=\"-2\" /><PARAM id=\"makeup\" value=\"0\" /><PARAM id=\"drywet\" value=\"50\" /></ATKAutoSwell>";
       XmlDocument doc(preset1);
 
-      parameters.state = ValueTree::fromXml(*doc.getDocumentElement());
+      auto el = doc.getDocumentElement();
+      parameters.state = ValueTree::fromXml(*el);
+      delete el;
     }
   }
 }
 
-const String ATKColoredCompressorAudioProcessor::getProgramName (int index)
+const String ATKAutoSwellAudioProcessor::getProgramName (int index)
 {
   if(index == 0)
   {
@@ -129,12 +131,12 @@ const String ATKColoredCompressorAudioProcessor::getProgramName (int index)
   return {};
 }
 
-void ATKColoredCompressorAudioProcessor::changeProgramName (int index, const String& newName)
+void ATKAutoSwellAudioProcessor::changeProgramName (int index, const String& newName)
 {
 }
 
 //==============================================================================
-void ATKColoredCompressorAudioProcessor::prepareToPlay (double dbSampleRate, int samplesPerBlock)
+void ATKAutoSwellAudioProcessor::prepareToPlay (double dbSampleRate, int samplesPerBlock)
 {
 	sampleRate = std::lround(dbSampleRate);
   
@@ -176,14 +178,14 @@ void ATKColoredCompressorAudioProcessor::prepareToPlay (double dbSampleRate, int
   outFilter.dryrun(samplesPerBlock);
 }
 
-void ATKColoredCompressorAudioProcessor::releaseResources()
+void ATKAutoSwellAudioProcessor::releaseResources()
 {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
-bool ATKColoredCompressorAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
+bool ATKAutoSwellAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
   #if JucePlugin_IsMidiEffect
     ignoreUnused (layouts);
@@ -204,7 +206,7 @@ bool ATKColoredCompressorAudioProcessor::isBusesLayoutSupported (const BusesLayo
 }
 #endif
 
-void ATKColoredCompressorAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
+void ATKAutoSwellAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
   if (*parameters.getRawParameterValue ("power") != old_rms)
   {
@@ -243,16 +245,6 @@ void ATKColoredCompressorAudioProcessor::processBlock (AudioSampleBuffer& buffer
     old_softness = *parameters.getRawParameterValue ("softness");
     gainCompressorFilter.set_softness(std::pow(10, old_softness));
   }
-  if(*parameters.getRawParameterValue ("color") != old_color)
-  {
-    old_color = *parameters.getRawParameterValue ("color");
-    gainCompressorFilter.set_color(old_color);
-  }
-  if(*parameters.getRawParameterValue ("quality") != old_quality)
-  {
-    old_quality = *parameters.getRawParameterValue ("quality");
-    gainCompressorFilter.set_quality(old_quality / 100);
-  }
   if(*parameters.getRawParameterValue ("makeup") != old_makeup)
   {
     old_makeup = *parameters.getRawParameterValue ("makeup");
@@ -278,18 +270,18 @@ void ATKColoredCompressorAudioProcessor::processBlock (AudioSampleBuffer& buffer
 }
 
 //==============================================================================
-bool ATKColoredCompressorAudioProcessor::hasEditor() const
+bool ATKAutoSwellAudioProcessor::hasEditor() const
 {
     return true; // (change this to false if you choose to not supply an editor)
 }
 
-AudioProcessorEditor* ATKColoredCompressorAudioProcessor::createEditor()
+AudioProcessorEditor* ATKAutoSwellAudioProcessor::createEditor()
 {
-    return new ATKColoredCompressorAudioProcessorEditor (*this, parameters);
+    return new ATKAutoSwellAudioProcessorEditor (*this, parameters);
 }
 
 //==============================================================================
-void ATKColoredCompressorAudioProcessor::getStateInformation (MemoryBlock& destData)
+void ATKAutoSwellAudioProcessor::getStateInformation (MemoryBlock& destData)
 {
   MemoryOutputStream store(destData, true);
   store.writeInt(0); // version ID
@@ -297,7 +289,7 @@ void ATKColoredCompressorAudioProcessor::getStateInformation (MemoryBlock& destD
   store.writeString(str);
 }
 
-void ATKColoredCompressorAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
+void ATKAutoSwellAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
   MemoryInputStream store(data, static_cast<size_t> (sizeInBytes), false);
   int version = store.readInt(); // version ID
@@ -310,5 +302,5 @@ void ATKColoredCompressorAudioProcessor::setStateInformation (const void* data, 
 // This creates new instances of the plugin..
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new ATKColoredCompressorAudioProcessor();
+    return new ATKAutoSwellAudioProcessor();
 }

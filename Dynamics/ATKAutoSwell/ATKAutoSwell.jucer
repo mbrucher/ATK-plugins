@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="KHQl4f" name="ATKColoredCompressor" displaySplashScreen="1"
-              reportAppUsage="1" splashScreenColour="Dark" projectType="audioplug"
-              version="2.0.0" bundleIdentifier="com.MatthieuBrucher.ATKColoredCompressor"
-              includeBinaryInAppConfig="1" buildVST="1" buildVST3="1" buildAU="1"
-              buildAUv3="1" buildRTAS="0" buildAAX="1" buildStandalone="1"
-              enableIAA="0" pluginName="ATKColoredCompressor" pluginDesc=""
-              pluginManufacturer="MatthieuBrucher" pluginManufacturerCode="MatB"
-              pluginCode="Khql" pluginChannelConfigs="{1,1}" pluginIsSynth="0"
+<JUCERPROJECT id="KHQl4f" name="ATKAutoSwell" displaySplashScreen="1" reportAppUsage="1"
+              splashScreenColour="Dark" projectType="audioplug" version="2.0.0"
+              bundleIdentifier="com.MatthieuBrucher.ATKAutoSwell" includeBinaryInAppConfig="1"
+              buildVST="1" buildVST3="1" buildAU="1" buildAUv3="1" buildRTAS="0"
+              buildAAX="1" buildStandalone="1" enableIAA="0" pluginName="ATKAutoSwell"
+              pluginDesc="" pluginManufacturer="MatthieuBrucher" pluginManufacturerCode="MatB"
+              pluginCode="u0yg" pluginChannelConfigs="{1,1}" pluginIsSynth="0"
               pluginWantsMidiIn="0" pluginProducesMidiOut="0" pluginIsMidiEffectPlugin="0"
-              pluginEditorRequiresKeys="0" pluginAUExportPrefix="ATKColoredCompressor"
-              pluginRTASCategory="" aaxIdentifier="com.MatthieuBrucher.ATKColoredCompressor"
+              pluginEditorRequiresKeys="0" pluginAUExportPrefix="ATKAutoSwell"
+              pluginRTASCategory="" aaxIdentifier="com.MatthieuBrucher.ATKAutoSwell"
               pluginAAXCategory="AAX_ePlugInCategory_None" jucerVersion="5.2.0"
               companyName="Matthieu Brucher" companyWebsite="http://www.audio-tk.com/"
               cppLanguageStandard="14" companyCopyright="Matthieu Brucher">
-  <MAINGROUP id="H9V4ut" name="ATKColoredCompressor">
+  <MAINGROUP id="H9V4ut" name="ATKAutoSwell">
     <GROUP id="{65FEA80A-F647-1916-F1CE-08CA719AE1BE}" name="Source">
       <FILE id="LX9XxX" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
@@ -31,10 +30,10 @@
     <FILE id="YKPRXL" name="DryWetFilter.cpp" compile="1" resource="0"
           file="../../ATKJUCEComponents/Tools/DryWetFilter.cpp"/>
     <FILE id="nqsZX6" name="DryWetFilter.h" compile="0" resource="0" file="../../ATKJUCEComponents/Tools/DryWetFilter.h"/>
-    <FILE id="CHvLlj" name="GainColoredCompressorFilter.cpp" compile="1"
-          resource="0" file="../../ATKJUCEComponents/Dynamic/GainColoredCompressorFilter.cpp"/>
-    <FILE id="VDBgjL" name="GainColoredCompressorFilter.h" compile="0"
-          resource="0" file="../../ATKJUCEComponents/Dynamic/GainColoredCompressorFilter.h"/>
+    <FILE id="nbi8ic" name="GainSwellFilter.cpp" compile="1" resource="0"
+          file="../../ATKJUCEComponents/Dynamic/GainSwellFilter.cpp"/>
+    <FILE id="pK8503" name="GainSwellFilter.h" compile="0" resource="0"
+          file="../../ATKJUCEComponents/Dynamic/GainSwellFilter.h"/>
     <FILE id="N4KgQV" name="LookAndFeel.cpp" compile="1" resource="0" file="../../ATKJUCEComponents/JUCE/LookAndFeel.cpp"/>
     <FILE id="G765s2" name="LookAndFeel.h" compile="0" resource="0" file="../../ATKJUCEComponents/JUCE/LookAndFeel.h"/>
     <FILE id="WW5c3E" name="PowerFilter.cpp" compile="1" resource="0" file="../../ATKJUCEComponents/Dynamic/PowerFilter.cpp"/>
@@ -49,14 +48,13 @@
             windowsTargetPlatformVersion="10.0.16299.0">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="Win32"
-                       isDebug="1" optimisation="1" targetName="ATKColoredCompressor"
-                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
-                       headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../boost_1_65_1"
+                       isDebug="1" optimisation="1" targetName="ATKAutoSwell" debugInformationFormat="ProgramDatabase"
+                       enablePluginBinaryCopyStep="0" headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../AudioTK/3rdParty/gsl/include&#10;../../../../../AudioTK/3rdParty/eigen&#10;../../../../../boost_1_65_1"
                        defines="ATK_NO_FFT"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="Win32"
-                       isDebug="0" optimisation="3" targetName="ATKColoredCompressor"
-                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
-                       linkTimeOptimisation="1" fastMath="1" headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../boost_1_65_1"
+                       isDebug="0" optimisation="3" targetName="ATKAutoSwell" debugInformationFormat="ProgramDatabase"
+                       enablePluginBinaryCopyStep="0" linkTimeOptimisation="1" fastMath="1"
+                       headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../AudioTK/3rdParty/gsl/include&#10;../../../../../AudioTK/3rdParty/eigen&#10;../../../../../boost_1_65_1"
                        defines="ATK_NO_FFT"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
@@ -83,11 +81,11 @@
                externalLibraries="" extraLinkerFlags="" extraCompilerFlags="-msse4.2"
                extraDefs="ATK_NO_FFT" keepCustomXcodeSchemes="1" aaxFolder="../../../SDKs/AAX_SDK_2p3p0">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="ATKColoredCompressor"
-                       enablePluginBinaryCopyStep="1" headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../../local/boost_1_63_0"/>
-        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="ATKColoredCompressor"
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="ATKAutoSwell"
+                       enablePluginBinaryCopyStep="1" headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../AudioTK/3rdParty/gsl/include&#10;../../../../../AudioTK/3rdParty/eigen&#10;../../../../../../local/boost_1_63_0"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="ATKAutoSwell"
                        enablePluginBinaryCopyStep="1" stripLocalSymbols="1" fastMath="1"
-                       headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../../local/boost_1_63_0"
+                       headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../AudioTK/3rdParty/gsl/include&#10;../../../../../AudioTK/3rdParty/eigen&#10;../../../../../../local/boost_1_63_0"
                        aaxBinaryLocation="$(HOME)/Library/Application Support/Avid/Audio/Plug-Ins/"
                        osxSDK="10.12 SDK" osxCompatibility="10.9 SDK" osxArchitecture="64BitUniversal"/>
       </CONFIGURATIONS>
@@ -116,11 +114,12 @@
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
                        debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
-                       linkTimeOptimisation="0" isDebug="1" optimisation="1" targetName="ATKColoredCompressor"/>
+                       linkTimeOptimisation="0" isDebug="1" optimisation="1" targetName="ATKAutoSwell"
+                       headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../AudioTK/3rdParty/gsl/include&#10;../../../../../AudioTK/3rdParty/eigen&#10;../../../../../boost_1_65_1"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
                        debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
-                       linkTimeOptimisation="1" isDebug="0" optimisation="3" targetName="ATKColoredCompressor_x64"
-                       fastMath="1" headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../boost_1_65_1"
+                       linkTimeOptimisation="1" isDebug="0" optimisation="3" targetName="ATKAutoSwell_x64"
+                       fastMath="1" headerPath="../../../../&#10;../../../../../AudioTK&#10;../../../../../AudioTK/3rdParty/gsl/include&#10;../../../../../AudioTK/3rdParty/eigen&#10;../../../../../boost_1_65_1"
                        defines="ATK_NO_FFT"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
