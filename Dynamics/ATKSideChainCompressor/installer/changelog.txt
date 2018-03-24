@@ -1,0 +1,15 @@
+ATKSideChainCompressor changelog
+http://www.audio-tk.com
+
+
+
+03/04/17 - v3.0.0 JUCE release
+  - built against JUCE 5
+  - built against ATK 2.3.1
+03/11/15 - v2.0.0
+  - Using colored gain function
+  - Allow different RMS times
+  - switch between internal link and side chain
+  - Built against ATK 1.0.0
+14/07/15 - v1.0.0 initial release
+  - Built against ATK 0.7.0

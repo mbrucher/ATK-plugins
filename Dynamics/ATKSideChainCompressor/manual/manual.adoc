@@ -1,0 +1,29 @@
+= ATKSideChainCompressor 2.0.0
+Matthieu Brucher <matthieu.brucher@gmail.com>
+:doctype: book
+:source-highlighter: coderay
+:listing-caption: Listing
+// Uncomment next line to set page size (default is Letter)
+//:pdf-page-size: A4
+
+*ATKSideChainCompressor* is a free Open Source plugin for mono track dynamic compression/expansion. It features soft to hard knee.
+
+image::ATKSideChainCompressor.png[GUI]
+
+== Usage
+
+Here is how the parameters interact with the plugin:
+
+[square]
+* *RMS* changes the size of the window-like RMS computation. A value of 0 gives peak measurement.
+* *Attack* handles the speed at which the attack-release filter increases its detected value
+* *Release* handles the speed at which the attack-release filter decreases its detected value
+* *Threshold* modifies the threshold from which the compressor starts acting
+* *Ratio* modifies the slope of the compression curve. The higher the ratio, the more the compression. Ratios below 1 indicate expansion.
+* *Softness* is a comprise between soft knee and hard knee
+* *Make-up* Allows to increase the compressor output volume
+* *Dry/Wet* balances the amount of processed signal versus input signal
+
+== Bugs
+
+There shouldn’t be bugs, but you never know. Please contact me or leave a message on http://www.audio-tk.com[Audio ToolKit web site] or on http://blog.audio-tk.com/tags/atksidechaincompressor/[my blog, on the announcement page].
