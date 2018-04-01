@@ -59,14 +59,23 @@ public:
   void getStateInformation (MemoryBlock& destData) override;
   void setStateInformation (const void* data, int sizeInBytes) override;
   
+  void link();
+  void unlink();
+  void setMS();
+  void setStereo();
+  void enableCh1();
+  void disableCh1();
+  void enableCh2();
+  void disableCh2();
+  
 private:
   //==============================================================================
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ATKSideChainCompressorAudioProcessor)
     
-  ATK::InPointerFilter<double> inLFilter;
-  ATK::InPointerFilter<double> inRFilter;
-  ATK::InPointerFilter<double> inSideChainLFilter;
-  ATK::InPointerFilter<double> inSideChainRFilter;
+  ATK::InPointerFilter<float> inLFilter;
+  ATK::InPointerFilter<float> inRFilter;
+  ATK::InPointerFilter<float> inSideChainLFilter;
+  ATK::InPointerFilter<float> inSideChainRFilter;
   
   ATK::MiddleSideFilter<double> middlesidesplitFilter;
   ATK::MiddleSideFilter<double> sidechainmiddlesidesplitFilter;
@@ -89,21 +98,20 @@ private:
   
   ATK::DryWetFilter<double> drywetFilter;
   
-  ATK::OutPointerFilter<double> outLFilter;
-  ATK::OutPointerFilter<double> outRFilter;
+  ATK::OutPointerFilter<float> outLFilter;
+  ATK::OutPointerFilter<float> outRFilter;
   
   ATK::PipelineGlobalSinkFilter endpoint;
   
-  void set_link();
-  void set_unlink();
-  void set_ms();
-  void set_stereo();
-
   AudioProcessorValueTreeState parameters;
+  int sampleRate;
   int lastParameterSet;
   
-  bool sidechain;
-
+  bool old_link;
+  bool old_middleside;
+  bool old_enableCh1;
+  bool old_enableCh2;
+  
   float old_rms1;
   float old_attack1;
   float old_release1;
@@ -111,14 +119,14 @@ private:
   float old_slope1;
   float old_softness1;
   float old_makeup1;
-  float old_drywet1;
-  float old_rms1;
   
+  float old_rms2;
   float old_attack2;
   float old_release2;
   float old_threshold2;
   float old_slope2;
   float old_softness2;
   float old_makeup2;
-  float old_drywet2;
+
+  float old_drywet;
 };
