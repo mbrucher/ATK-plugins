@@ -151,7 +151,7 @@ void ATKSideChainCompressorAudioProcessor::setCurrentProgram (int index)
     lastParameterSet = index;
     if(index == 0)
     {
-      const char* preset0 = "<ATKSideChainCompressor><PARAM id=\"power1\" value=\"10\" /><PARAM id=\"attack1\" value=\"10\" /><PARAM id=\"release1\" value=\"10\" /> <PARAM id=\"threshold1\" value=\"0\" /><PARAM id=\"slope1\" value=\"2\" /><PARAM id=\"softness1\" value=\"-2\" /><PARAM id=\"makeup1\" value=\"0\" /><PARAM id=\"drywet\" value=\"100\" /></ATKSideChainCompressor>";
+      const char* preset0 = "<ATKSideChainCompressor><PARAM id=\"link\" value=\"0\" /><PARAM id=\"middleside\" value=\"0\" /><PARAM id=\"enableCh1\" value=\"1\" /><PARAM id=\"enableCh2\" value=\"1\" /><PARAM id=\"power1\" value=\"10\" /><PARAM id=\"attack1\" value=\"10\" /><PARAM id=\"release1\" value=\"10\" /> <PARAM id=\"threshold1\" value=\"0\" /><PARAM id=\"slope1\" value=\"2\" /><PARAM id=\"softness1\" value=\"-2\" /><PARAM id=\"makeup1\" value=\"0\" /><PARAM id=\"power2\" value=\"10\" /><PARAM id=\"attack2\" value=\"10\" /><PARAM id=\"release2\" value=\"10\" /> <PARAM id=\"threshold2\" value=\"0\" /><PARAM id=\"slope2\" value=\"2\" /><PARAM id=\"softness2\" value=\"-2\" /><PARAM id=\"makeup2\" value=\"0\" /><PARAM id=\"drywet\" value=\"100\" /></ATKSideChainCompressor>";
       XmlDocument doc(preset0);
 
       auto el = doc.getDocumentElement();
@@ -160,7 +160,7 @@ void ATKSideChainCompressorAudioProcessor::setCurrentProgram (int index)
     }
     else if (index == 1)
     {
-      const char* preset1 = "<ATKSideChainCompressor><PARAM id=\"power1\" value=\"10\" /><PARAM id=\"attack1\" value=\"10\" /><PARAM id=\"release1\" value=\"10\" /> <PARAM id=\"threshold1\" value=\"0\" /><PARAM id=\"slope1\" value=\"2\" /><PARAM id=\"softness1\" value=\"-2\" /><PARAM id=\"makeup1\" value=\"0\" /><PARAM id=\"drywet\" value=\"50\" /></ATKSideChainCompressor>";
+      const char* preset1 = "<ATKSideChainCompressor><PARAM id=\"link\" value=\"0\" /><PARAM id=\"middleside\" value=\"0\" /><PARAM id=\"enableCh1\" value=\"1\" /><PARAM id=\"enableCh2\" value=\"1\" /><PARAM id=\"power1\" value=\"10\" /><PARAM id=\"attack1\" value=\"10\" /><PARAM id=\"release1\" value=\"10\" /> <PARAM id=\"threshold1\" value=\"0\" /><PARAM id=\"slope1\" value=\"2\" /><PARAM id=\"softness1\" value=\"-2\" /><PARAM id=\"makeup1\" value=\"0\" /><PARAM id=\"power2\" value=\"10\" /><PARAM id=\"attack2\" value=\"10\" /><PARAM id=\"release2\" value=\"10\" /> <PARAM id=\"threshold2\" value=\"0\" /><PARAM id=\"slope2\" value=\"2\" /><PARAM id=\"softness2\" value=\"-2\" /><PARAM id=\"makeup2\" value=\"0\" /><PARAM id=\"drywet\" value=\"50\" /></ATKSideChainCompressor>";
       XmlDocument doc(preset1);
 
       auto el = doc.getDocumentElement();
@@ -380,7 +380,7 @@ namespace {
     if (new_value != old_value)
     {
       old_value = new_value;
-      filter.set_dry(old_value);
+      filter.set_dry(old_value / 100);
     }
   }
   
@@ -449,7 +449,121 @@ namespace {
   }
 }
 
- void ATKSideChainCompressorAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
+void ATKSideChainCompressorAudioProcessor::link()
+{
+  gainColoredCompressorFilter1.set_input_port(0, &sumFilter, 0);
+  applyGainFilter.set_input_port(2, &attackReleaseFilter1, 0);
+}
+
+void ATKSideChainCompressorAudioProcessor::unlink()
+{
+  gainColoredCompressorFilter1.set_input_port(0, &powerFilter1, 0);
+  applyGainFilter.set_input_port(2, &attackReleaseFilter2, 0);
+}
+
+void ATKSideChainCompressorAudioProcessor::setMS()
+{
+  powerFilter1.set_input_port(0, &volumesplitFilter, 2);
+  powerFilter2.set_input_port(0, &volumesplitFilter, 3);
+  drywetFilter.set_input_port(0, &volumemergeFilter, 0);
+  drywetFilter.set_input_port(2, &volumemergeFilter, 1);
+  applyGainFilter.set_input_port(1, &volumesplitFilter, 0);
+  applyGainFilter.set_input_port(3, &volumesplitFilter, 1);
+  if (old_enableCh1)
+  {
+    middlesidemergeFilter.set_input_port(0, &makeupFilter1, 0);
+  }
+  else
+  {
+    middlesidemergeFilter.set_input_port(0, &volumesplitFilter, 0);
+  }
+  if (old_enableCh2)
+  {
+    middlesidemergeFilter.set_input_port(1, &makeupFilter2, 0);
+  }
+  else
+  {
+    middlesidemergeFilter.set_input_port(1, &volumesplitFilter, 1);
+  }
+}
+
+void ATKSideChainCompressorAudioProcessor::setStereo()
+{
+  powerFilter1.set_input_port(0, &inSideChainLFilter, 0);
+  powerFilter2.set_input_port(0, &inSideChainRFilter, 0);
+  applyGainFilter.set_input_port(1, &inLFilter, 0);
+  applyGainFilter.set_input_port(3, &inRFilter, 0);
+  if (old_enableCh1)
+  {
+    drywetFilter.set_input_port(0, &makeupFilter1, 0);
+  }
+  else
+  {
+    drywetFilter.set_input_port(0, &inLFilter, 0);
+  }
+  if (old_enableCh2)
+  {
+    drywetFilter.set_input_port(2, &makeupFilter2, 0);
+  }
+  else
+  {
+    drywetFilter.set_input_port(2, &inRFilter, 0);
+  }
+}
+
+void ATKSideChainCompressorAudioProcessor::enableCh1()
+{
+  middlesidemergeFilter.set_input_port(0, &makeupFilter1, 0);
+  if (old_middleside)
+  {
+    drywetFilter.set_input_port(0, &volumemergeFilter, 0);
+  }
+  else
+  {
+    drywetFilter.set_input_port(0, &makeupFilter1, 0);
+  }
+}
+
+void ATKSideChainCompressorAudioProcessor::disableCh1()
+{
+  middlesidemergeFilter.set_input_port(0, &volumesplitFilter, 0);
+  if (old_middleside)
+  {
+    drywetFilter.set_input_port(0, &volumemergeFilter, 0);
+  }
+  else
+  {
+    drywetFilter.set_input_port(0, &inLFilter, 0);
+  }
+}
+
+void ATKSideChainCompressorAudioProcessor::enableCh2()
+{
+  middlesidemergeFilter.set_input_port(1, &makeupFilter2, 0);
+  if (old_middleside)
+  {
+    drywetFilter.set_input_port(0, &volumemergeFilter, 0);
+  }
+  else
+  {
+    drywetFilter.set_input_port(0, &makeupFilter1, 0);
+  }
+}
+
+void ATKSideChainCompressorAudioProcessor::disableCh2()
+{
+  middlesidemergeFilter.set_input_port(1, &volumesplitFilter, 1);
+  if (old_middleside)
+  {
+    drywetFilter.set_input_port(1, &volumemergeFilter, 1);
+  }
+  else
+  {
+    drywetFilter.set_input_port(1, &inRFilter, 0);
+  }
+}
+
+void ATKSideChainCompressorAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
   check_link(*parameters.getRawParameterValue ("link"), old_link, *this);
   check_middleside(*parameters.getRawParameterValue ("middleside"), old_middleside, *this);
