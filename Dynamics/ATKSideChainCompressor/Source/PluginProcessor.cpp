@@ -8,6 +8,8 @@
   ==============================================================================
 */
 
+#include <string>
+
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
@@ -25,26 +27,70 @@ ATKSideChainCompressorAudioProcessor::ATKSideChainCompressorAudioProcessor()
                      #endif
                        ),
 #endif
-  inFilter(nullptr, 1, 0, false), outFilter(nullptr, 1, 0, false), gainCompressorFilter(1, 256*1024), parameters(*this, nullptr), sampleRate(0), lastParameterSet(-1), old_rms(0), old_attack(0), old_release(0), old_threshold(-1), old_slope(-1), old_softness(-5), old_makeup(-1), old_drywet(-1)
+inLFilter(nullptr, 1, 0, false), inRFilter(nullptr, 1, 0, false), inSideChainLFilter(nullptr, 1, 0, false), inSideChainRFilter(nullptr, 1, 0, false),
+volumesplitFilter(4), applyGainFilter(2), volumemergeFilter(2), drywetFilter(2), outLFilter(nullptr, 1, 0, false), outRFilter(nullptr, 1, 0, false),
+parameters(*this, nullptr), lastParameterSet(-1), sidechain(false),
+old_rms1(0), old_attack1(0), old_release1(0), old_threshold1(-1), old_slope1(-1), old_softness1(-5), old_makeup1(-1), old_drywet1(-1),
+old_rms2(0), old_attack2(0), old_release2(0), old_threshold2(-1), old_slope2(-1), old_softness2(-5), old_makeup2(-1), old_drywet2(-1)
 {
-  powerFilter.set_input_port(0, &inFilter, 0);
-  attackReleaseFilter.set_input_port(0, &powerFilter, 0);
-  gainCompressorFilter.set_input_port(0, &attackReleaseFilter, 0);
-  applyGainFilter.set_input_port(0, &gainCompressorFilter, 0);
-  applyGainFilter.set_input_port(1, &inFilter, 0);
-  volumeFilter.set_input_port(0, &applyGainFilter, 0);
-  drywetFilter.set_input_port(0, &volumeFilter, 0);
-  drywetFilter.set_input_port(1, &inFilter, 0);
-  outFilter.set_input_port(0, &drywetFilter, 0);
+  volumesplitFilter.set_volume(std::sqrt(.5));
+  volumemergeFilter.set_volume(std::sqrt(.5));
+  endpoint.add_filter(&outLFilter);
+  endpoint.add_filter(&outRFilter);
   
-  parameters.createAndAddParameter("power", "Power", " ms", NormalisableRange<float>(0, 100, 1, 0.3), 10, nullptr, nullptr);
-  parameters.createAndAddParameter("attack", "Attack", " ms", NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
-  parameters.createAndAddParameter("release", "Release", " ms",  NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
-  parameters.createAndAddParameter("threshold", "Threshold", " dB", NormalisableRange<float>(-40, 0), 0, nullptr, nullptr);
-  parameters.createAndAddParameter("slope", "Slope", "", NormalisableRange<float>(0.1, 10, .01, 0.3), 2, nullptr, nullptr);
-  parameters.createAndAddParameter("softness", "Softness", "", NormalisableRange<float>(-4, 0), -2, nullptr, nullptr);
-  parameters.createAndAddParameter("makeup", "Makeup gain", " dB", NormalisableRange<float>(-20, 20), 0, nullptr, nullptr);
-  parameters.createAndAddParameter("drywet", "Dry/Wet", "", NormalisableRange<float>(0, 100), 100, nullptr, nullptr);
+  powerFilter1.set_input_port(0, &inSideChainLFilter, 0);
+  gainColoredCompressorFilter1.set_input_port(0, &powerFilter1, 0);
+  attackReleaseFilter1.set_input_port(0, &gainColoredCompressorFilter1, 0);
+  applyGainFilter.set_input_port(0, &attackReleaseFilter1, 0);
+  applyGainFilter.set_input_port(1, &inLFilter, 0);
+  makeupFilter1.set_input_port(0, &applyGainFilter, 0);
+  drywetFilter.set_input_port(0, &makeupFilter1, 0);
+  drywetFilter.set_input_port(1, &inLFilter, 0);
+  outLFilter.set_input_port(0, &drywetFilter, 0);
+  
+  powerFilter2.set_input_port(0, &inSideChainRFilter, 0);
+  gainColoredCompressorFilter2.set_input_port(0, &powerFilter2, 0);
+  attackReleaseFilter2.set_input_port(0, &gainColoredCompressorFilter2, 0);
+  applyGainFilter.set_input_port(2, &attackReleaseFilter2, 0);
+  applyGainFilter.set_input_port(3, &inRFilter, 0);
+  makeupFilter2.set_input_port(0, &applyGainFilter, 1);
+  drywetFilter.set_input_port(2, &makeupFilter2, 0);
+  drywetFilter.set_input_port(3, &inRFilter, 0);
+  outRFilter.set_input_port(0, &drywetFilter, 1);
+  
+  middlesidesplitFilter.set_input_port(0, &inLFilter, 0);
+  middlesidesplitFilter.set_input_port(1, &inRFilter, 0);
+  sidechainmiddlesidesplitFilter.set_input_port(0, &inSideChainLFilter, 0);
+  sidechainmiddlesidesplitFilter.set_input_port(1, &inSideChainRFilter, 0);
+  volumesplitFilter.set_input_port(0, &middlesidesplitFilter, 0);
+  volumesplitFilter.set_input_port(1, &middlesidesplitFilter, 1);
+  volumesplitFilter.set_input_port(2, &sidechainmiddlesidesplitFilter, 0);
+  volumesplitFilter.set_input_port(3, &sidechainmiddlesidesplitFilter, 1);
+  middlesidemergeFilter.set_input_port(0, &makeupFilter1, 0);
+  middlesidemergeFilter.set_input_port(1, &makeupFilter2, 0);
+  volumemergeFilter.set_input_port(0, &middlesidemergeFilter, 0);
+  volumemergeFilter.set_input_port(1, &middlesidemergeFilter, 1);
+  sumFilter.set_input_port(0, &powerFilter1, 0);
+  sumFilter.set_input_port(1, &powerFilter2, 0);
+
+  
+  parameters.createAndAddParameter("power1", "Power ch1", " ms", NormalisableRange<float>(0, 100, 1, 0.3), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("attack1", "Attack ch1", " ms", NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("release1", "Release ch1", " ms",  NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("threshold1", "Threshold", " dB", NormalisableRange<float>(-40, 0), 0, nullptr, nullptr);
+  parameters.createAndAddParameter("slope1", "Slope ch1", "", NormalisableRange<float>(0.1, 10, .01, 0.3), 2, nullptr, nullptr);
+  parameters.createAndAddParameter("softness1", "Softness ch1", "", NormalisableRange<float>(-4, 0), -2, nullptr, nullptr);
+  parameters.createAndAddParameter("makeup1", "Makeup gain ch1", " dB", NormalisableRange<float>(-20, 20), 0, nullptr, nullptr);
+  parameters.createAndAddParameter("drywet1", "Dry/Wet ch1", "", NormalisableRange<float>(0, 100), 100, nullptr, nullptr);
+  
+  parameters.createAndAddParameter("power2", "Power ch2", " ms", NormalisableRange<float>(0, 100, 1, 0.3), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("attack2", "Attack ch2", " ms", NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("release2", "Release ch2", " ms",  NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("threshold2", "Threshold ch2", " dB", NormalisableRange<float>(-40, 0), 0, nullptr, nullptr);
+  parameters.createAndAddParameter("slope2", "Slope ch2", "", NormalisableRange<float>(0.1, 10, .01, 0.3), 2, nullptr, nullptr);
+  parameters.createAndAddParameter("softness2", "Softness ch2", "", NormalisableRange<float>(-4, 0), -2, nullptr, nullptr);
+  parameters.createAndAddParameter("makeup2", "Makeup gain ch2", " dB", NormalisableRange<float>(-20, 20), 0, nullptr, nullptr);
+  parameters.createAndAddParameter("drywet2", "Dry/Wet ch2", "", NormalisableRange<float>(0, 100), 100, nullptr, nullptr);
   
   parameters.state = ValueTree (Identifier ("ATKSideChainCompressor"));
 }
@@ -138,44 +184,91 @@ void ATKSideChainCompressorAudioProcessor::changeProgramName (int index, const S
 //==============================================================================
 void ATKSideChainCompressorAudioProcessor::prepareToPlay (double dbSampleRate, int samplesPerBlock)
 {
-	sampleRate = std::lround(dbSampleRate);
+	auto sampling_rate = std::lround(dbSampleRate);
   
-  if(sampleRate != inFilter.get_output_sampling_rate())
+  if (sampling_rate != endpoint.get_input_sampling_rate())
   {
-    inFilter.set_input_sampling_rate(sampleRate);
-    inFilter.set_output_sampling_rate(sampleRate);
-    powerFilter.set_input_sampling_rate(sampleRate);
-    powerFilter.set_output_sampling_rate(sampleRate);
-    attackReleaseFilter.set_input_sampling_rate(sampleRate);
-    attackReleaseFilter.set_output_sampling_rate(sampleRate);
-    gainCompressorFilter.set_input_sampling_rate(sampleRate);
-    gainCompressorFilter.set_output_sampling_rate(sampleRate);
-    applyGainFilter.set_input_sampling_rate(sampleRate);
-    applyGainFilter.set_output_sampling_rate(sampleRate);
-    volumeFilter.set_input_sampling_rate(sampleRate);
-    volumeFilter.set_output_sampling_rate(sampleRate);
-    drywetFilter.set_input_sampling_rate(sampleRate);
-    drywetFilter.set_output_sampling_rate(sampleRate);
-    outFilter.set_input_sampling_rate(sampleRate);
-    outFilter.set_output_sampling_rate(sampleRate);
-    outFilter.set_input_sampling_rate(sampleRate);
-    outFilter.set_output_sampling_rate(sampleRate);
+    inLFilter.set_input_sampling_rate(sampling_rate);
+    inLFilter.set_output_sampling_rate(sampling_rate);
+    inRFilter.set_input_sampling_rate(sampling_rate);
+    inRFilter.set_output_sampling_rate(sampling_rate);
+    inSideChainLFilter.set_input_sampling_rate(sampling_rate);
+    inSideChainLFilter.set_output_sampling_rate(sampling_rate);
+    inSideChainRFilter.set_input_sampling_rate(sampling_rate);
+    inSideChainRFilter.set_output_sampling_rate(sampling_rate);
+    outLFilter.set_input_sampling_rate(sampling_rate);
+    outLFilter.set_output_sampling_rate(sampling_rate);
+    outRFilter.set_input_sampling_rate(sampling_rate);
+    outRFilter.set_output_sampling_rate(sampling_rate);
     
-    if (old_rms == 0)
+    middlesidesplitFilter.set_input_sampling_rate(sampling_rate);
+    middlesidesplitFilter.set_output_sampling_rate(sampling_rate);
+    sidechainmiddlesidesplitFilter.set_input_sampling_rate(sampling_rate);
+    sidechainmiddlesidesplitFilter.set_output_sampling_rate(sampling_rate);
+    volumesplitFilter.set_input_sampling_rate(sampling_rate);
+    volumesplitFilter.set_output_sampling_rate(sampling_rate);
+    middlesidemergeFilter.set_input_sampling_rate(sampling_rate);
+    middlesidemergeFilter.set_output_sampling_rate(sampling_rate);
+    volumemergeFilter.set_input_sampling_rate(sampling_rate);
+    volumemergeFilter.set_output_sampling_rate(sampling_rate);
+    sumFilter.set_input_sampling_rate(sampling_rate);
+    sumFilter.set_output_sampling_rate(sampling_rate);
+    
+    powerFilter1.set_input_sampling_rate(sampling_rate);
+    powerFilter1.set_output_sampling_rate(sampling_rate);
+    attackReleaseFilter1.set_input_sampling_rate(sampling_rate);
+    attackReleaseFilter1.set_output_sampling_rate(sampling_rate);
+    gainColoredCompressorFilter1.set_input_sampling_rate(sampling_rate);
+    gainColoredCompressorFilter1.set_output_sampling_rate(sampling_rate);
+    makeupFilter1.set_input_sampling_rate(sampling_rate);
+    makeupFilter1.set_output_sampling_rate(sampling_rate);
+    
+    powerFilter2.set_input_sampling_rate(sampling_rate);
+    powerFilter2.set_output_sampling_rate(sampling_rate);
+    attackReleaseFilter2.set_input_sampling_rate(sampling_rate);
+    attackReleaseFilter2.set_output_sampling_rate(sampling_rate);
+    gainColoredCompressorFilter2.set_input_sampling_rate(sampling_rate);
+    gainColoredCompressorFilter2.set_output_sampling_rate(sampling_rate);
+    makeupFilter2.set_input_sampling_rate(sampling_rate);
+    makeupFilter2.set_output_sampling_rate(sampling_rate);
+    
+    applyGainFilter.set_input_sampling_rate(sampling_rate);
+    applyGainFilter.set_output_sampling_rate(sampling_rate);
+    drywetFilter.set_input_sampling_rate(sampling_rate);
+    drywetFilter.set_output_sampling_rate(sampling_rate);
+    endpoint.set_input_sampling_rate(sampling_rate);
+    endpoint.set_output_sampling_rate(sampling_rate);
+    
+    auto power = GetParam(kPower1)->Value();
+    if (power == 0)
     {
-      powerFilter.set_memory(0);
+      powerFilter1.set_memory(0);
     }
     else
     {
-      powerFilter.set_memory(std::exp(-1e3 / (old_rms * sampleRate)));
+      powerFilter1.set_memory(std::exp(-1e3 / (power * sampling_rate)));
     }
-    attackReleaseFilter.set_release(std::exp(-1e3/(old_release * sampleRate))); // in ms
-    attackReleaseFilter.set_attack(std::exp(-1e3/(old_attack * sampleRate))); // in ms
+    power = GetParam(kPower2)->Value();
+    if (power == 0)
+    {
+      powerFilter2.set_memory(0);
+    }
+    else
+    {
+      powerFilter2.set_memory(std::exp(-1e3 / (power * sampling_rate)));
+    }
+    
+    attackReleaseFilter1.set_release(std::exp(-1 / (GetParam(kAttack1)->Value() * 1e-3 * sampling_rate))); // in ms
+    attackReleaseFilter1.set_attack(std::exp(-1 / (GetParam(kRelease1)->Value() * 1e-3 * sampling_rate))); // in ms
+    attackReleaseFilter2.set_release(std::exp(-1 / (GetParam(kAttack2)->Value() * 1e-3 * sampling_rate))); // in ms
+    attackReleaseFilter2.set_attack(std::exp(-1 / (GetParam(kRelease2)->Value() * 1e-3 * sampling_rate))); // in ms
   }
-  powerFilter.full_setup();
-  attackReleaseFilter.full_setup();
+  powerFilter1.full_setup();
+  powerFilter2.full_setup();
+  attackReleaseFilter1.full_setup();
+  attackReleaseFilter2.full_setup();
   
-  outFilter.dryrun(samplesPerBlock);
+  endpoint.dryrun(samplesPerBlock);
 }
 
 void ATKSideChainCompressorAudioProcessor::releaseResources()
@@ -205,6 +298,13 @@ bool ATKSideChainCompressorAudioProcessor::isBusesLayoutSupported (const BusesLa
   #endif
 }
 #endif
+
+namespace {
+  void check_power(const std::string_view& var, float& old_value, ATK::PowerFilter<double>& filter)
+  {
+    
+  }
+}
 
 void ATKSideChainCompressorAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
@@ -260,13 +360,30 @@ void ATKSideChainCompressorAudioProcessor::processBlock (AudioSampleBuffer& buff
   const int totalNumInputChannels  = getTotalNumInputChannels();
   const int totalNumOutputChannels = getTotalNumOutputChannels();
 
-  assert(totalNumInputChannels == totalNumOutputChannels);
-  assert(totalNumOutputChannels == 1);
+  assert(totalNumInputChannels == 2 || totalNumInputChannels == 4);
+  assert(totalNumOutputChannels == 2);
   
-  inFilter.set_pointer(buffer.getReadPointer(0), buffer.getNumSamples());
-  outFilter.set_pointer(buffer.getWritePointer(0), buffer.getNumSamples());
- 
-  outFilter.process(buffer.getNumSamples());
+  if (sidechain && totalNumInputChannels == 4)
+  {
+    inSideChainLFilter.set_pointer(inputs[2], nFrames);
+  }
+  else
+  {
+    inSideChainLFilter.set_pointer(inputs[0], nFrames);
+  }
+  if (sidechain && totalNumInputChannels == 4)
+  {
+    inSideChainRFilter.set_pointer(inputs[3], nFrames);
+  }
+  else
+  {
+    inSideChainRFilter.set_pointer(inputs[1], nFrames);
+  }
+  inLFilter.set_pointer(inputs[0], nFrames);
+  outLFilter.set_pointer(outputs[0], nFrames);
+  inRFilter.set_pointer(inputs[1], nFrames);
+  outRFilter.set_pointer(outputs[1], nFrames);
+  endpoint.process(nFrames);
 }
 
 //==============================================================================

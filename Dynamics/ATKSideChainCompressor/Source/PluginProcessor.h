@@ -63,25 +63,62 @@ private:
   //==============================================================================
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ATKSideChainCompressorAudioProcessor)
     
-  ATK::InPointerFilter<float> inFilter;
-  ATK::OutPointerFilter<float> outFilter;
-  ATK::PowerFilter<float> powerFilter;
-  ATK::AttackReleaseFilter<float> attackReleaseFilter;
-  ATK::GainFilter<ATK::GainSwellFilter<float>> gainCompressorFilter;
-  ATK::ApplyGainFilter<float> applyGainFilter;
-  ATK::VolumeFilter<float> volumeFilter;
-  ATK::DryWetFilter<float> drywetFilter;
+  ATK::InPointerFilter<double> inLFilter;
+  ATK::InPointerFilter<double> inRFilter;
+  ATK::InPointerFilter<double> inSideChainLFilter;
+  ATK::InPointerFilter<double> inSideChainRFilter;
+  
+  ATK::MiddleSideFilter<double> middlesidesplitFilter;
+  ATK::MiddleSideFilter<double> sidechainmiddlesidesplitFilter;
+  ATK::VolumeFilter<double> volumesplitFilter;
+  
+  ATK::PowerFilter<double> powerFilter1;
+  ATK::PowerFilter<double> powerFilter2;
+  ATK::SumFilter<double> sumFilter; // in case we link both channels
+  
+  ATK::AttackReleaseFilter<double> attackReleaseFilter1;
+  ATK::AttackReleaseFilter<double> attackReleaseFilter2;
+  ATK::GainFilter<ATK::GainColoredCompressorFilter<double>> gainColoredCompressorFilter1;
+  ATK::GainFilter<ATK::GainColoredCompressorFilter<double>> gainColoredCompressorFilter2;
+  ATK::ApplyGainFilter<double> applyGainFilter;
+  ATK::VolumeFilter<double> makeupFilter1;
+  ATK::VolumeFilter<double> makeupFilter2;
+  
+  ATK::MiddleSideFilter<double> middlesidemergeFilter;
+  ATK::VolumeFilter<double> volumemergeFilter;
+  
+  ATK::DryWetFilter<double> drywetFilter;
+  
+  ATK::OutPointerFilter<double> outLFilter;
+  ATK::OutPointerFilter<double> outRFilter;
+  
+  ATK::PipelineGlobalSinkFilter endpoint;
+  
+  void set_link();
+  void set_unlink();
+  void set_ms();
+  void set_stereo();
 
   AudioProcessorValueTreeState parameters;
-  int sampleRate;
   int lastParameterSet;
+  
+  bool sidechain;
 
-  float old_rms;
-  float old_attack;
-  float old_release;
-  float old_threshold;
-  float old_slope;
-  float old_softness;
-  float old_makeup;
-  float old_drywet;
+  float old_rms1;
+  float old_attack1;
+  float old_release1;
+  float old_threshold1;
+  float old_slope1;
+  float old_softness1;
+  float old_makeup1;
+  float old_drywet1;
+  float old_rms1;
+  
+  float old_attack2;
+  float old_release2;
+  float old_threshold2;
+  float old_slope2;
+  float old_softness2;
+  float old_makeup2;
+  float old_drywet2;
 };
