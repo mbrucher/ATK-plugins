@@ -22,6 +22,8 @@ Here is how the parameters interact with the plugin:
 * *Dry/Wet* balances the amount of processed signal versus input signal
 
 Each channel has the following parameters (stereo and middle/side mode):
+
+[square]
 * *RMS* changes the size of the window-like RMS computation.
 * *Attack* handles the speed at which the attack-release filter increases its detected value
 * *Release* handles the speed at which the attack-release filter decreases its detected value
