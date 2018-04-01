@@ -31,8 +31,8 @@ inLFilter(nullptr, 1, 0, false), inRFilter(nullptr, 1, 0, false), inSideChainLFi
 volumesplitFilter(4), applyGainFilter(2), volumemergeFilter(2), drywetFilter(2), outLFilter(nullptr, 1, 0, false), outRFilter(nullptr, 1, 0, false),
 parameters(*this, nullptr), sampleRate(0), lastParameterSet(-1),
 old_link(false), old_middleside(false), old_enableCh1(true), old_enableCh2(true),
-old_rms1(0), old_attack1(0), old_release1(0), old_threshold1(-1), old_slope1(-1), old_softness1(-5), old_makeup1(-1),
-old_rms2(0), old_attack2(0), old_release2(0), old_threshold2(-1), old_slope2(-1), old_softness2(-5), old_makeup2(-1),
+old_rms1(0), old_attack1(0), old_release1(0), old_threshold1(-1), old_slope1(-1), old_softness1(-5), old_color1(0), old_quality1(.1), old_makeup1(-1),
+old_rms2(0), old_attack2(0), old_release2(0), old_threshold2(-1), old_slope2(-1), old_softness2(-5), old_color2(0), old_quality2(.1), old_makeup2(-1),
 old_drywet(-1)
 {
   volumesplitFilter.set_volume(std::sqrt(.5));
@@ -84,16 +84,20 @@ old_drywet(-1)
   parameters.createAndAddParameter("attack1", "Attack ch1", " ms", NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("release1", "Release ch1", " ms",  NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("threshold1", "Threshold", " dB", NormalisableRange<float>(-40, 0, 0.1), 0, nullptr, nullptr);
-  parameters.createAndAddParameter("slope1", "Slope ch1", "", NormalisableRange<float>(0.1, 10, .01, 0.3), 2, nullptr, nullptr);
+  parameters.createAndAddParameter("slope1", "Slope ch1", "", NormalisableRange<float>(1.5, 10, .01, 0.3), 2, nullptr, nullptr);
   parameters.createAndAddParameter("softness1", "Softness ch1", "", NormalisableRange<float>(-4, 0, 0.1), -2, nullptr, nullptr);
+  parameters.createAndAddParameter("color1", "Color ch1", "", NormalisableRange<float>(-.5, .5, 0.1), 0, nullptr, nullptr);
+  parameters.createAndAddParameter("quality1", "Quality ch1", "", NormalisableRange<float>(0.01, .2, 0.01), 0.1, nullptr, nullptr);
   parameters.createAndAddParameter("makeup1", "Makeup gain ch1", " dB", NormalisableRange<float>(-20, 20, 0.1), 0, nullptr, nullptr);
   
   parameters.createAndAddParameter("power2", "Power ch2", " ms", NormalisableRange<float>(0, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("attack2", "Attack ch2", " ms", NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("release2", "Release ch2", " ms",  NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("threshold2", "Threshold ch2", " dB", NormalisableRange<float>(-40, 0, 0.1), 0, nullptr, nullptr);
-  parameters.createAndAddParameter("slope2", "Slope ch2", "", NormalisableRange<float>(0.1, 10, .01, 0.3), 2, nullptr, nullptr);
+  parameters.createAndAddParameter("slope2", "Slope ch2", "", NormalisableRange<float>(1.5, 10, .01, 0.3), 2, nullptr, nullptr);
   parameters.createAndAddParameter("softness2", "Softness ch2", "", NormalisableRange<float>(-4, 0, 0.1), -2, nullptr, nullptr);
+  parameters.createAndAddParameter("color2", "Color ch1", "", NormalisableRange<float>(-.5, .5, 0.1), 0, nullptr, nullptr);
+  parameters.createAndAddParameter("quality2", "Quality ch1", "", NormalisableRange<float>(0.01, .2, 0.01), 0.1, nullptr, nullptr);
   parameters.createAndAddParameter("makeup2", "Makeup gain ch2", " dB", NormalisableRange<float>(-20, 20, 0.1), 0, nullptr, nullptr);
 
   parameters.createAndAddParameter("drywet", "Dry/Wet", "", NormalisableRange<float>(0, 100, 0.1), 100, nullptr, nullptr);
@@ -151,7 +155,7 @@ void ATKSideChainCompressorAudioProcessor::setCurrentProgram (int index)
     lastParameterSet = index;
     if(index == 0)
     {
-      const char* preset0 = "<ATKSideChainCompressor><PARAM id=\"link\" value=\"0\" /><PARAM id=\"middleside\" value=\"0\" /><PARAM id=\"enableCh1\" value=\"1\" /><PARAM id=\"enableCh2\" value=\"1\" /><PARAM id=\"power1\" value=\"10\" /><PARAM id=\"attack1\" value=\"10\" /><PARAM id=\"release1\" value=\"10\" /> <PARAM id=\"threshold1\" value=\"0\" /><PARAM id=\"slope1\" value=\"2\" /><PARAM id=\"softness1\" value=\"-2\" /><PARAM id=\"makeup1\" value=\"0\" /><PARAM id=\"power2\" value=\"10\" /><PARAM id=\"attack2\" value=\"10\" /><PARAM id=\"release2\" value=\"10\" /> <PARAM id=\"threshold2\" value=\"0\" /><PARAM id=\"slope2\" value=\"2\" /><PARAM id=\"softness2\" value=\"-2\" /><PARAM id=\"makeup2\" value=\"0\" /><PARAM id=\"drywet\" value=\"100\" /></ATKSideChainCompressor>";
+      const char* preset0 = "<ATKSideChainCompressor><PARAM id=\"link\" value=\"0\" /><PARAM id=\"middleside\" value=\"0\" /><PARAM id=\"enableCh1\" value=\"1\" /><PARAM id=\"enableCh2\" value=\"1\" /><PARAM id=\"power1\" value=\"10\" /><PARAM id=\"attack1\" value=\"10\" /><PARAM id=\"release1\" value=\"10\" /> <PARAM id=\"threshold1\" value=\"0\" /><PARAM id=\"slope1\" value=\"2\" /><PARAM id=\"softness1\" value=\"-2\" /><PARAM id=\"color1\" value=\"0\" /><PARAM id=\"quality1\" value=\"0.1\" /><PARAM id=\"makeup1\" value=\"0\" /><PARAM id=\"power2\" value=\"10\" /><PARAM id=\"attack2\" value=\"10\" /><PARAM id=\"release2\" value=\"10\" /> <PARAM id=\"threshold2\" value=\"0\" /><PARAM id=\"slope2\" value=\"2\" /><PARAM id=\"softness2\" value=\"-2\" /><PARAM id=\"color2\" value=\"0\" /><PARAM id=\"quality2\" value=\"0.1\" /><PARAM id=\"makeup2\" value=\"0\" /><PARAM id=\"drywet\" value=\"100\" /></ATKSideChainCompressor>";
       XmlDocument doc(preset0);
 
       auto el = doc.getDocumentElement();
@@ -160,7 +164,7 @@ void ATKSideChainCompressorAudioProcessor::setCurrentProgram (int index)
     }
     else if (index == 1)
     {
-      const char* preset1 = "<ATKSideChainCompressor><PARAM id=\"link\" value=\"0\" /><PARAM id=\"middleside\" value=\"0\" /><PARAM id=\"enableCh1\" value=\"1\" /><PARAM id=\"enableCh2\" value=\"1\" /><PARAM id=\"power1\" value=\"10\" /><PARAM id=\"attack1\" value=\"10\" /><PARAM id=\"release1\" value=\"10\" /> <PARAM id=\"threshold1\" value=\"0\" /><PARAM id=\"slope1\" value=\"2\" /><PARAM id=\"softness1\" value=\"-2\" /><PARAM id=\"makeup1\" value=\"0\" /><PARAM id=\"power2\" value=\"10\" /><PARAM id=\"attack2\" value=\"10\" /><PARAM id=\"release2\" value=\"10\" /> <PARAM id=\"threshold2\" value=\"0\" /><PARAM id=\"slope2\" value=\"2\" /><PARAM id=\"softness2\" value=\"-2\" /><PARAM id=\"makeup2\" value=\"0\" /><PARAM id=\"drywet\" value=\"50\" /></ATKSideChainCompressor>";
+      const char* preset1 = "<ATKSideChainCompressor><PARAM id=\"link\" value=\"0\" /><PARAM id=\"middleside\" value=\"0\" /><PARAM id=\"enableCh1\" value=\"1\" /><PARAM id=\"enableCh2\" value=\"1\" /><PARAM id=\"power1\" value=\"10\" /><PARAM id=\"attack1\" value=\"10\" /><PARAM id=\"release1\" value=\"10\" /> <PARAM id=\"threshold1\" value=\"0\" /><PARAM id=\"slope1\" value=\"2\" /><PARAM id=\"softness1\" value=\"-2\" /><PARAM id=\"color1\" value=\"0\" /><PARAM id=\"quality1\" value=\"0.1\" /><PARAM id=\"makeup1\" value=\"0\" /><PARAM id=\"power2\" value=\"10\" /><PARAM id=\"attack2\" value=\"10\" /><PARAM id=\"release2\" value=\"10\" /> <PARAM id=\"threshold2\" value=\"0\" /><PARAM id=\"slope2\" value=\"2\" /><PARAM id=\"softness2\" value=\"-2\" /><PARAM id=\"color2\" value=\"0\" /><PARAM id=\"quality2\" value=\"0.1\" /><PARAM id=\"makeup2\" value=\"0\" /><PARAM id=\"drywet\" value=\"50\" /></ATKSideChainCompressor>";
       XmlDocument doc(preset1);
 
       auto el = doc.getDocumentElement();
@@ -366,6 +370,24 @@ namespace {
     }
   }
   
+  void check_color(float new_value, float& old_value, ATK::GainFilter<ATK::GainColoredCompressorFilter<double>>& filter)
+  {
+    if (new_value != old_value)
+    {
+      old_value = new_value;
+      filter.set_color(old_value);
+    }
+  }
+  
+  void check_quality(float new_value, float& old_value, ATK::GainFilter<ATK::GainColoredCompressorFilter<double>>& filter)
+  {
+    if (new_value != old_value)
+    {
+      old_value = new_value;
+      filter.set_quality(old_value);
+    }
+  }
+
   void check_makeup(float new_value, float& old_value, ATK::VolumeFilter<double>& filter)
   {
     if (new_value != old_value)
@@ -582,6 +604,10 @@ void ATKSideChainCompressorAudioProcessor::processBlock (AudioSampleBuffer& buff
   check_slope(*parameters.getRawParameterValue ("slope2"), old_slope2, gainColoredCompressorFilter2);
   check_softness(*parameters.getRawParameterValue ("softness1"), old_softness1, gainColoredCompressorFilter1);
   check_softness(*parameters.getRawParameterValue ("softness2"), old_softness2, gainColoredCompressorFilter2);
+  check_color(*parameters.getRawParameterValue ("color1"), old_color1, gainColoredCompressorFilter1);
+  check_color(*parameters.getRawParameterValue ("color2"), old_color2, gainColoredCompressorFilter2);
+  check_quality(*parameters.getRawParameterValue ("quality1"), old_quality1, gainColoredCompressorFilter1);
+  check_quality(*parameters.getRawParameterValue ("quality1"), old_quality2, gainColoredCompressorFilter2);
   check_makeup(*parameters.getRawParameterValue ("makeup1"), old_makeup1, makeupFilter1);
   check_makeup(*parameters.getRawParameterValue ("makeup2"), old_makeup2, makeupFilter2);
 

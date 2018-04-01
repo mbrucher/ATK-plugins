@@ -118,6 +118,8 @@ private:
   float old_threshold1;
   float old_slope1;
   float old_softness1;
+  float old_color1;
+  float old_quality1;
   float old_makeup1;
   
   float old_rms2;
@@ -126,6 +128,8 @@ private:
   float old_threshold2;
   float old_slope2;
   float old_softness2;
+  float old_color2;
+  float old_quality2;
   float old_makeup2;
 
   float old_drywet;
