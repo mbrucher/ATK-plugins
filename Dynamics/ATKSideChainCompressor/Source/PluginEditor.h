@@ -22,7 +22,7 @@
 //==============================================================================
 /**
 */
-class ATKSideChainCompressorAudioProcessorEditor  : public AudioProcessorEditor
+class ATKSideChainCompressorAudioProcessorEditor  : public AudioProcessorEditor, public ::juce::Button::Listener
 {
 public:
   ATKSideChainCompressorAudioProcessorEditor(ATKSideChainCompressorAudioProcessor& p, AudioProcessorValueTreeState& paramState);
@@ -31,6 +31,8 @@ public:
   //==============================================================================
   void paint(Graphics&) override;
   void resized() override;
+  
+  void buttonClicked(Button* button) override;
 
 private:
   // This reference is provided as a quick way for your editor to
@@ -38,6 +40,15 @@ private:
   ATKSideChainCompressorAudioProcessor& processor;
   AudioProcessorValueTreeState& paramState;
   
+  ::juce::ToggleButton linkButton;
+  std::unique_ptr<::juce::AudioProcessorValueTreeState::ButtonAttachment> linkAtt;
+  ::juce::ToggleButton middleSideButton;
+  std::unique_ptr<::juce::AudioProcessorValueTreeState::ButtonAttachment> middleSideAtt;
+  ::juce::ToggleButton enableCh1Button;
+  std::unique_ptr<::juce::AudioProcessorValueTreeState::ButtonAttachment> enableCh1Att;
+  ::juce::ToggleButton enableCh2Button;
+  std::unique_ptr<::juce::AudioProcessorValueTreeState::ButtonAttachment> enableCh2Att;
+
   ATK::juce::PowerFilterComponent power1;
   ATK::juce::AttackReleaseFilterComponent attackrelease1;
   ATK::juce::GainColoredCompressorFilterComponent compressor1;
@@ -48,6 +59,8 @@ private:
   ATK::juce::VolumeFilterComponent makeup2;
 
   ATK::juce::DryWetFilterComponent drywet;
+  
+  bool linked;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ATKSideChainCompressorAudioProcessorEditor)
 };
