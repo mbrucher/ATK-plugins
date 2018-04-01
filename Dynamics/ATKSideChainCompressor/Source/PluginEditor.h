@@ -38,10 +38,15 @@ private:
   ATKSideChainCompressorAudioProcessor& processor;
   AudioProcessorValueTreeState& paramState;
   
-  ATK::juce::PowerFilterComponent power;
-  ATK::juce::AttackReleaseFilterComponent attackrelease;
-  ATK::juce::GainColoredCompressorFilterComponent compressor;
-  ATK::juce::VolumeFilterComponent makeup;
+  ATK::juce::PowerFilterComponent power1;
+  ATK::juce::AttackReleaseFilterComponent attackrelease1;
+  ATK::juce::GainColoredCompressorFilterComponent compressor1;
+  ATK::juce::VolumeFilterComponent makeup1;
+  ATK::juce::PowerFilterComponent power2;
+  ATK::juce::AttackReleaseFilterComponent attackrelease2;
+  ATK::juce::GainColoredCompressorFilterComponent compressor2;
+  ATK::juce::VolumeFilterComponent makeup2;
+
   ATK::juce::DryWetFilterComponent drywet;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ATKSideChainCompressorAudioProcessorEditor)

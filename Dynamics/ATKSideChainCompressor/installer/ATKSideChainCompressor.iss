@@ -1,6 +1,6 @@
 [Setup]
 AppName=ATKSideChainCompressor
-AppVersion=2.0.0
+AppVersion=3.0.0
 
 
 DefaultDirName={pf}\ATKSideChainCompressor

@@ -83,21 +83,21 @@ old_drywet(-1)
   parameters.createAndAddParameter("power1", "Power ch1", " ms", NormalisableRange<float>(0, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("attack1", "Attack ch1", " ms", NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("release1", "Release ch1", " ms",  NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
-  parameters.createAndAddParameter("threshold1", "Threshold", " dB", NormalisableRange<float>(-40, 0), 0, nullptr, nullptr);
+  parameters.createAndAddParameter("threshold1", "Threshold", " dB", NormalisableRange<float>(-40, 0, 0.1), 0, nullptr, nullptr);
   parameters.createAndAddParameter("slope1", "Slope ch1", "", NormalisableRange<float>(0.1, 10, .01, 0.3), 2, nullptr, nullptr);
-  parameters.createAndAddParameter("softness1", "Softness ch1", "", NormalisableRange<float>(-4, 0), -2, nullptr, nullptr);
-  parameters.createAndAddParameter("makeup1", "Makeup gain ch1", " dB", NormalisableRange<float>(-20, 20), 0, nullptr, nullptr);
-  parameters.createAndAddParameter("drywet1", "Dry/Wet ch1", "", NormalisableRange<float>(0, 100), 100, nullptr, nullptr);
+  parameters.createAndAddParameter("softness1", "Softness ch1", "", NormalisableRange<float>(-4, 0, 0.1), -2, nullptr, nullptr);
+  parameters.createAndAddParameter("makeup1", "Makeup gain ch1", " dB", NormalisableRange<float>(-20, 20, 0.1), 0, nullptr, nullptr);
   
   parameters.createAndAddParameter("power2", "Power ch2", " ms", NormalisableRange<float>(0, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("attack2", "Attack ch2", " ms", NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("release2", "Release ch2", " ms",  NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
-  parameters.createAndAddParameter("threshold2", "Threshold ch2", " dB", NormalisableRange<float>(-40, 0), 0, nullptr, nullptr);
+  parameters.createAndAddParameter("threshold2", "Threshold ch2", " dB", NormalisableRange<float>(-40, 0, 0.1), 0, nullptr, nullptr);
   parameters.createAndAddParameter("slope2", "Slope ch2", "", NormalisableRange<float>(0.1, 10, .01, 0.3), 2, nullptr, nullptr);
-  parameters.createAndAddParameter("softness2", "Softness ch2", "", NormalisableRange<float>(-4, 0), -2, nullptr, nullptr);
-  parameters.createAndAddParameter("makeup2", "Makeup gain ch2", " dB", NormalisableRange<float>(-20, 20), 0, nullptr, nullptr);
-  parameters.createAndAddParameter("drywet2", "Dry/Wet ch2", "", NormalisableRange<float>(0, 100), 100, nullptr, nullptr);
-  
+  parameters.createAndAddParameter("softness2", "Softness ch2", "", NormalisableRange<float>(-4, 0, 0.1), -2, nullptr, nullptr);
+  parameters.createAndAddParameter("makeup2", "Makeup gain ch2", " dB", NormalisableRange<float>(-20, 20, 0.1), 0, nullptr, nullptr);
+
+  parameters.createAndAddParameter("drywet", "Dry/Wet", "", NormalisableRange<float>(0, 100, 0.1), 100, nullptr, nullptr);
+
   parameters.state = ValueTree (Identifier ("ATKSideChainCompressor"));
 }
 
