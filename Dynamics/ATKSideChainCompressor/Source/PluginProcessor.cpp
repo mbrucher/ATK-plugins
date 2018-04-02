@@ -41,8 +41,8 @@ old_drywet(-1)
   endpoint.add_filter(&outRFilter);
   
   powerFilter1.set_input_port(0, &inSideChainLFilter, 0);
-  gainColoredCompressorFilter1.set_input_port(0, &powerFilter1, 0);
-  attackReleaseFilter1.set_input_port(0, &gainColoredCompressorFilter1, 0);
+  attackReleaseFilter1.set_input_port(0, &powerFilter1, 0);
+  gainColoredCompressorFilter1.set_input_port(0, &attackReleaseFilter1, 0);
   applyGainFilter.set_input_port(0, &attackReleaseFilter1, 0);
   applyGainFilter.set_input_port(1, &inLFilter, 0);
   makeupFilter1.set_input_port(0, &applyGainFilter, 0);
@@ -51,8 +51,8 @@ old_drywet(-1)
   outLFilter.set_input_port(0, &drywetFilter, 0);
   
   powerFilter2.set_input_port(0, &inSideChainRFilter, 0);
-  gainColoredCompressorFilter2.set_input_port(0, &powerFilter2, 0);
-  attackReleaseFilter2.set_input_port(0, &gainColoredCompressorFilter2, 0);
+  attackReleaseFilter2.set_input_port(0, &powerFilter2, 0);
+  gainColoredCompressorFilter2.set_input_port(0, &attackReleaseFilter2, 0);
   applyGainFilter.set_input_port(2, &attackReleaseFilter2, 0);
   applyGainFilter.set_input_port(3, &inRFilter, 0);
   makeupFilter2.set_input_port(0, &applyGainFilter, 1);
@@ -72,8 +72,8 @@ old_drywet(-1)
   middlesidemergeFilter.set_input_port(1, &makeupFilter2, 0);
   volumemergeFilter.set_input_port(0, &middlesidemergeFilter, 0);
   volumemergeFilter.set_input_port(1, &middlesidemergeFilter, 1);
-  sumFilter.set_input_port(0, &powerFilter1, 0);
-  sumFilter.set_input_port(1, &powerFilter2, 0);
+  sumFilter.set_input_port(0, &attackReleaseFilter1, 0);
+  sumFilter.set_input_port(1, &attackReleaseFilter2, 0);
 
   parameters.createAndAddParameter("middleside", "Middle/Side", "", NormalisableRange<float>(0, 1, 1), 0, nullptr, nullptr);
   parameters.createAndAddParameter("link", "Link channels", "", NormalisableRange<float>(0, 1, 1), 0, nullptr, nullptr);
@@ -324,13 +324,12 @@ namespace {
     }
   }
   
-  // release targets attack because if the inversion dur to the gain filter
   void check_release(float new_value, int sample_rate, float& old_value, ATK::AttackReleaseFilter<double>& filter)
   {
     if (new_value != old_value)
     {
       old_value = new_value;
-      filter.set_attack(std::exp(-1e3/(old_value * sample_rate))); // in ms
+      filter.set_release(std::exp(-1e3/(old_value * sample_rate))); // in ms
     }
   }
 
@@ -339,7 +338,7 @@ namespace {
     if (new_value != old_value)
     {
       old_value = new_value;
-      filter.set_release(std::exp(-1e3/(old_value * sample_rate))); // in ms
+      filter.set_attack(std::exp(-1e3/(old_value * sample_rate))); // in ms
     }
   }
   
@@ -474,13 +473,13 @@ namespace {
 void ATKSideChainCompressorAudioProcessor::link()
 {
   gainColoredCompressorFilter1.set_input_port(0, &sumFilter, 0);
-  applyGainFilter.set_input_port(2, &attackReleaseFilter1, 0);
+  applyGainFilter.set_input_port(2, &gainColoredCompressorFilter1, 0);
 }
 
 void ATKSideChainCompressorAudioProcessor::unlink()
 {
-  gainColoredCompressorFilter1.set_input_port(0, &powerFilter1, 0);
-  applyGainFilter.set_input_port(2, &attackReleaseFilter2, 0);
+  gainColoredCompressorFilter1.set_input_port(0, &attackReleaseFilter1, 0);
+  applyGainFilter.set_input_port(2, &gainColoredCompressorFilter2, 0);
 }
 
 void ATKSideChainCompressorAudioProcessor::setMS()

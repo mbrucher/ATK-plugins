@@ -43,7 +43,6 @@ drywet(paramState, "drywet"), linked(false)
   addAndMakeVisible(drywet);
   
   linked = linkButton.getToggleState();
-  attackrelease2.setVisible(!linked);
   compressor2.setVisible(!linked);
 
   // Make sure that before the constructor has finished, you've set the
@@ -76,14 +75,13 @@ void ATKSideChainCompressorAudioProcessorEditor::resized()
 
   power1.setBoundsRelative(1. / nb_horiz, 1. / nb_vert, 1. / nb_horiz, 3. / nb_vert);
   makeup1.setBoundsRelative(9. / nb_horiz, 1. / nb_vert, 1. / nb_horiz, 3. / nb_vert);
+  attackrelease1.setBoundsRelative(2. / nb_horiz, 1. / nb_vert, 2. / nb_horiz, 3. / nb_vert);
   if(linked)
   {
-    attackrelease1.setBoundsRelative(2. / nb_horiz, 2. / nb_vert, 2. / nb_horiz, 3. / nb_vert);
     compressor1.setBoundsRelative(4. / nb_horiz, 2. / nb_vert, 5. / nb_horiz, 3. / nb_vert);
   }
   else
   {
-    attackrelease1.setBoundsRelative(2. / nb_horiz, 1. / nb_vert, 2. / nb_horiz, 3. / nb_vert);
     compressor1.setBoundsRelative(4. / nb_horiz, 1. / nb_vert, 5. / nb_horiz, 3. / nb_vert);
   }
 
@@ -100,7 +98,6 @@ void ATKSideChainCompressorAudioProcessorEditor::buttonClicked(::juce::Button* b
   if(button == &linkButton)
   {
     linked = linkButton.getToggleState();
-    attackrelease2.setVisible(!linked);
     compressor2.setVisible(!linked);
     resized();
     repaint();
