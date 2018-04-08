@@ -13,6 +13,27 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+namespace
+{
+  ::juce::String toString(float value)
+  {
+    return (value > 0.5f) ? "On" : "Off";
+  }
+  
+  float fromString(const ::juce::String& text)
+  {
+    if (text == "On")
+    {
+      return 1.0f;
+    }
+    else if (text == "Off")
+    {
+      return 0.0f;
+    }
+    
+    return 0.0f;
+  }
+}
 
 //==============================================================================
 ATKSideChainCompressorAudioProcessor::ATKSideChainCompressorAudioProcessor()
@@ -75,10 +96,10 @@ old_drywet(-1)
   sumFilter.set_input_port(0, &attackReleaseFilter1, 0);
   sumFilter.set_input_port(1, &attackReleaseFilter2, 0);
 
-  parameters.createAndAddParameter("middleside", "Middle/Side", "", NormalisableRange<float>(0, 1, 1), 0, nullptr, nullptr);
-  parameters.createAndAddParameter("link", "Link channels", "", NormalisableRange<float>(0, 1, 1), 0, nullptr, nullptr);
-  parameters.createAndAddParameter("enable1", "Enable ch1", "", NormalisableRange<float>(0, 1, 1), 1, nullptr, nullptr);
-  parameters.createAndAddParameter("enable2", "Enable ch2", "", NormalisableRange<float>(0, 1, 1), 1, nullptr, nullptr);
+  parameters.createAndAddParameter("middleside", "Middle/Side", "", NormalisableRange<float>(0, 1, 1), 0, toString, fromString, false, true, true);
+  parameters.createAndAddParameter("link", "Link channels", "", NormalisableRange<float>(0, 1, 1), 0, toString, fromString, false, true, true);
+  parameters.createAndAddParameter("enable1", "Enable ch1", "", NormalisableRange<float>(0, 1, 1), 1, toString, fromString, false, true, true);
+  parameters.createAndAddParameter("enable2", "Enable ch2", "", NormalisableRange<float>(0, 1, 1), 1, toString, fromString, false, true, true);
   
   parameters.createAndAddParameter("power1", "Power ch1", " ms", NormalisableRange<float>(0, 100, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("attack1", "Attack ch1", " ms", NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
