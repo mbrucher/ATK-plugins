@@ -2,3 +2,4 @@ Builds
 *.exe
 *.dmg
 **/JuceLibraryCode
+*.log
