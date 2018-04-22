@@ -40,6 +40,8 @@ private:
   ATKSideChainCompressorAudioProcessor& processor;
   AudioProcessorValueTreeState& paramState;
   
+  ::juce::ToggleButton sidechainButton;
+  std::unique_ptr<::juce::AudioProcessorValueTreeState::ButtonAttachment> sidechainAtt;
   ::juce::ToggleButton linkButton;
   std::unique_ptr<::juce::AudioProcessorValueTreeState::ButtonAttachment> linkAtt;
   ::juce::ToggleButton middleSideButton;

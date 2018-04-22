@@ -14,13 +14,15 @@
 //==============================================================================
 ATKSideChainCompressorAudioProcessorEditor::ATKSideChainCompressorAudioProcessorEditor (ATKSideChainCompressorAudioProcessor& p, AudioProcessorValueTreeState& paramState)
 : AudioProcessorEditor (&p), processor (p), paramState(paramState),
-linkButton("Link channels"), middleSideButton("Middle/Side"), enableCh1Button("Enable ch1"), enableCh2Button("Enable ch2"), 
+sidechainButton("Side-chain"), linkButton("Link channels"), middleSideButton("Middle/Side"), enableCh1Button("Enable ch1"), enableCh2Button("Enable ch2"),
 power1(paramState, "power1"), attackrelease1(paramState, "attack1",  "release1"), compressor1(paramState, "threshold1", "slope1", "softness1", "color1", "quality1"), makeup1(paramState, "makeup1", "Make-up"),
 power2(paramState, "power2"), attackrelease2(paramState, "attack2",  "release2"), compressor2(paramState, "threshold2", "slope2", "softness2", "color2", "quality2"), makeup2(paramState, "makeup2", "Make-up"),
 drywet(paramState, "drywet"), linked(false)
 {
   linkButton.addListener(this);
 
+  addAndMakeVisible(sidechainButton);
+  sidechainAtt.reset(new ::juce::AudioProcessorValueTreeState::ButtonAttachment(paramState, "siechain", sidechainButton));;
   addAndMakeVisible(linkButton);
   linkAtt.reset(new ::juce::AudioProcessorValueTreeState::ButtonAttachment(paramState, "link", linkButton));;
   addAndMakeVisible(middleSideButton);
@@ -28,7 +30,7 @@ drywet(paramState, "drywet"), linked(false)
   addAndMakeVisible(enableCh1Button);
   enableCh1Att.reset(new ::juce::AudioProcessorValueTreeState::ButtonAttachment(paramState, "enable1", enableCh1Button));;
   addAndMakeVisible(enableCh2Button);
-  enableCh1Att.reset(new ::juce::AudioProcessorValueTreeState::ButtonAttachment(paramState, "enable2", enableCh2Button));;
+  enableCh2Att.reset(new ::juce::AudioProcessorValueTreeState::ButtonAttachment(paramState, "enable2", enableCh2Button));;
 
   addAndMakeVisible(power1);
   addAndMakeVisible(attackrelease1);
@@ -68,6 +70,7 @@ void ATKSideChainCompressorAudioProcessorEditor::resized()
   constexpr auto nb_horiz = 11;
   constexpr auto nb_vert = 7;
   
+  sidechainButton.setBoundsRelative(0. / nb_horiz, 1. / nb_vert, 1. / nb_horiz, 1. / nb_vert);
   linkButton.setBoundsRelative(0. / nb_horiz, 2. / nb_vert, 1. / nb_horiz, 1. / nb_vert);
   middleSideButton.setBoundsRelative(0. / nb_horiz, 3. / nb_vert, 1. / nb_horiz, 1. / nb_vert);
   enableCh1Button.setBoundsRelative(0. / nb_horiz, 4. / nb_vert, 1. / nb_horiz, 1. / nb_vert);

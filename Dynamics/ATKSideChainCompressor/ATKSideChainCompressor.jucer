@@ -10,10 +10,9 @@
               pluginCode="e1or" pluginChannelConfigs="{2,2},{4,2}" pluginIsSynth="0"
               pluginWantsMidiIn="0" pluginProducesMidiOut="0" pluginIsMidiEffectPlugin="0"
               pluginEditorRequiresKeys="0" pluginAUExportPrefix="ATKSideChainCompressor"
-              pluginRTASCategory="" aaxIdentifier="com.MatthieuBrucher.ATKSideChainCompressor"
-              pluginAAXCategory="AAX_ePlugInCategory_None" jucerVersion="5.3.0"
-              companyName="Matthieu Brucher" companyWebsite="http://www.audio-tk.com/"
-              companyCopyright="Matthieu Brucher">
+              aaxIdentifier="com.MatthieuBrucher.ATKSideChainCompressor" pluginAAXCategory="0"
+              jucerVersion="5.3.1" companyName="Matthieu Brucher" companyWebsite="http://www.audio-tk.com/"
+              companyCopyright="Matthieu Brucher" pluginFormats="buildVST,buildVST3,buildAU,buildAUv3,buildAAX,buildStandalone">
   <MAINGROUP id="H9V4ut" name="ATKSideChainCompressor">
     <GROUP id="{65FEA80A-F647-1916-F1CE-08CA719AE1BE}" name="Source">
       <FILE id="LX9XxX" name="PluginProcessor.cpp" compile="1" resource="0"

@@ -59,6 +59,8 @@ public:
   void getStateInformation (MemoryBlock& destData) override;
   void setStateInformation (const void* data, int sizeInBytes) override;
   
+  void sidechain();
+  void mainchain();
   void link();
   void unlink();
   void setMS();
@@ -107,6 +109,7 @@ private:
   int sampleRate;
   int lastParameterSet;
   
+  bool old_sidechain;
   bool old_link;
   bool old_middleside;
   bool old_enableCh1;
