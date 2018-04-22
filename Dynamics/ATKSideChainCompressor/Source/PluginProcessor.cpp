@@ -64,7 +64,7 @@ old_drywet(-1)
   powerFilter1.set_input_port(0, &inLFilter, 0);
   attackReleaseFilter1.set_input_port(0, &powerFilter1, 0);
   gainColoredCompressorFilter1.set_input_port(0, &attackReleaseFilter1, 0);
-  applyGainFilter.set_input_port(0, &attackReleaseFilter1, 0);
+  applyGainFilter.set_input_port(0, &gainColoredCompressorFilter1, 0);
   applyGainFilter.set_input_port(1, &inLFilter, 0);
   makeupFilter1.set_input_port(0, &applyGainFilter, 0);
   drywetFilter.set_input_port(0, &makeupFilter1, 0);
@@ -74,7 +74,7 @@ old_drywet(-1)
   powerFilter2.set_input_port(0, &inRFilter, 0);
   attackReleaseFilter2.set_input_port(0, &powerFilter2, 0);
   gainColoredCompressorFilter2.set_input_port(0, &attackReleaseFilter2, 0);
-  applyGainFilter.set_input_port(2, &attackReleaseFilter2, 0);
+  applyGainFilter.set_input_port(2, &gainColoredCompressorFilter2, 0);
   applyGainFilter.set_input_port(3, &inRFilter, 0);
   makeupFilter2.set_input_port(0, &applyGainFilter, 1);
   drywetFilter.set_input_port(2, &makeupFilter2, 0);
@@ -102,23 +102,23 @@ old_drywet(-1)
   parameters.createAndAddParameter("enable1", "Enable ch1", "", NormalisableRange<float>(0, 1, 1), 1, toString, fromString, false, true, true);
   parameters.createAndAddParameter("enable2", "Enable ch2", "", NormalisableRange<float>(0, 1, 1), 1, toString, fromString, false, true, true);
   
-  parameters.createAndAddParameter("power1", "Power ch1", " ms", NormalisableRange<float>(0, 100, 1, 0.3), 10, nullptr, nullptr);
-  parameters.createAndAddParameter("attack1", "Attack ch1", " ms", NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
-  parameters.createAndAddParameter("release1", "Release ch1", " ms",  NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("power1", "Power ch1", " ms", NormalisableRange<float>(0, 500, 1, 0.3), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("attack1", "Attack ch1", " ms", NormalisableRange<float>(1, 500, 1, 0.3), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("release1", "Release ch1", " ms",  NormalisableRange<float>(1, 500, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("threshold1", "Threshold", " dB", NormalisableRange<float>(-40, 0, 0.1), 0, nullptr, nullptr);
   parameters.createAndAddParameter("slope1", "Slope ch1", "", NormalisableRange<float>(1.5, 10, .01, 0.3), 2, nullptr, nullptr);
   parameters.createAndAddParameter("softness1", "Softness ch1", "", NormalisableRange<float>(-4, 0, 0.1), -2, nullptr, nullptr);
-  parameters.createAndAddParameter("color1", "Color ch1", "", NormalisableRange<float>(-.5, .5, 0.1), 0, nullptr, nullptr);
+  parameters.createAndAddParameter("color1", "Color ch1", "", NormalisableRange<float>(-.5, .5, 0.01), 0, nullptr, nullptr);
   parameters.createAndAddParameter("quality1", "Quality ch1", "", NormalisableRange<float>(0.01, .2, 0.01), 0.1, nullptr, nullptr);
   parameters.createAndAddParameter("makeup1", "Makeup gain ch1", " dB", NormalisableRange<float>(-20, 20, 0.1), 0, nullptr, nullptr);
   
-  parameters.createAndAddParameter("power2", "Power ch2", " ms", NormalisableRange<float>(0, 100, 1, 0.3), 10, nullptr, nullptr);
-  parameters.createAndAddParameter("attack2", "Attack ch2", " ms", NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
-  parameters.createAndAddParameter("release2", "Release ch2", " ms",  NormalisableRange<float>(1, 100, 1, 0.3), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("power2", "Power ch2", " ms", NormalisableRange<float>(0, 500, 1, 0.3), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("attack2", "Attack ch2", " ms", NormalisableRange<float>(1, 500, 1, 0.3), 10, nullptr, nullptr);
+  parameters.createAndAddParameter("release2", "Release ch2", " ms",  NormalisableRange<float>(1, 500, 1, 0.3), 10, nullptr, nullptr);
   parameters.createAndAddParameter("threshold2", "Threshold ch2", " dB", NormalisableRange<float>(-40, 0, 0.1), 0, nullptr, nullptr);
   parameters.createAndAddParameter("slope2", "Slope ch2", "", NormalisableRange<float>(1.5, 10, .01, 0.3), 2, nullptr, nullptr);
   parameters.createAndAddParameter("softness2", "Softness ch2", "", NormalisableRange<float>(-4, 0, 0.1), -2, nullptr, nullptr);
-  parameters.createAndAddParameter("color2", "Color ch1", "", NormalisableRange<float>(-.5, .5, 0.1), 0, nullptr, nullptr);
+  parameters.createAndAddParameter("color2", "Color ch1", "", NormalisableRange<float>(-.5, .5, 0.01), 0, nullptr, nullptr);
   parameters.createAndAddParameter("quality2", "Quality ch1", "", NormalisableRange<float>(0.01, .2, 0.01), 0.1, nullptr, nullptr);
   parameters.createAndAddParameter("makeup2", "Makeup gain ch2", " dB", NormalisableRange<float>(-20, 20, 0.1), 0, nullptr, nullptr);
 
