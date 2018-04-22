@@ -15,7 +15,8 @@ image::ATKSideChainCompressor.png[GUI]
 Here is how the parameters interact with the plugin:
 
 [square]
-* *link* allows to link the two channels together.
+* *sidechain* allows to use a stereo side chain for the plugin (can also work when using M/S mode, the side chain will also be turned into M/S)
+* *link* allows to link the two channels together (the gain computation is a function of both channels power)
 * *middleside* switches the stereo channels processing to middle/side.
 * *enableCh1* enables channel 1 compressor.
 * *enableCh2* enables channel 2 compressor.
