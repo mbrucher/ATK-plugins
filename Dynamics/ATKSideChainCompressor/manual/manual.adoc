@@ -15,22 +15,26 @@ image::ATKSideChainCompressor.png[GUI]
 Here is how the parameters interact with the plugin:
 
 [square]
-* *link* allows to link the two channels together
-* *middleside* switches the stereo channels processing to middle/side
-* *enableCh1* enables channel 1 compressor
-* *enableCh2* enables channel 2 compressor
-* *Dry/Wet* balances the amount of processed signal versus input signal
+* *link* allows to link the two channels together.
+* *middleside* switches the stereo channels processing to middle/side.
+* *enableCh1* enables channel 1 compressor.
+* *enableCh2* enables channel 2 compressor.
+* *Dry/Wet* balances the amount of processed signal versus input signal.
 
 Each channel has the following parameters (stereo and middle/side mode):
 
 [square]
-* *RMS* changes the size of the window-like RMS computation.
-* *Attack* handles the speed at which the attack-release filter increases its detected value
-* *Release* handles the speed at which the attack-release filter decreases its detected value
-* *Threshold* modifies the threshold from which the compressor starts acting
+* *RMS* changes the size of the window-like RMS computation..
+* *Attack* handles the speed at which the attack-release filter increases its detected value.
+* *Release* handles the speed at which the attack-release filter decreases its detected value.
+* *Threshold* modifies the threshold from which the compressor starts acting.
 * *Ratio* modifies the slope of the compression curve. The higher the ratio, the more the compression. Ratios below 1 indicate expansion.
-* *Softness* is a comprise between soft knee and hard knee
-* *Make-up* Allows to increase the compressor output volume
+* *Softness* is a comprise between soft knee and hard knee.
+* *Quality* is the quality of the knee. The lower the quality, the more extended the color around the knee.
+* *Color* is a color scheme near the knee. Positive color raises the output, negative color decreases it.
+* *Make-up* Allows to increase the compressor output volume.
+
+When the compressor is in linked mode, there is only one threshold, ratio, softness, quality or color. The other parameters are kept and allow for a compromise between the two channels for the attack release filter (for instance if Left is supposed to have more release than Right), and the make-up gain is also specific to each channel (so that you can have more Middle or Side).
 
 == Bugs
 
